@@ -42,26 +42,6 @@ export async function adminClient() {
   return { ...k, ref, db: createClient(k.url, k.service, { auth: { persistSession: false } }) };
 }
 
-// --- Claude API ---
-export async function claude({ model, system, content, maxTokens = 8000 }) {
-  for (let attempt = 1; attempt <= 4; attempt++) {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'x-api-key': env('ANTHROPIC_API_KEY'), 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-      body: JSON.stringify({ model, max_tokens: maxTokens, system, messages: [{ role: 'user', content }] }),
-    });
-    if (res.ok) {
-      const j = await res.json();
-      return { text: j.content.filter(c => c.type === 'text').map(c => c.text).join(''), usage: j.usage };
-    }
-    const body = await res.text();
-    if ((res.status === 429 || res.status >= 500) && attempt < 4) { await sleep(5000 * attempt); continue; }
-    if (res.status === 401) throw new Error('Klucz ANTHROPIC_API_KEY jest nieprawidłowy.');
-    if (res.status === 400 && /credit/i.test(body)) throw new Error('Brak środków na koncie Anthropic. Doładuj je w console.anthropic.com → Billing.');
-    throw new Error(`Claude API ${res.status}: ${body.slice(0, 400)}`);
-  }
-}
-
 // Wyciąga pierwszy obiekt JSON z odpowiedzi modelu (także z bloku ```json).
 export function parseJson(text) {
   const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);

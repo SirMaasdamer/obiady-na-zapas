@@ -11,6 +11,8 @@ const CATN = Object.fromEntries(CATEGORIES);
 const PCATS = ['mięso', 'nabiał', 'warzywa', 'puszki i sosy', 'suche', 'spiżarnia'];
 
 const S = L.S; // wspólny stan (produkty, ceny, przepisy…)
+const activeRecipes = () => Object.values(S.recipes).filter(r => r.active !== false);
+const bankFor = cat => Object.values(S.recipes).filter(r => r.active === false && r.category === cat);
 const ui = {
   tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', q: '', pq: '', pmode: 'offers',
   portions: lsGet('portions', 8), trip: lsGet('trip', 8), plan: null, sheet: null,
@@ -78,18 +80,17 @@ async function toggleReact(rid, field) {
   await w(() => db.from('reactions').upsert(row));
 }
 function renderCats() {
-  const counts = {}; Object.values(S.recipes).forEach(r => counts[r.category] = (counts[r.category] || 0) + 1);
+  const counts = {}; activeRecipes().forEach(r => counts[r.category] = (counts[r.category] || 0) + 1);
   $('#rcats').innerHTML = [['all', 'Wszystkie']].concat(CATEGORIES).map(([k, n]) => `<button class="chip" data-act="cat" data-k="${k}" aria-pressed="${ui.cat === k}">${n}${k !== 'all' && counts[k] ? ` <span style="opacity:.6">${counts[k]}</span>` : ''}</button>`).join('');
   $('#rfilters').innerHTML = [['all', 'Wszystkie dania'], ['fav', '♥ Moje ulubione'], ['want', 'Zróbmy to'], ['promo', 'Z promocją'], ['new', 'Nowe']].map(([k, n]) => `<button class="chip soft" data-act="filter" data-k="${k}" aria-pressed="${ui.filter === k}">${n}</button>`).join('');
-  $('#b-gen').hidden = !CFG.ai;
-  $('#b-gen').textContent = ui.cat === 'all' ? '✦ Wygeneruj nowe' : `✦ Nowe: ${CATN[ui.cat]}`;
+  $('#b-gen').textContent = ui.cat === 'all' ? '✦ Nowe przepisy' : `✦ Nowe: ${CATN[ui.cat]}`;
 }
 function renderRecipes() {
-  const box = $('#rlist'); const all = Object.values(S.recipes);
+  const box = $('#rlist'); const all = activeRecipes();
   $('#rcount').textContent = all.length ? `${all.length} dań, które dobrze znoszą mrożenie` : 'Dania, które dobrze znoszą mrożenie';
-  if (!all.length) { box.innerHTML = S.loaded.recipes ? `<div class="empty"><h3>Nie ma jeszcze przepisów</h3><div>Uruchom instalację jeszcze raz albo wygeneruj pierwsze dania.</div></div>` : `<div class="empty"><span class="spin"></span>Wczytuję przepisy…</div>`; return; }
+  if (!all.length) { box.innerHTML = S.loaded.recipes ? `<div class="empty"><h3>Nie ma jeszcze przepisów</h3><div>Uruchom instalację jeszcze raz w GitHub.</div></div>` : `<div class="empty"><span class="spin"></span>Wczytuję przepisy…</div>`; return; }
   const q = ui.q.trim().toLowerCase(), week = Date.now() - 7 * 864e5;
-  let list = all.map(r => ({ ...r, c: L.recipeCost(r, 2), re: reactFor(r.id), isNew: ui.justAdded.has(r.id) || (r.source === 'claude' && new Date(r.created_at).getTime() > week) }))
+  let list = all.map(r => ({ ...r, c: L.recipeCost(r, 2), re: reactFor(r.id), isNew: ui.justAdded.has(r.id) || (r.activated_at && new Date(r.activated_at).getTime() > week) }))
     .filter(r => {
       if (ui.cat !== 'all' && r.category !== ui.cat) return false;
       if (q) { const hay = (r.name + ' ' + (r.ingredients || []).map(i => S.products[i.pid]?.name || '').join(' ')).toLowerCase(); if (!hay.includes(q)) return false; }
@@ -100,7 +101,7 @@ function renderRecipes() {
       return true;
     });
   list.sort((a, b) => (b.isNew && ui.justAdded.has(b.id)) - (a.isNew && ui.justAdded.has(a.id)) || b.re.want.length - a.re.want.length || new Set(b.c.promos.map(x => x.pid)).size - new Set(a.c.promos.map(x => x.pid)).size || a.name.localeCompare(b.name, 'pl'));
-  if (!list.length) { box.innerHTML = `<div class="empty"><h3>Nic tu nie pasuje</h3><div>Zmień filtr${CFG.ai ? ' albo wygeneruj nowe dania w tej kategorii' : ''}.</div>${CFG.ai ? '<button class="btn pri" data-act="gen">✦ Wygeneruj nowe</button>' : ''}</div>`; return; }
+  if (!list.length) { box.innerHTML = `<div class="empty"><h3>Nic tu nie pasuje</h3><div>Zmień filtr albo dobierz nowe dania w tej kategorii.</div><button class="btn pri" data-act="gen">✦ Nowe przepisy</button></div>`; return; }
   box.innerHTML = '<div class="cards">' + list.map(r => {
     const best = SK.filter(s => !r.c.miss[s]).sort((a, b) => r.c.tot[a] - r.c.tot[b])[0];
     const nPromo = new Set(r.c.promos.map(x => x.pid)).size, liked = r.re.like.includes(ui.member);
@@ -151,27 +152,24 @@ async function addRecipeToList() {
   if (await w(() => db.from('list_items').insert(rows), `Dodano ${r.name} (${n} porcji) do listy`)) { closeSheet(); reload('list_items'); }
 }
 
-/* ---------- generator ---------- */
+/* ---------- nowe przepisy z banku ---------- */
 function genSheet() {
-  const st = ui.sheet;
-  return `<div class="sheet-head"><div><h2>Nowe przepisy</h2><div class="sub" style="margin-top:4px">Claude ułoży dania do mrożenia pod aktualne promocje i zapisze je w bazie</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  const st = ui.sheet, left = st.cat ? bankFor(st.cat).length : 0;
+  return `<div class="sheet-head"><div><h2>Nowe przepisy</h2><div class="sub" style="margin-top:4px">Dobiorę dania z banku przepisów. Najpierw te, których składniki są teraz w promocji.</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
   <form id="f-gen" class="sec" style="gap:14px">
-   <div class="field"><label>Kategoria</label><div class="chips" style="flex-wrap:wrap">${CATEGORIES.map(([k, n]) => `<button type="button" class="chip" data-act="gen-cat" data-k="${k}" aria-pressed="${st.cat === k}">${n}</button>`).join('')}</div></div>
+   <div class="field"><label>Kategoria</label><div class="chips" style="flex-wrap:wrap">${CATEGORIES.map(([k, n]) => `<button type="button" class="chip" data-act="gen-cat" data-k="${k}" aria-pressed="${st.cat === k}">${n} <span style="opacity:.6">${bankFor(k).length}</span></button>`).join('')}</div><div class="sub">Liczba przy kategorii to dania, które jeszcze czekają w banku.</div></div>
    <div class="field"><label>Ile przepisów</label><div class="chips">${[2, 4, 6].map(n => `<button type="button" class="chip" data-act="gen-n" data-n="${n}" aria-pressed="${st.n === n}">${n}</button>`).join('')}</div></div>
-   <div class="field"><label for="g-hint">Życzenia (opcjonalnie)</label><input class="input" id="g-hint" value="${esc(st.hint || '')}" placeholder="np. łagodne, bez grzybów, coś azjatyckiego"></div>
-   <button class="btn pri" type="submit" ${st.busy || !st.cat ? 'disabled' : ''}>${st.busy ? '<span class="spin"></span> Claude układa przepisy… (ok. 30–60 s)' : st.cat ? `✦ Wygeneruj ${st.n}: ${CATN[st.cat]}` : 'Wybierz kategorię'}</button>
-   ${st.err ? `<div class="banner">${esc(st.err)}</div>` : ''}</form>`;
+   <button class="btn pri" type="submit" ${!st.cat || !left ? 'disabled' : ''}>${!st.cat ? 'Wybierz kategorię' : left ? `✦ Dodaj ${Math.min(st.n, left)}: ${CATN[st.cat]}` : 'W tej kategorii bank jest już pusty'}</button></form>`;
 }
 async function runGen() {
-  const st = ui.sheet; st.hint = $('#g-hint').value.trim(); st.busy = true; st.err = null; drawSheet();
-  try {
-    const { data, error } = await db.functions.invoke('generate-recipes', { body: { category: st.cat, count: st.n, hint: st.hint } });
-    if (error) { let msg = 'Nie udało się wygenerować. Spróbuj ponownie.'; try { msg = (await error.context.json()).error || msg; } catch { } throw new Error(msg); }
-    data.added.forEach(a => ui.justAdded.add(a.id));
-    ui.cat = st.cat; lsSet('cat', ui.cat); ui.filter = 'all';
-    await load('recipes'); await load('products'); closeSheet(); renderAll(); window.scrollTo(0, 0);
-    toast(`Dodano ${data.added.length} przepisy w kategorii ${CATN[st.cat]}`);
-  } catch (e) { st.busy = false; st.err = e.message; drawSheet(); }
+  const st = ui.sheet, t = L.today();
+  const pick = bankFor(st.cat).map(r => ({ r, promo: new Set(L.recipeCost(r, 2).promos.map(x => x.pid)).size, rnd: Math.random() }))
+    .sort((a, b) => b.promo - a.promo || a.rnd - b.rnd).slice(0, st.n).map(x => x.r);
+  if (!pick.length) return;
+  const ids = pick.map(r => r.id), now = new Date().toISOString();
+  pick.forEach(r => { r.active = true; r.activated_at = now; ui.justAdded.add(r.id); });
+  ui.cat = st.cat; lsSet('cat', ui.cat); ui.filter = 'all'; closeSheet(); renderAll(); window.scrollTo(0, 0);
+  if (await w(() => db.from('recipes').update({ active: true, activated_at: now }).in('id', ids), `Dodano ${pick.length} przepisy: ${CATN[st.cat]}`)) reload('recipes');
 }
 
 /* ---------- LIST ---------- */
@@ -235,7 +233,7 @@ function renderStores() {
   $('#pstores').innerHTML = `<div class="stores">${STORES.map(s => {
     const ok = runs.find(r => r.store === s.k && r.status === 'ok'), last = runs.find(r => r.store === s.k);
     const err = last && last.status !== 'ok';
-    return `<div class="st ${err ? 'err' : ''}"><b class="store ${s.k}">${s.n}</b>${ok ? `<span>gazetka ${dPL(ok.valid_from)}–${dPL(ok.valid_to)}</span><span>${ok.offers} ofert · ${ok.matched} w katalogu</span>` : '<span>jeszcze nie pobrano</span>'}${err ? `<span class="old">ostatnia próba: błąd</span>` : last ? `<span>pobrano ${new Date(last.ran_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}</span>` : ''}</div>`;
+    return `<div class="st ${err ? 'err' : ''}"><b class="store ${s.k}">${s.n}</b>${ok ? `<span>gazetka ${dPL(ok.valid_from)}–${dPL(ok.valid_to)}</span><span>${ok.matched} produktów w promocji</span>` : '<span>jeszcze nie pobrano</span>'}${err ? `<span class="old">ostatnia próba: błąd</span>` : last ? `<span>pobrano ${new Date(last.ran_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}</span>` : ''}</div>`;
   }).join('')}</div>`;
   $('#pm-offers').setAttribute('aria-pressed', ui.pmode === 'offers'); $('#pm-table').setAttribute('aria-pressed', ui.pmode === 'table');
 }
@@ -244,11 +242,11 @@ function renderPrices() {
   const box = $('#plist'), q = ui.pq.trim().toLowerCase();
   if (ui.pmode === 'offers') {
     const offs = (S.offers || []).filter(o => !q || o.name.toLowerCase().includes(q));
-    if (!offs.length) { box.innerHTML = `<div class="empty"><h3>${q ? 'Brak takich ofert' : 'Brak promocji'}</h3><div>${q ? 'Spróbuj innej nazwy.' : 'Promocje pojawią się po pierwszym automatycznym pobraniu gazetek (poniedziałki i czwartki rano).'}</div></div>`; return; }
+    if (!offs.length) { box.innerHTML = `<div class="empty"><h3>${q ? 'Brak takich ofert' : 'Brak promocji'}</h3><div>${q ? 'Spróbuj innej nazwy.' : 'Promocje pojawią się po pierwszym automatycznym pobraniu ofert (poniedziałki i czwartki rano).'}</div></div>`; return; }
     box.innerHTML = STORES.map(s => {
-      const os = offs.filter(o => o.store === s.k).sort((a, b) => (b.product_id ? 1 : 0) - (a.product_id ? 1 : 0) || a.name.localeCompare(b.name, 'pl'));
+      const os = offs.filter(o => o.store === s.k).sort((a, b) => a.name.localeCompare(b.name, 'pl'));
       if (!os.length) return '';
-      return `<div class="grp"><div class="grp-h"><h3 class="store ${s.k}">${s.n}</h3><span class="sub">${os.length} ofert</span></div>${os.map(o => `<div class="offer"><div class="nm">${esc(o.name)}${o.product_id ? ' <span class="pill want">w przepisach</span>' : ''}<small>${esc(o.unit_info || '')}${o.valid_from || o.valid_to ? ` · ${dPL(o.valid_from)}–${dPL(o.valid_to)}` : ''}${o.note ? ' · ' + esc(o.note) : ''}</small></div><div class="pr">${o.price != null ? zs(o.price) + ' zł' : ''}${o.regular ? `<small>${zs(o.regular)} zł</small>` : ''}</div></div>`).join('')}</div>`;
+      return `<div class="grp"><div class="grp-h"><h3 class="store ${s.k}">${s.n}</h3><span class="sub">${os.length} ofert</span></div>${os.map(o => `<div class="offer"><div class="nm">${esc(S.products[o.product_id]?.name || o.name)}<small>${esc(o.name)}${o.unit_info ? ' · ' + esc(o.unit_info) : ''}${o.valid_from || o.valid_to ? ` · ${dPL(o.valid_from)}–${dPL(o.valid_to)}` : ''}${o.note ? ' · ' + esc(o.note) : ''}</small></div><div class="pr">${o.price != null ? zs(o.price) + ' zł' : ''}${o.regular ? `<small>${zs(o.regular)} zł</small>` : ''}</div></div>`).join('')}</div>`;
     }).join('');
     return;
   }
@@ -327,8 +325,8 @@ document.addEventListener('click', async e => {
     case 'cancel-del': ui.sheet.confirmDel = false; drawRecipeDyn(); break;
     case 'del-recipe': { const id = ui.sheet.id; if (await w(() => db.from('recipes').delete().eq('id', id), 'Usunięto przepis')) { closeSheet(); reload('recipes'); } break; }
     case 'gen': ui.sheet = { type: 'gen', cat: ui.cat === 'all' ? null : ui.cat, n: 4 }; drawSheet(); break;
-    case 'gen-cat': ui.sheet.cat = d.k; ui.sheet.hint = $('#g-hint').value; drawSheet(); break;
-    case 'gen-n': ui.sheet.n = +d.n; ui.sheet.hint = $('#g-hint').value; drawSheet(); break;
+    case 'gen-cat': ui.sheet.cat = d.k; drawSheet(); break;
+    case 'gen-n': ui.sheet.n = +d.n; drawSheet(); break;
     case 'plan': ui.plan = d.k; renderList(); break;
     case 'trip': ui.trip = ui.trip >= 20 ? 0 : ui.trip + 4; lsSet('trip', ui.trip); ui.plan = null; renderList(); break;
     case 'tick': tickGroup(d.pid); break;

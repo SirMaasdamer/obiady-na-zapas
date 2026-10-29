@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import * as L from '../web/logic.js';
 import { parseJson } from './lib.mjs';
+import { matchOffers, findValidity, scoreLink, norm } from './extract.mjs';
 const products = JSON.parse(readFileSync(new URL('../seed/products.json', import.meta.url)));
 const recipes = JSON.parse(readFileSync(new URL('../seed/recipes.json', import.meta.url)));
 L.setTable('products', products.map(({ regular, ...p }) => p));
@@ -26,4 +27,29 @@ eq(rec.key, 'l', 'polecany sklep Lidl (promocja na kurczaka)');
 eq(pantry.length > 0, true, 'przyprawy w „Sprawdź w domu”');
 eq(L.buyText(L.S.products.mascarpone, 0.4), '2 × 250 g', 'opakowania mascarpone');
 eq(parseJson('Oto wynik:\n```json\n{"a":{"b":"}"},"c":[1]}\n```').c[0], 1, 'parsowanie JSON z odpowiedzi');
+
+// --- darmowy odczyt gazetek ---
+const cat = products.filter(p => !p.pantry).map(p => ({ ...p, ref: Object.values(p.regular).reduce((a, b) => a + b) / 3 }));
+const leaflet = [
+  { page: 1, text: `OFERTA WAŻNA OD 30.10 DO 02.11\nFILET Z PIERSI KURCZAKA\nkrajowy, pakowany\n24,99\n14,99 zł/kg\n\nMascarpone Galbani 250 g\n5,49 zł\ncena za szt.\n` },
+  { page: 2, text: `Mięso mielone wieprzowe 500 g\n8 99 zł\nKoncentrat pomidorowy 30% 200 g  2,79\nCebula żółta luz  1,99 /kg\nKalendarz 2027  19,99\nPapryka czerwona 1 kg 7,99 zł oferta 30.10–02.11` },
+];
+const offs = Object.fromEntries(matchOffers(leaflet, cat).map(o => [o.product_id, o]));
+eq(offs.kurczak_filet?.price_for_pack, 14.99, 'kurczak: cena za kg z gazetki, nie przekreślona');
+eq(offs.kurczak_filet?.regular, 24.99, 'kurczak: cena przed obniżką');
+eq(offs.mascarpone?.price_for_pack, 5.49, 'mascarpone 250 g');
+eq(offs.mielone_wp?.price_for_pack, 17.98, 'mielone 500 g za 8,99 (OCR „8 99 zł”) → 17,98 zł/kg');
+eq(offs.koncentrat?.price_for_pack, 2.79, 'koncentrat');
+eq(offs.cebula?.price_for_pack, 1.99, 'cebula za kg');
+eq(offs.papryka?.price_for_pack, 7.99, 'papryka: data nie udaje ceny');
+eq(Object.keys(offs).includes('kalafior'), false, 'brak fałszywych dopasowań');
+const tiles = [{ page: 'www', src: 'www', text: `Oferta ważna od 30.10.2026 do 02.11.2026\nPolski kurczak\nFilet z piersi kurczaka\nopak. ok. 1 kg\n-40%\n24,99 zł\n14,99 zł/kg\nDo koszyka\nGalbani\nSer mascarpone\n250 g\n7,49\n5,99 zł\n23,96 zł/kg\nDo koszyka\nPassata pomidorowa\n500 g\n3,49 zł\n6,98 zł/l\n` }];
+const t2 = Object.fromEntries(matchOffers(tiles, cat).map(o => [o.product_id, o]));
+eq(t2.kurczak_filet?.price_for_pack, 14.99, 'kafelki: kurczak 14,99 zł/kg');
+eq(t2.mascarpone?.price_for_pack, 5.99, 'kafelki: mascarpone 5,99 (nie 23,96 zł/kg)');
+eq(t2.passata?.price_for_pack, 3.49, 'kafelki: passata 500 g');
+const v = findValidity(leaflet.map(p => p.text).join('\n'), '2026-10-30');
+eq(v?.valid_from + '|' + v?.valid_to, '2026-10-30|2026-11-02', 'okres ważności gazetki');
+eq(scoreLink({ href: 'https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060', text: 'Gazetka tygodnia 29.10 – 04.11' }) > scoreLink({ href: 'https://leaflets.kaufland.com/pl-PL/PL_pl_leaflet5_0_PL44/ar/0', text: 'Katalog znicze' }), true, 'gazetka tygodnia wygrywa z katalogiem zniczy');
+eq(norm('Łopatka ŻÓŁTA').length, 'Łopatka ŻÓŁTA'.length, 'normalizacja zachowuje pozycje');
 if (fails) { console.log(fails, 'błędów'); process.exit(1); } else console.log('Wszystkie testy przeszły.');

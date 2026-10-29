@@ -72,7 +72,8 @@
    "Dodaj szpinak, mieszaj aż zwiędnie. Dopraw gałką i startym serem.",
    "Włóż kurczaka z powrotem i duś 5 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "curry-kurczak-ciecierzyca",
@@ -136,7 +137,8 @@
    "Wlej pomidory i mleczko, dodaj odsączoną ciecierzycę.",
    "Gotuj 20 minut na małym ogniu, dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "kurczak-cacciatore",
@@ -200,7 +202,8 @@
    "Dodaj czosnek, pomidory i oregano.",
    "Duś pod przykryciem 25 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "potrawka-kurczak",
@@ -269,7 +272,8 @@
    "Dodaj groszek, gotuj 5 minut.",
    "Śmietanę wymieszaj z mąką, zahartuj wywarem i wlej. Zagotuj, dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "kurczak-teriyaki",
@@ -328,7 +332,8 @@
    "Wlej sos i gotuj 8 minut, aż się zredukuje.",
    "Zagęść mąką rozrobioną w wodzie, posyp sezamem."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "kurczak-pieczarki",
@@ -387,7 +392,8 @@
    "Dodaj 150 ml wody i śmietanę wymieszaną z mąką, zagotuj.",
    "Włóż kurczaka do sosu i duś 5 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "indyk-musztarda",
@@ -445,7 +451,8 @@
    "Dodaj cebulę, smaż 3 minuty.",
    "Wlej 100 ml wody, śmietanę i musztardę, gotuj 7 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "pulpety-pomidorowe",
@@ -509,7 +516,8 @@
    "Zagotuj passatę z czosnkiem i szklanką wody.",
    "Włóż pulpety do sosu i gotuj pod przykryciem 25 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "pulpety-indyk-koperek",
@@ -573,7 +581,8 @@
    "Śmietanę wymieszaj z mąką i wywarem, wlej do garnka.",
    "Zagotuj, dodaj posiekany koperek."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "chili-con-carne",
@@ -642,7 +651,8 @@
    "Dodaj paprykę i pomidory, gotuj 20 minut.",
    "Dodaj fasolę i kukurydzę, gotuj 10 minut, dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "golabki-leniwe",
@@ -706,7 +716,8 @@
    "Uformuj podłużne kotleciki, obsmaż krótko z obu stron.",
    "Zalej passatą z 150 ml wody i duś 30 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "mielone-pieczarki",
@@ -775,7 +786,8 @@
    "Na tej samej patelni podsmaż resztę cebuli i pieczarki.",
    "Dodaj 150 ml wody i śmietanę z mąką, włóż kotlety i duś 10 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "gulasz-wieprzowy",
@@ -844,7 +856,8 @@
    "Zalej wodą, dodaj koncentrat, paprykę słodką i majeranek, duś 60 minut.",
    "Dodaj paprykę w paskach i duś 15 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "leczo",
@@ -903,7 +916,8 @@
    "Dodaj cukinię, pomidory i paprykę słodką.",
    "Duś pod przykryciem 20 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "schab-sos-wlasny",
@@ -967,7 +981,8 @@
    "Dodaj cebulę w piórkach, liść laurowy, ziele i 300 ml wody.",
    "Duś pod przykryciem 45 minut, aż mięso zmięknie."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "karkowka-cebula",
@@ -1026,7 +1041,8 @@
    "Przełóż do garnka, przysyp cebulą w piórkach, wlej 300 ml wody.",
    "Duś 50 minut pod przykryciem."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "bigos",
@@ -1110,7 +1126,8 @@
    "Dodaj mięso, grzyby, śliwki i przyprawy do kapusty.",
    "Duś na małym ogniu 1,5 godziny, na końcu dodaj koncentrat."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "gulasz-wolowy",
@@ -1179,7 +1196,8 @@
    "Zalej wodą, dodaj koncentrat, paprykę słodką i liść laurowy.",
    "Duś 1,5 godziny, na ostatnie 15 minut dodaj paprykę."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "strogonow",
@@ -1248,7 +1266,8 @@
    "Dodaj koncentrat, paprykę i 400 ml wody, duś 70 minut.",
    "Wmieszaj śmietanę i podgrzej, nie gotując."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "wolowina-marchew",
@@ -1322,7 +1341,8 @@
    "Zalej 500 ml wody z kostką, dodaj przyprawy i koncentrat.",
    "Duś 1,5 godziny, aż mięso będzie miękkie."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "grochowka",
@@ -1386,7 +1406,8 @@
    "Podsmaż kiełbasę z cebulą i dodaj do zupy.",
    "Dopraw majerankiem, czosnkiem, solą i pieprzem."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "krem-z-dyni",
@@ -1455,7 +1476,8 @@
    "Gotuj 25 minut do miękkości.",
    "Zmiksuj z mleczkiem kokosowym i imbirem, dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "zupa-gulaszowa",
@@ -1524,7 +1546,8 @@
    "Dodaj ziemniaki i paprykę w kostce, gotuj 20 minut.",
    "Dopraw czosnkiem, solą i pieprzem."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "krupnik",
@@ -1588,7 +1611,8 @@
    "Dodaj ziemniaki i marchew w kostce, gotuj 15 minut.",
    "Pokrój mięso i włóż z powrotem, dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "zupa-soczewica",
@@ -1657,7 +1681,8 @@
    "Gotuj 20 minut, aż soczewica się rozpadnie.",
    "Dodaj mleczko kokosowe, zmiksuj częściowo i dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "curry-ciecierzyca-szpinak",
@@ -1720,7 +1745,8 @@
    "Dodaj pomidory, mleczko i odsączoną ciecierzycę, gotuj 15 minut.",
    "Wmieszaj szpinak i gotuj, aż zwiędnie. Dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "dal",
@@ -1783,7 +1809,8 @@
    "Dodaj soczewicę, pomidory i 500 ml wody.",
    "Gotuj 20 minut, mieszając, aż zgęstnieje. Dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "leczo-wege",
@@ -1846,7 +1873,8 @@
    "Dodaj cukinię, pomidory i paprykę słodką.",
    "Dodaj ciecierzycę i duś 15 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "chili-sin-carne",
@@ -1919,7 +1947,8 @@
    "Dodaj paprykę, pomidory, soczewicę i 200 ml wody, gotuj 20 minut.",
    "Dodaj fasolę i kukurydzę, gotuj 10 minut."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "gulasz-pieczarkowy",
@@ -1982,7 +2011,8 @@
    "Dodaj paprykę i paprykę słodką, smaż 5 minut.",
    "Wlej 150 ml wody i śmietanę z mąką, zagotuj."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "bolognese",
@@ -2046,7 +2076,8 @@
    "Dodaj czosnek, passatę, pomidory i oregano.",
    "Gotuj 40 minut na małym ogniu."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "sos-kurczak-pomidor-smietana",
@@ -2109,7 +2140,8 @@
    "Dodaj czosnek, passatę i oregano, gotuj 10 minut.",
    "Wlej śmietankę, zagotuj i dodaj starty ser."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "ragu-wieprzowe",
@@ -2178,7 +2210,8 @@
    "Wlej pomidory i 200 ml wody, dodaj przyprawy, duś 2 godziny.",
    "Rozdrobnij mięso widelcem w sosie."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
  },
  {
   "id": "sos-tunczyk",
@@ -2231,6 +2264,3044 @@
    "Dodaj pomidory i oregano, gotuj 10 minut.",
    "Dodaj odsączonego tuńczyka, podgrzej i dopraw."
   ],
-  "source": "seed"
+  "source": "seed",
+  "active": true
+ },
+ {
+  "id": "kurczak-slodko-kwasny",
+  "category": "drob",
+  "name": "Kurczak w sosie słodko-kwaśnym",
+  "base": 2,
+  "minutes": 35,
+  "freeze_months": 3,
+  "sides": "ryż",
+  "thaw": "Mrozi się dobrze. Odgrzewaj na patelni.",
+  "ingredients": [
+   {
+    "pid": "kurczak_filet",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "ananas",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 20,
+    "unit": "g"
+   },
+   {
+    "pid": "sos_sojowy",
+    "amt": 2,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "ocet",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "cukier",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   }
+  ],
+  "steps": [
+   "Kurczaka w kostce oprósz mąką i obsmaż.",
+   "Dodaj cebulę i paprykę, smaż 4 minuty.",
+   "Wlej sok z ananasa, 100 ml wody, koncentrat, sos sojowy, ocet i cukier.",
+   "Dodaj ananasa, gotuj 5 minut, aż sos zgęstnieje."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "gulasz-podudzia",
+  "category": "drob",
+  "name": "Gulasz z podudzi z papryką",
+  "base": 2,
+  "minutes": 60,
+  "freeze_months": 3,
+  "sides": "ryż, kasza, ziemniaki",
+  "thaw": "Mroź z sosem.",
+  "ingredients": [
+   {
+    "pid": "podudzia",
+    "amt": 500,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 30,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Podudzia dopraw i obsmaż.",
+   "Dodaj cebulę, czosnek i paprykę słodką.",
+   "Dodaj koncentrat i 300 ml wody, duś 30 minut.",
+   "Dodaj paprykę w paskach, duś 10 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "watrobka-cebula",
+  "category": "drob",
+  "name": "Wątróbka duszona z cebulą",
+  "base": 2,
+  "minutes": 25,
+  "freeze_months": 2,
+  "sides": "ziemniaki, kasza, ogórek kiszony",
+  "thaw": "Najlepsza w ciągu 2 miesięcy. Odgrzewaj krótko, żeby nie stwardniała.",
+  "ingredients": [
+   {
+    "pid": "watrobka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "majeranek",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Wątróbkę oczyść i oprósz mąką.",
+   "Zeszklij cebulę, odłóż.",
+   "Usmaż wątróbkę po 2 minuty z każdej strony.",
+   "Dodaj cebulę, 100 ml wody i majeranek, duś 5 minut. Posól na końcu."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kurczak-curry-dynia",
+  "category": "drob",
+  "name": "Curry z kurczakiem i dynią",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "ryż",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "kurczak_udo",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "dynia",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "mleko_kokos",
+    "amt": 200,
+    "unit": "ml"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "curry",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę, czosnek i curry.",
+   "Dodaj kurczaka i obsmaż.",
+   "Dodaj dynię w kostce i mleczko, gotuj 20 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "paprykarz-kurczak",
+  "category": "drob",
+  "name": "Paprykarz z kurczaka",
+  "base": 2,
+  "minutes": 35,
+  "freeze_months": 3,
+  "sides": "ryż, kluski, kasza",
+  "thaw": "Odgrzewaj na małym ogniu.",
+  "ingredients": [
+   {
+    "pid": "kurczak_udo",
+    "amt": 350,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 100,
+    "unit": "ml"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 2,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Kurczaka obsmaż z cebulą.",
+   "Dodaj paprykę słodką i paprykę w kostce.",
+   "Wlej 200 ml wody, duś 15 minut.",
+   "Dodaj śmietanę z mąką, zagotuj."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "indyk-warzywa",
+  "category": "drob",
+  "name": "Gulasz z indyka z warzywami",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "kasza, ryż",
+  "thaw": "Najlepszy w ciągu 3 miesięcy.",
+  "ingredients": [
+   {
+    "pid": "indyk_filet",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "cukinia",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "oregano",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Indyka w kostce obsmaż.",
+   "Dodaj cebulę i marchew, smaż 5 minut.",
+   "Dodaj cukinię, pomidory i oregano, duś 20 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kurczak-brokul-ser",
+  "category": "drob",
+  "name": "Kurczak z brokułem w sosie serowym",
+  "base": 2,
+  "minutes": 30,
+  "freeze_months": 2,
+  "sides": "makaron, ryż",
+  "thaw": "Brokuł po rozmrożeniu mięknie. Najlepsze w ciągu 2 miesięcy.",
+  "ingredients": [
+   {
+    "pid": "kurczak_filet",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "brokul",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "smietanka30",
+    "amt": 120,
+    "unit": "ml"
+   },
+   {
+    "pid": "ser_zolty",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 1,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Brokuła podziel na różyczki i blanszuj 2 minuty.",
+   "Kurczaka obsmaż z czosnkiem.",
+   "Wlej śmietankę, dodaj starty ser, mieszaj do roztopienia.",
+   "Dodaj brokuła i podgrzej."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "zapiekanka-mielone",
+  "category": "mielone",
+  "name": "Zapiekanka ziemniaczana z mielonym",
+  "base": 2,
+  "minutes": 70,
+  "freeze_months": 3,
+  "sides": "surówka",
+  "thaw": "Mroź w porcjach. Odgrzewaj w piekarniku pod folią.",
+  "ingredients": [
+   {
+    "pid": "mielone_wp",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "ziemniaki",
+    "amt": 500,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 100,
+    "unit": "ml"
+   },
+   {
+    "pid": "ser_zolty",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Ziemniaki ugotuj w plastrach na pół miękko.",
+   "Mięso podsmaż z cebulą, dopraw.",
+   "Układaj warstwami ziemniaki i mięso, polej śmietaną, posyp serem.",
+   "Piecz 30 minut w 190°C."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kofty",
+  "category": "mielone",
+  "name": "Kofty w sosie pomidorowym",
+  "base": 2,
+  "minutes": 45,
+  "freeze_months": 3,
+  "sides": "ryż, kuskus",
+  "thaw": "Mroź z sosem.",
+  "ingredients": [
+   {
+    "pid": "mielone_wol",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 50,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "jajka",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "kumin",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Wymieszaj mięso z cebulą, czosnkiem, jajkiem i kuminem.",
+   "Uformuj podłużne kofty i obsmaż.",
+   "Zalej pomidorami i duś 20 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kapusta-mielone",
+  "category": "mielone",
+  "name": "Kapusta duszona z mięsem mielonym",
+  "base": 2,
+  "minutes": 50,
+  "freeze_months": 3,
+  "sides": "ziemniaki, pieczywo",
+  "thaw": "Mrozi się świetnie, jak bigos.",
+  "ingredients": [
+   {
+    "pid": "mielone_wp",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "kapusta",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 30,
+    "unit": "g"
+   },
+   {
+    "pid": "majeranek",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Mięso podsmaż z cebulą.",
+   "Dodaj poszatkowaną kapustę i startą marchew.",
+   "Dodaj koncentrat, 150 ml wody, majeranek i duś 30 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "papryki-faszerowane",
+  "category": "mielone",
+  "name": "Papryki faszerowane w sosie pomidorowym",
+  "base": 2,
+  "minutes": 70,
+  "freeze_months": 3,
+  "sides": "pieczywo",
+  "thaw": "Mroź w pojemnikach z sosem.",
+  "ingredients": [
+   {
+    "pid": "papryka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "mielone_wp",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "ryz",
+    "amt": 50,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 50,
+    "unit": "g"
+   },
+   {
+    "pid": "passata",
+    "amt": 300,
+    "unit": "ml"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Ugotuj ryż na pół miękko.",
+   "Wymieszaj mięso, ryż, cebulę i przyprawy.",
+   "Nafaszeruj papryki, ułóż w garnku.",
+   "Zalej passatą z 150 ml wody i duś 40 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "klopsiki-indyk-curry",
+  "category": "mielone",
+  "name": "Klopsiki z indyka w sosie curry",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "ryż",
+  "thaw": "Mrozi się dobrze.",
+  "ingredients": [
+   {
+    "pid": "indyk_mielony",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "jajka",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "bulka_tarta",
+    "amt": 2,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "mleko_kokos",
+    "amt": 200,
+    "unit": "ml"
+   },
+   {
+    "pid": "curry",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Wymieszaj mięso z jajkiem i bułką, uformuj kulki.",
+   "Zeszklij cebulę z curry.",
+   "Wlej mleczko i 100 ml wody, włóż klopsiki, gotuj 20 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kotlety-indyk-cukinia",
+  "category": "mielone",
+  "name": "Kotleciki z indyka i cukinii w sosie koperkowym",
+  "base": 2,
+  "minutes": 45,
+  "freeze_months": 2,
+  "sides": "ziemniaki, ryż",
+  "thaw": "Odgrzewaj pod przykryciem.",
+  "ingredients": [
+   {
+    "pid": "indyk_mielony",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "cukinia",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "jajka",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "bulka_tarta",
+    "amt": 3,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 100,
+    "unit": "ml"
+   },
+   {
+    "pid": "koperek",
+    "amt": 0.5,
+    "unit": "pęczek"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Cukinię zetrzyj i odciśnij.",
+   "Wymieszaj z mięsem, jajkiem i bułką, uformuj kotleciki i usmaż.",
+   "Na patelnię wlej 150 ml wody i śmietanę z mąką, dodaj koperek, duś kotleciki 5 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "sos-mysliwski",
+  "category": "mielone",
+  "name": "Sos myśliwski z mielonym",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "ziemniaki, kasza, kluski",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "mielone_wp",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "pieczarki",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 30,
+    "unit": "g"
+   },
+   {
+    "pid": "ziele",
+    "amt": 2,
+    "unit": "szt"
+   },
+   {
+    "pid": "lisc_laurowy",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Podsmaż mięso z cebulą.",
+   "Dodaj pieczarki, smaż 5 minut.",
+   "Dodaj koncentrat, przyprawy i 300 ml wody, gotuj 20 minut. Zagęść mąką."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "zeberka-miodowe",
+  "category": "wieprzowina",
+  "name": "Żeberka w sosie miodowo-musztardowym",
+  "base": 2,
+  "minutes": 120,
+  "freeze_months": 3,
+  "sides": "ziemniaki, surówka",
+  "thaw": "Mroź z sosem z blachy.",
+  "ingredients": [
+   {
+    "pid": "zeberka",
+    "amt": 600,
+    "unit": "g"
+   },
+   {
+    "pid": "miod",
+    "amt": 2,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "musztarda",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sos_sojowy",
+    "amt": 2,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Żeberka pokrój i natrzyj solą i pieprzem.",
+   "Wymieszaj miód, musztardę, sos sojowy i czosnek, posmaruj żeberka.",
+   "Piecz pod przykryciem 90 minut w 170°C, potem 15 minut bez przykrycia."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kapusta-boczek",
+  "category": "wieprzowina",
+  "name": "Kapusta z boczkiem i kiełbasą",
+  "base": 2,
+  "minutes": 60,
+  "freeze_months": 3,
+  "sides": "ziemniaki, pieczywo",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "kapusta",
+    "amt": 500,
+    "unit": "g"
+   },
+   {
+    "pid": "boczek",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "kielbasa",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 30,
+    "unit": "g"
+   },
+   {
+    "pid": "kumin",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Boczek i kiełbasę podsmaż z cebulą.",
+   "Dodaj poszatkowaną kapustę i 150 ml wody.",
+   "Duś 35 minut, dodaj koncentrat i przyprawy."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "lopatka-pomidory",
+  "category": "wieprzowina",
+  "name": "Łopatka w sosie pomidorowo-paprykowym",
+  "base": 2,
+  "minutes": 90,
+  "freeze_months": 3,
+  "sides": "ryż, kasza",
+  "thaw": "Mrozi się bardzo dobrze.",
+  "ingredients": [
+   {
+    "pid": "lopatka",
+    "amt": 350,
+    "unit": "g"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Łopatkę w kostce obsmaż.",
+   "Dodaj cebulę, czosnek i paprykę słodką.",
+   "Wlej pomidory, duś 60 minut, na koniec dodaj paprykę."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "schab-pieczarki",
+  "category": "wieprzowina",
+  "name": "Schab w sosie pieczarkowym",
+  "base": 2,
+  "minutes": 50,
+  "freeze_months": 3,
+  "sides": "ziemniaki, kasza",
+  "thaw": "Mroź zalane sosem.",
+  "ingredients": [
+   {
+    "pid": "schab",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "pieczarki",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 100,
+    "unit": "ml"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Schab pokrój w plastry, rozbij, oprósz mąką i obsmaż.",
+   "Podsmaż cebulę i pieczarki.",
+   "Dodaj 200 ml wody, włóż schab, duś 25 minut. Dodaj śmietanę."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "wieprzowina-po-chinsku",
+  "category": "wieprzowina",
+  "name": "Wieprzowina po chińsku z warzywami",
+  "base": 2,
+  "minutes": 35,
+  "freeze_months": 3,
+  "sides": "ryż",
+  "thaw": "Mrozi się dobrze.",
+  "ingredients": [
+   {
+    "pid": "karkowka",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "sos_sojowy",
+    "amt": 3,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "imbir",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "ocet",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "cukier",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   }
+  ],
+  "steps": [
+   "Mięso pokrój w paski, oprósz mąką, obsmaż.",
+   "Dodaj warzywa w paskach, smaż 5 minut.",
+   "Wlej sos sojowy, ocet, cukier, imbir i 150 ml wody, gotuj 10 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "fasolka-po-bretonsku",
+  "category": "wieprzowina",
+  "name": "Fasolka po bretońsku",
+  "base": 2,
+  "minutes": 50,
+  "freeze_months": 3,
+  "sides": "pieczywo",
+  "thaw": "Mrozi się znakomicie.",
+  "ingredients": [
+   {
+    "pid": "fasola_biala",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "kielbasa",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "boczek",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "majeranek",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Boczek i kiełbasę podsmaż z cebulą.",
+   "Dodaj fasolę, koncentrat, przyprawy i 300 ml wody.",
+   "Gotuj 25 minut, mieszając."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "strogonow-wieprzowy",
+  "category": "wieprzowina",
+  "name": "Strogonow wieprzowy",
+  "base": 2,
+  "minutes": 60,
+  "freeze_months": 3,
+  "sides": "ryż, kasza",
+  "thaw": "Odgrzewaj na małym ogniu.",
+  "ingredients": [
+   {
+    "pid": "lopatka",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "pieczarki",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 20,
+    "unit": "g"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 100,
+    "unit": "ml"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Mięso w paskach oprósz mąką i obsmaż.",
+   "Dodaj cebulę i pieczarki.",
+   "Dodaj koncentrat, paprykę i 300 ml wody, duś 35 minut. Wmieszaj śmietanę."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "gulasz-wolowy-dynia",
+  "category": "wolowina",
+  "name": "Gulasz wołowy z dynią",
+  "base": 2,
+  "minutes": 120,
+  "freeze_months": 3,
+  "sides": "kasza, pieczywo",
+  "thaw": "Mrozi się bardzo dobrze.",
+  "ingredients": [
+   {
+    "pid": "wolowina_gul",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "dynia",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 20,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Wołowinę oprósz mąką i obsmaż.",
+   "Dodaj cebulę, paprykę, koncentrat i wodę, duś 75 minut.",
+   "Dodaj dynię w kostce, duś 20 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "gulasz-wegierski",
+  "category": "wolowina",
+  "name": "Gulasz węgierski z ziemniakami",
+  "base": 2,
+  "minutes": 120,
+  "freeze_months": 3,
+  "sides": "pieczywo",
+  "thaw": "Ziemniaki nie rozgotowane dobrze znoszą mrożenie.",
+  "ingredients": [
+   {
+    "pid": "wolowina_gul",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "ziemniaki",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 30,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 2,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "kumin",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Wołowinę obsmaż z cebulą.",
+   "Dodaj paprykę słodką, kumin, koncentrat i 700 ml wody, gotuj 75 minut.",
+   "Dodaj ziemniaki i paprykę, gotuj 20 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "wolowina-curry",
+  "category": "wolowina",
+  "name": "Wołowina curry z mleczkiem kokosowym",
+  "base": 2,
+  "minutes": 120,
+  "freeze_months": 3,
+  "sides": "ryż",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "wolowina_gul",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "mleko_kokos",
+    "amt": 200,
+    "unit": "ml"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "curry",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "imbir",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę z czosnkiem i przyprawami.",
+   "Dodaj wołowinę i obsmaż.",
+   "Wlej pomidory, mleczko i 200 ml wody, duś 90 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "bitki-wolowe",
+  "category": "wolowina",
+  "name": "Bitki wołowe w sosie cebulowym",
+  "base": 2,
+  "minutes": 120,
+  "freeze_months": 3,
+  "sides": "ziemniaki, kasza, buraczki",
+  "thaw": "Mroź zalane sosem.",
+  "ingredients": [
+   {
+    "pid": "wolowina_zrazowa",
+    "amt": 350,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "ziele",
+    "amt": 2,
+    "unit": "szt"
+   },
+   {
+    "pid": "lisc_laurowy",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Mięso pokrój w plastry, rozbij, oprósz mąką.",
+   "Obsmaż z obu stron.",
+   "Przełóż do garnka, dodaj cebulę, przyprawy i 400 ml wody.",
+   "Duś 1,5 godziny pod przykryciem."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "zrazy",
+  "category": "wolowina",
+  "name": "Zrazy wołowe zawijane",
+  "base": 2,
+  "minutes": 130,
+  "freeze_months": 3,
+  "sides": "kasza gryczana, ziemniaki",
+  "thaw": "Mrozi się bardzo dobrze w sosie.",
+  "ingredients": [
+   {
+    "pid": "wolowina_zrazowa",
+    "amt": 350,
+    "unit": "g"
+   },
+   {
+    "pid": "boczek",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "ogorki_kiszone",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "musztarda",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Mięso rozbij na cienkie plastry, posmaruj musztardą.",
+   "Połóż boczek, ogórek i cebulę, zwiń i spnij wykałaczką.",
+   "Oprósz mąką i obsmaż.",
+   "Zalej 400 ml wody i duś 1,5 godziny."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "chili-wolowina-kawalki",
+  "category": "wolowina",
+  "name": "Chili z wołowiną w kawałkach",
+  "base": 2,
+  "minutes": 120,
+  "freeze_months": 3,
+  "sides": "ryż, tortille",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "wolowina_gul",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "fasola",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "kumin",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "chili",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Wołowinę w małej kostce obsmaż.",
+   "Dodaj cebulę, paprykę i przyprawy.",
+   "Wlej pomidory, duś 90 minut, dodaj fasolę na ostatnie 10 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "wolowina-azjatycka",
+  "category": "wolowina",
+  "name": "Wołowina z brokułem po azjatycku",
+  "base": 2,
+  "minutes": 100,
+  "freeze_months": 3,
+  "sides": "ryż, makaron ryżowy",
+  "thaw": "Brokuł po rozmrożeniu mięknie, nie rozgotuj go.",
+  "ingredients": [
+   {
+    "pid": "wolowina_gul",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "brokul",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "sos_sojowy",
+    "amt": 3,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "imbir",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "maka",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   }
+  ],
+  "steps": [
+   "Wołowinę w paskach obsmaż.",
+   "Dodaj czosnek, imbir, sos sojowy i 300 ml wody, duś 60 minut.",
+   "Dodaj marchew i brokuła, gotuj 8 minut, zagęść mąką."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "barszcz-ukrainski",
+  "category": "zupy",
+  "name": "Barszcz ukraiński",
+  "base": 2,
+  "minutes": 60,
+  "freeze_months": 3,
+  "sides": "pieczywo, śmietana",
+  "thaw": "Mrozi się dobrze.",
+  "ingredients": [
+   {
+    "pid": "buraki",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "kapusta",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "fasola_biala",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "ziemniaki",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 20,
+    "unit": "g"
+   },
+   {
+    "pid": "kostka_rosolowa",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zagotuj 1,2 l wody z kostką.",
+   "Dodaj starte buraki, marchew i ziemniaki, gotuj 15 minut.",
+   "Dodaj kapustę i fasolę, gotuj 15 minut.",
+   "Dodaj koncentrat i dopraw."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kapusniak",
+  "category": "zupy",
+  "name": "Kapuśniak",
+  "base": 2,
+  "minutes": 70,
+  "freeze_months": 3,
+  "sides": "pieczywo",
+  "thaw": "Mrozi się bardzo dobrze.",
+  "ingredients": [
+   {
+    "pid": "kapusta_kiszona",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "ziemniaki",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "boczek",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 50,
+    "unit": "g"
+   },
+   {
+    "pid": "kostka_rosolowa",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "lisc_laurowy",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zagotuj 1,2 l wody z kostką i liściem.",
+   "Dodaj posiekaną kapustę, gotuj 30 minut.",
+   "Dodaj ziemniaki i marchew, gotuj 15 minut.",
+   "Podsmaż boczek z cebulą, dodaj do zupy."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "zupa-kalafiorowa",
+  "category": "zupy",
+  "name": "Zupa kalafiorowa",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "pieczywo",
+  "thaw": "Śmietanę możesz dodać dopiero po odgrzaniu.",
+  "ingredients": [
+   {
+    "pid": "kalafior",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "ziemniaki",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 80,
+    "unit": "ml"
+   },
+   {
+    "pid": "koperek",
+    "amt": 0.5,
+    "unit": "pęczek"
+   },
+   {
+    "pid": "kostka_rosolowa",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zagotuj 1,2 l wody z kostką.",
+   "Dodaj ziemniaki i marchew, gotuj 10 minut.",
+   "Dodaj różyczki kalafiora, gotuj 10 minut.",
+   "Zabiel śmietaną, dodaj koperek."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "krem-z-brokulow",
+  "category": "zupy",
+  "name": "Krem z brokułów",
+  "base": 2,
+  "minutes": 35,
+  "freeze_months": 3,
+  "sides": "grzanki",
+  "thaw": "Mrozi się dobrze, po odgrzaniu zamieszaj.",
+  "ingredients": [
+   {
+    "pid": "brokul",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "ziemniaki",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "smietanka30",
+    "amt": 80,
+    "unit": "ml"
+   },
+   {
+    "pid": "kostka_rosolowa",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę.",
+   "Dodaj ziemniaki, 800 ml wody z kostką, gotuj 10 minut.",
+   "Dodaj brokuła, gotuj 8 minut.",
+   "Zmiksuj ze śmietanką."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "krem-pomidorowy-papryka",
+  "category": "zupy",
+  "name": "Krem pomidorowy z pieczoną papryką",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "grzanki, ryż",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "pomidory_puszka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "smietanka30",
+    "amt": 60,
+    "unit": "ml"
+   },
+   {
+    "pid": "kostka_rosolowa",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Paprykę upiecz w 220°C przez 20 minut, obierz.",
+   "Zeszklij cebulę i czosnek.",
+   "Dodaj pomidory, paprykę i 500 ml wody z kostką, gotuj 10 minut.",
+   "Zmiksuj ze śmietanką."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "ogorkowa",
+  "category": "zupy",
+  "name": "Zupa ogórkowa",
+  "base": 2,
+  "minutes": 45,
+  "freeze_months": 2,
+  "sides": "pieczywo",
+  "thaw": "Śmietanę dodaj po odgrzaniu.",
+  "ingredients": [
+   {
+    "pid": "ogorki_kiszone",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "ziemniaki",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 80,
+    "unit": "ml"
+   },
+   {
+    "pid": "koperek",
+    "amt": 0.5,
+    "unit": "pęczek"
+   },
+   {
+    "pid": "kostka_rosolowa",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zagotuj 1,2 l wody z kostką.",
+   "Dodaj ziemniaki i marchew, gotuj 15 minut.",
+   "Dodaj starte ogórki i trochę zalewy, gotuj 10 minut.",
+   "Zabiel śmietaną, dodaj koperek."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "rosol",
+  "category": "zupy",
+  "name": "Rosół",
+  "base": 2,
+  "minutes": 150,
+  "freeze_months": 4,
+  "sides": "makaron",
+  "thaw": "Mroź bez makaronu, w słoikach lub woreczkach.",
+  "ingredients": [
+   {
+    "pid": "podudzia",
+    "amt": 500,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "pietruszka",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "seler",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "por",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "ziele",
+    "amt": 3,
+    "unit": "szt"
+   },
+   {
+    "pid": "lisc_laurowy",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Mięso zalej 2 l zimnej wody, zagotuj i zbierz szumowiny.",
+   "Dodaj warzywa i opaloną cebulę.",
+   "Gotuj na małym ogniu 2 godziny.",
+   "Przecedź i dopraw."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "tofu-curry",
+  "category": "wege",
+  "name": "Curry z tofu i papryką",
+  "base": 2,
+  "minutes": 30,
+  "freeze_months": 3,
+  "sides": "ryż",
+  "thaw": "Tofu po rozmrożeniu jest bardziej gąbczaste, ale dobrze chłonie sos.",
+  "ingredients": [
+   {
+    "pid": "tofu",
+    "amt": 180,
+    "unit": "g"
+   },
+   {
+    "pid": "mleko_kokos",
+    "amt": 200,
+    "unit": "ml"
+   },
+   {
+    "pid": "papryka",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "curry",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Tofu pokrój w kostkę i podsmaż na złoto.",
+   "Zeszklij cebulę z czosnkiem i curry, dodaj paprykę.",
+   "Wlej mleczko, dodaj tofu, gotuj 10 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "gulasz-ciecierzyca-dynia",
+  "category": "wege",
+  "name": "Gulasz z ciecierzycy i dyni",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "kasza, kuskus",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "ciecierzyca",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "dynia",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "kumin",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę z przyprawami.",
+   "Dodaj dynię, pomidory i 150 ml wody, gotuj 15 minut.",
+   "Dodaj ciecierzycę, gotuj 10 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "pulpety-soczewica",
+  "category": "wege",
+  "name": "Pulpety z soczewicy w sosie pomidorowym",
+  "base": 2,
+  "minutes": 50,
+  "freeze_months": 3,
+  "sides": "ryż, makaron",
+  "thaw": "Mroź z sosem.",
+  "ingredients": [
+   {
+    "pid": "soczewica",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "jajka",
+    "amt": 1,
+    "unit": "szt"
+   },
+   {
+    "pid": "bulka_tarta",
+    "amt": 4,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "passata",
+    "amt": 300,
+    "unit": "ml"
+   },
+   {
+    "pid": "oregano",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Ugotuj soczewicę do miękkości, odcedź i rozgnieć.",
+   "Wymieszaj z jajkiem, bułką, cebulą i przyprawami, uformuj kulki.",
+   "Obsmaż krótko, zalej passatą, duś 15 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "kalafior-curry",
+  "category": "wege",
+  "name": "Curry z kalafiorem i ciecierzycą",
+  "base": 2,
+  "minutes": 35,
+  "freeze_months": 3,
+  "sides": "ryż",
+  "thaw": "Kalafior nie rozgotowany lepiej znosi mrożenie.",
+  "ingredients": [
+   {
+    "pid": "kalafior",
+    "amt": 0.5,
+    "unit": "szt"
+   },
+   {
+    "pid": "ciecierzyca",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "mleko_kokos",
+    "amt": 200,
+    "unit": "ml"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "curry",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę z curry.",
+   "Dodaj różyczki kalafiora, pomidory i mleczko, gotuj 12 minut.",
+   "Dodaj ciecierzycę, gotuj 5 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "fasolka-wege",
+  "category": "wege",
+  "name": "Fasolka po bretońsku bez mięsa",
+  "base": 2,
+  "minutes": 35,
+  "freeze_months": 3,
+  "sides": "pieczywo",
+  "thaw": "Mrozi się znakomicie.",
+  "ingredients": [
+   {
+    "pid": "fasola_biala",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 40,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "majeranek",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę z przyprawami.",
+   "Dodaj fasolę, pomidory, koncentrat i 150 ml wody.",
+   "Gotuj 20 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "gulasz-soczewica-warzywa",
+  "category": "wege",
+  "name": "Gulasz z soczewicy i warzyw",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "kasza, pieczywo",
+  "thaw": "Po rozmrożeniu dolej trochę wody.",
+  "ingredients": [
+   {
+    "pid": "soczewica",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "seler",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "pomidory_puszka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę i czosnek, dodaj marchew i seler w kostce.",
+   "Dodaj soczewicę, pomidory i 400 ml wody.",
+   "Gotuj 25 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "strogonow-pieczarki-fasola",
+  "category": "wege",
+  "name": "Strogonow z pieczarek i fasoli",
+  "base": 2,
+  "minutes": 30,
+  "freeze_months": 2,
+  "sides": "ryż, kasza",
+  "thaw": "Odgrzewaj na małym ogniu.",
+  "ingredients": [
+   {
+    "pid": "pieczarki",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "fasola_biala",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "koncentrat",
+    "amt": 20,
+    "unit": "g"
+   },
+   {
+    "pid": "smietana18",
+    "amt": 100,
+    "unit": "ml"
+   },
+   {
+    "pid": "papryka_slodka",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Podsmaż cebulę i pieczarki.",
+   "Dodaj koncentrat, paprykę i 150 ml wody, gotuj 10 minut.",
+   "Dodaj fasolę i śmietanę, podgrzej."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "arrabbiata",
+  "category": "makaron",
+  "name": "Sos arrabbiata",
+  "base": 2,
+  "minutes": 25,
+  "freeze_months": 3,
+  "sides": "penne",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "pomidory_puszka",
+    "amt": 400,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 3,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "chili",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "oregano",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Podsmaż czosnek z chili na oleju.",
+   "Dodaj pomidory i oregano.",
+   "Gotuj 15 minut, dopraw."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "sos-kielbasa-papryka",
+  "category": "makaron",
+  "name": "Sos pomidorowy z kiełbasą i papryką",
+  "base": 2,
+  "minutes": 30,
+  "freeze_months": 3,
+  "sides": "penne, świderki",
+  "thaw": "Mrozi się dobrze.",
+  "ingredients": [
+   {
+    "pid": "kielbasa",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "papryka",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "passata",
+    "amt": 400,
+    "unit": "ml"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Kiełbasę w półplastrach podsmaż z cebulą.",
+   "Dodaj paprykę, smaż 5 minut.",
+   "Wlej passatę, gotuj 15 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "sos-szpinak-kurczak",
+  "category": "makaron",
+  "name": "Sos śmietanowy ze szpinakiem i kurczakiem",
+  "base": 2,
+  "minutes": 25,
+  "freeze_months": 2,
+  "sides": "tagliatelle, penne",
+  "thaw": "Odgrzewaj z łyżką wody, mieszając.",
+  "ingredients": [
+   {
+    "pid": "kurczak_filet",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "szpinak",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "smietanka30",
+    "amt": 150,
+    "unit": "ml"
+   },
+   {
+    "pid": "grana",
+    "amt": 20,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Kurczaka obsmaż z czosnkiem.",
+   "Wlej śmietankę, zagotuj.",
+   "Dodaj szpinak i ser, gotuj do zwiędnięcia."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "bolognese-indyk",
+  "category": "makaron",
+  "name": "Bolognese z indyka i cukinii",
+  "base": 2,
+  "minutes": 45,
+  "freeze_months": 3,
+  "sides": "spaghetti",
+  "thaw": "Mroź w płaskich woreczkach.",
+  "ingredients": [
+   {
+    "pid": "indyk_mielony",
+    "amt": 300,
+    "unit": "g"
+   },
+   {
+    "pid": "cukinia",
+    "amt": 150,
+    "unit": "g"
+   },
+   {
+    "pid": "marchew",
+    "amt": 70,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "passata",
+    "amt": 400,
+    "unit": "ml"
+   },
+   {
+    "pid": "oregano",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę i startą marchew.",
+   "Dodaj mięso i smaż.",
+   "Dodaj startą cukinię, passatę i oregano, gotuj 25 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "sos-boczek-pieczarki",
+  "category": "makaron",
+  "name": "Sos z boczkiem i pieczarkami",
+  "base": 2,
+  "minutes": 25,
+  "freeze_months": 2,
+  "sides": "tagliatelle",
+  "thaw": "Odgrzewaj na małym ogniu.",
+  "ingredients": [
+   {
+    "pid": "boczek",
+    "amt": 100,
+    "unit": "g"
+   },
+   {
+    "pid": "pieczarki",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "smietanka30",
+    "amt": 150,
+    "unit": "ml"
+   },
+   {
+    "pid": "cebula",
+    "amt": 50,
+    "unit": "g"
+   },
+   {
+    "pid": "pieprz",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Boczek w kostce wytop na patelni.",
+   "Dodaj cebulę i pieczarki, smaż do odparowania.",
+   "Wlej śmietankę i gotuj 3 minuty."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "bolognese-soczewica",
+  "category": "makaron",
+  "name": "Bolognese z soczewicy",
+  "base": 2,
+  "minutes": 40,
+  "freeze_months": 3,
+  "sides": "spaghetti",
+  "thaw": "Mrozi się świetnie.",
+  "ingredients": [
+   {
+    "pid": "soczewica",
+    "amt": 120,
+    "unit": "g"
+   },
+   {
+    "pid": "passata",
+    "amt": 400,
+    "unit": "ml"
+   },
+   {
+    "pid": "marchew",
+    "amt": 80,
+    "unit": "g"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "oregano",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę, czosnek i startą marchew.",
+   "Dodaj soczewicę, passatę i 300 ml wody.",
+   "Gotuj 25 minut."
+  ],
+  "source": "seed",
+  "active": false
+ },
+ {
+  "id": "sos-cukinia-ciecierzyca",
+  "category": "makaron",
+  "name": "Sos pomidorowy z cukinią i ciecierzycą",
+  "base": 2,
+  "minutes": 30,
+  "freeze_months": 3,
+  "sides": "penne",
+  "thaw": "Cukinia po rozmrożeniu mięknie.",
+  "ingredients": [
+   {
+    "pid": "cukinia",
+    "amt": 250,
+    "unit": "g"
+   },
+   {
+    "pid": "ciecierzyca",
+    "amt": 200,
+    "unit": "g"
+   },
+   {
+    "pid": "passata",
+    "amt": 400,
+    "unit": "ml"
+   },
+   {
+    "pid": "cebula",
+    "amt": 60,
+    "unit": "g"
+   },
+   {
+    "pid": "czosnek",
+    "amt": 2,
+    "unit": "ząbek"
+   },
+   {
+    "pid": "oregano",
+    "amt": 1,
+    "unit": "łyżeczka"
+   },
+   {
+    "pid": "olej",
+    "amt": 1,
+    "unit": "łyżka"
+   },
+   {
+    "pid": "sol",
+    "amt": 0.5,
+    "unit": "łyżeczka"
+   }
+  ],
+  "steps": [
+   "Zeszklij cebulę i czosnek.",
+   "Dodaj cukinię w kostce, smaż 5 minut.",
+   "Dodaj passatę i ciecierzycę, gotuj 15 minut."
+  ],
+  "source": "seed",
+  "active": false
  }
 ]

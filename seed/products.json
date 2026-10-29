@@ -12,7 +12,14 @@
    "b": 23.99,
    "l": 22.99,
    "k": 24.99
-  }
+  },
+  "kw": [
+   "filet z piersi kurczaka",
+   "filety z piersi kurczaka",
+   "piers z kurczaka",
+   "filet z kurczaka",
+   "filet z piersi"
+  ]
  },
  {
   "id": "kurczak_udo",
@@ -27,7 +34,13 @@
    "b": 24.99,
    "l": 23.99,
    "k": 25.99
-  }
+  },
+  "kw": [
+   "filet z uda kurczaka",
+   "filety z ud",
+   "mieso z ud kurczaka",
+   "udo z kurczaka bez kosci"
+  ]
  },
  {
   "id": "indyk_filet",
@@ -42,7 +55,12 @@
    "b": 32.99,
    "l": 29.99,
    "k": 33.99
-  }
+  },
+  "kw": [
+   "filet z indyka",
+   "filet z piersi indyka",
+   "piers z indyka"
+  ]
  },
  {
   "id": "mielone_wp",
@@ -57,7 +75,11 @@
    "b": 18.99,
    "l": 17.99,
    "k": 19.99
-  }
+  },
+  "kw": [
+   "mieso mielone wieprzowe",
+   "mielone wieprzowe"
+  ]
  },
  {
   "id": "mielone_wol",
@@ -72,7 +94,12 @@
    "b": 22.99,
    "l": 21.99,
    "k": 23.99
-  }
+  },
+  "kw": [
+   "mielone wolowo-wieprzowe",
+   "mieso mielone wolowo",
+   "mielone wolowe"
+  ]
  },
  {
   "id": "indyk_mielony",
@@ -87,7 +114,11 @@
    "b": 14.99,
    "l": 13.99,
    "k": 15.49
-  }
+  },
+  "kw": [
+   "mielone z indyka",
+   "mieso mielone z indyka"
+  ]
  },
  {
   "id": "lopatka",
@@ -102,7 +133,11 @@
    "b": 17.99,
    "l": 17.49,
    "k": 18.99
-  }
+  },
+  "kw": [
+   "lopatka wieprzowa",
+   "lopatka bez kosci"
+  ]
  },
  {
   "id": "schab",
@@ -117,7 +152,12 @@
    "b": 22.99,
    "l": 21.99,
    "k": 23.99
-  }
+  },
+  "kw": [
+   "schab bez kosci",
+   "schab wieprzowy",
+   "schab"
+  ]
  },
  {
   "id": "karkowka",
@@ -132,7 +172,10 @@
    "b": 21.99,
    "l": 20.99,
    "k": 22.99
-  }
+  },
+  "kw": [
+   "karkowka"
+  ]
  },
  {
   "id": "wolowina_gul",
@@ -147,7 +190,12 @@
    "b": 42.99,
    "l": 39.99,
    "k": 44.99
-  }
+  },
+  "kw": [
+   "wolowina gulaszowa",
+   "gulasz wolowy",
+   "wolowina extra"
+  ]
  },
  {
   "id": "kielbasa",
@@ -162,7 +210,13 @@
    "b": 21.99,
    "l": 19.99,
    "k": 22.99
-  }
+  },
+  "kw": [
+   "kielbasa podwawelska",
+   "podwawelska",
+   "kielbasa slaska",
+   "kielbasa krakowska"
+  ]
  },
  {
   "id": "tunczyk",
@@ -177,7 +231,11 @@
    "b": 7.99,
    "l": 7.49,
    "k": 8.29
-  }
+  },
+  "kw": [
+   "tunczyk w sosie wlasnym",
+   "tunczyk"
+  ]
  },
  {
   "id": "mascarpone",
@@ -192,7 +250,10 @@
    "b": 6.99,
    "l": 6.49,
    "k": 7.49
-  }
+  },
+  "kw": [
+   "mascarpone"
+  ]
  },
  {
   "id": "smietanka30",
@@ -207,7 +268,12 @@
    "b": 5.49,
    "l": 5.29,
    "k": 5.79
-  }
+  },
+  "kw": [
+   "smietanka 30",
+   "smietanka kremowa 30",
+   "smietana 30"
+  ]
  },
  {
   "id": "smietana18",
@@ -222,7 +288,11 @@
    "b": 4.29,
    "l": 3.99,
    "k": 4.49
-  }
+  },
+  "kw": [
+   "smietana 18",
+   "smietana gesta 18"
+  ]
  },
  {
   "id": "grana",
@@ -237,7 +307,12 @@
    "b": 11.99,
    "l": 10.99,
    "k": 12.99
-  }
+  },
+  "kw": [
+   "grana padano",
+   "parmezan",
+   "parmigiano"
+  ]
  },
  {
   "id": "jajka",
@@ -252,7 +327,14 @@
    "b": 10.99,
    "l": 10.49,
    "k": 11.49
-  }
+  },
+  "kw": [
+   "jaja z wolnego",
+   "jaja sciolkowe",
+   "jaja kurze",
+   "jaja m",
+   "jaja l"
+  ]
  },
  {
   "id": "szpinak",
@@ -267,7 +349,12 @@
    "b": 4.99,
    "l": 4.49,
    "k": 5.49
-  }
+  },
+  "kw": [
+   "szpinak baby",
+   "szpinak swiezy",
+   "mlody szpinak"
+  ]
  },
  {
   "id": "cebula",
@@ -282,7 +369,11 @@
    "b": 3.49,
    "l": 2.99,
    "k": 3.29
-  }
+  },
+  "kw": [
+   "cebula zolta",
+   "cebula"
+  ]
  },
  {
   "id": "czosnek",
@@ -299,7 +390,10 @@
    "b": 1.49,
    "l": 1.29,
    "k": 1.59
-  }
+  },
+  "kw": [
+   "czosnek"
+  ]
  },
  {
   "id": "marchew",
@@ -314,7 +408,11 @@
    "b": 2.99,
    "l": 2.49,
    "k": 2.79
-  }
+  },
+  "kw": [
+   "marchew",
+   "marchewka"
+  ]
  },
  {
   "id": "papryka",
@@ -329,7 +427,12 @@
    "b": 12.99,
    "l": 11.99,
    "k": 13.99
-  }
+  },
+  "kw": [
+   "papryka czerwona",
+   "papryka mix",
+   "papryka"
+  ]
  },
  {
   "id": "cukinia",
@@ -344,7 +447,10 @@
    "b": 7.99,
    "l": 6.99,
    "k": 7.49
-  }
+  },
+  "kw": [
+   "cukinia"
+  ]
  },
  {
   "id": "pieczarki",
@@ -359,7 +465,10 @@
    "b": 6.99,
    "l": 6.49,
    "k": 7.29
-  }
+  },
+  "kw": [
+   "pieczarki"
+  ]
  },
  {
   "id": "koperek",
@@ -374,7 +483,10 @@
    "b": 2.49,
    "l": 2.29,
    "k": 2.69
-  }
+  },
+  "kw": [
+   "koperek"
+  ]
  },
  {
   "id": "ziemniaki",
@@ -389,7 +501,10 @@
    "b": 2.99,
    "l": 2.49,
    "k": 2.79
-  }
+  },
+  "kw": [
+   "ziemniaki"
+  ]
  },
  {
   "id": "dynia",
@@ -404,7 +519,10 @@
    "b": 4.99,
    "l": 4.49,
    "k": 4.79
-  }
+  },
+  "kw": [
+   "dynia"
+  ]
  },
  {
   "id": "kapusta",
@@ -419,7 +537,11 @@
    "b": 3.49,
    "l": 2.99,
    "k": 3.29
-  }
+  },
+  "kw": [
+   "kapusta biala",
+   "kapusta"
+  ]
  },
  {
   "id": "kapusta_kiszona",
@@ -434,7 +556,10 @@
    "b": 5.99,
    "l": 5.49,
    "k": 6.29
-  }
+  },
+  "kw": [
+   "kapusta kiszona"
+  ]
  },
  {
   "id": "groszek",
@@ -449,7 +574,11 @@
    "b": 5.49,
    "l": 4.99,
    "k": 5.79
-  }
+  },
+  "kw": [
+   "groszek mrozony",
+   "groszek zielony mrozony"
+  ]
  },
  {
   "id": "pomidory_puszka",
@@ -464,7 +593,12 @@
    "b": 2.99,
    "l": 2.79,
    "k": 3.29
-  }
+  },
+  "kw": [
+   "pomidory krojone",
+   "pomidory w puszce",
+   "pomidory pelne"
+  ]
  },
  {
   "id": "passata",
@@ -479,7 +613,11 @@
    "b": 4.49,
    "l": 3.99,
    "k": 4.79
-  }
+  },
+  "kw": [
+   "passata",
+   "przecier pomidorowy"
+  ]
  },
  {
   "id": "koncentrat",
@@ -494,7 +632,10 @@
    "b": 3.99,
    "l": 3.69,
    "k": 4.19
-  }
+  },
+  "kw": [
+   "koncentrat pomidorowy"
+  ]
  },
  {
   "id": "ciecierzyca",
@@ -509,7 +650,10 @@
    "b": 3.49,
    "l": 3.29,
    "k": 3.79
-  }
+  },
+  "kw": [
+   "ciecierzyca"
+  ]
  },
  {
   "id": "fasola",
@@ -524,7 +668,10 @@
    "b": 3.29,
    "l": 2.99,
    "k": 3.49
-  }
+  },
+  "kw": [
+   "fasola czerwona"
+  ]
  },
  {
   "id": "kukurydza",
@@ -539,7 +686,11 @@
    "b": 3.49,
    "l": 3.29,
    "k": 3.69
-  }
+  },
+  "kw": [
+   "kukurydza konserwowa",
+   "kukurydza"
+  ]
  },
  {
   "id": "mleko_kokos",
@@ -554,7 +705,11 @@
    "b": 6.99,
    "l": 6.49,
    "k": 7.29
-  }
+  },
+  "kw": [
+   "mleczko kokosowe",
+   "mleko kokosowe"
+  ]
  },
  {
   "id": "ryz",
@@ -569,7 +724,13 @@
    "b": 6.49,
    "l": 5.99,
    "k": 6.99
-  }
+  },
+  "kw": [
+   "ryz dlugoziarnisty",
+   "ryz basmati",
+   "ryz jasminowy",
+   "ryz"
+  ]
  },
  {
   "id": "groch",
@@ -584,7 +745,12 @@
    "b": 4.49,
    "l": 3.99,
    "k": 4.79
-  }
+  },
+  "kw": [
+   "groch luskany",
+   "groch polowki",
+   "groch"
+  ]
  },
  {
   "id": "soczewica",
@@ -599,7 +765,11 @@
    "b": 5.49,
    "l": 4.99,
    "k": 5.79
-  }
+  },
+  "kw": [
+   "soczewica czerwona",
+   "soczewica"
+  ]
  },
  {
   "id": "kasza_jeczmienna",
@@ -614,7 +784,11 @@
    "b": 3.49,
    "l": 2.99,
    "k": 3.69
-  }
+  },
+  "kw": [
+   "kasza jeczmienna",
+   "kasza peczak"
+  ]
  },
  {
   "id": "olej",
@@ -861,6 +1035,321 @@
  {
   "id": "ziele",
   "name": "Ziele angielskie",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "boczek",
+  "name": "Boczek wędzony",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 29.99,
+   "l": 27.99,
+   "k": 30.99
+  },
+  "kw": [
+   "boczek wedzony",
+   "boczek"
+  ]
+ },
+ {
+  "id": "podudzia",
+  "name": "Podudzia z kurczaka",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 11.99,
+   "l": 10.99,
+   "k": 12.49
+  },
+  "kw": [
+   "podudzia z kurczaka",
+   "podudzie z kurczaka",
+   "podudzia"
+  ]
+ },
+ {
+  "id": "watrobka",
+  "name": "Wątróbka drobiowa",
+  "unit": "kg",
+  "pack": 0.5,
+  "loose": false,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.99,
+   "l": 5.99,
+   "k": 7.29
+  },
+  "kw": [
+   "watrobka drobiowa",
+   "watrobka z kurczaka"
+  ]
+ },
+ {
+  "id": "zeberka",
+  "name": "Żeberka wieprzowe",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 19.99,
+   "l": 18.99,
+   "k": 20.99
+  },
+  "kw": [
+   "zeberka wieprzowe",
+   "zeberka"
+  ]
+ },
+ {
+  "id": "wolowina_zrazowa",
+  "name": "Wołowina zrazowa",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 49.99,
+   "l": 46.99,
+   "k": 51.99
+  },
+  "kw": [
+   "wolowina zrazowa",
+   "zrazowa wolowa"
+  ]
+ },
+ {
+  "id": "ser_zolty",
+  "name": "Ser żółty gouda",
+  "unit": "kg",
+  "pack": 0.15,
+  "loose": false,
+  "cat": "nabiał",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 5.49,
+   "l": 4.99,
+   "k": 5.79
+  },
+  "kw": [
+   "ser gouda",
+   "ser zolty",
+   "gouda",
+   "ser edamski"
+  ]
+ },
+ {
+  "id": "tofu",
+  "name": "Tofu naturalne",
+  "unit": "kg",
+  "pack": 0.18,
+  "loose": false,
+  "cat": "nabiał",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 5.99,
+   "l": 5.49,
+   "k": 6.29
+  },
+  "kw": [
+   "tofu"
+  ]
+ },
+ {
+  "id": "brokul",
+  "name": "Brokuł",
+  "unit": "szt",
+  "pack": 1,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 4.99,
+   "l": 4.49,
+   "k": 4.79
+  },
+  "kw": [
+   "brokul",
+   "brokuly"
+  ]
+ },
+ {
+  "id": "kalafior",
+  "name": "Kalafior",
+  "unit": "szt",
+  "pack": 1,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.99,
+   "l": 5.99,
+   "k": 6.49
+  },
+  "kw": [
+   "kalafior"
+  ]
+ },
+ {
+  "id": "por",
+  "name": "Por",
+  "unit": "szt",
+  "pack": 1,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 2.99,
+   "l": 2.79,
+   "k": 3.19
+  },
+  "kw": [
+   "por "
+  ]
+ },
+ {
+  "id": "seler",
+  "name": "Seler korzeń",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 4.99,
+   "l": 4.49,
+   "k": 4.79
+  },
+  "kw": [
+   "seler korzen",
+   "seler"
+  ]
+ },
+ {
+  "id": "pietruszka",
+  "name": "Pietruszka korzeń",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 8.99,
+   "l": 7.99,
+   "k": 8.49
+  },
+  "kw": [
+   "pietruszka korzen",
+   "korzen pietruszki"
+  ]
+ },
+ {
+  "id": "buraki",
+  "name": "Buraki",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 2.99,
+   "l": 2.49,
+   "k": 2.79
+  },
+  "kw": [
+   "buraki",
+   "burak"
+  ]
+ },
+ {
+  "id": "ogorki_kiszone",
+  "name": "Ogórki kiszone",
+  "unit": "kg",
+  "pack": 0.9,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.99,
+   "l": 6.49,
+   "k": 7.29
+  },
+  "kw": [
+   "ogorki kiszone"
+  ]
+ },
+ {
+  "id": "fasola_biala",
+  "name": "Fasola biała w puszce",
+  "unit": "kg",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.29,
+   "l": 2.99,
+   "k": 3.49
+  },
+  "kw": [
+   "fasola biala",
+   "fasola jas"
+  ]
+ },
+ {
+  "id": "ananas",
+  "name": "Ananas w puszce",
+  "unit": "kg",
+  "pack": 0.565,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.49,
+   "l": 5.99,
+   "k": 6.99
+  },
+  "kw": [
+   "ananas w puszce",
+   "ananas plastry",
+   "ananas w kawalkach"
+  ]
+ },
+ {
+  "id": "ocet",
+  "name": "Ocet",
   "unit": "łyżka",
   "pack": 1,
   "loose": false,

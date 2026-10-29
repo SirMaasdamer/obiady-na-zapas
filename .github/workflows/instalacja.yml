@@ -1,6 +1,6 @@
 name: Instalacja i publikacja
 
-# Zakłada bazę, wgrywa przepisy, wdraża generator przepisów i publikuje aplikację.
+# Zakłada bazę, wgrywa przepisy i publikuje aplikację.
 # Uruchom ręcznie (Actions → Instalacja i publikacja → Run workflow). Odpala się też po każdej zmianie kodu.
 on:
   workflow_dispatch:
@@ -25,7 +25,6 @@ jobs:
     env:
       SUPABASE_PROJECT: ${{ secrets.SUPABASE_PROJECT }}
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       KOD_DOMU: ${{ secrets.KOD_DOMU }}
     steps:
       - uses: actions/checkout@v4
@@ -38,14 +37,6 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
       - name: Baza, konto domu, przepisy
         run: node scripts/setup.mjs
-      - uses: supabase/setup-cli@v1
-        with:
-          version: latest
-      - name: Generator przepisów
-        if: env.ANTHROPIC_API_KEY != ''
-        run: |
-          REF=$(echo "$SUPABASE_PROJECT" | grep -oE '[a-z0-9]{20}' | head -1)
-          supabase functions deploy generate-recipes --project-ref "$REF" --use-api || supabase functions deploy generate-recipes --project-ref "$REF"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

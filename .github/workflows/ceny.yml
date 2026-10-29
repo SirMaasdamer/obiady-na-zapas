@@ -1,6 +1,6 @@
 name: Ceny z gazetek
 
-# Pobiera gazetki Biedronki, Lidla i Kauflandu i zapisuje promocje w bazie.
+# Pobiera oferty i gazetki Biedronki, Lidla i Kauflandu i zapisuje promocje w bazie (za darmo, bez AI).
 # Automatycznie w poniedziałki i czwartki rano oraz po każdej instalacji. Można też uruchomić ręcznie.
 on:
   schedule:
@@ -10,10 +10,6 @@ on:
       stores:
         description: "Sklepy (b = Biedronka, l = Lidl, k = Kaufland)"
         default: "b,l,k"
-      force:
-        description: "Odczytaj ponownie gazetki już odczytane"
-        type: boolean
-        default: false
   workflow_run:
     workflows: ["Instalacja i publikacja"]
     types: [completed]
@@ -29,9 +25,7 @@ jobs:
     env:
       SUPABASE_PROJECT: ${{ secrets.SUPABASE_PROJECT }}
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       STORES: ${{ inputs.stores || 'b,l,k' }}
-      FORCE: ${{ inputs.force || 'false' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -39,6 +33,8 @@ jobs:
           node-version: 20
       - run: npm install --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
+      - name: Darmowe narzędzia do odczytu PDF i OCR
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-pol
       - name: Pobieranie i odczyt gazetek
         run: node scripts/scrape.mjs
       - name: Podtrzymanie harmonogramu

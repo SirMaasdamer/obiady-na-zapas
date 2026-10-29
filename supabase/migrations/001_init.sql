@@ -9,6 +9,7 @@ create table if not exists products (
   cat text,
   pantry boolean not null default false,
   conv jsonb,                      -- np. {"ząbek":0.1}
+  kw jsonb,                        -- słowa kluczowe do wyszukiwania w gazetkach
   created_at timestamptz not null default now()
 );
 
@@ -58,6 +59,8 @@ create table if not exists recipes (
   ingredients jsonb not null default '[]',
   steps jsonb not null default '[]',
   source text,
+  active boolean not null default true,  -- false = czeka w banku przepisów
+  activated_at timestamptz,
   created_at timestamptz not null default now()
 );
 
@@ -107,6 +110,10 @@ create table if not exists scrape_runs (
   message text,
   ran_at timestamptz not null default now()
 );
+
+alter table products add column if not exists kw jsonb;
+alter table recipes add column if not exists active boolean not null default true;
+alter table recipes add column if not exists activated_at timestamptz;
 
 -- dostęp: tylko zalogowane konto domu
 do $$
