@@ -1,0 +1,4 @@
+project_id = "obiady-na-zapas"
+
+[functions.generate-recipes]
+verify_jwt = true

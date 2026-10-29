@@ -1,0 +1,872 @@
+[
+ {
+  "id": "kurczak_filet",
+  "name": "Filet z piersi kurczaka",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 23.99,
+   "l": 22.99,
+   "k": 24.99
+  }
+ },
+ {
+  "id": "kurczak_udo",
+  "name": "Filet z uda kurczaka",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 24.99,
+   "l": 23.99,
+   "k": 25.99
+  }
+ },
+ {
+  "id": "indyk_filet",
+  "name": "Filet z indyka",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 32.99,
+   "l": 29.99,
+   "k": 33.99
+  }
+ },
+ {
+  "id": "mielone_wp",
+  "name": "Mięso mielone wieprzowe",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 18.99,
+   "l": 17.99,
+   "k": 19.99
+  }
+ },
+ {
+  "id": "mielone_wol",
+  "name": "Mięso mielone wołowo-wieprzowe",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 22.99,
+   "l": 21.99,
+   "k": 23.99
+  }
+ },
+ {
+  "id": "indyk_mielony",
+  "name": "Mięso mielone z indyka",
+  "unit": "kg",
+  "pack": 0.5,
+  "loose": false,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 14.99,
+   "l": 13.99,
+   "k": 15.49
+  }
+ },
+ {
+  "id": "lopatka",
+  "name": "Łopatka wieprzowa bez kości",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 17.99,
+   "l": 17.49,
+   "k": 18.99
+  }
+ },
+ {
+  "id": "schab",
+  "name": "Schab bez kości",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 22.99,
+   "l": 21.99,
+   "k": 23.99
+  }
+ },
+ {
+  "id": "karkowka",
+  "name": "Karkówka bez kości",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 21.99,
+   "l": 20.99,
+   "k": 22.99
+  }
+ },
+ {
+  "id": "wolowina_gul",
+  "name": "Wołowina gulaszowa",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 42.99,
+   "l": 39.99,
+   "k": 44.99
+  }
+ },
+ {
+  "id": "kielbasa",
+  "name": "Kiełbasa podwawelska",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "mięso",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 21.99,
+   "l": 19.99,
+   "k": 22.99
+  }
+ },
+ {
+  "id": "tunczyk",
+  "name": "Tuńczyk w sosie własnym",
+  "unit": "kg",
+  "pack": 0.17,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 7.99,
+   "l": 7.49,
+   "k": 8.29
+  }
+ },
+ {
+  "id": "mascarpone",
+  "name": "Mascarpone",
+  "unit": "kg",
+  "pack": 0.25,
+  "loose": false,
+  "cat": "nabiał",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.99,
+   "l": 6.49,
+   "k": 7.49
+  }
+ },
+ {
+  "id": "smietanka30",
+  "name": "Śmietanka 30%",
+  "unit": "l",
+  "pack": 0.33,
+  "loose": false,
+  "cat": "nabiał",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 5.49,
+   "l": 5.29,
+   "k": 5.79
+  }
+ },
+ {
+  "id": "smietana18",
+  "name": "Śmietana 18%",
+  "unit": "l",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "nabiał",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 4.29,
+   "l": 3.99,
+   "k": 4.49
+  }
+ },
+ {
+  "id": "grana",
+  "name": "Ser typu grana padano",
+  "unit": "kg",
+  "pack": 0.2,
+  "loose": false,
+  "cat": "nabiał",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 11.99,
+   "l": 10.99,
+   "k": 12.99
+  }
+ },
+ {
+  "id": "jajka",
+  "name": "Jaja M",
+  "unit": "szt",
+  "pack": 10,
+  "loose": false,
+  "cat": "nabiał",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 10.99,
+   "l": 10.49,
+   "k": 11.49
+  }
+ },
+ {
+  "id": "szpinak",
+  "name": "Szpinak baby",
+  "unit": "kg",
+  "pack": 0.15,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 4.99,
+   "l": 4.49,
+   "k": 5.49
+  }
+ },
+ {
+  "id": "cebula",
+  "name": "Cebula",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.49,
+   "l": 2.99,
+   "k": 3.29
+  }
+ },
+ {
+  "id": "czosnek",
+  "name": "Czosnek",
+  "unit": "szt",
+  "pack": 1,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": {
+   "ząbek": 0.1
+  },
+  "regular": {
+   "b": 1.49,
+   "l": 1.29,
+   "k": 1.59
+  }
+ },
+ {
+  "id": "marchew",
+  "name": "Marchew",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 2.99,
+   "l": 2.49,
+   "k": 2.79
+  }
+ },
+ {
+  "id": "papryka",
+  "name": "Papryka czerwona",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 12.99,
+   "l": 11.99,
+   "k": 13.99
+  }
+ },
+ {
+  "id": "cukinia",
+  "name": "Cukinia",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 7.99,
+   "l": 6.99,
+   "k": 7.49
+  }
+ },
+ {
+  "id": "pieczarki",
+  "name": "Pieczarki",
+  "unit": "kg",
+  "pack": 0.5,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.99,
+   "l": 6.49,
+   "k": 7.29
+  }
+ },
+ {
+  "id": "koperek",
+  "name": "Koperek",
+  "unit": "pęczek",
+  "pack": 1,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 2.49,
+   "l": 2.29,
+   "k": 2.69
+  }
+ },
+ {
+  "id": "ziemniaki",
+  "name": "Ziemniaki",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 2.99,
+   "l": 2.49,
+   "k": 2.79
+  }
+ },
+ {
+  "id": "dynia",
+  "name": "Dynia",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 4.99,
+   "l": 4.49,
+   "k": 4.79
+  }
+ },
+ {
+  "id": "kapusta",
+  "name": "Kapusta biała",
+  "unit": "kg",
+  "pack": 1,
+  "loose": true,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.49,
+   "l": 2.99,
+   "k": 3.29
+  }
+ },
+ {
+  "id": "kapusta_kiszona",
+  "name": "Kapusta kiszona",
+  "unit": "kg",
+  "pack": 0.9,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 5.99,
+   "l": 5.49,
+   "k": 6.29
+  }
+ },
+ {
+  "id": "groszek",
+  "name": "Groszek mrożony",
+  "unit": "kg",
+  "pack": 0.45,
+  "loose": false,
+  "cat": "warzywa",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 5.49,
+   "l": 4.99,
+   "k": 5.79
+  }
+ },
+ {
+  "id": "pomidory_puszka",
+  "name": "Pomidory krojone w puszce",
+  "unit": "kg",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 2.99,
+   "l": 2.79,
+   "k": 3.29
+  }
+ },
+ {
+  "id": "passata",
+  "name": "Passata pomidorowa",
+  "unit": "l",
+  "pack": 0.5,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 4.49,
+   "l": 3.99,
+   "k": 4.79
+  }
+ },
+ {
+  "id": "koncentrat",
+  "name": "Koncentrat pomidorowy 30%",
+  "unit": "kg",
+  "pack": 0.2,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.99,
+   "l": 3.69,
+   "k": 4.19
+  }
+ },
+ {
+  "id": "ciecierzyca",
+  "name": "Ciecierzyca w puszce",
+  "unit": "kg",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.49,
+   "l": 3.29,
+   "k": 3.79
+  }
+ },
+ {
+  "id": "fasola",
+  "name": "Fasola czerwona w puszce",
+  "unit": "kg",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.29,
+   "l": 2.99,
+   "k": 3.49
+  }
+ },
+ {
+  "id": "kukurydza",
+  "name": "Kukurydza w puszce",
+  "unit": "kg",
+  "pack": 0.34,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.49,
+   "l": 3.29,
+   "k": 3.69
+  }
+ },
+ {
+  "id": "mleko_kokos",
+  "name": "Mleczko kokosowe",
+  "unit": "l",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "puszki i sosy",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.99,
+   "l": 6.49,
+   "k": 7.29
+  }
+ },
+ {
+  "id": "ryz",
+  "name": "Ryż długoziarnisty",
+  "unit": "kg",
+  "pack": 1,
+  "loose": false,
+  "cat": "suche",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 6.49,
+   "l": 5.99,
+   "k": 6.99
+  }
+ },
+ {
+  "id": "groch",
+  "name": "Groch łuskany",
+  "unit": "kg",
+  "pack": 0.5,
+  "loose": false,
+  "cat": "suche",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 4.49,
+   "l": 3.99,
+   "k": 4.79
+  }
+ },
+ {
+  "id": "soczewica",
+  "name": "Soczewica czerwona",
+  "unit": "kg",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "suche",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 5.49,
+   "l": 4.99,
+   "k": 5.79
+  }
+ },
+ {
+  "id": "kasza_jeczmienna",
+  "name": "Kasza jęczmienna",
+  "unit": "kg",
+  "pack": 0.4,
+  "loose": false,
+  "cat": "suche",
+  "pantry": false,
+  "conv": null,
+  "regular": {
+   "b": 3.49,
+   "l": 2.99,
+   "k": 3.69
+  }
+ },
+ {
+  "id": "olej",
+  "name": "Olej rzepakowy",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "sol",
+  "name": "Sól",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "pieprz",
+  "name": "Pieprz",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "papryka_slodka",
+  "name": "Papryka słodka mielona",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "oregano",
+  "name": "Oregano",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "kumin",
+  "name": "Kmin rzymski",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "chili",
+  "name": "Chili mielone",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "curry",
+  "name": "Curry",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "majeranek",
+  "name": "Majeranek",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "maka",
+  "name": "Mąka pszenna",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "bulka_tarta",
+  "name": "Bułka tarta",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "galka",
+  "name": "Gałka muszkatołowa",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "kostka_rosolowa",
+  "name": "Bulion w kostce",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "sos_sojowy",
+  "name": "Sos sojowy",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "miod",
+  "name": "Miód",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "musztarda",
+  "name": "Musztarda",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "imbir",
+  "name": "Imbir mielony",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "sezam",
+  "name": "Sezam",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "grzyby_suszone",
+  "name": "Grzyby suszone",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "sliwki_suszone",
+  "name": "Śliwki suszone",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "lisc_laurowy",
+  "name": "Liść laurowy",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "cukier",
+  "name": "Cukier",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ },
+ {
+  "id": "ziele",
+  "name": "Ziele angielskie",
+  "unit": "łyżka",
+  "pack": 1,
+  "loose": false,
+  "cat": "spiżarnia",
+  "pantry": true,
+  "conv": null,
+  "regular": {}
+ }
+]
