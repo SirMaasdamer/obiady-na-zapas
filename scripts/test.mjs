@@ -52,4 +52,15 @@ const v = findValidity(leaflet.map(p => p.text).join('\n'), '2026-10-30');
 eq(v?.valid_from + '|' + v?.valid_to, '2026-10-30|2026-11-02', 'okres ważności gazetki');
 eq(scoreLink({ href: 'https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060', text: 'Gazetka tygodnia 29.10 – 04.11' }) > scoreLink({ href: 'https://leaflets.kaufland.com/pl-PL/PL_pl_leaflet5_0_PL44/ar/0', text: 'Katalog znicze' }), true, 'gazetka tygodnia wygrywa z katalogiem zniczy');
 eq(norm('Łopatka ŻÓŁTA').length, 'Łopatka ŻÓŁTA'.length, 'normalizacja zachowuje pozycje');
+
+// --- paczki przepisów od Claude ---
+const { validate } = await import('./batches.mjs');
+const example = JSON.parse(readFileSync(new URL('../PRZEPISY.md', import.meta.url), 'utf8').match(/```json\n([\s\S]*?)```/)[1]);
+const base = { seedProducts: products, seedRecipes: recipes };
+eq(validate({ ...base, batches: [{ file: 'przyklad.json', ...example }] }).length, 0, 'przykład z PRZEPISY.md jest poprawny');
+const bad = { file: 'zly.json', products: [{ id: 'nowy_ser', name: 'Ser', unit: 'kg', pack: 0.2 }], recipes: [
+  { id: 'bolognese', category: 'makaron', name: 'X', ingredients: [{ pid: 'mielone_wol', amt: 1, unit: 'g' }, { pid: 'mielone_wol', amt: 1, unit: 'g' }], steps: ['a', 'b'] },
+  { id: 'nowe-danie', category: 'ryby', name: 'Y', ingredients: [{ pid: 'nie_ma', amt: 1, unit: 'g' }, { pid: 'cebula', amt: 2, unit: 'szklanka' }], steps: ['a'] }] };
+const errs = validate({ ...base, batches: [bad] });
+eq(errs.length, 7, 'błędne przepisy są wyłapywane (' + errs.length + ')');
 if (fails) { console.log(fails, 'błędów'); process.exit(1); } else console.log('Wszystkie testy przeszły.');

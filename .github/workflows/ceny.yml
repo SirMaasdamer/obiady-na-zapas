@@ -37,12 +37,10 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-pol
       - name: Pobieranie i odczyt gazetek
         run: node scripts/scrape.mjs
-      - name: Podtrzymanie harmonogramu
-        # GitHub wyłącza harmonogram po 60 dniach bez zmian w repozytorium
-        if: github.event_name == 'schedule'
+      - name: Zapis promocji w repozytorium (dla Claude przy układaniu przepisów)
+        # przy okazji podtrzymuje harmonogram: GitHub wyłącza go po 60 dniach bez zmian w repozytorium
+        if: always()
         run: |
-          last=$(git log -1 --format=%ct)
-          if [ $(( $(date +%s) - last )) -gt $(( 45*86400 )) ]; then
-            git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
-            date -u +%F > .keepalive && git add .keepalive && git commit -m "Podtrzymanie harmonogramu" && git push
-          fi
+          git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
+          git add dane/promocje.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then git commit -m "Promocje $(date +%F)" && git pull --rebase -q && git push; fi

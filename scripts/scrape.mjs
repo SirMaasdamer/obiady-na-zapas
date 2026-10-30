@@ -8,7 +8,7 @@ import { chromium } from 'playwright';
 import { createHash } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { mkdtemp, writeFile, readdir, readFile } from 'node:fs/promises';
+import { mkdtemp, writeFile, readdir, readFile, mkdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { adminClient, sleep, today, env } from './lib.mjs';
@@ -188,4 +188,17 @@ for (const store of ONLY) {
 }
 await db.from('offers').delete().lt('valid_to', new Date(Date.now() - 2 * 864e5).toLocaleDateString('sv-SE'));
 await browser.close();
+
+// Aktualne promocje do pliku w repozytorium — Claude czyta go, układając nowe przepisy.
+{
+  const t = today();
+  const { data: pr } = await db.from('prices').select('product_id,store,regular,promo,promo_from,promo_to,promo_note').not('promo', 'is', null).gte('promo_to', t);
+  const name = Object.fromEntries(products.map(p => [p.id, p.name]));
+  const promos = (pr || []).filter(p => !p.promo_from || p.promo_from <= new Date(Date.now() + 3 * 864e5).toLocaleDateString('sv-SE'))
+    .map(p => ({ product_id: p.product_id, name: name[p.product_id], store: STORES[p.store]?.name, price: +p.promo, regular: p.regular == null ? null : +p.regular, from: p.promo_from, until: p.promo_to, note: p.promo_note }))
+    .sort((a, b) => (a.name || '').localeCompare(b.name || '', 'pl'));
+  await mkdir(new URL('../dane/', import.meta.url), { recursive: true });
+  await writeFile(new URL('../dane/promocje.json', import.meta.url), JSON.stringify({ updated: t, promos }, null, 1) + '\n');
+  log(`\nZapisano dane/promocje.json: ${promos.length} promocji.`);
+}
 if (failed === ONLY.length) process.exit(1);

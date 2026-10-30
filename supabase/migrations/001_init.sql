@@ -61,6 +61,7 @@ create table if not exists recipes (
   source text,
   active boolean not null default true,  -- false = czeka w banku przepisów
   activated_at timestamptz,
+  removed boolean not null default false, -- usunięty w aplikacji (nie wraca przy imporcie)
   created_at timestamptz not null default now()
 );
 
@@ -114,6 +115,7 @@ create table if not exists scrape_runs (
 alter table products add column if not exists kw jsonb;
 alter table recipes add column if not exists active boolean not null default true;
 alter table recipes add column if not exists activated_at timestamptz;
+alter table recipes add column if not exists removed boolean not null default false;
 
 -- dostęp: tylko zalogowane konto domu
 do $$

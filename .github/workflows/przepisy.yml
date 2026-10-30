@@ -1,0 +1,28 @@
+name: Nowe przepisy
+
+# Gdy Claude doda paczkę przepisów do folderu przepisy/, sprawdza ją i wgrywa do bazy.
+on:
+  push:
+    branches: [main]
+    paths: ["przepisy/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  przepisy:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_PROJECT: ${{ secrets.SUPABASE_PROJECT }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install --no-audit --no-fund
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+      - name: Sprawdzenie i wgranie przepisów
+        run: node scripts/import-recipes.mjs

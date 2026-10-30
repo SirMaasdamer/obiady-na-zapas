@@ -2,7 +2,7 @@
 
 Aplikacja na telefon dla domu, który gotuje obiady na kilka dni i mrozi porcje.
 
-- **Przepisy w kategoriach:** 34 dania na start i ok. 50 w banku. Przycisk „Nowe przepisy” dodaje kolejne w wybranej kategorii, najpierw te ze składnikami w promocji.
+- **Przepisy w kategoriach:** 34 dania na start i ok. 50 w banku. Przycisk „Nowe przepisy” dodaje kolejne z banku, najpierw te ze składnikami w promocji. Zupełnie nowe dania zamawiasz u Claude (patrz niżej).
 - **Przelicznik porcji:** wpisujesz, ile porcji robisz, a składniki i koszt przeliczają się same.
 - **Wspólna lista zakupów:** aplikacja liczy, czy taniej wyjdzie w jednym sklepie, czy w dwóch.
 - **Ceny promocyjne:** Biedronka, Lidl i Kaufland, pobierane automatycznie w poniedziałki i czwartki rano. Całość jest darmowa, bez płatnego AI.
@@ -43,6 +43,13 @@ W repozytorium wejdź w **Settings → Pages → Build and deployment → Source
 1. Otwórz adres aplikacji w **Safari**.
 2. Stuknij **Udostępnij → Do ekranu początkowego**.
 3. Otwórz aplikację z ikony, wpisz kod domu i swoje imię. Domownicy robią to samo na swoich telefonach.
+
+## Nowe przepisy od Claude
+Napisz do Claude, np. „dodaj 4 przepisy z drobiu pod aktualne promocje”. Claude:
+1. czyta katalog produktów i plik `dane/promocje.json`, który aktualizuje się przy każdym pobraniu cen;
+2. układa przepisy i zapisuje je w folderze `przepisy/`.
+
+Workflow **Nowe przepisy** sprawdza plik i wgrywa dania do bazy. W aplikacji pojawiają się po kilku minutach z etykietą „Nowe”. Format pliku i zasady opisuje `PRZEPISY.md`. Korzysta to z Twojej subskrypcji Claude, więc nic nie kosztuje dodatkowo.
 
 ## Koszty
 Wszystko jest darmowe: GitHub (strona i automatyczne pobieranie cen) oraz Supabase (baza).

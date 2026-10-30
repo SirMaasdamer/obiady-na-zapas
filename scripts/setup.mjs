@@ -2,6 +2,7 @@
 // Uruchamiane przez workflow „Instalacja i publikacja”. Można uruchamiać wielokrotnie.
 import { readFile, writeFile } from 'node:fs/promises';
 import { env, projectRef, mgmt, apiKeys, HOUSE_EMAIL } from './lib.mjs';
+import { loadAll, validate, importBatches } from './batches.mjs';
 import { createClient } from '@supabase/supabase-js';
 
 const step = m => console.log(`\n▶ ${m}`);
@@ -46,6 +47,13 @@ step('Wgrywam produkty i przepisy startowe (istniejące zostają bez zmian)');
   r = await db.from('recipes').upsert(recipes, { onConflict: 'id', ignoreDuplicates: true });
   if (r.error) throw r.error;
   console.log(`  ${products.length} produktów, ${recipes.length} przepisów (${recipes.filter(r => r.active).length} widocznych, reszta w banku)`);
+}
+
+step('Wgrywam przepisy dodane przez Claude (folder przepisy/)');
+{
+  const data = await loadAll(), errors = validate(data);
+  if (errors.length) console.log('  ✗ pomijam, bo są błędy:\n' + errors.map(e => '    - ' + e).join('\n'));
+  else await importBatches(db, data);
 }
 
 step('Zapisuję konfigurację aplikacji');

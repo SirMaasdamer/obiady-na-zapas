@@ -1,11 +1,12 @@
 name: Instalacja i publikacja
 
 # Zakłada bazę, wgrywa przepisy i publikuje aplikację.
-# Uruchom ręcznie (Actions → Instalacja i publikacja → Run workflow). Odpala się też po każdej zmianie kodu.
+# Uruchom ręcznie (Actions → Instalacja i publikacja → Run workflow). Odpala się też po każdej zmianie kodu aplikacji.
 on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths-ignore: ["przepisy/**", "dane/**", "*.md", ".keepalive"]
 
 permissions:
   contents: read

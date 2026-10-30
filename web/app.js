@@ -11,8 +11,8 @@ const CATN = Object.fromEntries(CATEGORIES);
 const PCATS = ['mięso', 'nabiał', 'warzywa', 'puszki i sosy', 'suche', 'spiżarnia'];
 
 const S = L.S; // wspólny stan (produkty, ceny, przepisy…)
-const activeRecipes = () => Object.values(S.recipes).filter(r => r.active !== false);
-const bankFor = cat => Object.values(S.recipes).filter(r => r.active === false && r.category === cat);
+const activeRecipes = () => Object.values(S.recipes).filter(r => r.active !== false && !r.removed);
+const bankFor = cat => Object.values(S.recipes).filter(r => r.active === false && !r.removed && r.category === cat);
 const ui = {
   tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', q: '', pq: '', pmode: 'offers',
   portions: lsGet('portions', 8), trip: lsGet('trip', 8), plan: null, sheet: null,
@@ -159,6 +159,7 @@ function genSheet() {
   <form id="f-gen" class="sec" style="gap:14px">
    <div class="field"><label>Kategoria</label><div class="chips" style="flex-wrap:wrap">${CATEGORIES.map(([k, n]) => `<button type="button" class="chip" data-act="gen-cat" data-k="${k}" aria-pressed="${st.cat === k}">${n} <span style="opacity:.6">${bankFor(k).length}</span></button>`).join('')}</div><div class="sub">Liczba przy kategorii to dania, które jeszcze czekają w banku.</div></div>
    <div class="field"><label>Ile przepisów</label><div class="chips">${[2, 4, 6].map(n => `<button type="button" class="chip" data-act="gen-n" data-n="${n}" aria-pressed="${st.n === n}">${n}</button>`).join('')}</div></div>
+   <div class="banner">Chcesz dań spoza banku? Napisz do Claude, np. <b>„dodaj 4 przepisy z mielonego, coś azjatyckiego”</b>. Pojawią się tu po kilku minutach z etykietą „Nowe”.</div>
    <button class="btn pri" type="submit" ${!st.cat || !left ? 'disabled' : ''}>${!st.cat ? 'Wybierz kategorię' : left ? `✦ Dodaj ${Math.min(st.n, left)}: ${CATN[st.cat]}` : 'W tej kategorii bank jest już pusty'}</button></form>`;
 }
 async function runGen() {
@@ -323,7 +324,7 @@ document.addEventListener('click', async e => {
     case 'to-freezer': { const r = S.recipes[ui.sheet.id]; if (await w(() => db.from('freezer').insert({ recipe_id: r.id, name: r.name, portions: ui.portions, member: ui.member }), `Do zamrażarki: ${ui.portions} porcji`)) reload('freezer'); break; }
     case 'ask-del': ui.sheet.confirmDel = true; drawRecipeDyn(); break;
     case 'cancel-del': ui.sheet.confirmDel = false; drawRecipeDyn(); break;
-    case 'del-recipe': { const id = ui.sheet.id; if (await w(() => db.from('recipes').delete().eq('id', id), 'Usunięto przepis')) { closeSheet(); reload('recipes'); } break; }
+    case 'del-recipe': { const id = ui.sheet.id; if (await w(() => db.from('recipes').update({ removed: true }).eq('id', id), 'Usunięto przepis')) { closeSheet(); reload('recipes'); } break; }
     case 'gen': ui.sheet = { type: 'gen', cat: ui.cat === 'all' ? null : ui.cat, n: 4 }; drawSheet(); break;
     case 'gen-cat': ui.sheet.cat = d.k; drawSheet(); break;
     case 'gen-n': ui.sheet.n = +d.n; drawSheet(); break;
