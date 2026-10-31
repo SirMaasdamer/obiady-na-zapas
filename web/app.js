@@ -1,5 +1,6 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
 import * as L from './logic.js';
+import * as RC from './receipt.js';
 
 const CFG = window.APP_CONFIG || {};
 const STORES = L.STORES, SK = L.SK, SN = L.SN;
@@ -18,10 +19,10 @@ const bankFor = cat => Object.values(S.recipes).filter(r => !visible(r) && !S.hh
 const ui = {
   tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', q: '', pq: '', pmode: 'offers',
   portions: lsGet('portions', 8), trip: lsGet('trip', 8), plan: null, sheet: null,
-  member: lsGet('member', ''), justAdded: new Set(),
+  member: lsGet('member', ''), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
 let db = null, house = null, chan = null;
-const HH_TABLES = ['hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices'];
+const HH_TABLES = ['hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
 
 function lsGet(k, d) { try { const v = localStorage.getItem('onz_' + k); return v == null ? d : JSON.parse(v); } catch { return d; } }
 function lsSet(k, v) { try { localStorage.setItem('onz_' + k, JSON.stringify(v)); } catch { } }
@@ -55,6 +56,9 @@ const TABLES = {
   freezer: q => q.select('*'),
   offers: q => q.select('*').gte('valid_to', L.daysAgo(0)).order('store').limit(1500),
   scrape_runs: q => q.select('*').order('ran_at', { ascending: false }).limit(30),
+  receipts: q => q.select('*').order('bought_on', { ascending: false }).limit(1000),
+  receipt_items: q => q.select('*').limit(10000),
+  hh_settings: q => q.select('*'),
 };
 async function load(t) {
   const { data, error } = await TABLES[t](db.from(t));
@@ -270,7 +274,7 @@ function renderPrices() {
       return `<div class="prow"><div class="nm">${esc(p.name)}<small>${p.loose ? 'za kg' : fmtPack(p)}</small></div>${SK.map((s, i) => {
         const v = vals[i];
         const cls = !v ? 'none' : v.promo ? 'promo' : (v.p === min && have.length > 1 ? 'cheap' : '');
-        const tag = !v ? '' : v.promo ? (v.until ? 'do ' + dPL(v.until) : 'promo') : v.own ? 'Wasza' : 'szac.';
+        const tag = !v ? '' : v.promo ? (v.until ? 'do ' + dPL(v.until) : 'promo') : v.src === 'paragon' ? 'paragon' : v.own ? 'Wasza' : 'szac.';
         return `<button class="pc ${cls}" data-act="price" data-pid="${esc(p.id)}" data-s="${s}">${v ? zs(v.p) : '+'}<small>${tag}</small></button>`;
       }).join('')}</div>`;
     }).join('');
@@ -286,17 +290,158 @@ function priceSheet() {
    <div class="chips">${SK.map(k => `<button type="button" class="chip" data-act="price" data-pid="${esc(pid)}" data-s="${k}" aria-pressed="${k === s}">${SN[k]}</button>`).join('')}</div>
    ${v?.promo ? `<div class="banner">Teraz w promocji: <b>${zs(v.p)} zł</b>${v.until ? ' do ' + dPL(v.until) : ''}${v.note ? ' · ' + esc(v.note) : ''}. Promocje aktualizują się same z gazetek.</div>` : ''}
    <div class="field"><label for="pp">Cena regularna (zł)</label><input class="input" id="pp" inputmode="decimal" value="${row.regular != null ? String(row.regular).replace('.', ',') : ''}" placeholder="np. 6,99"></div>
-   <button class="btn pri" type="submit">Zapisz cenę</button></form>`;
+   <button class="btn pri" type="submit">Zapisz cenę</button></form>
+  ${historyHtml(pid)}`;
 }
 async function savePrice() {
   const { pid, s } = ui.sheet, v = L.parsePL($('#pp').value); if (v == null) return toast('Wpisz cenę, np. 6,99');
-  if (await w(() => db.from('hh_prices').upsert({ product_id: pid, store: s, regular: v, updated_at: new Date().toISOString() }), 'Zapisano cenę')) { closeSheet(); reload('hh_prices'); }
+  if (await w(() => db.from('hh_prices').upsert({ product_id: pid, store: s, regular: v, src: 'ręcznie', seen_on: L.today(), updated_at: new Date().toISOString() }), 'Zapisano cenę')) { closeSheet(); reload('hh_prices'); }
+}
+
+/* ---------- WYDATKI: paragony, budżet, analizy ---------- */
+const MONTHS = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
+const shiftMonth = (m, d) => { const [y, mo] = m.split('-').map(Number); const t = new Date(y, mo - 1 + d, 1); return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}`; };
+const monthName = m => { const [y, mo] = m.split('-').map(Number); return `${MONTHS[mo - 1]} ${y}`; };
+const STORE_OPTS = Object.entries(RC.STORE_NAMES);
+const paragonow = n => `${n} ${n === 1 ? 'paragon' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'paragony' : 'paragonów'}`;
+const CAT_NAMES = ['Mięso i ryby', 'Nabiał', 'Warzywa i owoce', 'Pieczywo', 'Spiżarnia', 'Napoje', 'Słodycze i przekąski', 'Alkohol', 'Chemia i higiena', 'Inne'];
+const bars = (rows, max) => `<div class="bars">${rows.map(([n, v, cls]) => `<div class="bar"><span class="${cls || ''}">${esc(n)}</span><b>${zs(v)} zł</b><span class="t"><i style="width:${Math.max(2, Math.round(v / max * 100))}%"></i></span></div>`).join('')}</div>`;
+
+function renderSpend() {
+  const box = $('#wlist'); if (!box) return;
+  const recs = S.receipts.filter(r => (r.bought_on || '').startsWith(ui.month));
+  const spent = recs.reduce((t, r) => t + +r.total, 0), budget = +S.settings.budget || 0;
+  let h = `<div class="month"><button data-act="month" data-d="-1" aria-label="Poprzedni miesiąc">‹</button><b>${monthName(ui.month)}</b><button data-act="month" data-d="1" aria-label="Następny miesiąc">›</button></div>`;
+  const pct = budget ? spent / budget : 0;
+  h += `<div class="budget"><div class="row" style="justify-content:space-between;align-items:baseline"><span class="big num">${zl(spent)}</span><button class="btn sm" data-act="budget">${budget ? 'Budżet ' + zs(budget) + ' zł' : 'Ustaw budżet'}</button></div>
+    ${budget ? `<div class="meter ${pct > 1 ? 'over' : pct > 0.85 ? 'warn' : ''}"><i style="width:${Math.min(100, pct * 100)}%"></i></div><div class="sub">${pct > 1 ? `Budżet przekroczony o ${zl(spent - budget)}` : `Zostało ${zl(budget - spent)}`} · ${paragonow(recs.length)}</div>` : `<div class="sub">${paragonow(recs.length)} w tym miesiącu</div>`}</div>`;
+  if (!S.receipts.length) {
+    h += `<div class="empty"><h3>Dodaj pierwszy paragon</h3><div>W aplikacji Lidl Plus albo Moja Biedronka otwórz e-paragon i zrób zrzut ekranu. Długi paragon możesz uchwycić w kilku zrzutach. Możesz też zapisać paragon jako PDF albo sfotografować papierowy.</div><label class="btn pri" for="rfile">+ Paragon</label><div class="sub">Paragon odczytuje telefon. Zdjęcia nie są nigdzie wysyłane.</div></div>`;
+    box.innerHTML = h; return;
+  }
+  if (recs.length) {
+    const byStore = {}; recs.forEach(r => byStore[r.store_name] = (byStore[r.store_name] || 0) + +r.total);
+    const ids = new Set(recs.map(r => r.id)), byCat = {};
+    S.receipt_items.filter(i => ids.has(i.receipt_id)).forEach(i => byCat[i.category || 'Inne'] = (byCat[i.category || 'Inne'] || 0) + +i.total);
+    const ss = Object.entries(byStore).sort((a, b) => b[1] - a[1]), cs = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
+    const codeOf = Object.fromEntries(STORE_OPTS.map(([k, n]) => [n, k]));
+    h += `<div class="sec"><h4>Sklepy</h4><div class="box">${bars(ss.map(([n, v]) => [n, v, 'store ' + (codeOf[n] || '')]), ss[0][1])}</div></div>`;
+    if (cs.length) h += `<div class="sec"><h4>Kategorie</h4><div class="box">${bars(cs, cs[0][1])}</div></div>`;
+  }
+  h += `<div class="grp"><div class="grp-h"><h3>Paragony</h3><span class="sub">${recs.length ? monthName(ui.month) : 'brak w tym miesiącu'}</span></div>${recs.map(r => {
+    const n = S.receipt_items.filter(i => i.receipt_id === r.id).length;
+    return `<button class="rc" data-act="open-receipt" data-id="${esc(r.id)}"><span class="d">${dPL(r.bought_on)}</span><span><span class="store ${esc(r.store)}">${esc(r.store_name)}</span><span class="sub"> · ${n} poz.${r.member ? ' · ' + esc(r.member) : ''}</span></span><b>${zs(+r.total)}</b></button>`;
+  }).join('')}</div>`;
+  box.innerHTML = h;
+}
+
+function budgetSheet() {
+  return `<div class="sheet-head"><div><h2>Budżet na zakupy</h2><div class="sub" style="margin-top:4px">Miesięczny limit dla całego domu</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  <form id="f-budget" class="sec" style="gap:12px"><div class="field"><label for="b-val">Kwota na miesiąc (zł)</label><input class="input" id="b-val" inputmode="decimal" value="${S.settings.budget ? String(S.settings.budget).replace('.', ',') : ''}" placeholder="np. 1500"></div>
+  <button class="btn pri" type="submit">Zapisz</button></form>`;
+}
+async function saveBudget() {
+  const v = L.parsePL($('#b-val').value);
+  if (await w(() => db.from('hh_settings').upsert({ budget: v }), 'Zapisano budżet')) { S.settings = { ...S.settings, budget: v }; closeSheet(); renderSpend(); reload('hh_settings'); }
+}
+
+// Odczyt wybranych plików: PDF → tekst; zdjęcia/zrzuty → OCR w telefonie. Kilka zrzutów = jeden paragon.
+async function importReceipt(files) {
+  setTab('wydatki');
+  ui.sheet = { type: 'rimport', busy: true, progress: 0, msg: 'Wczytuję narzędzia do odczytu…' }; drawSheet();
+  try {
+    const texts = [];
+    for (const [i, f] of files.entries()) {
+      if (f.type === 'application/pdf' || /\.pdf$/i.test(f.name)) { ui.sheet.msg = 'Czytam PDF…'; drawSheet(); texts.push(await RC.pdfText(f)); }
+      else {
+        ui.sheet.msg = files.length > 1 ? `Rozpoznaję tekst (${i + 1} z ${files.length})…` : 'Rozpoznaję tekst…'; drawSheet();
+        texts.push(await RC.imageText(f, p => { if (ui.sheet?.type !== 'rimport') return; ui.sheet.progress = (i + p) / files.length; const b = $('#rprog'); if (b) b.style.width = Math.round(ui.sheet.progress * 100) + '%'; }));
+      }
+    }
+    const text = RC.joinShots(texts);
+    const r = RC.parseReceipt(text, L.today());
+    const catalog = Object.values(S.products).filter(p => !p.pantry);
+    r.items.forEach(it => { const p = RC.matchProduct(it.name, catalog); it.product_id = p?.id || null; it.category = RC.categoryOf(it.name, p); });
+    ui.sheet = { type: 'rimport', draft: r, text, source: files.some(f => /pdf/i.test(f.type)) ? 'pdf' : 'zdjęcie' };
+  } catch (e) {
+    console.error(e);
+    ui.sheet = { type: 'rimport', error: navigator.onLine ? 'Nie udało się odczytać paragonu. Spróbuj wyraźniejszego zrzutu albo pliku PDF.' : 'Do pierwszego odczytu potrzebny jest internet (telefon pobiera narzędzie do rozpoznawania tekstu).' };
+  }
+  drawSheet();
+}
+function readForm() {
+  const d = ui.sheet?.draft; if (!d || !$('#r-store')) return;
+  d.store = $('#r-store').value; d.store_name = RC.STORE_NAMES[d.store] || d.store_name; d.bought_on = $('#r-date').value || d.bought_on; d.total = L.parsePL($('#r-total').value) ?? d.total;
+  d.items.forEach((it, i) => { const n = $('#ri-n' + i), v = $('#ri-v' + i), c = $('#ri-c' + i); if (n) it.name = n.value; if (v) it.total = L.parsePL(v.value) ?? 0; if (c) it.category = c.value; });
+}
+function importSheet() {
+  const st = ui.sheet;
+  const head = t => `<div class="sheet-head"><div><h2>${t}</h2></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>`;
+  if (st.error) return head('Paragon') + `<div class="banner">${esc(st.error)}</div><label class="btn pri" for="rfile">Wybierz inny plik</label>`;
+  if (st.busy) return head('Odczytuję paragon') + `<div class="sec"><div class="sub">${esc(st.msg)}</div><div class="prog"><i id="rprog" style="width:${Math.round((st.progress || 0) * 100)}%"></i></div><div class="sub">Pierwszy odczyt zdjęcia trwa dłużej: telefon pobiera narzędzie do rozpoznawania polskiego tekstu (ok. 2 MB).</div></div>`;
+  const d = st.draft, sum = d.items.reduce((t, i) => t + (+i.total || 0), 0);
+  const dup = S.receipts.find(r => r.store === d.store && r.bought_on === d.bought_on && Math.abs(+r.total - +d.total) < 0.01);
+  const diff = Math.abs(sum - (+d.total || 0));
+  return head('Sprawdź paragon') + `
+  <div class="sub">Popraw, jeśli coś się nie zgadza, i zapisz.${d.items.some(i => i.product_id) ? ' Ceny produktów z przepisów trafią do Waszych cen.' : ''}</div>
+  <div class="grid2"><div class="field"><label for="r-store">Sklep</label><select class="input" id="r-store">${STORE_OPTS.map(([k, n]) => `<option value="${k}" ${k === d.store ? 'selected' : ''}>${n}</option>`).join('')}</select></div>
+  <div class="field"><label for="r-date">Data</label><input class="input" id="r-date" type="date" value="${esc(d.bought_on || '')}"></div></div>
+  <div class="field"><label for="r-total">Do zapłaty (zł)</label><input class="input" id="r-total" inputmode="decimal" value="${String(d.total ?? '').replace('.', ',')}"></div>
+  ${dup ? `<div class="warnbox">Ten paragon chyba już jest: ${esc(dup.store_name)}, ${dPL(dup.bought_on)}, ${zs(+dup.total)} zł.</div>` : ''}
+  ${!d.items.length ? `<div class="warnbox">Nie rozpoznałem pozycji. Możesz dopisać je ręcznie albo spróbować wyraźniejszego zrzutu.</div>` : diff > 0.05 ? `<div class="warnbox">Suma pozycji (${zs(sum)} zł) różni się od kwoty do zapłaty o ${zs(diff)} zł. Sprawdź ceny poniżej.</div>` : `<div class="sub" style="color:var(--good)">✓ Suma pozycji zgadza się z paragonem</div>`}
+  <div class="box" style="padding-block:4px">${d.items.map((it, i) => {
+    const p = S.products[it.product_id];
+    return `<div class="ri"><input class="input" id="ri-n${i}" value="${esc(it.name)}" aria-label="Nazwa"><input class="input num" id="ri-v${i}" inputmode="decimal" value="${String(it.total).replace('.', ',')}" aria-label="Kwota"><button class="x" data-act="ri-del" data-i="${i}" aria-label="Usuń pozycję">✕</button>
+      <div class="meta">${it.qty !== 1 ? `<span>${num(it.qty, 3)} ${it.weighed ? 'kg' : 'szt.'} × ${zs(it.unit_price)}</span>` : ''}${it.discount ? `<span style="color:var(--promo)">rabat ${zs(it.discount)}</span>` : ''}${p ? `<span class="pill want">${esc(p.name)}</span>` : ''}<select class="input" id="ri-c${i}" aria-label="Kategoria">${CAT_NAMES.map(c => `<option ${c === it.category ? 'selected' : ''}>${c}</option>`).join('')}</select></div></div>`;
+  }).join('')}</div>
+  <button class="btn sm ghost" data-act="ri-add" style="align-self:flex-start">+ Dodaj pozycję</button>
+  <button class="btn pri" data-act="save-receipt">Zapisz paragon</button>
+  <details><summary class="sub">Odczytany tekst</summary><pre class="sub" style="white-space:pre-wrap;font-size:11.5px">${esc(st.text || '')}</pre></details>`;
+}
+async function saveReceipt() {
+  readForm(); const d = ui.sheet.draft, src = ui.sheet.source;
+  if (!d.bought_on) return toast('Wpisz datę zakupów.');
+  if (!(+d.total > 0)) return toast('Wpisz kwotę do zapłaty.');
+  const id = crypto.randomUUID();
+  const items = d.items.filter(i => i.name.trim() && +i.total > 0).map(i => ({ receipt_id: id, name: i.name.trim().slice(0, 120), qty: +i.qty || 1, weighed: !!i.weighed, unit_price: i.unit_price ?? null, total: +i.total, discount: +i.discount || 0, product_id: i.product_id || null, category: i.category || 'Inne' }));
+  // prawdziwe ceny regularne (bez rabatu) dla produktów z katalogu w Biedronce, Lidlu i Kauflandzie
+  const prices = [];
+  if (SK.includes(d.store)) for (const i of items) {
+    const p = S.products[i.product_id]; if (!p) continue;
+    const ref = SK.map(s => S.prices[p.id]?.[s]?.regular).filter(Boolean).map(Number), avg = ref.length ? ref.reduce((a, b) => a + b) / ref.length : null;
+    const v = RC.packPrice({ ...i, discount: 0 }, p, avg); if (v == null) continue;
+    const cur = S.hhp[p.id]?.[d.store];
+    if (cur?.seen_on && cur.seen_on > d.bought_on) continue;
+    if (!prices.some(x => x.product_id === p.id)) prices.push({ product_id: p.id, store: d.store, regular: v, src: 'paragon', seen_on: d.bought_on, updated_at: new Date().toISOString() });
+  }
+  const ok = await w(async () => {
+    const r1 = await db.from('receipts').insert({ id, store: d.store, store_name: RC.STORE_NAMES[d.store] || d.store_name, bought_on: d.bought_on, total: +d.total, source: src, member: ui.member });
+    if (r1.error) return r1;
+    const r2 = items.length ? await db.from('receipt_items').insert(items) : { error: null };
+    if (r2.error) return r2;
+    return prices.length ? db.from('hh_prices').upsert(prices) : { error: null };
+  }, `Zapisano paragon${prices.length ? ` · zaktualizowano ${prices.length} cen` : ''}`);
+  if (ok) { ui.month = d.bought_on.slice(0, 7); closeSheet(); ['receipts', 'receipt_items', 'hh_prices'].forEach(reload); }
+}
+function receiptSheet() {
+  const r = S.receipts.find(x => x.id === ui.sheet.id); if (!r) return closeSheet();
+  const items = S.receipt_items.filter(i => i.receipt_id === r.id);
+  return `<div class="sheet-head"><div><h2>${esc(r.store_name)} · ${zs(+r.total)} zł</h2><div class="sub" style="margin-top:4px">${dPL(r.bought_on)}.${r.bought_on.slice(0, 4)}${r.member ? ' · dodał(a): ' + esc(r.member) : ''}</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  <div class="box" style="padding-block:4px"><ul class="ing">${items.map(i => `<li><span class="nm">${esc(i.name)}<small>${esc(i.category || 'Inne')}${+i.qty !== 1 ? ` · ${num(+i.qty, 3)} ${i.weighed ? 'kg' : 'szt.'} × ${zs(+i.unit_price)}` : ''}${+i.discount ? ` · rabat ${zs(+i.discount)}` : ''}</small></span><span class="q">${zs(+i.total)}</span></li>`).join('') || '<li class="sub">Brak pozycji</li>'}</ul></div>
+  ${ui.sheet.confirmDel ? `<div class="row"><span class="sub">Usunąć ten paragon?</span><button class="btn sm danger" data-act="del-receipt">Tak, usuń</button></div>` : `<button class="btn sm ghost danger" data-act="ask-del-receipt" style="align-self:flex-start">Usuń paragon</button>`}`;
+}
+// Historia cen produktu z Waszych paragonów (w okienku ceny).
+function historyHtml(pid) {
+  const rec = Object.fromEntries(S.receipts.map(r => [r.id, r]));
+  const rows = S.receipt_items.filter(i => i.product_id === pid && rec[i.receipt_id]).map(i => ({ i, r: rec[i.receipt_id] })).sort((a, b) => b.r.bought_on.localeCompare(a.r.bought_on)).slice(0, 12);
+  if (!rows.length) return '';
+  return `<div class="sec"><h4>Wasze zakupy</h4><div class="box" style="padding-block:4px"><ul class="ing">${rows.map(({ i, r }) => `<li><span class="nm">${dPL(r.bought_on)} · <span class="store ${esc(r.store)}">${esc(r.store_name)}</span><small>${esc(i.name)}</small></span><span class="q">${+i.qty !== 1 ? zs(+i.unit_price) + (i.weighed ? '/kg' : '/szt.') : zs(+i.total) + ' zł'}</span></li>`).join('')}</ul></div></div>`;
 }
 
 /* ---------- sheet & routing ---------- */
 function drawSheet() {
   const st = ui.sheet, el = $('#sheet'), inn = $('#sheet-in'); if (!st) { el.hidden = true; return; }
-  const html = st.type === 'recipe' ? recipeSheet() : st.type === 'price' ? priceSheet() : st.type === 'gen' ? genSheet() : whoSheet();
+  const html = st.type === 'recipe' ? recipeSheet() : st.type === 'price' ? priceSheet() : st.type === 'gen' ? genSheet() : st.type === 'rimport' ? importSheet() : st.type === 'receipt' ? receiptSheet() : st.type === 'budget' ? budgetSheet() : whoSheet();
   if (!ui.sheet) return; inn.innerHTML = html; el.hidden = false; document.body.style.overflow = 'hidden';
   if (st.type === 'recipe') drawRecipeDyn();
 }
@@ -312,12 +457,12 @@ function whoSheet() {
   <div class="sec"><h4>Ten telefon</h4>${st.confirmLeave ? `<div class="banner">Ten telefon przestanie widzieć dane domu. Wrócisz do niego tylko z linkiem zaproszenia od domownika.</div><div class="row"><button class="btn danger" type="button" data-act="leave">Tak, opuść dom</button><button class="btn" type="button" data-act="cancel-leave">Anuluj</button></div>` : `<button class="btn ghost danger" type="button" data-act="ask-leave">Opuść dom na tym telefonie</button>`}</div>`;
 }
 function closeSheet() { ui.sheet = null; $('#sheet').hidden = true; document.body.style.overflow = ''; }
-const TABS = ['przepisy', 'lista', 'zamrazarka', 'ceny'];
+const TABS = ['przepisy', 'lista', 'zamrazarka', 'wydatki', 'ceny'];
 function setTab(t) {
   ui.tab = t; document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-current', b.dataset.tab === t ? 'page' : 'false'));
   TABS.forEach(v => $('#v-' + v).hidden = v !== t); if (location.hash !== '#' + t) history.replaceState(null, '', '#' + t); window.scrollTo(0, 0);
 }
-function renderAll() { renderCats(); renderRecipes(); renderList(); renderFreezer(); renderPrices(); if (ui.sheet?.type === 'recipe') drawRecipeDyn(); }
+function renderAll() { renderCats(); renderRecipes(); renderList(); renderFreezer(); renderSpend(); renderPrices(); if (ui.sheet?.type === 'recipe') drawRecipeDyn(); }
 
 document.addEventListener('click', async e => {
   const t = e.target.closest('[data-act],[data-tab]'); if (!t) return;
@@ -353,6 +498,14 @@ document.addEventListener('click', async e => {
     case 'fz-inc': fzChange(d.id, 1); break;
     case 'price': ui.sheet = { type: 'price', pid: d.pid, s: d.s }; drawSheet(); break;
     case 'pmode': ui.pmode = d.k; renderPrices(); break;
+    case 'month': ui.month = shiftMonth(ui.month, +d.d); renderSpend(); break;
+    case 'budget': ui.sheet = { type: 'budget' }; drawSheet(); break;
+    case 'open-receipt': ui.sheet = { type: 'receipt', id: d.id }; drawSheet(); break;
+    case 'del-receipt': if (await w(() => db.from('receipts').delete().eq('id', ui.sheet.id), 'Usunięto paragon')) { closeSheet(); reload('receipts'); reload('receipt_items'); } break;
+    case 'ask-del-receipt': ui.sheet.confirmDel = true; drawSheet(); break;
+    case 'ri-del': readForm(); ui.sheet.draft.items.splice(+d.i, 1); drawSheet(); break;
+    case 'ri-add': readForm(); ui.sheet.draft.items.push({ name: '', qty: 1, weighed: false, unit_price: null, total: 0, discount: 0, category: 'Inne' }); drawSheet(); break;
+    case 'save-receipt': saveReceipt(); break;
     case 'whoami': ui.sheet = { type: 'who' }; drawSheet(); break;
     case 'invite': shareLink(inviteUrl(), `Dołącz do domu „${house.name}” w Obiadach na Zapas`); break;
     case 'share-app': shareLink(appUrl(), 'Obiady na Zapas: przepisy do mrożenia, wspólna lista zakupów i ceny z gazetek'); break;
@@ -378,8 +531,10 @@ document.addEventListener('submit', async e => {
   else if (id === 'f-manual') { const v = $('#manual').value.trim(); if (!v) return; if (await w(() => db.from('list_items').insert({ manual: true, name: v, member: ui.member }))) { $('#manual').value = ''; reload('list_items'); } }
   else if (id === 'f-freeze') { const v = $('#fz-name').value.trim(), n = +$('#fz-n').value || 1; if (!v) return; if (await w(() => db.from('freezer').insert({ name: v, portions: n, member: ui.member }), 'Dodano do zamrażarki')) { $('#fz-name').value = ''; reload('freezer'); } }
   else if (id === 'f-create') createHouse();
+  else if (id === 'f-budget') saveBudget();
   else if (id === 'f-join') joinHouse();
 });
+document.addEventListener('change', e => { if (e.target.id === 'rfile' && e.target.files.length) { const fs = [...e.target.files]; e.target.value = ''; importReceipt(fs); } });
 document.addEventListener('input', e => {
   if (e.target.id === 'q') { ui.q = e.target.value; renderRecipes(); }
   else if (e.target.id === 'pq') { ui.pq = e.target.value; renderPrices(); }

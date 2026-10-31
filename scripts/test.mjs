@@ -63,4 +63,23 @@ const bad = { file: 'zly.json', products: [{ id: 'nowy_ser', name: 'Ser', unit: 
   { id: 'nowe-danie', category: 'ryby', name: 'Y', ingredients: [{ pid: 'nie_ma', amt: 1, unit: 'g' }, { pid: 'cebula', amt: 2, unit: 'szklanka' }], steps: ['a'] }] };
 const errs = validate({ ...base, batches: [bad] });
 eq(errs.length, 7, 'błędne przepisy są wyłapywane (' + errs.length + ')');
+
+// --- paragony ---
+const R = await import('../web/receipt.js');
+const bied = `Jeronimo Martins Polska S.A.\nBiedronka nr 1234\nNIP 779-10-11-327\n2026-10-30 nr wydr. 123456\nPARAGON FISKALNY\nMleko UHT 3,2% 1L C   2 x3,49   6,98C\nFilet z piersi kurczaka A\n  1,036 x22,99   23,82A\nRabat                  -3,00A\nPieczarki 500g C   1 x6,99   6,99C\nBanany luz C   0,756 x4,99   3,77C\nSPRZEDAŻ OPODATK. A   20,82\nPTU A 8,00%   1,54\nSUMA PLN   38,56\nKarta płatnicza   38,56`;
+const lidl = `Lidl sp. z o.o. sp.k.\n30.10.2026 18:42\nFilet z piersi kurczaka XXL        15,53 A\n1,036 kg x 14,99 PLN/kg\nMascarpone 250 g                    5,49 B\nPassata pomidorowa 500 g            6,98 B\n2 x 3,49\nRabat Lidl Plus                    -1,00\nSuma                               27,00 PLN`;
+for (const [n, t, cnt, total] of [['Biedronka', bied, 4, 38.56], ['Lidl', lidl, 3, 27]]) {
+  const r = R.parseReceipt(t, '2026-10-31');
+  eq(r.items.length + '|' + r.total + '|' + (Math.abs(r.sum - r.total) < 0.02), cnt + '|' + total + '|' + true, `paragon ${n}: pozycje, suma, zgodność`);
+}
+const rb = R.parseReceipt(bied, '2026-10-31');
+eq(rb.store + '|' + rb.bought_on, 'b|2026-10-30', 'paragon: sklep i data');
+eq(rb.items[1].discount + '|' + rb.items[1].total + '|' + rb.items[1].weighed, '3|20.82|true', 'paragon: rabat i waga');
+const kat2 = cat.map(p => ({ ...p }));
+const pf = R.matchProduct('Filet z piersi kurczaka', kat2), pm = R.matchProduct('Mascarpone 250 g', kat2);
+eq(pf?.id + '|' + pm?.id, 'kurczak_filet|mascarpone', 'paragon: dopasowanie do katalogu');
+eq(R.packPrice(rb.items[1], pf, pf.ref), 20.1, 'paragon: cena za kg po rabacie');
+eq(R.packPrice({ name: 'Mascarpone 250 g', qty: 1, unit_price: 5.49, total: 5.49, discount: 0 }, pm, pm.ref), 5.49, 'paragon: cena opakowania');
+eq(R.categoryOf('Piwo Pilsner 0,5 l') + '|' + R.categoryOf('Chleb wiejski') + '|' + R.categoryOf('Mleko', null), 'Alkohol|Pieczywo|Nabiał', 'paragon: kategorie');
+eq(R.joinShots(['a\nb\nc', 'b\nc\nd']), 'a\nb\nc\nd', 'paragon: łączenie zrzutów');
 if (fails) { console.log(fails, 'błędów'); process.exit(1); } else console.log('Wszystkie testy przeszły.');
