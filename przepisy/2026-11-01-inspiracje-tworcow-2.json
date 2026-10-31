@@ -1,0 +1,3119 @@
+{
+ "opis": "Druga paczka: przepisy inspirowane Foodini, Bartłomiejem Włodarczykiem, Ewą Wachowicz, Michałem Gotuje i Do Schrupania",
+ "products": [
+  {
+   "id": "feta",
+   "name": "Ser feta",
+   "unit": "kg",
+   "pack": 0.27,
+   "cat": "nabiał",
+   "kw": [
+    "ser feta",
+    "feta",
+    "ser typu feta",
+    "ser salatkowy"
+   ],
+   "regular": {
+    "b": 6.99,
+    "l": 6.49,
+    "k": 7.49
+   }
+  },
+  {
+   "id": "twarog",
+   "name": "Twaróg półtłusty",
+   "unit": "kg",
+   "pack": 0.25,
+   "cat": "nabiał",
+   "kw": [
+    "twarog"
+   ],
+   "regular": {
+    "b": 4.49,
+    "l": 4.29,
+    "k": 4.79
+   }
+  },
+  {
+   "id": "pomidorki_koktajlowe",
+   "name": "Pomidorki koktajlowe",
+   "unit": "kg",
+   "pack": 0.25,
+   "cat": "warzywa",
+   "kw": [
+    "pomidorki koktajlowe",
+    "pomidory koktajlowe",
+    "pomidorki cherry"
+   ],
+   "regular": {
+    "b": 4.99,
+    "l": 4.49,
+    "k": 5.29
+   }
+  },
+  {
+   "id": "zakwas",
+   "name": "Zakwas na żurek",
+   "unit": "l",
+   "pack": 0.5,
+   "cat": "puszki i sosy",
+   "kw": [
+    "zakwas na zurek",
+    "zakwas zurkowy",
+    "zakwas"
+   ],
+   "regular": {
+    "b": 2.99,
+    "l": 2.79,
+    "k": 3.19
+   }
+  },
+  {
+   "id": "biala_kielbasa",
+   "name": "Biała kiełbasa parzona",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "mięso",
+   "kw": [
+    "biala kielbasa"
+   ],
+   "regular": {
+    "b": 19.99,
+    "l": 18.99,
+    "k": 20.99
+   }
+  },
+  {
+   "id": "zeberka_wedzone",
+   "name": "Żeberka wędzone",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "mięso",
+   "kw": [
+    "zeberka wedzone",
+    "wedzone zeberka"
+   ],
+   "regular": {
+    "b": 22.99,
+    "l": 21.99,
+    "k": 23.99
+   }
+  },
+  {
+   "id": "platki_kukurydziane",
+   "name": "Płatki kukurydziane",
+   "unit": "kg",
+   "pack": 0.25,
+   "cat": "suche",
+   "kw": [
+    "platki kukurydziane",
+    "corn flakes"
+   ],
+   "regular": {
+    "b": 4.99,
+    "l": 4.49,
+    "k": 5.29
+   }
+  },
+  {
+   "id": "tortilla",
+   "name": "Tortille pszenne",
+   "unit": "szt",
+   "pack": 6,
+   "cat": "suche",
+   "kw": [
+    "tortilla",
+    "tortille",
+    "wrapy"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.29
+   }
+  },
+  {
+   "id": "jogurt_grecki",
+   "name": "Jogurt grecki",
+   "unit": "kg",
+   "pack": 0.4,
+   "cat": "nabiał",
+   "kw": [
+    "jogurt grecki",
+    "jogurt typu greckiego"
+   ],
+   "regular": {
+    "b": 4.99,
+    "l": 4.49,
+    "k": 5.29
+   }
+  },
+  {
+   "id": "pietruszka_nac",
+   "name": "Natka pietruszki",
+   "unit": "pęczek",
+   "pack": 1,
+   "cat": "warzywa",
+   "kw": [
+    "natka pietruszki",
+    "pietruszka natka"
+   ],
+   "regular": {
+    "b": 2.49,
+    "l": 2.29,
+    "k": 2.69
+   }
+  },
+  {
+   "id": "bazylia",
+   "name": "Bazylia w doniczce",
+   "unit": "szt",
+   "pack": 1,
+   "cat": "warzywa",
+   "kw": [
+    "bazylia"
+   ],
+   "regular": {
+    "b": 4.99,
+    "l": 4.49,
+    "k": 5.49
+   }
+  },
+  {
+   "id": "maslanka",
+   "name": "Maślanka",
+   "unit": "l",
+   "pack": 1,
+   "cat": "nabiał",
+   "kw": [
+    "maslanka"
+   ],
+   "regular": {
+    "b": 3.49,
+    "l": 3.29,
+    "k": 3.69
+   }
+  },
+  {
+   "id": "cytryna",
+   "name": "Cytryny",
+   "unit": "szt",
+   "pack": 1,
+   "cat": "warzywa",
+   "kw": [
+    "cytryny",
+    "cytryna"
+   ],
+   "regular": {
+    "b": 1.29,
+    "l": 1.19,
+    "k": 1.39
+   }
+  },
+  {
+   "id": "ryz_arborio",
+   "name": "Ryż do risotto",
+   "unit": "kg",
+   "pack": 0.5,
+   "cat": "suche",
+   "kw": [
+    "ryz arborio",
+    "ryz do risotto"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 6.99,
+    "k": 8.49
+   }
+  },
+  {
+   "id": "makaron",
+   "name": "Makaron (penne, spaghetti)",
+   "unit": "kg",
+   "pack": 0.5,
+   "cat": "suche",
+   "kw": [
+    "makaron penne",
+    "makaron spaghetti",
+    "makaron swiderki",
+    "makaron"
+   ],
+   "regular": {
+    "b": 3.99,
+    "l": 3.49,
+    "k": 4.29
+   }
+  },
+  {
+   "id": "kasza_manna",
+   "name": "Kasza manna",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "smalec",
+   "name": "Smalec",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "kminek",
+   "name": "Kminek",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "ziola_prowansalskie",
+   "name": "Zioła prowansalskie",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "chili_platki",
+   "name": "Płatki chili",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "przyprawa_kurczak",
+   "name": "Przyprawa do kurczaka",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "kurkuma",
+   "name": "Kurkuma",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "wino_biale",
+   "name": "Wino białe (do gotowania)",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "cukier_trzcinowy",
+   "name": "Cukier trzcinowy",
+   "unit": "łyżka",
+   "pantry": true
+  }
+ ],
+ "recipes": [
+  {
+   "id": "kurczak-sos-cytrynowy",
+   "category": "drob",
+   "name": "Kurczak w sosie cytrynowo-miodowym",
+   "minutes": 25,
+   "freeze_months": 3,
+   "sides": "kuskus, ryż, ziemniaki",
+   "thaw": "Mroź kurczaka zalanego sosem. Odgrzewaj na patelni z odrobiną wody.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "czosnek_granulowany",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "cytryna",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "miod",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "chili_platki",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Piersi przekrój wzdłuż na cieńsze filety, oprósz mąką z solą, pieprzem, czosnkiem, papryką i tymiankiem.",
+    "Usmaż na oleju z łyżką masła po 4 minuty z każdej strony i odłóż.",
+    "Na patelnię wlej 120 ml wody z kostką, sok i skórkę z cytryny, miód, sos sojowy i chili, zredukuj o połowę.",
+    "Wmieszaj resztę masła, włóż kurczaka do sosu i posyp pietruszką."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7481345342127033622"
+  },
+  {
+   "id": "kurczak-pomidory-suszone-kopytka",
+   "category": "drob",
+   "name": "Udka w sosie pomidorowym z suszonymi pomidorami",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "kopytka, gnocchi, makaron",
+   "thaw": "Mroź bez kopytek. Odgrzewaj na patelni.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pomidory_suszone",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "ziola_prowansalskie",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "chili_platki",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 60,
+     "unit": "ml"
+    },
+    {
+     "pid": "grana",
+     "amt": 25,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Udka dopraw, oprósz mąką i obsmaż na oleju z suszonych pomidorów. Odłóż.",
+    "Podsmaż cebulę, czosnek i posiekane suszone pomidory z przyprawami i koncentratem.",
+    "Wlej 350 ml wody z kostką, włóż udka i duś 12 minut.",
+    "Wmieszaj śmietankę i starty ser. Kopytka ugotuj świeże."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7509905407461068054"
+  },
+  {
+   "id": "kurczak-smietana-suszone-pomidory-szpinak",
+   "category": "makaron",
+   "name": "Sos śmietanowy z kurczakiem, suszonymi pomidorami i szpinakiem",
+   "minutes": 25,
+   "freeze_months": 2,
+   "sides": "penne, tagliatelle",
+   "thaw": "Sos ze śmietanką mrozi się poprawnie do 2 miesięcy. Odgrzewaj powoli, mieszając.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "oregano",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pomidory_suszone",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 120,
+     "unit": "ml"
+    },
+    {
+     "pid": "grana",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka w kostce dopraw ziołami i papryką, obsmaż na oleju z suszonych pomidorów. Odłóż.",
+    "Na maśle podsmaż cebulę, czosnek i pokrojone suszone pomidory.",
+    "Wlej 250 ml wody z kostką i śmietankę, zagotuj, dodaj ser i szpinak.",
+    "Włóż kurczaka. Makaron ugotuj osobno i wymieszaj z sosem przed podaniem."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7486529565460811030"
+  },
+  {
+   "id": "bitki-z-szynki-pieczarkowe",
+   "category": "wieprzowina",
+   "name": "Bitki z szynki w kremowym sosie pieczarkowym",
+   "minutes": 90,
+   "freeze_months": 3,
+   "sides": "kluski kładzione, ziemniaki, kasza",
+   "thaw": "To danie Foodini poleca właśnie „na zapas”. Mroź zalane sosem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "szynka_wieprzowa",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "maslo",
+     "amt": 10,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziele",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 60,
+     "unit": "ml"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Szynkę pokrój w plastry, rozbij, dopraw i obtocz w mące. Obsmaż na rumiano i odłóż.",
+    "Na maśle podsmaż cebulę, czosnek i pieczarki, dodaj paprykę i tymianek.",
+    "Wlej 600 ml wody z kostką, dodaj liść, ziele i mięso, duś pod przykryciem ok. 60 minut.",
+    "Na koniec wmieszaj śmietankę, musztardę i sos sojowy."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7466707820600134934"
+  },
+  {
+   "id": "gulasz-wegierski-paprykowy",
+   "category": "wolowina",
+   "name": "Gulasz węgierski paprykowy na smalcu",
+   "minutes": 150,
+   "freeze_months": 3,
+   "sides": "kluski, pieczywo, ziemniaki",
+   "thaw": "Mrozi się znakomicie, smak po rozmrożeniu jest jeszcze głębszy.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "wolowina_gul",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "smalec",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kminek",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wołowinę pokrój w kostkę i obsmaż partiami na smalcu.",
+    "Dodaj cebulę i smaż do zeszklenia, potem czosnek, paprykę słodką, wędzoną i kminek.",
+    "Wlej 400 ml wody, dodaj liść, majeranek i koncentrat, duś pod przykryciem ok. 1,5 godziny.",
+    "Dodaj paprykę w kostce i duś jeszcze 20 minut."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7290150580079627553"
+  },
+  {
+   "id": "wolowina-stir-fry",
+   "category": "wolowina",
+   "name": "Wołowina stir-fry z warzywami",
+   "minutes": 20,
+   "freeze_months": 2,
+   "sides": "makaron ryżowy, ryż",
+   "thaw": "Najlepsze na świeżo. Można mrozić, ale warzywa stracą chrupkość.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "wolowina_gul",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "ocet",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "skrobia",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "miod",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sezam",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Wołowinę pokrój w cienkie paski w poprzek włókien, wymieszaj z łyżką octu, 2 łyżkami sosu sojowego i skrobią.",
+    "Usmaż mięso na bardzo gorącej patelni partiami, odłóż.",
+    "Podsmaż cebulę, paprykę, cukinię i czosnek 3 minuty.",
+    "Dodaj mięso, resztę sosu sojowego, octu i miód, wymieszaj i posyp sezamem."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7387818655687494945"
+  },
+  {
+   "id": "grochowka-wojskowa-zeberka",
+   "category": "zupy",
+   "name": "Grochówka wojskowa z wędzonymi żeberkami",
+   "minutes": 90,
+   "freeze_months": 3,
+   "sides": "pieczywo",
+   "thaw": "Mrozi się świetnie. Zbyt gęstą rozrzedź wodą przy odgrzewaniu.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "zeberka_wedzone",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "groch",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "boczek",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "kielbasa",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "pietruszka",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziele",
+     "amt": 3,
+     "unit": "szt"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Żeberka i opłukany groch zalej 1 l wody, dodaj liść i ziele, gotuj 40 minut.",
+    "Dodaj startą marchew, pietruszkę i ziemniaki w kostce.",
+    "Boczek i kiełbasę w kostce podsmaż z cebulą i czosnkiem, dodaj do zupy.",
+    "Gotuj, aż groch się rozpadnie. Wyjmij żeberka, obierz mięso i włóż z powrotem. Dopraw majerankiem."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7432579453491875094"
+  },
+  {
+   "id": "zupa-cebulowa-francuska",
+   "category": "zupy",
+   "name": "Francuska zupa cebulowa",
+   "minutes": 70,
+   "freeze_months": 3,
+   "sides": "grzanki z serem",
+   "thaw": "Mrozi się świetnie, grzanki rób świeże.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "cebula",
+     "amt": 700,
+     "unit": "g"
+    },
+    {
+     "pid": "maslo",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "wino_biale",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cebulę pokrój w cienkie piórka i duś na maśle z olejem ok. 40 minut, aż się skarmelizuje.",
+    "Oprósz mąką, wlej wino i odparuj.",
+    "Dodaj tymianek i 600 ml wody z kostką, gotuj 15 minut i dopraw.",
+    "Grzanki z serem zrób świeże przy podaniu."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7473183350740520214"
+  },
+  {
+   "id": "zupa-chrzanowa",
+   "category": "zupy",
+   "name": "Zupa chrzanowa z białą kiełbasą i boczkiem",
+   "minutes": 50,
+   "freeze_months": 2,
+   "sides": "jajko na twardo, pieczywo",
+   "thaw": "Mroź bez jajek. Odgrzewaj bez wrzenia, żeby chrzan nie zgorzkniał.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "boczek",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "biala_kielbasa",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "ziele",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 170,
+     "unit": "g"
+    },
+    {
+     "pid": "zakwas",
+     "amt": 170,
+     "unit": "ml"
+    },
+    {
+     "pid": "chrzan",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Boczek w kostce wytop z cebulą i czosnkiem.",
+    "Dodaj 350 ml wody, ziele, liść i ziemniaki w kostce, gotuj 15 minut.",
+    "Dodaj białą kiełbasę w plastrach i zakwas, gotuj 10 minut.",
+    "Zdejmij z ognia i wmieszaj chrzan oraz majeranek."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7491713726089923862"
+  },
+  {
+   "id": "mielone-z-serem-i-pieczarkami",
+   "category": "mielone",
+   "name": "Kotlety mielone nadziewane serem i pieczarkami",
+   "minutes": 50,
+   "freeze_months": 3,
+   "sides": "ziemniaki, mizeria, kasza",
+   "thaw": "Mroź usmażone kotlety przełożone papierem. Odgrzewaj w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wp",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "maslo",
+     "amt": 10,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 70,
+     "unit": "g"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Pieczarki z cebulą usmaż na maśle do odparowania, dopraw i przestudź.",
+    "Mięso wymieszaj z jajkiem, 1 łyżką bułki, pietruszką, papryką, solą i pieprzem.",
+    "Uformuj płaskie placki, nałóż farsz i kostkę sera, zlep w kotlety.",
+    "Obtocz w bułce tartej i smaż na średnim ogniu po 5–6 minut z każdej strony."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7419969776073706774"
+  },
+  {
+   "id": "klopsiki-wolowe-boczek",
+   "category": "mielone",
+   "name": "Klopsiki wołowe z boczkiem w sosie pomidorowym",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "spaghetti, ryż",
+   "thaw": "Mroź z sosem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wol",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "boczek",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "mleko",
+     "amt": 60,
+     "unit": "ml"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "grana",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "passata",
+     "amt": 350,
+     "unit": "ml"
+    },
+    {
+     "pid": "miod",
+     "amt": 0.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Bułkę tartą namocz w mleku. Wymieszaj z mięsem, drobno posiekanym boczkiem, odrobiną cebuli, czosnku, serem, solą i pieprzem.",
+    "Uformuj klopsiki i obsmaż je.",
+    "Na tej samej patelni podsmaż resztę cebuli i czosnku, wlej passatę z 50 ml wody i miód.",
+    "Włóż klopsiki i duś 15 minut."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7293564364555144480"
+  },
+  {
+   "id": "schab-pieczony-ziola",
+   "category": "wieprzowina",
+   "name": "Schab pieczony w ziołach i cytrynie",
+   "minutes": 80,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka, kanapki",
+   "thaw": "Mroź pokrojone plastry. Rozmrażaj w lodówce, odgrzewaj krótko pod przykryciem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "schab",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.5,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "cytryna",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zmiksuj czosnek, pietruszkę, oliwę, sok i skórkę z cytryny oraz musztardę.",
+    "Schab natrzyj solą, pieprzem i pastą ziołową, odstaw na godzinę.",
+    "Obsmaż ze wszystkich stron i piecz ok. 50 minut w 180°C (w środku 63°C).",
+    "Odstaw na 10 minut przed krojeniem."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7437185704884587798"
+  },
+  {
+   "id": "kurczak-w-platkach-kukurydzianych",
+   "category": "drob",
+   "name": "Chrupiący kurczak w płatkach kukurydzianych",
+   "minutes": 30,
+   "freeze_months": 2,
+   "sides": "frytki, surówka, ryż",
+   "thaw": "Możesz mrozić surowe, panierowane paski i piec je prosto z zamrażarki (ok. 25 minut).",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "platki_kukurydziane",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek_granulowany",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w paski i dopraw solą, pieprzem, papryką i czosnkiem.",
+    "Płatki pokrusz.",
+    "Obtocz mięso w mące, jajku i płatkach.",
+    "Piecz na blasze skropionej olejem 20 minut w 200°C albo usmaż."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7202096418138393861"
+  },
+  {
+   "id": "quesadilla-kurczak-limonka",
+   "category": "drob",
+   "name": "Quesadilla z limonkowym kurczakiem",
+   "minutes": 20,
+   "freeze_months": 1,
+   "sides": "salsa, guacamole",
+   "thaw": "Najlepsza na świeżo. Samego kurczaka możesz przygotować wcześniej.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "limonka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "tortilla",
+     "amt": 4,
+     "unit": "szt"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w paski, zamarynuj w soku z połówki limonki, tymianku, soli i pieprzu.",
+    "Usmaż na oleju.",
+    "Na tortillę połóż ser, kurczaka i cebulę, przykryj drugą.",
+    "Smaż na suchej patelni po 2 minuty z każdej strony."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7464113887210736918"
+  },
+  {
+   "id": "kotlet-schabowy",
+   "category": "wieprzowina",
+   "name": "Kotlet schabowy z mizerią",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "ziemniaki z koperkiem, mizeria",
+   "thaw": "Możesz mrozić surowe, panierowane kotlety przełożone papierem i smażyć po rozmrożeniu.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "schab",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Schab pokrój na 2 grube plastry, rozbij i dopraw.",
+    "Obtocz w mące, roztrzepanym jajku i bułce tartej.",
+    "Smaż na rozgrzanym oleju po 4 minuty z każdej strony."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7510862529359383830"
+  },
+  {
+   "id": "kurczak-sos-pomidorowy-bazylia",
+   "category": "makaron",
+   "name": "Kurczak w sosie pomidorowym z bazylią",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "makaron, ryż",
+   "thaw": "Mrozi się bardzo dobrze. Świeżą bazylię dodaj po odgrzaniu.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 800,
+     "unit": "g"
+    },
+    {
+     "pid": "bazylia",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 2,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "przyprawa_kurczak",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Podsmaż cebulę 3 minuty, dodaj kurczaka w kostce z przyprawą i smaż 7 minut.",
+    "Dodaj czosnek, a po 2 minutach pomidory, sos sojowy i paprykę.",
+    "Gotuj 10–15 minut, aż sos zgęstnieje, na koniec dodaj bazylię.",
+    "Makaron ugotuj osobno."
+   ],
+   "inspired_by": "Bartłomiej Włodarczyk",
+   "source_url": "https://www.tiktok.com/@bartlomiej_wlodarczyk/video/7345028805909548320"
+  },
+  {
+   "id": "sos-pomidorowy-indyk",
+   "category": "makaron",
+   "name": "Szybki sos pomidorowy z mielonym indykiem",
+   "minutes": 20,
+   "freeze_months": 3,
+   "sides": "spaghetti",
+   "thaw": "Mroź w płaskich woreczkach.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "indyk_mielony",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 110,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 800,
+     "unit": "g"
+    },
+    {
+     "pid": "bazylia",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "grana",
+     "amt": 25,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Podsmaż cebulę, potem czosnek.",
+    "Dodaj mięso i smaż do zarumienienia.",
+    "Wlej pomidory, dopraw solą, pieprzem i papryką, gotuj 10 minut.",
+    "Dodaj bazylię. Ser zetrzyj przy podaniu."
+   ],
+   "inspired_by": "Bartłomiej Włodarczyk",
+   "source_url": "https://www.tiktok.com/@bartlomiej_wlodarczyk/video/7225574810175245595"
+  },
+  {
+   "id": "kremowy-makaron-pomidorowy-jogurt",
+   "category": "makaron",
+   "name": "Kremowy makaron pomidorowy z kurczakiem i jogurtem",
+   "minutes": 15,
+   "freeze_months": 1,
+   "sides": "",
+   "thaw": "Danie na świeżo: sos z jogurtem po mrożeniu się rozwarstwia.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "makaron",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "jogurt_grecki",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "grana",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "bazylia",
+     "amt": 0.25,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj makaron. Kurczaka w kostce dopraw i podsmaż, odłóż.",
+    "Podsmaż cebulę i czosnek, dodaj koncentrat i smaż 2 minuty.",
+    "Wmieszaj jogurt i 100 ml wody, potem bazylię.",
+    "Dodaj makaron, kurczaka i starty ser, mieszaj do kremowej konsystencji."
+   ],
+   "inspired_by": "Bartłomiej Włodarczyk",
+   "source_url": "https://www.tiktok.com/@bartlomiej_wlodarczyk/video/7200769057736461573"
+  },
+  {
+   "id": "tagliatelle-kurczak-bazylia",
+   "category": "makaron",
+   "name": "Tagliatelle z pieczonym kurczakiem w sosie bazyliowym",
+   "minutes": 25,
+   "freeze_months": 1,
+   "sides": "",
+   "thaw": "Najlepsze na świeżo. Pieczonego kurczaka możesz zrobić na zapas.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "makaron",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "mleko",
+     "amt": 200,
+     "unit": "ml"
+    },
+    {
+     "pid": "bazylia",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "grana",
+     "amt": 35,
+     "unit": "g"
+    },
+    {
+     "pid": "przyprawa_kurczak",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka przekrój na cienkie filety, dopraw i upiecz 16–20 minut w 190°C.",
+    "Ugotuj makaron, zachowaj trochę wody.",
+    "Zmiksuj mleko z bazylią, solą i pieprzem, podgrzej na patelni z wodą z makaronu i serem.",
+    "Wymieszaj z makaronem i pokrojonym kurczakiem."
+   ],
+   "inspired_by": "Bartłomiej Włodarczyk",
+   "source_url": "https://www.tiktok.com/@bartlomiej_wlodarczyk/video/7235574031682948378"
+  },
+  {
+   "id": "pulpety-z-warzywami-passata",
+   "category": "mielone",
+   "name": "Pulpety z ziemniakiem i marchewką w passacie",
+   "minutes": 45,
+   "freeze_months": 3,
+   "sides": "makaron, ryż, ziemniaki",
+   "thaw": "Mroź z sosem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "lopatka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziola_prowansalskie",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "passata",
+     "amt": 250,
+     "unit": "ml"
+    },
+    {
+     "pid": "cukier",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "oregano",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Mięso zmiel albo kup mieloną łopatkę. Ugotowane ziemniaki rozgnieć, marchew zetrzyj na drobno.",
+    "Wymieszaj z mięsem, jajkiem i przyprawami, uformuj kulki i obtocz w mące.",
+    "Obsmaż na złoto.",
+    "Wlej passatę z cukrem, solą i oregano, duś pod przykryciem 30 minut."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/pulpety-w-sosie-pomidorowym"
+  },
+  {
+   "id": "kurczak-na-ryzu-azjatycki",
+   "category": "drob",
+   "name": "Kurczak pieczony na ryżu z warzywami po azjatycku",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Mroź porcje z ryżem. Odgrzewaj z łyżką wody pod przykryciem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "ryz",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "brokul",
+     "amt": 0.3,
+     "unit": "szt"
+    },
+    {
+     "pid": "papryka",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "imbir",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "sezam",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Udka zamarynuj w sosie sojowym, miodzie, czosnku i imbirze.",
+    "Do naczynia wsyp ryż i warzywa, zalej 300 ml gorącej wody z kostką.",
+    "Ułóż kurczaka na wierzchu, polej resztą marynaty.",
+    "Piecz pod folią 35 minut w 190°C, potem 15 minut bez folii. Posyp sezamem."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/kurczak-pieczony-na-ryzu-z-warzywami-azjatyckimi"
+  },
+  {
+   "id": "sos-pieczona-feta-pomidorki",
+   "category": "makaron",
+   "name": "Kremowy sos z pieczonej fety i pomidorków",
+   "minutes": 35,
+   "freeze_months": 1,
+   "sides": "makaron",
+   "thaw": "Najlepszy na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "feta",
+     "amt": 180,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidorki_koktajlowe",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "oregano",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "chili_platki",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "bazylia",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "makaron",
+     "amt": 160,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "W naczyniu ułóż fetę, dookoła pomidorki i czosnek, polej oliwą i posyp oregano i chili.",
+    "Piecz 25 minut w 200°C.",
+    "Rozgnieć widelcem i wymieszaj na kremowy sos.",
+    "Dodaj ugotowany makaron i bazylię."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/kremowy-sos-z-pieczonej-fety-i-pomidorkow"
+  },
+  {
+   "id": "placki-z-cukinii-i-ziemniakow",
+   "category": "wege",
+   "name": "Placki z cukinii i ziemniaków z sosem czosnkowo-koperkowym",
+   "minutes": 40,
+   "freeze_months": 2,
+   "sides": "surówka",
+   "thaw": "Usmażone placki możesz mrozić bez sosu i odgrzewać w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "cukinia",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jogurt_grecki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cukinię i ziemniaki zetrzyj na tarce, posól i odciśnij z wody.",
+    "Wymieszaj z cebulą, jajkiem, mąką i pieprzem.",
+    "Smaż małe placki na rozgrzanym oleju po 3 minuty z każdej strony.",
+    "Jogurt wymieszaj z czosnkiem, koperkiem i solą."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/placki-z-cukinii-i-ziemniakow-z-sosem-czosnkowo-koperkowym"
+  },
+  {
+   "id": "placki-ziemniaczane",
+   "category": "wege",
+   "name": "Placki ziemniaczane",
+   "minutes": 40,
+   "freeze_months": 2,
+   "sides": "śmietana, gulasz, cukier",
+   "thaw": "Usmażone placki mroź przełożone papierem. Odgrzewaj w piekarniku 200°C, będą znowu chrupiące.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ziemniaki",
+     "amt": 600,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ziemniaki i cebulę zetrzyj na drobnej tarce, odlej nadmiar soku.",
+    "Dodaj jajko, mąkę, sól i pieprz.",
+    "Smaż na mocno rozgrzanym oleju na chrupko z obu stron."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/placki-ziemniaczane"
+  },
+  {
+   "id": "placki-kapusta-kiszona-kielbasa",
+   "category": "wieprzowina",
+   "name": "Placki z kapusty kiszonej z serem i kiełbasą",
+   "minutes": 35,
+   "freeze_months": 2,
+   "sides": "śmietana, sos czosnkowy",
+   "thaw": "Usmażone placki możesz mrozić i odgrzewać w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kapusta_kiszona",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "kielbasa",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kapustę odciśnij i drobno posiekaj.",
+    "Wymieszaj z kiełbasą i serem w kostce, cebulą, jajkami, mąką, majerankiem i pieprzem.",
+    "Smaż placki na oleju po 3–4 minuty z każdej strony."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/placki-z-kapusty-kiszonej-z-serem-i-kielbasa"
+  },
+  {
+   "id": "tortille-miesno-serowe",
+   "category": "mielone",
+   "name": "Chrupiące tortille mięsno-serowe",
+   "minutes": 30,
+   "freeze_months": 1,
+   "sides": "salsa, sałata",
+   "thaw": "Farsz mięsny możesz mrozić. Tortille składaj na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "mielone_wol",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "tortilla",
+     "amt": 4,
+     "unit": "szt"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "kumin",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Podsmaż cebulę i czosnek, dodaj mięso i przyprawy, smaż do zarumienienia, dodaj koncentrat.",
+    "Na połowę każdej tortilli połóż mięso i ser, złóż na pół.",
+    "Smaż na suchej patelni na chrupko z obu stron."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/chrupiace-tortille-miesno-serowe"
+  },
+  {
+   "id": "domowe-nuggetsy",
+   "category": "drob",
+   "name": "Domowe nuggetsy z kurczaka",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "frytki, surówka, sos czosnkowy",
+   "thaw": "Mroź surowe, panierowane nuggetsy na tacce, potem w woreczku. Piecz prosto z zamrażarki.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek_granulowany",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka zmiksuj krótko albo drobno posiekaj, dopraw solą, pieprzem, papryką i czosnkiem.",
+    "Mokrymi dłońmi formuj płaskie nuggetsy.",
+    "Obtocz w mące, jajku i bułce tartej.",
+    "Smaż na oleju 3 minuty z każdej strony albo piecz 18 minut w 200°C."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/domowe-nuggetsy-jak-z-mcdonalds"
+  },
+  {
+   "id": "zupa-orientalna-kurczak-curry",
+   "category": "zupy",
+   "name": "Orientalna zupa z kurczakiem i curry",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ryż, makaron ryżowy",
+   "thaw": "Mroź bez ryżu i makaronu.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "imbir",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "curry",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "mleko_kokos",
+     "amt": 200,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "limonka",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Podsmaż cebulę, czosnek, imbir i curry.",
+    "Dodaj kurczaka w kostce i obsmaż.",
+    "Wlej 700 ml wody z kostką, dodaj marchew i paprykę, gotuj 15 minut.",
+    "Wlej mleczko kokosowe, dopraw sosem sojowym i sokiem z limonki."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://smaker.pl/przepisy-zupy/przepis-zupa-orientalna-z-kurczakiem-i-curry-wedlug-ewy-wachowicz,2026088,ewa-gotuje.html"
+  },
+  {
+   "id": "risotto-z-warzywami",
+   "category": "wege",
+   "name": "Szybkie risotto z warzywami",
+   "minutes": 35,
+   "freeze_months": 1,
+   "sides": "",
+   "thaw": "Najlepsze na świeżo. Ewa radzi zrobić więcej i odgrzać następnego dnia z odrobiną bulionu.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "ryz_arborio",
+     "amt": 160,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "groszek",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maslo",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "grana",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "wino_biale",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Na oleju zeszklij cebulę i czosnek, wsyp ryż i smaż minutę.",
+    "Wlej wino, a potem stopniowo 700 ml gorącego bulionu, mieszając.",
+    "Po 10 minutach dodaj cukinię, paprykę i groszek.",
+    "Gdy ryż będzie al dente, wmieszaj masło i starty ser."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://smaker.pl/przepisy-dania-glowne/przepis-szybkie-risotto-z-warzywami-wedlug-ewy-wachowicz,2026089,ewa-gotuje.html"
+  },
+  {
+   "id": "krem-z-cebuli",
+   "category": "zupy",
+   "name": "Krem z cebuli z tymiankiem",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "grzanki, starty ser",
+   "thaw": "Mrozi się bardzo dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "cebula",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "maslo",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "wino_biale",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cebulę w półplasterkach podsmaż na maśle z tymiankiem.",
+    "Po kilkunastu minutach dodaj czosnek i smaż do zarumienienia.",
+    "Wlej wino, odparuj, dolej 600 ml gorącego bulionu i gotuj 10 minut.",
+    "Zmiksuj na krem, dopraw gałką, solą i pieprzem."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://smaker.pl/ewa-gotuje-popisowy-obiad-ewy-wachowicz-takie-dania-warto-zaserwowac-gosciom,2040355,a,.html"
+  },
+  {
+   "id": "klops-z-indyka",
+   "category": "mielone",
+   "name": "Klops z indyka z ziołami",
+   "minutes": 100,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka, kanapki",
+   "thaw": "Mroź pokrojony w plastry. Pasuje na ciepło i na zimno.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "indyk_mielony",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "kasza_manna",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kolendra_mielona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kumin",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kurkuma",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wymieszaj mięso z jajkami, czosnkiem, kaszą manną, przyprawami i oliwą, wyrób pulchną masę.",
+    "Przełóż do keksówki wysmarowanej tłuszczem i posypanej bułką, wyrównaj i polej oliwą.",
+    "Piecz 1,5 godziny w 180°C, z naczyniem z wodą na dnie piekarnika."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://smaker.pl/ewa-gotuje-popisowy-obiad-ewy-wachowicz-takie-dania-warto-zaserwowac-gosciom,2040355,a,.html"
+  },
+  {
+   "id": "podudzia-w-chrupiacej-panierce",
+   "category": "drob",
+   "name": "Podudzia w chrupiącej panierce z płatków",
+   "minutes": 50,
+   "freeze_months": 2,
+   "sides": "puree, surówka z marchwi",
+   "thaw": "Najlepsze na świeżo. Upieczone możesz zamrozić i odgrzać w piekarniku.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "podudzia",
+     "amt": 600,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "platki_kukurydziane",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "chili",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Podudzia natnij przy kości, dopraw solą, pieprzem i ostrą papryką.",
+    "Jajko roztrzep z mąką, zanurz w nim mięso, obtocz w pokruszonych płatkach.",
+    "Obsmaż na oleju i dopiecz 20 minut w 190°C."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://smaker.pl/ewa-gotuje-pomysly-na-dania-obiadowe-i-przekaski-ewy-wachowicz,1982676,a,.html"
+  },
+  {
+   "id": "kotlety-po-czesku",
+   "category": "wieprzowina",
+   "name": "Kotlety po czesku w cieście ziemniaczanym",
+   "minutes": 40,
+   "freeze_months": 2,
+   "sides": "surówka z marchwi",
+   "thaw": "Na świeżo. Zamarynowane mięso możesz zamrozić przed smażeniem.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "schab",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "maslanka",
+     "amt": 200,
+     "unit": "ml"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "smalec",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Schab pokrój, rozbij i zamarynuj w maślance z czosnkiem na co najmniej 2 godziny.",
+    "Zetrzyj ziemniaki i cebulę, odciśnij, wymieszaj z jajkiem, mąką i przyprawami.",
+    "Osusz mięso, dopraw i oblep z obu stron masą ziemniaczaną.",
+    "Smaż na smalcu po 5 minut z każdej strony."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://smaker.pl/ewa-gotuje-wloskie-sniadanie-czeski-obiad-i-deser-prosto-z-prl-u-ewa-wachowicz-zaskakuje-nowymi-przepisami,2077136,a,.html"
+  },
+  {
+   "id": "roladki-z-kurczaka",
+   "category": "drob",
+   "name": "Roladki z kurczaka ze szpinakiem i serem",
+   "minutes": 50,
+   "freeze_months": 3,
+   "sides": "ryż, ziemniaki, surówka",
+   "thaw": "Mroź roladki w sosie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Filety rozbij na cienkie płaty, dopraw solą i pieprzem.",
+    "Szpinak podsmaż z czosnkiem, nałóż na mięso z plastrem sera i zwiń, spnij wykałaczką.",
+    "Oprósz mąką i obsmaż ze wszystkich stron.",
+    "Wlej 200 ml wody z kostką, duś 15 minut, zabiel śmietaną."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://www.ewa-wachowicz.pl/roladki-z-kurczaka-id111.html"
+  },
+  {
+   "id": "kotleciki-z-piersi-kurczaka",
+   "category": "drob",
+   "name": "Kotleciki siekane z piersi kurczaka",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka, kasza",
+   "thaw": "Mroź usmażone kotleciki. Odgrzewaj w piekarniku albo na patelni pod przykryciem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 40,
+     "unit": "ml"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Pierś posiekaj drobno nożem.",
+    "Wymieszaj z jajkiem, startą cebulą, koperkiem, mąką, śmietaną, solą i pieprzem.",
+    "Nakładaj łyżką na rozgrzany olej i smaż po 3–4 minuty z każdej strony."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://www.ewa-wachowicz.pl/kotleciki-z-piersi-z-kurczaka-id76.html"
+  },
+  {
+   "id": "kotlety-mielone-z-indyka",
+   "category": "mielone",
+   "name": "Soczyste kotlety mielone z indyka",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "ziemniaki, mizeria, kasza",
+   "thaw": "Mroź usmażone kotlety przełożone papierem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "indyk_mielony",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cebulę zeszklij i przestudź.",
+    "Wymieszaj mięso z jajkiem, 2 łyżkami bułki namoczonej w odrobinie wody, cebulą, czosnkiem, majerankiem i pietruszką.",
+    "Uformuj kotlety, obtocz w reszcie bułki.",
+    "Smaż na średnim ogniu po 4–5 minut z każdej strony."
+   ],
+   "inspired_by": "Do Schrupania",
+   "source_url": "https://doschrupania.pl/dania-glowne/mielone-z-indyka-przepis/"
+  },
+  {
+   "id": "pierogi-szpinak-feta",
+   "category": "wege",
+   "name": "Pierogi ze szpinakiem, fetą i twarogiem",
+   "minutes": 80,
+   "freeze_months": 3,
+   "sides": "masło, cebulka",
+   "thaw": "Mroź surowe pierogi na tacce, potem w woreczku. Gotuj prosto z zamrażarki.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "maka",
+     "amt": 20,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "feta",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "twarog",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "maslo",
+     "amt": 10,
+     "unit": "g"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ciasto: zagnieć mąkę z jajkiem, szczyptą soli i ok. 150 ml ciepłej wody, odstaw na 20 minut.",
+    "Farsz: podsmaż cebulę i czosnek na maśle, dodaj szpinak do zwiędnięcia, wymieszaj z pokruszoną fetą i twarogiem.",
+    "Rozwałkuj ciasto, wykrawaj kółka, nakładaj farsz i sklejaj.",
+    "Gotuj w osolonej wodzie 2–3 minuty od wypłynięcia."
+   ],
+   "inspired_by": "Do Schrupania",
+   "source_url": "https://doschrupania.pl/dania-glowne/pierogi-ze-szpinakiem-i-serem/"
+  }
+ ]
+}

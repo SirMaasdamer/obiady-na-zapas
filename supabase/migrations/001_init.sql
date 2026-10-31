@@ -107,6 +107,7 @@ create table if not exists recipes (
   source text,                     -- seed | claude
   default_active boolean not null default true, -- false = czeka w banku przepisów
   added_on date,
+  freezer boolean not null default true, -- nadaje się do mrożenia
   inspired_by text,                -- np. „Ewa Wachowicz” (przepis własny, inspirowany)
   source_url text,                 -- link do oryginału
   updated_at timestamptz not null default now()

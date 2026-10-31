@@ -41,7 +41,7 @@ Deno.serve(async (req) => {
       const recipes = (kat.data.recipes ?? []).map((r: any) => ({
         id: r.id, name: r.name, category: r.category, base: r.base ?? 2, minutes: r.minutes ?? null, freeze_months: r.freeze_months ?? 3,
         sides: r.sides ?? '', thaw: r.thaw ?? '', ingredients: r.ingredients ?? [], steps: r.steps ?? [], source: r.source ?? 'seed',
-        default_active: r.default_active !== false, added_on: r.added_on ?? null, inspired_by: r.inspired_by ?? null,
+        default_active: r.default_active !== false, added_on: r.added_on ?? null, inspired_by: r.inspired_by ?? null, freezer: r.freezer !== false,
         source_url: /^https:\/\//.test(r.source_url ?? '') ? r.source_url : null, updated_at: new Date().toISOString(),
       }));
       await chunked(recipes, part => db.from('recipes').upsert(part, { onConflict: 'id' }));

@@ -36,6 +36,11 @@ export function validate({ seedProducts, seedRecipes, batches }) {
       }
       products.set(p.id, p);
     }
+  }
+  // przepisy sprawdzamy dopiero po wczytaniu produktów ze wszystkich paczek (paczka może używać produktu z innej)
+  for (const b of batches) {
+    const at = m => errors.push(`${b.file}: ${m}`);
+    if (b.error) continue;
     for (const r of b.recipes || []) {
       const rr = m => at(`przepis ${r.id || r.name}: ${m}`);
       if (!/^[a-z0-9-]+$/.test(r.id || '')) { rr('id tylko z małych liter, cyfr i -'); continue; }
@@ -60,11 +65,11 @@ export function validate({ seedProducts, seedRecipes, batches }) {
 export function buildKatalog({ seedProducts, seedRecipes, batches }) {
   const products = new Map(seedProducts.map(p => [p.id, p]));
   for (const b of batches) for (const p of b.products || []) if (!products.has(p.id)) products.set(p.id, { ...p, pantry: !!p.pantry, loose: !!p.loose, pack: +p.pack || 1, cat: p.pantry ? 'spiżarnia' : p.cat });
-  const recipes = seedRecipes.map(({ active, ...r }) => ({ ...r, source: 'seed', default_active: active !== false }));
+  const recipes = seedRecipes.map(({ active, ...r }) => ({ freezer: true, ...r, source: 'seed', default_active: active !== false }));
   const ids = new Set(recipes.map(r => r.id));
   for (const b of batches) {
     const added_on = (b.file.match(/^\d{4}-\d{2}-\d{2}/) || [null])[0];
-    for (const r of b.recipes || []) if (!ids.has(r.id)) { ids.add(r.id); recipes.push({ base: 2, ...r, source: 'claude', default_active: true, added_on }); }
+    for (const r of b.recipes || []) if (!ids.has(r.id)) { ids.add(r.id); recipes.push({ base: 2, freezer: true, ...r, source: 'claude', default_active: true, added_on }); }
   }
   return { products: [...products.values()], recipes };
 }

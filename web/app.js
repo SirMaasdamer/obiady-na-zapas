@@ -17,7 +17,7 @@ const visible = r => { const h = S.hh[r.id]; return h ? h.active && !h.removed :
 const activeRecipes = () => Object.values(S.recipes).filter(visible);
 const bankFor = cat => Object.values(S.recipes).filter(r => !visible(r) && !S.hh[r.id]?.removed && r.category === cat);
 const ui = {
-  tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', q: '', pq: '', pmode: 'offers',
+  tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', onlyFreezer: lsGet('onlyFreezer', false), q: '', pq: '', pmode: 'offers',
   portions: lsGet('portions', 8), trip: lsGet('trip', 8), plan: null, sheet: null,
   member: lsGet('member', ''), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
@@ -93,17 +93,18 @@ async function toggleReact(rid, field) {
 function renderCats() {
   const counts = {}; activeRecipes().forEach(r => counts[r.category] = (counts[r.category] || 0) + 1);
   $('#rcats').innerHTML = [['all', 'Wszystkie']].concat(CATEGORIES).map(([k, n]) => `<button class="chip" data-act="cat" data-k="${k}" aria-pressed="${ui.cat === k}">${n}${k !== 'all' && counts[k] ? ` <span style="opacity:.6">${counts[k]}</span>` : ''}</button>`).join('');
-  $('#rfilters').innerHTML = [['all', 'Wszystkie dania'], ['fav', '♥ Moje ulubione'], ['want', 'Zróbmy to'], ['promo', 'Z promocją'], ['new', 'Nowe']].map(([k, n]) => `<button class="chip soft" data-act="filter" data-k="${k}" aria-pressed="${ui.filter === k}">${n}</button>`).join('');
+  $('#rfilters').innerHTML = `<button class="chip soft" data-act="only-freezer" aria-pressed="${ui.onlyFreezer}">❄ Do mrożenia</button>` + [['all', 'Wszystkie dania'], ['fav', '♥ Moje ulubione'], ['want', 'Zróbmy to'], ['promo', 'Z promocją'], ['new', 'Nowe']].map(([k, n]) => `<button class="chip soft" data-act="filter" data-k="${k}" aria-pressed="${ui.filter === k}">${n}</button>`).join('');
   $('#b-gen').textContent = ui.cat === 'all' ? '✦ Nowe przepisy' : `✦ Nowe: ${CATN[ui.cat]}`;
 }
 function renderRecipes() {
   const box = $('#rlist'); const all = activeRecipes();
-  $('#rcount').textContent = all.length ? `${all.length} dań, które dobrze znoszą mrożenie` : 'Dania, które dobrze znoszą mrożenie';
+  $('#rcount').textContent = all.length ? `${all.length} dań · ${all.filter(r => r.freezer !== false).length} do mrożenia` : 'Przepisy na obiady';
   if (!all.length) { box.innerHTML = S.loaded.recipes ? `<div class="empty"><h3>Nie ma jeszcze przepisów</h3><div>Baza przepisów jeszcze się wczytuje. Zajrzyj za kilka minut.</div></div>` : `<div class="empty"><span class="spin"></span>Wczytuję przepisy…</div>`; return; }
   const q = ui.q.trim().toLowerCase(), week = Date.now() - 7 * 864e5;
   let list = all.map(r => ({ ...r, c: L.recipeCost(r, 2), re: reactFor(r.id), isNew: ui.justAdded.has(r.id) || (S.hh[r.id]?.activated_at && new Date(S.hh[r.id].activated_at).getTime() > week) || (r.source === 'claude' && r.added_on && new Date(r.added_on).getTime() > week) }))
     .filter(r => {
       if (ui.cat !== 'all' && r.category !== ui.cat) return false;
+      if (ui.onlyFreezer && r.freezer === false) return false;
       if (q) { const hay = (r.name + ' ' + (r.ingredients || []).map(i => S.products[i.pid]?.name || '').join(' ')).toLowerCase(); if (!hay.includes(q)) return false; }
       if (ui.filter === 'fav') return r.re.like.includes(ui.member);
       if (ui.filter === 'want') return r.re.want.length > 0;
@@ -117,7 +118,7 @@ function renderRecipes() {
     const best = SK.filter(s => !r.c.miss[s]).sort((a, b) => r.c.tot[a] - r.c.tot[b])[0];
     const nPromo = new Set(r.c.promos.map(x => x.pid)).size, liked = r.re.like.includes(ui.member);
     return `<div class="card" role="button" tabindex="0" data-act="open" data-id="${esc(r.id)}">
-      <span class="tape">${esc(CATN[r.category] || r.category)} · mroź do ${r.freeze_months || 3} mies.</span>
+      <span class="tape">${esc(CATN[r.category] || r.category)} · ${r.freezer === false ? 'na bieżąco' : `mroź do ${r.freeze_months || 3} mies.`}</span>
       <button class="heart ${liked ? 'on' : ''}" data-act="like" data-id="${esc(r.id)}" aria-label="Ulubione">${liked ? HEART : HEART_O}</button>
       <h3 style="padding-right:30px">${esc(r.name)}</h3>
       <div class="meta">${r.isNew ? '<span class="pill new">Nowe</span>' : ''}${nPromo ? `<span class="pill promo">${nPromo} w promocji</span>` : ''}${r.re.want.length ? `<span class="pill want">Zróbmy to ${faces(r.re.want)}</span>` : ''}${r.re.like.length ? `<span class="pill muted">♥ ${faces(r.re.like)}</span>` : ''}<span>${r.minutes || '?'} min · z: ${esc(r.sides || 'dowolne dodatki')}</span></div>
@@ -128,7 +129,7 @@ function renderRecipes() {
 
 function recipeSheet() {
   const r = S.recipes[ui.sheet.id]; if (!r) return closeSheet();
-  return `<div class="sheet-head"><div><h2>${esc(r.name)}</h2><div class="meta" style="margin-top:6px"><span>${esc(CATN[r.category] || '')}</span><span>${r.minutes || '?'} min</span><span>mrożenie do ${r.freeze_months || 3} mies.</span><span>z: ${esc(r.sides || 'dowolne dodatki')}</span></div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  return `<div class="sheet-head"><div><h2>${esc(r.name)}</h2><div class="meta" style="margin-top:6px"><span>${esc(CATN[r.category] || '')}</span><span>${r.minutes || '?'} min</span><span>${r.freezer === false ? 'najlepsze na świeżo' : `mrożenie do ${r.freeze_months || 3} mies.`}</span><span>z: ${esc(r.sides || 'dowolne dodatki')}</span></div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
   ${r.inspired_by ? `<div class="sub">Inspiracja: ${r.source_url ? `<a href="${esc(r.source_url)}" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">${esc(r.inspired_by)} ↗</a>` : esc(r.inspired_by)}</div>` : ''}
   <div id="rd-react"></div>
   <div class="sec"><h4>Ile porcji robisz?</h4><div class="stepper"><div class="n"><button data-act="pdec" aria-label="Mniej">−</button><input id="rd-n" type="number" inputmode="numeric" min="1" max="40" value="${ui.portions}"><button data-act="pinc" aria-label="Więcej">+</button></div>
@@ -155,7 +156,7 @@ function drawRecipeDyn() {
   <div class="row"><button class="btn pri" data-act="to-list" style="flex:1">Dodaj ${n} porcji do listy</button><button class="btn" data-act="to-freezer">Ugotowane → do zamrażarki</button></div>
   <div class="sec"><h4>Składniki · ${n} porcji</h4><div class="box" style="padding-block:4px"><ul class="ing">${ing}</ul></div></div>
   <div class="sec"><h4>Przygotowanie</h4><ol class="steps">${(r.steps || []).map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>
-  ${r.thaw ? `<div class="sec"><h4>Mrożenie i odgrzewanie</h4><div class="box">${esc(r.thaw)}</div></div>` : ''}
+  ${r.thaw ? `<div class="sec"><h4>${r.freezer === false ? 'Przechowywanie' : 'Mrożenie i odgrzewanie'}</h4><div class="box">${esc(r.thaw)}</div></div>` : ''}
   <div>${ui.sheet.confirmDel ? `<div class="row"><span class="sub">Usunąć to danie z Waszych przepisów?</span><button class="btn sm danger" data-act="del-recipe">Tak, usuń</button><button class="btn sm" data-act="cancel-del">Anuluj</button></div>` : `<button class="btn sm ghost danger" data-act="ask-del">Usuń przepis</button>`}</div>`;
 }
 async function addRecipeToList() {
@@ -474,6 +475,7 @@ document.addEventListener('click', async e => {
     case 'close': closeSheet(); break;
     case 'cat': ui.cat = d.k; lsSet('cat', d.k); renderCats(); renderRecipes(); break;
     case 'filter': ui.filter = d.k; renderCats(); renderRecipes(); break;
+    case 'only-freezer': ui.onlyFreezer = !ui.onlyFreezer; lsSet('onlyFreezer', ui.onlyFreezer); renderCats(); renderRecipes(); break;
     case 'like': e.stopPropagation(); toggleReact(d.id, 'liked'); break;
     case 'want': toggleReact(d.id, 'wanted'); break;
     case 'pinc': case 'pdec': case 'pset': {
