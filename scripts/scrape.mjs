@@ -36,6 +36,76 @@ const ctx = await browser.newContext({
   userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36',
 });
 
+// ---------- diagnostyka: co robot widzi (zapis w dane/debug/, żeby dało się poprawiać odczyt) ----------
+const DEBUG = {};
+const dbg = (store, ...lines) => { (DEBUG[store] ??= []).push(lines.join(' ')); };
+let shotNo = 0;
+async function snapshot(store, page, label) {
+  try {
+    const text = (await page.innerText('body').catch(() => '')).replace(/\n{3,}/g, '\n\n');
+    const ls = await links(page).catch(() => []);
+    dbg(store, `\n===== ${label}: ${page.url()} | tytuł: ${await page.title().catch(() => '')} | tekst: ${text.length} znaków`);
+    dbg(store, text.slice(0, 6000));
+    dbg(store, `--- linki (${ls.length}), najlepiej ocenione:`);
+    for (const l of ls.map(l => ({ ...l, s1: scoreLink(l), s2: scoreOfferLink(l) })).sort((a, b) => Math.max(b.s1, b.s2) - Math.max(a.s1, a.s2)).slice(0, 25)) dbg(store, `  [${l.s1}/${l.s2}] ${l.text} → ${l.href}`);
+    if (shotNo < 12) {
+      await mkdir(new URL('../dane/debug/', import.meta.url), { recursive: true });
+      const f = `${store}-${++shotNo}.jpg`;
+      await page.screenshot({ path: new URL('../dane/debug/' + f, import.meta.url).pathname, type: 'jpeg', quality: 45, scale: 'css' });
+      dbg(store, `--- zrzut: dane/debug/${f}`);
+    }
+  } catch (e) { dbg(store, 'snapshot błąd: ' + e.message); }
+}
+
+// ---------- dane JSON ładowane przez strony sklepów (oferty, gazetki) → linie „nazwa … cena” ----------
+const JSON_LINES = {}; let curStore = null;
+const PRICE_KEY = /^(price|prices|currentprice|pricevalue|cena|amount|value|gross|promoprice|promotionprice|saleprice|finalprice)$/i;
+const OLD_KEY = /^(oldprice|regularprice|strikeprice|originalprice|baseprice|cenaregularna|previousprice|crossedprice)$/i;
+const NAME_KEY = /^(title|name|productname|fulltitle|displayname|label|headline|subtitle|description|brand|keyfacts|basicprice|packaging|unit)$/i;
+function flattenJson(node, out, depth = 0) {
+  if (!node || depth > 12 || out.length > 4000) return;
+  if (Array.isArray(node)) { node.forEach(n => flattenJson(n, out, depth + 1)); return; }
+  if (typeof node !== 'object') return;
+  const words = [], prices = [], olds = [];
+  for (const [k, v] of Object.entries(node)) {
+    if (typeof v === 'string' && NAME_KEY.test(k) && v.length < 160 && !/^https?:/.test(v)) words.push(v.replace(/<[^>]+>/g, ' '));
+    const pv = typeof v === 'number' ? v : typeof v === 'string' && /^\d{1,4}([.,]\d{1,2})?$/.test(v.trim()) ? parseFloat(v.replace(',', '.')) : (v && typeof v === 'object' && !Array.isArray(v) && (typeof v.price === 'number' || typeof v.value === 'number')) ? (v.price ?? v.value) : null;
+    if (pv != null && pv > 0.3 && pv < 1000) { if (PRICE_KEY.test(k)) prices.push(pv); else if (OLD_KEY.test(k)) olds.push(pv); }
+  }
+  if (words.length && prices.length) out.push(`${words.join(' ')}\n${olds.length ? olds[0].toFixed(2).replace('.', ',') + ' zł\n' : ''}${Math.min(...prices).toFixed(2).replace('.', ',')} zł`);
+  for (const v of Object.values(node)) if (v && typeof v === 'object') flattenJson(v, out, depth + 1);
+}
+ctx.on('response', async r => {
+  try {
+    const ct = r.headers()['content-type'] || ''; if (!curStore || !ct.includes('json')) return;
+    const len = +(r.headers()['content-length'] || 0); if (len > 8e6) return;
+    const body = await r.json().catch(() => null); if (!body) return;
+    const out = []; flattenJson(body, out);
+    if (out.length) { (JSON_LINES[curStore] ??= new Map()).set(r.url(), out); dbg(curStore, `--- JSON ${r.url().slice(0, 160)}: ${out.length} pozycji, np.: ${out.slice(0, 3).map(x => x.replace(/\n/g, ' | ')).join(' || ')}`); }
+  } catch { }
+});
+
+// ---------- agregatory gazetek: wyszukiwanie produktu w ofertach danego sklepu (tekst, nie obrazy) ----------
+const AGG_SLUG = { b: 'biedronka', l: 'lidl', k: 'kaufland' };
+async function aggregatorPages(store, page) {
+  const out = [], kws = [...new Set(catalog.filter(p => p.kw?.length && p.ref).map(p => p.kw[0].trim()))];
+  let ok = 0, fail = 0;
+  for (const kw of kws) {
+    const url = `https://www.gazetki.pl/oferty/${encodeURIComponent(kw.replace(/\s+/g, '-'))}/${AGG_SLUG[store]}`;
+    try {
+      const r = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      if (!r || r.status() >= 400) { fail++; if (fail === 1) dbg(store, `agregator ${url}: HTTP ${r?.status()}`); if (fail >= 5 && !ok) break; continue; }
+      await sleep(700); await dismissCookies(page);
+      const text = await page.innerText('body').catch(() => '');
+      if (ok === 0) await snapshot(store, page, 'agregator (pierwsza strona)');
+      ok++; out.push({ page: 'agregator', text, src: 'agg' });
+    } catch (e) { fail++; if (fail >= 5 && !ok) break; }
+  }
+  log(`   agregator: ${ok} stron, ${fail} błędów`);
+  dbg(store, `agregator: ${ok} stron, ${fail} błędów`);
+  return out;
+}
+
 async function dismissCookies(page) {
   for (const s of ['#onetrust-accept-btn-handler', 'button#accept', '[data-testid="uc-accept-all-button"]']) {
     const el = page.locator(s).first(); if (await el.isVisible().catch(() => false)) { await el.click().catch(() => { }); await sleep(600); return; }
@@ -58,7 +128,7 @@ async function findLeaflets(store, page) {
   async function visit(url, depth) {
     if (seen.has(url) || found.length >= 2) return; seen.add(url);
     log(`  ${'  '.repeat(depth)}otwieram ${url}`);
-    try { await open(page, url); } catch (e) { log('   nie udało się:', e.message); return; }
+    try { await open(page, url); await snapshot(store, page, `gazetki (poziom ${depth})`); } catch (e) { log('   nie udało się:', e.message); dbg(store, `${url}: ${e.message}`); return; }
     const ls = (await links(page)).map(l => ({ ...l, score: scoreLink(l) })).filter(l => l.score >= 5 && !seen.has(l.href)).sort((a, b) => b.score - a.score);
     // strona z kilkoma mocnymi linkami do gazetek to lista; w przeciwnym razie to sama gazetka
     if (depth > 0 && (ls.filter(l => l.score >= 9).length < 3 || depth >= 2)) { found.push(url); return; }
@@ -71,7 +141,7 @@ async function findLeaflets(store, page) {
 // Strony z ofertami tygodnia: przewijamy (doładowanie kafelków) i bierzemy widoczny tekst.
 async function offerPages(store, page) {
   const out = [];
-  try { await open(page, STORES[store].home); } catch (e) { log('   strona główna niedostępna:', e.message); return out; }
+  try { await open(page, STORES[store].home); await snapshot(store, page, 'strona główna'); } catch (e) { log('   strona główna niedostępna:', e.message); dbg(store, 'strona główna: ' + e.message); return out; }
   const host = new URL(STORES[store].home).hostname.replace(/^www\./, '');
   const ls = (await links(page)).filter(l => l.href.includes(host)).map(l => ({ ...l, score: scoreOfferLink(l) })).filter(l => l.score >= 5).sort((a, b) => b.score - a.score).slice(0, 4);
   for (const l of ls) {
@@ -84,6 +154,7 @@ async function offerPages(store, page) {
       }
       const text = await page.innerText('body').catch(() => '');
       log(`   oferty: ${l.text || l.href} → ${text.length} znaków`);
+      await snapshot(store, page, 'oferty');
       if (text.length > 500) out.push({ page: 'www', text, src: 'www' });
     } catch (e) { log('   nie udało się:', e.message); }
   }
@@ -162,6 +233,8 @@ function collect(store, leaflet, pages) {
   const rows = [...exact, ...fromOcr].map(o => ({ store, leaflet, valid_from: v.valid_from, valid_to: v.valid_to, ...o }));
   const name = Object.fromEntries(catalog.map(p => [p.id, p.name]));
   OUT.offers.push(...rows);
+  dbg(store, `\n===== DOPASOWANE (${rows.length}):`); rows.forEach(r => dbg(store, `  ${r.product_id}: ${r.price_for_pack} zł ← „${r.name}” (${r.unit_info || ''})`));
+  for (const pg of pages) dbg(store, `źródło ${pg.src}/${pg.page}: ${pg.text.length} znaków`);
   OUT.promos.push(...rows.map(r => ({ product_id: r.product_id, name: name[r.product_id], store, store_name: STORES[store].name, promo: r.price_for_pack, regular: r.regular, from: r.valid_from, to: r.valid_to, note: [r.name, r.note].filter(Boolean).join(' · ').slice(0, 200) })));
   const chars = all.replace(/\s/g, '').length, ok = chars > 500;
   OUT.runs.push({ store, ran_at: new Date().toISOString(), status: ok ? 'ok' : 'error', valid_from: v.valid_from, valid_to: v.valid_to, matched: rows.length, message: ok ? `tekst: ${exact.length} · OCR: ${fromOcr.length}` : 'Nie udało się odczytać tekstu ofert.' });
@@ -173,9 +246,14 @@ for (const store of ONLY) {
   log(`\n▶ ${STORES[store].name}`);
   const page = await ctx.newPage();
   try {
+    curStore = store;
     const pages = await offerPages(store, page);
     const leaflets = await findLeaflets(store, page);
     for (const url of leaflets) { log(`  gazetka: ${url}`); pages.push(...await leafletPages(page, url)); }
+    pages.push(...await aggregatorPages(store, page));
+    const js = [...(JSON_LINES[store]?.values() || [])].flat();
+    if (js.length) { pages.push({ page: 'json', text: js.join('\n\n'), src: 'www' }); log(`   dane JSON: ${js.length} pozycji`); }
+    curStore = null;
     if (!pages.length) throw new Error('Nie znalazłem ani ofert, ani gazetki na stronie sklepu.');
     const s = collect(store, leaflets[0] || STORES[store].home, pages);
     if (!s.ok) failed++;
@@ -186,6 +264,10 @@ for (const store of ONLY) {
   } finally { await page.close(); }
 }
 await browser.close();
+
+// Podgląd dla diagnostyki
+await mkdir(new URL('../dane/debug/', import.meta.url), { recursive: true });
+for (const [st, lines] of Object.entries(DEBUG)) await writeFile(new URL(`../dane/debug/${st}.txt`, import.meta.url), lines.join('\n').slice(0, 400000) + '\n');
 
 // Wynik do dane/oferty.json (stąd funkcja „sync” w Supabase wgrywa go do bazy, a Claude dobiera przepisy).
 // Sklep, którego nie udało się odczytać, zachowuje poprzednie, wciąż ważne oferty.

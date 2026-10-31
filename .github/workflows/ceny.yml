@@ -3,6 +3,9 @@ name: Ceny z gazetek
 # Pobiera oferty i gazetki Biedronki, Lidla i Kauflandu, zapisuje je w dane/oferty.json
 # i prosi bazę o synchronizację. Za darmo, bez AI i bez sekretów.
 on:
+  push:
+    branches: [main]
+    paths: ["scripts/scrape.mjs", "scripts/extract.mjs", ".github/workflows/ceny.yml"]
   schedule:
     - cron: "30 4 * * 1,4"
   workflow_dispatch:
@@ -39,6 +42,6 @@ jobs:
         if: always()
         run: |
           git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
-          git add dane/oferty.json
+          git add dane/oferty.json dane/debug
           if ! git diff --cached --quiet; then git commit -q -m "Oferty $(date +%F)" && git pull -q --rebase && git push -q; fi
           bash scripts/sync.sh
