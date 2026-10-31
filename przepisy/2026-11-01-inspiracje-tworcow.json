@@ -1,0 +1,1734 @@
+{
+ "opis": "Dania inspirowane przepisami polskich twórców: Foodini, Bartłomiej Włodarczyk, Ewa Wachowicz, Michał Gotuje, Do Schrupania",
+ "products": [
+  {
+   "id": "chrzan",
+   "name": "Chrzan tarty",
+   "unit": "kg",
+   "pack": 0.18,
+   "loose": false,
+   "cat": "puszki i sosy",
+   "kw": [
+    "chrzan tarty",
+    "chrzan"
+   ],
+   "regular": {
+    "b": 3.99,
+    "l": 3.79,
+    "k": 4.29
+   }
+  },
+  {
+   "id": "szynka_wieprzowa",
+   "name": "Szynka wieprzowa bez kości",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "mięso",
+   "kw": [
+    "szynka wieprzowa",
+    "szynka bez kosci",
+    "mieso z szynki"
+   ],
+   "regular": {
+    "b": 18.99,
+    "l": 17.99,
+    "k": 19.99
+   }
+  },
+  {
+   "id": "kurczak_mielony",
+   "name": "Mięso mielone z kurczaka",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "mięso",
+   "kw": [
+    "mielone z kurczaka",
+    "mieso mielone z kurczaka",
+    "mielony z kurczaka"
+   ],
+   "regular": {
+    "b": 12.99,
+    "l": 11.99,
+    "k": 13.49
+   }
+  },
+  {
+   "id": "jablka",
+   "name": "Jabłka",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "warzywa",
+   "kw": [
+    "jablka",
+    "jablko"
+   ],
+   "regular": {
+    "b": 3.49,
+    "l": 2.99,
+    "k": 3.29
+   }
+  },
+  {
+   "id": "pomidory_suszone",
+   "name": "Pomidory suszone w oleju",
+   "unit": "kg",
+   "pack": 0.28,
+   "loose": false,
+   "cat": "puszki i sosy",
+   "kw": [
+    "suszone pomidory",
+    "pomidory suszone"
+   ],
+   "regular": {
+    "b": 8.99,
+    "l": 7.99,
+    "k": 9.49
+   }
+  },
+  {
+   "id": "limonka",
+   "name": "Limonka",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "warzywa",
+   "kw": [
+    "limonki",
+    "limonka"
+   ],
+   "regular": {
+    "b": 1.49,
+    "l": 1.29,
+    "k": 1.59
+   }
+  },
+  {
+   "id": "makaron_lasagne",
+   "name": "Makaron lasagne",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "makaron lasagne",
+    "lasagne"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.49
+   }
+  },
+  {
+   "id": "mleko",
+   "name": "Mleko 3,2%",
+   "unit": "l",
+   "pack": 1,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "mleko uht",
+    "mleko 3,2",
+    "mleko 2%",
+    "mleko swieze"
+   ],
+   "regular": {
+    "b": 3.49,
+    "l": 3.29,
+    "k": 3.59
+   }
+  },
+  {
+   "id": "maslo",
+   "name": "Masło 82%",
+   "unit": "kg",
+   "pack": 0.2,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "maslo ekstra",
+    "maslo 82",
+    "maslo"
+   ],
+   "regular": {
+    "b": 6.99,
+    "l": 6.49,
+    "k": 7.29
+   }
+  },
+  {
+   "id": "papryka_wedzona",
+   "name": "Papryka wędzona",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "tymianek",
+   "name": "Tymianek",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "sriracha",
+   "name": "Sos sriracha",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "ketchup",
+   "name": "Ketchup",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "majonez",
+   "name": "Majonez",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "kolendra_mielona",
+   "name": "Kolendra mielona",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "gochujang",
+   "name": "Pasta gochujang",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "przyprawa_gyros",
+   "name": "Przyprawa do gyrosa",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "czosnek_granulowany",
+   "name": "Czosnek granulowany",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "skrobia",
+   "name": "Skrobia ziemniaczana",
+   "unit": "łyżka",
+   "pantry": true
+  }
+ ],
+ "recipes": [
+  {
+   "id": "pulpety-sos-chrzanowy",
+   "category": "mielone",
+   "name": "Pulpety w sosie chrzanowym",
+   "minutes": 50,
+   "freeze_months": 3,
+   "sides": "puree ziemniaczane, kasza",
+   "thaw": "Mroź z sosem. Odgrzewaj powoli, bez gotowania, żeby chrzan nie zgorzkniał.",
+   "ingredients": [
+    {
+     "pid": "mielone_wp",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "chrzan",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 60,
+     "unit": "ml"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wymieszaj mięso z bułką tartą namoczoną w 3 łyżkach wody, startą cebulą, czosnkiem, solą i pieprzem. Uformuj kulki.",
+    "Zagotuj 600 ml wody z kostką rosołową i gotuj w niej pulpety 15 minut.",
+    "Mąkę rozmieszaj w odrobinie zimnej wody, wlej do wywaru i gotuj, aż sos zgęstnieje.",
+    "Zdejmij z ognia, wmieszaj chrzan, śmietankę i sos sojowy. Posyp koperkiem."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7412142754928610593"
+  },
+  {
+   "id": "gulasz-z-szynki-pieczarki",
+   "category": "wieprzowina",
+   "name": "Gulasz z szynki z pieczarkami i papryką",
+   "minutes": 80,
+   "freeze_months": 3,
+   "sides": "kasza, ziemniaki, placki ziemniaczane",
+   "thaw": "Mrozi się bardzo dobrze. Odgrzewaj w garnku pod przykryciem.",
+   "ingredients": [
+    {
+     "pid": "szynka_wieprzowa",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 0.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Szynkę pokrój w kostkę, oprósz mąką i obsmaż partiami. Odłóż.",
+    "W tym samym garnku podsmaż pieczarki, a potem cebulę, marchew, paprykę i czosnek.",
+    "Dodaj koncentrat i paprykę wędzoną, smaż minutę. Wlej pomidory i 150 ml wody, dodaj musztardę, miód, sos sojowy i liście laurowe.",
+    "Włóż mięso i duś pod przykryciem ok. 50 minut, aż zmięknie."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7347216667660815648"
+  },
+  {
+   "id": "pulpety-drobiowe-po-francusku",
+   "category": "mielone",
+   "name": "Pulpety drobiowe z boczkiem i warzywami",
+   "minutes": 50,
+   "freeze_months": 3,
+   "sides": "puree, kasza, pieczywo",
+   "thaw": "Mroź pulpety razem z warzywami i sosem.",
+   "ingredients": [
+    {
+     "pid": "kurczak_mielony",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "boczek",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "seler",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wymieszaj mięso z jajkiem, bułką tartą, solą i pieprzem, uformuj kulki i obsmaż je krótko.",
+    "W tym samym garnku wytop boczek, dodaj pieczarki, marchew, seler, cebulę i czosnek.",
+    "Oprósz mąką, wlej 400 ml wody z kostką, dodaj tymianek i liść laurowy.",
+    "Włóż pulpety i duś pod przykryciem 20 minut."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7542930578404936982"
+  },
+  {
+   "id": "schab-sos-cebulowy-musztarda",
+   "category": "wieprzowina",
+   "name": "Schab w sosie cebulowym z musztardą",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "kopytka, ziemniaki, kasza",
+   "thaw": "Mroź kotlety zalane sosem, wtedy nie wysychają.",
+   "ingredients": [
+    {
+     "pid": "schab",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 0.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 0.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Schab pokrój na 2 grube kotlety, lekko rozbij, dopraw i obtocz w mące. Obsmaż z obu stron i odłóż.",
+    "Na tej samej patelni podsmaż cebulę w piórkach do zrumienienia, dodaj czosnek.",
+    "Wlej 400 ml wody z kostką, dodaj musztardę, miód, sos sojowy, tymianek i liście laurowe.",
+    "Włóż mięso i duś pod przykryciem 35 minut, aż będzie miękkie."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7639041708872764705"
+  },
+  {
+   "id": "curry-japonskie-kurczak",
+   "category": "drob",
+   "name": "Japońskie curry z kurczakiem i warzywami",
+   "minutes": 45,
+   "freeze_months": 3,
+   "sides": "ryż",
+   "thaw": "Mrozi się bardzo dobrze. Ziemniaki trochę miękną, więc nie rozgotuj ich przed mrożeniem.",
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "jablka",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "curry",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "maka",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 0.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w kostkę i obsmaż. Dodaj cebulę, marchew i ziemniaki w kostce, smaż 3 minuty.",
+    "Wlej 500 ml wody z kostką, dodaj starte jabłko i gotuj 15 minut.",
+    "Na suchej patelni zrumień mąkę z curry, wmieszaj koncentrat i chochlę wywaru.",
+    "Wlej zasmażkę do garnka, dodaj sos sojowy i miód, gotuj 5 minut, aż sos zgęstnieje."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7286155759077936416"
+  },
+  {
+   "id": "zupa-kurczak-suszone-pomidory",
+   "category": "zupy",
+   "name": "Kremowa zupa z kurczakiem i suszonymi pomidorami",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "gnocchi, kopytka, pieczywo",
+   "thaw": "Mroź bez kopytek. Po odgrzaniu zamieszaj, bo śmietanka może się lekko rozwarstwić.",
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_suszone",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 80,
+     "unit": "ml"
+    },
+    {
+     "pid": "grana",
+     "amt": 25,
+     "unit": "g"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "oregano",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w kostkę, dopraw papryką wędzoną i obsmaż. Odłóż.",
+    "Podsmaż cebulę, czosnek, koncentrat i posiekane suszone pomidory.",
+    "Wlej 800 ml wody z kostką, dodaj oregano i kurczaka, gotuj 10 minut.",
+    "Dodaj śmietankę, starty ser i szpinak, gotuj jeszcze 2 minuty."
+   ],
+   "inspired_by": "Foodini",
+   "source_url": "https://www.tiktok.com/@the_foodini/video/7470957814593096982"
+  },
+  {
+   "id": "kurczak-miodowo-sezamowy",
+   "category": "drob",
+   "name": "Kurczak w sosie miodowo-sezamowym",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "ryż, makaron ryżowy, brokuł",
+   "thaw": "Panierka po rozmrożeniu mięknie, ale sos trzyma smak. Odgrzewaj na patelni.",
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "skrobia",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ketchup",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ocet",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "sezam",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w kawałki, dopraw papryką i obtocz w połowie skrobi.",
+    "Smaż na oleju na złoto ze wszystkich stron.",
+    "Wymieszaj sos sojowy, miód, ketchup, ocet, czosnek, resztę skrobi i 80 ml wody.",
+    "Wlej sos na patelnię, gotuj do zgęstnienia, obtocz w nim kurczaka i posyp sezamem."
+   ],
+   "inspired_by": "Bartłomiej Włodarczyk",
+   "source_url": "https://www.tiktok.com/@bartlomiej_wlodarczyk/video/7509425889831128342"
+  },
+  {
+   "id": "kurczak-cukinia-papryka",
+   "category": "drob",
+   "name": "Kurczak z cukinią i papryką",
+   "minutes": 20,
+   "freeze_months": 2,
+   "sides": "gnocchi, ryż, kasza",
+   "thaw": "Cukinia po rozmrożeniu mięknie, najlepsze w ciągu 2 miesięcy.",
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek_granulowany",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w kostkę i dopraw papryką, czosnkiem, solą i pieprzem.",
+    "Podsmaż cukinię w plastrach i paprykę w paskach, odłóż.",
+    "Na tej samej patelni podsmaż cebulę i kurczaka pod przykryciem 7 minut.",
+    "Dodaj warzywa i wymieszaj."
+   ],
+   "inspired_by": "Bartłomiej Włodarczyk",
+   "source_url": "https://www.tiktok.com/@bartlomiej_wlodarczyk/video/7366886234846661920"
+  },
+  {
+   "id": "kurczak-sojowo-limonkowy",
+   "category": "drob",
+   "name": "Kurczak z warzywami w sosie sojowo-limonkowym",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "makaron udon, ryż",
+   "thaw": "Mroź bez makaronu. Odgrzewaj na patelni z łyżką wody.",
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 90,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "limonka",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "sriracha",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w kostkę i dopraw papryką wędzoną.",
+    "Wymieszaj sos sojowy, sok z limonki, srirachę i miód.",
+    "Podsmaż cebulę, marchew i paprykę w paskach pod przykryciem 7 minut.",
+    "Dodaj kurczaka, smaż 5 minut, wlej sos i chwilę zredukuj."
+   ],
+   "inspired_by": "Bartłomiej Włodarczyk",
+   "source_url": "https://www.tiktok.com/@bartlomiej_wlodarczyk/video/7185925625331371269"
+  },
+  {
+   "id": "schab-w-warzywach-kukurydza",
+   "category": "wieprzowina",
+   "name": "Schab duszony w warzywach z kukurydzą",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "ryż",
+   "thaw": "Mrozi się dobrze. Odgrzewaj w garnku.",
+   "ingredients": [
+    {
+     "pid": "schab",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "passata",
+     "amt": 200,
+     "unit": "ml"
+    },
+    {
+     "pid": "papryka",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "kukurydza",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziele",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Schab pokrój w paski, dopraw i obsmaż. Przełóż do garnka.",
+    "Podsmaż cebulę w piórkach i startą marchew, dodaj do mięsa razem z 100 ml wody.",
+    "Dodaj passatę, liść laurowy, ziele i paprykę słodką, duś 20 minut.",
+    "Dodaj paprykę w paskach, kukurydzę i czosnek, duś jeszcze 15 minut."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://www.ewa-wachowicz.pl/schab-w-warzywach-id283.html"
+  },
+  {
+   "id": "karkowka-kapusta-ananas",
+   "category": "wieprzowina",
+   "name": "Karkówka pieczona z kapustą kiszoną i ananasem",
+   "minutes": 130,
+   "freeze_months": 3,
+   "sides": "ziemniaki z koperkiem",
+   "thaw": "Pokrój mięso w plastry i mroź razem z kapustą.",
+   "ingredients": [
+    {
+     "pid": "karkowka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "kapusta_kiszona",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "ananas",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "kolendra_mielona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Karkówkę natrzyj solą, pieprzem i kolendrą, odstaw na co najmniej godzinę.",
+    "Obsmaż mięso z każdej strony.",
+    "Połowę odciśniętej i posiekanej kapusty wyłóż do naczynia, połóż mięso i przykryj resztą kapusty.",
+    "Polej sokiem z ananasa, ułóż kawałki ananasa i piecz pod przykryciem 2 godziny w 180°C."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://www.ewa-wachowicz.pl/karkowka-z-kapusta-i-ananasem-id125.html"
+  },
+  {
+   "id": "kurczak-po-chinsku-warzywa",
+   "category": "drob",
+   "name": "Kurczak po chińsku z warzywami",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "makaron ryżowy, ryż",
+   "thaw": "Warzywa po rozmrożeniu są trochę miększe. Odgrzewaj krótko na patelni.",
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "seler",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "imbir",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "skrobia",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w paski i zamarynuj w miodzie, sosie sojowym, imbirze i papryce (najlepiej kilka godzin).",
+    "Podsmaż marchew i seler w słupkach, potem resztę warzyw, 3 minuty. Odłóż.",
+    "Usmaż kurczaka 3 minuty, dodaj warzywa.",
+    "Skrobię rozmieszaj w 100 ml wody, wlej i gotuj, aż sos zgęstnieje."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://www.ewa-wachowicz.pl/kurczak-po-chinsku-id261.html"
+  },
+  {
+   "id": "lasagne-bolognese",
+   "category": "makaron",
+   "name": "Lasagne bolognese",
+   "minutes": 90,
+   "freeze_months": 3,
+   "sides": "sałata",
+   "thaw": "Pokrój po przestudzeniu i mroź w porcjach. Odgrzewaj w piekarniku pod folią.",
+   "ingredients": [
+    {
+     "pid": "mielone_wol",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "passata",
+     "amt": 300,
+     "unit": "ml"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "oregano",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "makaron_lasagne",
+     "amt": 125,
+     "unit": "g"
+    },
+    {
+     "pid": "mleko",
+     "amt": 300,
+     "unit": "ml"
+    },
+    {
+     "pid": "maslo",
+     "amt": 25,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zrób sos: podsmaż cebulę, marchew i czosnek, dodaj mięso, a potem passatę i oregano. Gotuj 20 minut.",
+    "Beszamel: na maśle podsmaż mąkę, wlewaj mleko, mieszając, aż zgęstnieje. Dopraw gałką i solą.",
+    "W naczyniu układaj warstwy: sos, makaron, beszamel. Ostatnią warstwę posyp serem.",
+    "Piecz 40 minut w 180°C."
+   ],
+   "inspired_by": "Ewa Wachowicz",
+   "source_url": "https://www.ewa-wachowicz.pl/lasagne-bolognese-id107.html"
+  },
+  {
+   "id": "kurczak-po-koreansku",
+   "category": "drob",
+   "name": "Kurczak po koreańsku w sosie gochujang",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "ryż, kimchi, ogórek",
+   "thaw": "Mrozi się dobrze. Odgrzewaj w piekarniku albo na patelni, żeby kurczak nie rozmiękł.",
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "skrobia",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "gochujang",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "imbir",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "sezam",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Udka pokrój, zamarynuj w łyżce sosu sojowego, czosnku i imbirze na 30 minut.",
+    "Obtocz w skrobi i usmaż na złoto (albo upiecz 20 minut w 200°C).",
+    "Wymieszaj gochujang, resztę sosu sojowego, miód i 60 ml wody, zagotuj na patelni.",
+    "Obtocz kurczaka w sosie i posyp sezamem."
+   ],
+   "inspired_by": "Do Schrupania",
+   "source_url": "https://doschrupania.pl/dania-glowne/kurczak-po-koreansku-przepis/"
+  },
+  {
+   "id": "klopsiki-indyk-sos-paprykowy",
+   "category": "mielone",
+   "name": "Klopsiki z indyka w sosie paprykowym",
+   "minutes": 45,
+   "freeze_months": 3,
+   "sides": "ryż, kasza, makaron",
+   "thaw": "Mroź z sosem.",
+   "ingredients": [
+    {
+     "pid": "indyk_mielony",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "passata",
+     "amt": 300,
+     "unit": "ml"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wymieszaj mięso z jajkiem, bułką, połową startej cebuli, solą i pieprzem. Uformuj klopsiki.",
+    "Obsmaż je krótko i odłóż.",
+    "Podsmaż resztę cebuli, paprykę w kostce i czosnek, dodaj paprykę słodką i passatę.",
+    "Włóż klopsiki i duś pod przykryciem 20 minut."
+   ],
+   "inspired_by": "Do Schrupania",
+   "source_url": "https://doschrupania.pl/dania-glowne/przepis-na-pulpety/"
+  },
+  {
+   "id": "kurczak-gyros",
+   "category": "drob",
+   "name": "Kurczak gyros z cebulą",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "frytki, sałatka, pita, ryż",
+   "thaw": "Mrozi się świetnie. Odgrzewaj na suchej patelni.",
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "przyprawa_gyros",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Udka pokrój w paski i wymieszaj z przyprawą do gyrosa, czosnkiem i olejem. Odstaw na 30 minut.",
+    "Na mocno rozgrzanej patelni smaż mięso partiami, żeby się zrumieniło.",
+    "Pod koniec dodaj cebulę w piórkach i smaż jeszcze 3 minuty."
+   ],
+   "inspired_by": "Do Schrupania",
+   "source_url": "https://doschrupania.pl/dania-glowne/gyros-przepis/"
+  },
+  {
+   "id": "zupa-ziemniaczano-kalafiorowa",
+   "category": "zupy",
+   "name": "Zupa ziemniaczano-kalafiorowa z kiełbasą",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "pieczywo",
+   "thaw": "Mrozi się dobrze. Po odgrzaniu zamieszaj.",
+   "ingredients": [
+    {
+     "pid": "kalafior",
+     "amt": 0.4,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "kielbasa",
+     "amt": 125,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Podsmaż cebulę, dodaj ziemniaki w kostce i różyczki kalafiora.",
+    "Zalej 400 ml wody z kostką i gotuj 20 minut.",
+    "Kiełbasę w kostce zrumień na patelni i dodaj do zupy z gałką i pieprzem.",
+    "Zahartuj śmietanę gorącą zupą, wlej i zagotuj."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/zupa-ziemniaczano-kalafiorowa-z-kielbasa"
+  },
+  {
+   "id": "karkowka-pod-pierzyna",
+   "category": "wieprzowina",
+   "name": "Karkówka pod pierzyną z pieczarkami i serem",
+   "minutes": 110,
+   "freeze_months": 3,
+   "sides": "ziemniaki, kasza, frytki",
+   "thaw": "Mroź pokrojone porcje. Odgrzewaj w piekarniku.",
+   "ingredients": [
+    {
+     "pid": "karkowka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "majonez",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 0.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek_granulowany",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "oregano",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Karkówkę w plastrach natrzyj solą, pieprzem, czosnkiem i papryką, ułóż w naczyniu.",
+    "Posmaruj mieszanką majonezu i musztardy.",
+    "Odparuj pieczarki, dodaj cebulę i podsmaż, a potem wyłóż na mięso.",
+    "Piecz pod folią 60–70 minut w 190°C, posyp serem i oregano, zapiekaj 20 minut bez folii."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/karkowka-pod-pierzyna-z-pieczarkami-i-serem"
+  },
+  {
+   "id": "kapusta-kielbasa-pieczarki-lazanki",
+   "category": "wieprzowina",
+   "name": "Kapusta kiszona z kiełbasą i pieczarkami (do łazanek)",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "makaron łazanki, ziemniaki",
+   "thaw": "Mroź bez makaronu.",
+   "ingredients": [
+    {
+     "pid": "kapusta_kiszona",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "kielbasa",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kapustę posiekaj, zalej 150 ml wody i duś 20 minut.",
+    "Podsmaż kiełbasę z cebulą, dodaj pieczarki i smaż, aż odparują.",
+    "Połącz z kapustą, dopraw majerankiem, papryką i pieprzem, duś 10 minut.",
+    "Łazanki ugotuj świeże i wymieszaj z kapustą przed podaniem."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/lazanki-z-kiszona-kapusta-kielbasa-i-pieczarkami"
+  },
+  {
+   "id": "zupa-chinska",
+   "category": "zupy",
+   "name": "Zupa chińska z kurczakiem i warzywami",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "makaron ryżowy",
+   "thaw": "Mroź bez makaronu.",
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "kapusta",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "ocet",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "imbir",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "chili",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "skrobia",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w paski i obsmaż.",
+    "Dodaj marchew w słupkach, poszatkowaną kapustę i pieczarki, smaż 3 minuty.",
+    "Wlej 900 ml wody z kostką, dodaj koncentrat, sos sojowy, ocet, imbir i chili, gotuj 10 minut.",
+    "Zagęść skrobią rozmieszaną w wodzie. Makaron dodaj świeży do talerza."
+   ],
+   "inspired_by": "Michał Gotuje",
+   "source_url": "https://michalgotuje.pl/przepisy/zupa-chinska-lepsza-niz-w-barze"
+  }
+ ]
+}

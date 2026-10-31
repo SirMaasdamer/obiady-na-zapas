@@ -129,6 +129,7 @@ function renderRecipes() {
 function recipeSheet() {
   const r = S.recipes[ui.sheet.id]; if (!r) return closeSheet();
   return `<div class="sheet-head"><div><h2>${esc(r.name)}</h2><div class="meta" style="margin-top:6px"><span>${esc(CATN[r.category] || '')}</span><span>${r.minutes || '?'} min</span><span>mrożenie do ${r.freeze_months || 3} mies.</span><span>z: ${esc(r.sides || 'dowolne dodatki')}</span></div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  ${r.inspired_by ? `<div class="sub">Inspiracja: ${r.source_url ? `<a href="${esc(r.source_url)}" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600">${esc(r.inspired_by)} ↗</a>` : esc(r.inspired_by)}</div>` : ''}
   <div id="rd-react"></div>
   <div class="sec"><h4>Ile porcji robisz?</h4><div class="stepper"><div class="n"><button data-act="pdec" aria-label="Mniej">−</button><input id="rd-n" type="number" inputmode="numeric" min="1" max="40" value="${ui.portions}"><button data-act="pinc" aria-label="Więcej">+</button></div>
    <div class="chips">${[[4, '2 dni'], [6, '3 dni'], [8, '4 dni'], [10, '5 dni']].map(([n, l]) => `<button class="chip" data-act="pset" data-n="${n}" aria-pressed="${ui.portions == n}">${n} · ${l}</button>`).join('')}</div></div><div class="sub">Dla 2 osób: 1 dzień = 2 porcje.</div></div>

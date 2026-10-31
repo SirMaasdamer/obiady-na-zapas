@@ -49,6 +49,7 @@ Nowe przepisy układa Claude w rozmowie, np. „dodaj 4 przepisy z mielonego, co
   - czosnek w `ząbek`;
   - przyprawy i inne produkty ze spiżarni w `łyżka`, `łyżeczka` albo `szt`.
 - `id` przepisu: małe litery, cyfry i `-`, bez polskich znaków, unikalne.
+- Opcjonalnie `inspired_by` (np. „Ewa Wachowicz”) i `source_url` (link do oryginału) przy daniach inspirowanych cudzym przepisem. Kroki zawsze pisz własnymi słowami, a ilości dostosuj do 2 porcji.
 
 **Nowe produkty** (tylko gdy w katalogu nie ma odpowiednika):
 - `id`: małe litery, cyfry i `_`.
