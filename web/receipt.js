@@ -72,6 +72,11 @@ export function parseItems(lines) {
       else if (items.length && !items[items.length - 1].qtyKnown) Object.assign(items[items.length - 1], fix(items[items.length - 1], qty, unit, q[2]));
       continue;
     }
+    // nazwa + ilość × cena, ale kwota końcowa nieczytelna (OCR) → liczymy ją sami
+    if (q && letters.length && (!am || am.index < q.index + q[0].length - 1)) {
+      const name = line.slice(0, q.index).trim() || pending || line;
+      items.push(mk(name, num(q[1]), num(q[3]), r2(num(q[1]) * num(q[3])), q[2])); pending = null; started = true; continue;
+    }
     if (am && letters.length) {
       const value = num(am[1]); if (value <= 0) { pending = null; continue; }
       let name = line.slice(0, q ? q.index : am.index).replace(/\s+[A-G]\s*$/, '').trim() || pending || line;
@@ -83,9 +88,11 @@ export function parseItems(lines) {
   }
   return items.map(({ qtyKnown, ...i }) => i);
 }
+// usuwa z końca nazwy literę stawki PTU (A–G, „brak”) i śmieci po OCR („Cc”, „€”, „|”)
+const cleanName = n => n.replace(/\s{2,}/g, ' ').replace(/(\s+([a-g]{1,2}|brak|[€¢|*#_=~:;,.\-]))+\s*$/i, '').replace(/[\s|*#_=~:;,.\-]+$/, '').trim();
 function mk(name, qty, unit, total, unitWord, qtyKnown = true) {
   const weighed = /kg/.test(unitWord || '') || (qty % 1 !== 0 && qty < 30);
-  return { name: name.replace(/\s{2,}/g, ' ').replace(/[\s|*#_=~:;,.\-]+$/, '').trim(), qty, weighed, unit_price: unit, total: r2(total), discount: 0, qtyKnown };
+  return { name: cleanName(name), qty, weighed, unit_price: unit, total: r2(total), discount: 0, qtyKnown };
 }
 function fix(it, qty, unit, unitWord) {
   const weighed = /kg/.test(unitWord || '') || (qty % 1 !== 0 && qty < 30);
@@ -116,18 +123,20 @@ export function joinShots(texts) {
 const CAT_OF_PRODUCT = { 'mięso': 'Mięso i ryby', 'nabiał': 'Nabiał', 'warzywa': 'Warzywa i owoce', 'puszki i sosy': 'Spiżarnia', 'suche': 'Spiżarnia', 'spiżarnia': 'Spiżarnia' };
 const CATS = [
   ['Alkohol', /\bpiwo|\bwino\b|wodka|whisk|cydr|likier|\bgin\b|\brum\b|prosecco/],
-  ['Chemia i higiena', /papier toal|recznik pap|plyn do|proszek|kapsulk|szampon|mydl|pasta do zeb|zel pod|dezodor|worki|gabk|chusteczk|pieluch|odswiez|domestos|tabletki do zmyw/],
-  ['Pieczywo', /chleb|bulk|bagiet|rogal|tortill|pieczyw|kajzer|grahamk/],
-  ['Mięso i ryby', /kurcz|filet|schab|karkow|wolow|wieprz|mielon|kielbas|szynk|boczek|parow|indyk|losos|dorsz|tunczyk|\bryba|pasztet|salami|polendwic|udko|podudz|skrzyd|watrob|zeberk|lopatk/],
-  ['Nabiał', /mleko|\bser\b|sery|jogurt|kefir|masl|smietan|twarog|\bjaja|jajka|serek|mozzarel|mascarpone|maslank|skyr|feta|gouda/],
+  ['Inne', /kaucj/],
+  ['Chemia i higiena', /papier|recznik pap|plyn do|proszek|kapsulk|szampon|mydl|pasta do zeb|zel pod|dezodor|worki|gabk|chusteczk|pieluch|odswiez|domestos|tabletki do zmyw/],
+  ['Pieczywo', /c[hn]leb|\bbul\b|bulk|bagiet|rogal|tortill|pieczyw|kajzer|grahamk/],
+  ['Mięso i ryby', /gulasz|konserw|kurcz|filet|schab|karkow|wolow|wieprz|mielon|kielbas|szynk|boczek|parow|indyk|losos|dorsz|tunczyk|\bryba|pasztet|salami|polendwic|udko|podudz|skrzyd|watrob|zeberk|lopatk/],
+  ['Nabiał', /\bjog\b|milch|\bmle\b(?! ?bak)|mleko|\bser\b|sery|jogurt|kefir|masl|smietan|twarog|\bjaja|jajka|serek|mozzarel|mascarpone|maslank|skyr|feta|gouda/],
   ['Warzywa i owoce', /pomidor|ogor|ziemniak|cebul|marchew|papryk|jabl|banan|cytryn|pomarancz|salat|kapust|brokul|pieczark|winogr|gruszk|mandaryn|awokado|czosnek|warzyw|owoc|cukini|dyni|szpinak|koperek|pietruszk|seler|\bpor\b|kalafior|buraki|kiwi|truskaw|borowk|malin/],
   ['Napoje', /\bwoda\b|\bsok\b|napoj|cola|\bkawa\b|herbat|nektar|lemoniad|energy|izoton/],
-  ['Słodycze i przekąski', /czekol|baton|ciast|chips|cukierk|\blody\b|wafel|herbatnik|zelki|chrupk|orzeszk|paluszk|draze|krakers|praliny|delicje|bake rolls/],
-  ['Spiżarnia', /makaron|\bryz\b|kasza|\bmaka\b|cukier|\bolej\b|oliwa|przypraw|\bsos\b|ketchup|majonez|musztard|koncentrat|passata|fasol|ciecierzyc|platki|dzem|\bmiod|soczewic|groch|kukurydz|bulion|puszk/],
+  ['Słodycze i przekąski', /\bbat\b|c[lhi1]?[a-z]?astk|ciastk|ptas? ?mle|ptasie|czekol|baton|ciast|chips|cukierk|\blody\b|wafel|herbatnik|zelki|chrupk|orzeszk|paluszk|draze|krakers|praliny|delicje|bake rolls/],
+  ['Spiżarnia', /kopytk|gnocchi|\bgno\b|makaron|\bryz\b|kasza|\bmaka\b|cukier|\bolej\b|oliwa|przypraw|\bsos\b|ketchup|majonez|musztard|koncentrat|passata|fasol|ciecierzyc|platki|dzem|\bmiod|soczewic|groch|kukurydz|bulion|puszk/],
 ];
 export function categoryOf(name, product) {
   if (product?.cat && CAT_OF_PRODUCT[product.cat]) return CAT_OF_PRODUCT[product.cat];
-  const t = norm(name);
+  // skróty z paragonów („JogRyżBelrPistac200g”) rozdzielamy na słowa
+  const t = norm(String(name).replace(/([a-ząćęłńóśźż])([A-ZĄĆĘŁŃÓŚŹŻ])/g, '$1 $2').replace(/([^\d\s])(\d)/g, '$1 $2'));
   for (const [c, re] of CATS) if (re.test(t)) return c;
   return 'Inne';
 }
@@ -164,7 +173,7 @@ export function packPrice(item, p, ref) {
 const loaded = {};
 function script(src) { return loaded[src] ??= new Promise((ok, err) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => err(new Error('Nie udało się wczytać ' + src)); document.head.append(s); }); }
 
-export async function pdfText(file) {
+export async function pdfText(file, onProgress) {
   await script('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
   const lib = window.pdfjsLib; lib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
   const doc = await lib.getDocument({ data: await file.arrayBuffer() }).promise;
@@ -179,16 +188,30 @@ export async function pdfText(file) {
       out.push(line);
     }
   }
-  return out.join('\n');
+  const text = out.join('\n');
+  if ((text.match(/[a-ząćęłńóśźż]/gi) || []).length > 40) return text;
+  // PDF z samymi obrazkami (np. e-paragon z Biedronki): renderujemy strony i rozpoznajemy tekst
+  const texts = [];
+  for (let n = 1; n <= Math.min(doc.numPages, 10); n++) {
+    const page = await doc.getPage(n), vp = page.getViewport({ scale: 2.2 });
+    const c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height;
+    await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+    const blob = await new Promise(ok => c.toBlob(ok, 'image/png'));
+    texts.push(await ocrBlob(blob, p => onProgress?.((n - 1 + p) / doc.numPages)));
+  }
+  return texts.join('\n');
 }
 
 let worker = null;
-export async function imageText(file, onProgress) {
+async function ocrBlob(blob, onProgress) {
   await script('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
-  if (!worker) worker = await window.Tesseract.createWorker('pol', 1, { logger: m => m.status === 'recognizing text' && onProgress?.(m.progress) });
-  await worker.setParameters({ preserve_interword_spaces: '1', tessedit_pageseg_mode: '6' }); // jedna kolumna: nazwa i cena w tej samej linii
-  const { data } = await worker.recognize(await upscale(file));
+  if (!worker) { worker = await window.Tesseract.createWorker('pol', 1, { logger: m => m.status === 'recognizing text' && worker?._onProgress?.(m.progress) }); await worker.setParameters({ preserve_interword_spaces: '1', tessedit_pageseg_mode: '6' }); }
+  worker._onProgress = onProgress;
+  const { data } = await worker.recognize(blob);
   return data.text;
+}
+export async function imageText(file, onProgress) {
+  return ocrBlob(await upscale(file), onProgress);
 }
 // Zrzuty ekranu z telefonu są ostre, ale drobne: powiększamy i zamieniamy na szarość, co poprawia OCR.
 async function upscale(file) {

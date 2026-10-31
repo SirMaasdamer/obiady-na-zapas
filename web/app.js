@@ -354,13 +354,13 @@ async function importReceipt(files) {
   try {
     const texts = [];
     for (const [i, f] of files.entries()) {
-      if (f.type === 'application/pdf' || /\.pdf$/i.test(f.name)) { ui.sheet.msg = 'Czytam PDF…'; drawSheet(); texts.push(await RC.pdfText(f)); }
+      if (f.type === 'application/pdf' || /\.pdf$/i.test(f.name)) { ui.sheet.msg = 'Czytam PDF…'; drawSheet(); texts.push(await RC.pdfText(f, p => { if (ui.sheet?.type !== 'rimport') return; ui.sheet.msg = 'Rozpoznaję tekst z PDF…'; const b = $('#rprog'); if (b) b.style.width = Math.round(p * 100) + '%'; else drawSheet(); })); }
       else {
         ui.sheet.msg = files.length > 1 ? `Rozpoznaję tekst (${i + 1} z ${files.length})…` : 'Rozpoznaję tekst…'; drawSheet();
         texts.push(await RC.imageText(f, p => { if (ui.sheet?.type !== 'rimport') return; ui.sheet.progress = (i + p) / files.length; const b = $('#rprog'); if (b) b.style.width = Math.round(ui.sheet.progress * 100) + '%'; }));
       }
     }
-    const text = RC.joinShots(texts);
+    const text = files.length > 1 ? RC.joinShots(texts) : texts.join('\n');
     const r = RC.parseReceipt(text, L.today());
     const catalog = Object.values(S.products).filter(p => !p.pantry);
     r.items.forEach(it => { const p = RC.matchProduct(it.name, catalog); it.product_id = p?.id || null; it.category = RC.categoryOf(it.name, p); });
