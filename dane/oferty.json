@@ -1,1 +1,84 @@
-{"updated":null,"runs":[],"promos":[],"offers":[]}
+{
+ "updated": "2026-10-31T22:36:18.189Z",
+ "runs": [
+  {
+   "store": "b",
+   "ran_at": "2026-10-31T22:23:34.728Z",
+   "status": "ok",
+   "valid_from": "2026-10-29",
+   "valid_to": "2026-11-04",
+   "matched": 0,
+   "message": "tekst: 0 · OCR: 0"
+  },
+  {
+   "store": "l",
+   "ran_at": "2026-10-31T22:31:28.919Z",
+   "status": "ok",
+   "valid_from": "2026-10-29",
+   "valid_to": "2026-10-31",
+   "matched": 2,
+   "message": "tekst: 2 · OCR: 0"
+  },
+  {
+   "store": "k",
+   "ran_at": "2026-10-31T22:36:18.109Z",
+   "status": "ok",
+   "valid_from": "2026-11-02",
+   "valid_to": "2026-11-04",
+   "matched": 0,
+   "message": "tekst: 0 · OCR: 0"
+  }
+ ],
+ "promos": [
+  {
+   "product_id": "kielbasa",
+   "name": "Kiełbasa podwawelska",
+   "store": "l",
+   "store_name": "Lidl",
+   "promo": 9.99,
+   "regular": 17.99,
+   "from": "2026-10-29",
+   "to": "2026-10-31",
+   "note": "Kiełbasa podwawelska, XXL dla 9.99 PLN"
+  },
+  {
+   "product_id": "schab",
+   "name": "Schab bez kości",
+   "store": "l",
+   "store_name": "Lidl",
+   "promo": 9.99,
+   "regular": 15.95,
+   "from": "2026-10-29",
+   "to": "2026-10-31",
+   "note": "Schab wieprzowy bez kości dla 9.99 PLN"
+  }
+ ],
+ "offers": [
+  {
+   "store": "l",
+   "leaflet": "https://www.lidl.pl/informacje-dla-klienta/nasze-gazetki",
+   "valid_from": "2026-10-29",
+   "valid_to": "2026-10-31",
+   "product_id": "schab",
+   "name": "Schab wieprzowy bez kości dla 9.99 PLN",
+   "price": 9.99,
+   "price_for_pack": 9.99,
+   "regular": 15.95,
+   "unit_info": null,
+   "page": "www"
+  },
+  {
+   "store": "l",
+   "leaflet": "https://www.lidl.pl/informacje-dla-klienta/nasze-gazetki",
+   "valid_from": "2026-10-29",
+   "valid_to": "2026-10-31",
+   "product_id": "kielbasa",
+   "name": "Kiełbasa podwawelska, XXL dla 9.99 PLN",
+   "price": 9.99,
+   "price_for_pack": 9.99,
+   "regular": 17.99,
+   "unit_info": null,
+   "page": "www"
+  }
+ ]
+}
