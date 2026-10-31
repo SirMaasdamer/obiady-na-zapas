@@ -1,0 +1,5967 @@
+{
+ "opis": "Przepisy inspirowane Anią Gotuje (aniagotuje.pl)",
+ "products": [
+  {
+   "id": "kasza_gryczana",
+   "name": "Kasza gryczana",
+   "unit": "kg",
+   "pack": 0.4,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "kasza gryczana"
+   ],
+   "regular": {
+    "b": 3.99,
+    "l": 3.49,
+    "k": 4.29
+   }
+  },
+  {
+   "id": "bataty",
+   "name": "Bataty",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "warzywa",
+   "kw": [
+    "bataty",
+    "batat"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 6.99,
+    "k": 7.49
+   }
+  },
+  {
+   "id": "chorizo",
+   "name": "Kiełbasa chorizo",
+   "unit": "kg",
+   "pack": 0.2,
+   "loose": false,
+   "cat": "mięso",
+   "kw": [
+    "chorizo"
+   ],
+   "regular": {
+    "b": 8.99,
+    "l": 7.99,
+    "k": 9.49
+   }
+  },
+  {
+   "id": "brukselka",
+   "name": "Brukselka",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "warzywa",
+   "kw": [
+    "brukselka"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 4.99,
+    "k": 5.49
+   }
+  },
+  {
+   "id": "ricotta",
+   "name": "Ricotta",
+   "unit": "kg",
+   "pack": 0.25,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "ricotta"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.29
+   }
+  },
+  {
+   "id": "mozzarella",
+   "name": "Mozzarella",
+   "unit": "kg",
+   "pack": 0.125,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "mozzarella"
+   ],
+   "regular": {
+    "b": 3.49,
+    "l": 2.99,
+    "k": 3.69
+   }
+  },
+  {
+   "id": "poledwiczka",
+   "name": "Polędwiczka wieprzowa",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "mięso",
+   "kw": [
+    "poledwiczka wieprzowa",
+    "poledwiczki wieprzowe"
+   ],
+   "regular": {
+    "b": 29.99,
+    "l": 27.99,
+    "k": 31.99
+   }
+  },
+  {
+   "id": "zoladki",
+   "name": "Żołądki drobiowe",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "mięso",
+   "kw": [
+    "zoladki drobiowe",
+    "zoladki z kurczaka"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.29
+   }
+  },
+  {
+   "id": "makaron_orzo",
+   "name": "Makaron orzo",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "orzo"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.49
+   }
+  },
+  {
+   "id": "makaron_udon",
+   "name": "Makaron udon",
+   "unit": "kg",
+   "pack": 0.4,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "udon"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 6.99,
+    "k": 8.49
+   }
+  },
+  {
+   "id": "soja_granulat",
+   "name": "Granulat sojowy",
+   "unit": "kg",
+   "pack": 0.15,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "granulat sojowy",
+    "kotlety sojowe"
+   ],
+   "regular": {
+    "b": 3.99,
+    "l": 3.49,
+    "k": 4.29
+   }
+  },
+  {
+   "id": "pomidory",
+   "name": "Pomidory",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "warzywa",
+   "kw": [
+    "pomidory malinowe",
+    "pomidory czerwone",
+    "pomidory luz",
+    "pomidory"
+   ],
+   "regular": {
+    "b": 9.99,
+    "l": 8.99,
+    "k": 9.49
+   }
+  },
+  {
+   "id": "udka_kurczak",
+   "name": "Udka z kurczaka",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "mięso",
+   "kw": [
+    "udka z kurczaka",
+    "udko z kurczaka",
+    "cwiartka z kurczaka"
+   ],
+   "regular": {
+    "b": 9.99,
+    "l": 8.99,
+    "k": 10.49
+   }
+  },
+  {
+   "id": "ser_tarty",
+   "name": "Ser mozzarella tarty",
+   "unit": "kg",
+   "pack": 0.15,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "ser tarty",
+    "mozzarella tarta",
+    "ser do pizzy"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.29
+   }
+  },
+  {
+   "id": "wino_czerwone",
+   "name": "Wino czerwone (do gotowania)",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "kakao",
+   "name": "Kakao",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "pesto",
+   "name": "Pesto bazyliowe",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "garam_masala",
+   "name": "Garam masala",
+   "unit": "łyżka",
+   "pantry": true
+  },
+  {
+   "id": "pieprz_cayenne",
+   "name": "Pieprz cayenne",
+   "unit": "łyżka",
+   "pantry": true
+  }
+ ],
+ "recipes": [
+  {
+   "id": "kurczak-w-sosie-smietanowym",
+   "category": "drob",
+   "name": "Kurczak w sosie śmietanowym",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "ryż, makaron, ziemniaki",
+   "thaw": "Mroź z sosem. Odgrzewaj powoli, mieszając.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w kostkę, dopraw solą, pieprzem i papryką, obsmaż na złoto.",
+    "Dodaj cebulę i czosnek, smaż 3 minuty.",
+    "Wlej 200 ml wody z kostką i duś 10 minut.",
+    "Śmietanę wymieszaj z mąką, wlej, zagotuj i posyp pietruszką."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kurczak-w-sosie-smietanowym"
+  },
+  {
+   "id": "kurczak-po-toskansku",
+   "category": "drob",
+   "name": "Kurczak po toskańsku",
+   "minutes": 30,
+   "freeze_months": 2,
+   "sides": "makaron, ryż, pieczywo",
+   "thaw": "Mroź z sosem do 2 miesięcy.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pomidory_suszone",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "grana",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "ziola_prowansalskie",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Filety przekrój na cieńsze, dopraw ziołami, papryką, solą i pieprzem, usmaż i odłóż.",
+    "Na tej samej patelni podsmaż czosnek i pokrojone suszone pomidory.",
+    "Wlej śmietankę, dodaj starty ser i szpinak, gotuj do zwiędnięcia.",
+    "Włóż kurczaka do sosu na 3 minuty."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kurczak-po-toskansku"
+  },
+  {
+   "id": "stripsy-z-kurczaka",
+   "category": "drob",
+   "name": "Stripsy z kurczaka",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "frytki, coleslaw, sosy",
+   "thaw": "Najlepsze na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "maslanka",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "maka",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek_granulowany",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz_cayenne",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka pokrój w paski i zamarynuj w maślance z solą na min. 30 minut.",
+    "Wymieszaj mąkę z przyprawami.",
+    "Obtocz paski w mące, maczaj w maślance i ponownie w mące.",
+    "Smaż w głębokim oleju 4–5 minut na złoto."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/stripsy-z-kurczaka"
+  },
+  {
+   "id": "nalesniki-z-kurczakiem",
+   "category": "drob",
+   "name": "Naleśniki z kurczakiem i pieczarkami",
+   "minutes": 50,
+   "freeze_months": 3,
+   "sides": "surówka, sos czosnkowy",
+   "thaw": "Mroź zwinięte naleśniki przełożone papierem. Odgrzewaj na patelni lub w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "maka",
+     "amt": 8,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "mleko",
+     "amt": 250,
+     "unit": "ml"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "kurczak_filet",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 50,
+     "unit": "ml"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zmiksuj mąkę, mleko, jajko i szczyptę soli, usmaż cienkie naleśniki.",
+    "Kurczaka i pieczarki pokrój drobno, usmaż z cebulą, dopraw.",
+    "Wymieszaj farsz ze śmietaną i startym serem.",
+    "Nałóż farsz na naleśniki, zwiń w krokiety i podsmaż z obu stron."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/nalesniki-z-kurczakiem"
+  },
+  {
+   "id": "gulasz-z-zoladkow",
+   "category": "drob",
+   "name": "Gulasz z żołądków drobiowych",
+   "minutes": 120,
+   "freeze_months": 3,
+   "sides": "kasza, ziemniaki, pieczywo",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "zoladki",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziele",
+     "amt": 3,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Żołądki oczyść, pokrój i obsmaż.",
+    "Dodaj cebulę i marchew, zalej wodą, dodaj liść i ziele, duś ok. 1,5 godziny do miękkości.",
+    "Dodaj paprykę, koncentrat, paprykę słodką i majeranek, gotuj 15 minut.",
+    "Zagęść mąką rozmieszaną w wodzie."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/gulasz-z-zoladkow"
+  },
+  {
+   "id": "orzo-z-kurczakiem",
+   "category": "drob",
+   "name": "Makaron orzo z kurczakiem z jednego garnka",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Na świeżo. Odgrzewane trzeba rozrzedzić bulionem.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "makaron_orzo",
+     "amt": 160,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "grana",
+     "amt": 25,
+     "unit": "g"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 60,
+     "unit": "ml"
+    },
+    {
+     "pid": "cytryna",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "oregano",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka w kostce dopraw i obsmaż, odłóż.",
+    "Podsmaż cebulę i czosnek, wsyp orzo i smaż minutę.",
+    "Wlej 500 ml bulionu i gotuj, mieszając, ok. 10 minut.",
+    "Dodaj kurczaka, szpinak, śmietankę, ser i sok z cytryny."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-orzo-z-kurczakiem"
+  },
+  {
+   "id": "kurczak-z-ryzem-jednogarnkowy",
+   "category": "drob",
+   "name": "Kurczak z ryżem i warzywami z jednego garnka",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "surówka",
+   "thaw": "Mrozi się dobrze w porcjach. Odgrzewaj z łyżką wody.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "ryz",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "groszek",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kurkuma",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka w kostce dopraw i obsmaż.",
+    "Dodaj cebulę, czosnek, marchew i paprykę, smaż 3 minuty.",
+    "Wsyp ryż i przyprawy, zalej 400 ml bulionu.",
+    "Gotuj pod przykryciem 15 minut, dodaj groszek, gotuj jeszcze 5 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kurczak-z-ryzem"
+  },
+  {
+   "id": "butter-chicken",
+   "category": "drob",
+   "name": "Butter chicken",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ryż basmati, naan",
+   "thaw": "Mrozi się bardzo dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "jogurt_grecki",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "garam_masala",
+     "amt": 2,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "imbir",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "passata",
+     "amt": 250,
+     "unit": "ml"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "kurkuma",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "chili",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "cukier",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka zamarynuj w jogurcie z połową garam masali i solą (min. 30 minut).",
+    "Obsmaż kurczaka na maśle, odłóż.",
+    "Podsmaż cebulę, czosnek, imbir i przyprawy, dodaj passatę i gotuj 10 minut.",
+    "Zmiksuj sos, dodaj śmietankę, cukier i kurczaka, gotuj 10 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/butter-chicken"
+  },
+  {
+   "id": "devolay",
+   "category": "drob",
+   "name": "Devolay (pierś nadziewana masłem)",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ziemniaki, groszek, surówka",
+   "thaw": "Mroź surowe, panierowane devolaye i smaż prosto z zamrażarki, dopiekając 20 minut.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "maslo",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Masło wymieszaj z posiekaną pietruszką i czosnkiem, uformuj wałeczki i zamroź.",
+    "Piersi rozbij na cienkie płaty, dopraw, zawiń w nie masło.",
+    "Panieruj dwa razy: mąka, jajko, bułka tarta.",
+    "Smaż na głębokim oleju na złoto, dopiecz 10 minut w 180°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/devolay"
+  },
+  {
+   "id": "zapiekanka-gyros",
+   "category": "drob",
+   "name": "Zapiekanka gyros z ziemniakami",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "sałatka, sos czosnkowy",
+   "thaw": "Mroź porcje. Odgrzewaj w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "przyprawa_gyros",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_tarty",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka w paskach wymieszaj z przyprawą gyros i obsmaż z cebulą.",
+    "Ziemniaki pokrój w plastry i podgotuj 8 minut.",
+    "W naczyniu układaj ziemniaki i kurczaka, polej śmietaną z czosnkiem.",
+    "Posyp serem i piecz 25 minut w 200°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zapiekanka-gyros"
+  },
+  {
+   "id": "leczo-z-kurczakiem",
+   "category": "drob",
+   "name": "Leczo z kurczakiem",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ryż, pieczywo, kasza",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka w kostce obsmaż.",
+    "Dodaj cebulę i czosnek, potem paprykę i cukinię.",
+    "Wlej pomidory, dopraw papryką i duś 20 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/leczo-z-kurczakiem"
+  },
+  {
+   "id": "gulasz-z-kurczaka-ania",
+   "category": "drob",
+   "name": "Gulasz z kurczaka z papryką i marchewką",
+   "minutes": 45,
+   "freeze_months": 3,
+   "sides": "kasza, ziemniaki, ryż",
+   "thaw": "Mrozi się bardzo dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_udo",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka w kostce oprósz mąką i obsmaż.",
+    "Dodaj cebulę, czosnek i marchew, smaż 5 minut.",
+    "Wlej 400 ml bulionu, dodaj koncentrat i przyprawy, duś 20 minut.",
+    "Dodaj paprykę i duś jeszcze 10 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/gulasz-z-kurczaka"
+  },
+  {
+   "id": "udka-pieczone",
+   "category": "drob",
+   "name": "Udka pieczone w ziołach",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka",
+   "thaw": "Upieczone udka możesz zamrozić i odgrzać w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "udka_kurczak",
+     "amt": 700,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "ziola_prowansalskie",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wymieszaj olej, czosnek, paprykę, zioła, miód, sól i pieprz.",
+    "Natrzyj udka marynatą i odstaw na min. 30 minut.",
+    "Piecz 45–50 minut w 200°C, aż skórka będzie chrupiąca."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/udka-pieczone"
+  },
+  {
+   "id": "kotlety-mielone-klasyczne",
+   "category": "mielone",
+   "name": "Kotlety mielone",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ziemniaki, mizeria, buraczki",
+   "thaw": "Mroź usmażone kotlety przełożone papierem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wp",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cebulę zetrzyj, bułkę (2 łyżki) namocz w 3 łyżkach wody.",
+    "Wymieszaj mięso z jajkiem, cebulą, bułką, czosnkiem i przyprawami.",
+    "Uformuj kotlety, obtocz w reszcie bułki tartej.",
+    "Smaż na średnim ogniu po 5 minut z każdej strony."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-mielone"
+  },
+  {
+   "id": "pulpety-w-sosie-koperkowym-ania",
+   "category": "mielone",
+   "name": "Pulpety wieprzowe w sosie koperkowym",
+   "minutes": 45,
+   "freeze_months": 3,
+   "sides": "ziemniaki, ryż, kasza",
+   "thaw": "Mroź z sosem, koperek możesz dodać świeży po odgrzaniu.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wp",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.5,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 120,
+     "unit": "ml"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wymieszaj mięso z jajkiem, bułką, startą cebulą, solą i pieprzem, uformuj kulki.",
+    "Gotuj je 20 minut w 600 ml wody z kostką.",
+    "Śmietanę wymieszaj z mąką, zahartuj wywarem i wlej.",
+    "Zagotuj i dodaj dużo posiekanego koperku."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/pulpety-w-sosie-koperkowym"
+  },
+  {
+   "id": "golabki-tradycyjne",
+   "category": "mielone",
+   "name": "Gołąbki w sosie pomidorowym",
+   "minutes": 120,
+   "freeze_months": 3,
+   "sides": "ziemniaki, pieczywo",
+   "thaw": "Mrożą się świetnie razem z sosem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kapusta",
+     "amt": 700,
+     "unit": "g"
+    },
+    {
+     "pid": "mielone_wp",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "ryz",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "passata",
+     "amt": 400,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Główkę kapusty sparz i oddziel liście, zetnij grube nerwy.",
+    "Ryż ugotuj na pół miękko, wymieszaj z mięsem, podsmażoną cebulą, jajkiem i przyprawami.",
+    "Nakładaj farsz na liście i zawijaj gołąbki, ułóż ciasno w garnku wyłożonym liśćmi.",
+    "Zalej bulionem do połowy, duś 60 minut, dodaj passatę zagęszczoną mąką i gotuj 15 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/golabki-tradycyjne"
+  },
+  {
+   "id": "cukinia-faszerowana",
+   "category": "mielone",
+   "name": "Cukinia faszerowana mięsem",
+   "minutes": 50,
+   "freeze_months": 3,
+   "sides": "ryż, pieczywo",
+   "thaw": "Lepsze na świeżo. Sam farsz mrozi się dobrze.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "cukinia",
+     "amt": 600,
+     "unit": "g"
+    },
+    {
+     "pid": "mielone_wp",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_tarty",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "oregano",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cukinie przekrój wzdłuż i wydrąż środek, miąższ posiekaj.",
+    "Mięso podsmaż z cebulą, czosnkiem i miąższem, dodaj pomidory i oregano, duś 10 minut.",
+    "Nałóż farsz do łódeczek, posyp serem.",
+    "Piecz 25 minut w 190°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/cukinia-faszerowana"
+  },
+  {
+   "id": "leczo-z-miesem-mielonym",
+   "category": "mielone",
+   "name": "Leczo z mięsem mielonym",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ryż, pieczywo",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wp",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Mięso podsmaż z cebulą i czosnkiem.",
+    "Dodaj paprykę i cukinię w kostce, smaż 5 minut.",
+    "Wlej pomidory, dopraw i duś 20 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/leczo-z-miesem-mielonym"
+  },
+  {
+   "id": "cannelloni-z-miesem",
+   "category": "makaron",
+   "name": "Cannelloni z mięsem mielonym",
+   "minutes": 70,
+   "freeze_months": 3,
+   "sides": "sałata",
+   "thaw": "Mroź porcje. Odgrzewaj pod folią w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "makaron_lasagne",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "mielone_wol",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "passata",
+     "amt": 400,
+     "unit": "ml"
+    },
+    {
+     "pid": "oregano",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "mleko",
+     "amt": 250,
+     "unit": "ml"
+    },
+    {
+     "pid": "maslo",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ser_tarty",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Mięso podsmaż z cebulą i czosnkiem, dodaj połowę passaty i oregano, duś 15 minut.",
+    "Płaty lasagne sparz, nałóż farsz i zwiń w rurki (albo nadziewaj gotowe rurki).",
+    "Ułóż na reszcie passaty, polej beszamelem z masła, mąki i mleka.",
+    "Posyp serem i piecz 35 minut w 180°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/cannelloni-z-miesem-mielonym"
+  },
+  {
+   "id": "zapiekanka-pasterska",
+   "category": "mielone",
+   "name": "Zapiekanka pasterska",
+   "minutes": 70,
+   "freeze_months": 3,
+   "sides": "surówka",
+   "thaw": "Mrozi się świetnie w porcjach.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wol",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "groszek",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 600,
+     "unit": "g"
+    },
+    {
+     "pid": "maslo",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "mleko",
+     "amt": 80,
+     "unit": "ml"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Mięso podsmaż z cebulą i marchewką, dodaj koncentrat, 150 ml bulionu i groszek, duś 15 minut.",
+    "Ziemniaki ugotuj i utłucz z masłem i mlekiem na puree.",
+    "Mięso przełóż do naczynia, przykryj puree i posyp serem.",
+    "Piecz 25 minut w 200°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zapiekanka-pasterska"
+  },
+  {
+   "id": "burrito-wolowe",
+   "category": "mielone",
+   "name": "Burrito z wołowiną i fasolą",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "salsa, kwaśna śmietana",
+   "thaw": "Zawinięte burrito mroź w folii. Odgrzewaj w piekarniku 20 minut.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wol",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "fasola",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "kukurydza",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "kumin",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "ryz",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "tortilla",
+     "amt": 4,
+     "unit": "szt"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj ryż.",
+    "Mięso podsmaż z cebulą, czosnkiem i przyprawami, dodaj koncentrat, fasolę i kukurydzę.",
+    "Na tortille nałóż ryż, mięso i ser, zawiń ciasno.",
+    "Zrumień na suchej patelni z obu stron."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/burrito"
+  },
+  {
+   "id": "pierogi-z-miesem",
+   "category": "mielone",
+   "name": "Pierogi z mięsem",
+   "minutes": 100,
+   "freeze_months": 3,
+   "sides": "skwarki, cebulka, barszcz",
+   "thaw": "Mroź surowe pierogi na tacce, gotuj prosto z zamrażarki.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "maka",
+     "amt": 20,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "lopatka",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Łopatkę ugotuj w bulionie do miękkości (ok. 1 godzinę), przestudź.",
+    "Zmiel mięso z podsmażoną cebulą, dopraw majerankiem, solą i pieprzem.",
+    "Zagnieć ciasto z mąki, jajka i ok. 150 ml ciepłej wody, rozwałkuj i wykrawaj kółka.",
+    "Nakładaj farsz, sklejaj i gotuj 3 minuty od wypłynięcia."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/pierogi-z-miesem"
+  },
+  {
+   "id": "krokiety-z-miesem",
+   "category": "mielone",
+   "name": "Krokiety z mięsem",
+   "minutes": 70,
+   "freeze_months": 3,
+   "sides": "barszcz, surówka",
+   "thaw": "Mroź panierowane krokiety i smaż prosto z zamrażarki.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "maka",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "mleko",
+     "amt": 250,
+     "unit": "ml"
+    },
+    {
+     "pid": "jajka",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "lopatka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj łopatkę, zmiel z podsmażoną cebulą i dopraw.",
+    "Usmaż cienkie naleśniki z mąki, mleka i jednego jajka.",
+    "Nałóż farsz, zwiń w krokiety, obtocz w jajku i bułce tartej.",
+    "Smaż na złoto z każdej strony."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/krokiety"
+  },
+  {
+   "id": "kolduny",
+   "category": "mielone",
+   "name": "Kołduny z wołowiną",
+   "minutes": 90,
+   "freeze_months": 3,
+   "sides": "rosół, masło",
+   "thaw": "Mroź surowe na tacce, gotuj prosto z zamrażarki.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "maka",
+     "amt": 18,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "mielone_wol",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zagnieć elastyczne ciasto z mąki, jajka i ok. 130 ml wody.",
+    "Mięso wymieszaj z drobno startą cebulą, 2 łyżkami zimnej wody, majerankiem, solą i pieprzem.",
+    "Rozwałkuj cienko, wykrawaj małe kółka, nakładaj farsz i sklejaj.",
+    "Gotuj 5 minut od wypłynięcia."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kolduny"
+  },
+  {
+   "id": "burgery-wolowe",
+   "category": "mielone",
+   "name": "Burgery wołowe (kotlety)",
+   "minutes": 25,
+   "freeze_months": 3,
+   "sides": "bułki, warzywa, frytki",
+   "thaw": "Mroź surowe kotlety przełożone papierem. Smaż prosto z zamrażarki, trochę dłużej.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "mielone_wol",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Wymieszaj mięso z drobno startą cebulą, musztardą, solą i pieprzem, nie ugniataj za długo.",
+    "Uformuj płaskie kotlety z wgłębieniem pośrodku.",
+    "Smaż na mocno rozgrzanej patelni po 3–4 minuty z każdej strony."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/burgery-wolowe"
+  },
+  {
+   "id": "karkowka-w-sosie",
+   "category": "wieprzowina",
+   "name": "Karkówka w sosie",
+   "minutes": 90,
+   "freeze_months": 3,
+   "sides": "ziemniaki, kasza, kluski",
+   "thaw": "Mrozi się świetnie razem z sosem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "karkowka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziele",
+     "amt": 3,
+     "unit": "szt"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Karkówkę pokrój w plastry, rozbij, dopraw i oprósz mąką.",
+    "Obsmaż z obu stron i przełóż do garnka.",
+    "Podsmaż cebulę, dodaj do mięsa z 500 ml bulionu, liściem i zielem.",
+    "Duś pod przykryciem ok. 70 minut, zagęść resztą mąki."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/karkowka-w-sosie"
+  },
+  {
+   "id": "karkowka-pieczona-cebula",
+   "category": "wieprzowina",
+   "name": "Karkówka pieczona w plastrach z cebulą",
+   "minutes": 90,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka",
+   "thaw": "Mrozi się dobrze razem z cebulą i sosem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "karkowka",
+     "amt": 450,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Plastry karkówki lekko rozbij i natrzyj musztardą, czosnkiem, przyprawami i sosem sojowym.",
+    "Ułóż w naczyniu na warstwie cebuli w piórkach, przykryj resztą cebuli.",
+    "Wlej 100 ml wody i piecz pod przykryciem 70 minut w 180°C.",
+    "Odkryj i piecz jeszcze 15 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/karkowka-pieczona-w-plastrach-z-cebula"
+  },
+  {
+   "id": "rolada-ze-schabu",
+   "category": "wieprzowina",
+   "name": "Rolada ze schabu z pieczarkami",
+   "minutes": 100,
+   "freeze_months": 3,
+   "sides": "ziemniaki, kasza, surówka",
+   "thaw": "Mroź pokrojone plastry z sosem z pieczenia.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "schab",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Schab natnij motylkowo w płat i rozbij, posmaruj musztardą i dopraw.",
+    "Usmaż pieczarki z cebulą, rozłóż na mięsie, posyp serem.",
+    "Zwiń roladę, zwiąż nicią i obsmaż ze wszystkich stron.",
+    "Piecz pod przykryciem 50 minut w 180°C, podlewając wodą."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/rolada-ze-schabu"
+  },
+  {
+   "id": "poledwiczki-sliwki",
+   "category": "wieprzowina",
+   "name": "Polędwiczki w sosie ze śliwkami",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "kasza, puree",
+   "thaw": "Mroź z sosem.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "poledwiczka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "sliwki_suszone",
+     "amt": 8,
+     "unit": "szt"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Polędwiczki pokrój w medaliony, dopraw i obsmaż, odłóż.",
+    "Podsmaż cebulę, dodaj pokrojone śliwki, 150 ml bulionu i tymianek.",
+    "Wlej śmietankę i gotuj, aż sos zgęstnieje.",
+    "Włóż mięso i podgrzej 5 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/poledwiczki-z-suszonymi-sliwkami"
+  },
+  {
+   "id": "schab-po-wegiersku",
+   "category": "wieprzowina",
+   "name": "Schab po węgiersku",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "ryż, ziemniaki, kluski",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "schab",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 80,
+     "unit": "ml"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Schab pokrój w paski, oprósz mąką i obsmaż.",
+    "Dodaj cebulę, czosnek i paprykę w paskach, smaż 5 minut.",
+    "Wlej 300 ml wody, koncentrat i paprykę, duś 30 minut.",
+    "Zabiel śmietaną."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/schab-po-wegiersku"
+  },
+  {
+   "id": "kapusta-zasmazana-boczek",
+   "category": "wieprzowina",
+   "name": "Kapusta zasmażana z boczkiem",
+   "minutes": 50,
+   "freeze_months": 3,
+   "sides": "ziemniaki, kotlet",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kapusta_kiszona",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "boczek",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kminek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziele",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "cukier",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kapustę zalej wodą, dodaj liść, ziele i kminek, duś 30 minut.",
+    "Boczek wytop z cebulą, oprósz mąką i zrób zasmażkę.",
+    "Wymieszaj zasmażkę z kapustą, dopraw cukrem i pieprzem, gotuj 10 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kapusta-zasmazana-z-boczkiem"
+  },
+  {
+   "id": "kapusta-z-kielbasa",
+   "category": "wieprzowina",
+   "name": "Kapusta duszona z kiełbasą i koperkiem",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ziemniaki",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kapusta",
+     "amt": 600,
+     "unit": "g"
+    },
+    {
+     "pid": "kielbasa",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.5,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kiełbasę i cebulę podsmaż na maśle.",
+    "Dodaj poszatkowaną kapustę i 100 ml wody, duś 25 minut.",
+    "Dodaj koncentrat i koperek, dopraw."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/mloda-kapusta-z-kielbasa"
+  },
+  {
+   "id": "biala-kielbasa-pieczona",
+   "category": "wieprzowina",
+   "name": "Biała kiełbasa pieczona z ziemniakami i cebulą",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "ogórki kiszone, chrzan",
+   "thaw": "Najlepsze na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "biala_kielbasa",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ziemniaki pokrój w ćwiartki, wymieszaj z olejem, czosnkiem i przyprawami.",
+    "W naczyniu ułóż ziemniaki, cebulę w piórkach i kiełbasę.",
+    "Piecz 45 minut w 200°C, raz przemieszaj."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/biala-kielbasa-pieczona-z-ziemniakami"
+  },
+  {
+   "id": "biala-kielbasa-sos-chrzanowy",
+   "category": "wieprzowina",
+   "name": "Biała kiełbasa w sosie chrzanowym",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "ziemniaki, pieczywo",
+   "thaw": "Mroź z sosem, odgrzewaj bez wrzenia.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "biala_kielbasa",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "chrzan",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kiełbasę obsmaż z cebulą.",
+    "Wlej 250 ml bulionu i duś 10 minut.",
+    "Śmietanę wymieszaj z mąką, wlej i zagotuj.",
+    "Zdejmij z ognia, dodaj chrzan i majeranek."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/biala-kielbasa-w-sosie-chrzanowym"
+  },
+  {
+   "id": "leczo-z-chorizo",
+   "category": "wieprzowina",
+   "name": "Leczo z chorizo",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "ryż, pieczywo",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "chorizo",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Chorizo w plasterkach podsmaż na suchej patelni.",
+    "Dodaj cebulę, czosnek, paprykę i cukinię, smaż 5 minut.",
+    "Wlej pomidory i duś 20 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/leczo-z-chorizo"
+  },
+  {
+   "id": "chlopski-garnek",
+   "category": "wieprzowina",
+   "name": "Chłopski garnek",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "pieczywo, ogórek kiszony",
+   "thaw": "Mroź porcje, ziemniaki będą trochę bardziej miękkie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kielbasa",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "boczek",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Boczek i kiełbasę podsmaż, dodaj cebulę i pieczarki.",
+    "Dodaj ziemniaki w kostce i paprykę, podlej 200 ml wody.",
+    "Duś pod przykryciem 25 minut, aż ziemniaki zmiękną.",
+    "Zabiel śmietaną i dopraw majerankiem."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/chlopski-garnek"
+  },
+  {
+   "id": "szynka-pieczona",
+   "category": "wieprzowina",
+   "name": "Szynka pieczona w ziołach",
+   "minutes": 120,
+   "freeze_months": 3,
+   "sides": "ziemniaki, kanapki",
+   "thaw": "Mroź w plastrach. Świetna na obiad i do kanapek.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "szynka_wieprzowa",
+     "amt": 700,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Szynkę natrzyj solą, pieprzem, czosnkiem, majerankiem i musztardą, odstaw na noc.",
+    "Obsmaż ze wszystkich stron.",
+    "Piecz w rękawie 90 minut w 170°C, na koniec posmaruj miodem i zapiecz 10 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/szynka-pieczona"
+  },
+  {
+   "id": "kugel",
+   "category": "wieprzowina",
+   "name": "Kugel ziemniaczany z boczkiem",
+   "minutes": 90,
+   "freeze_months": 3,
+   "sides": "kwaśna śmietana, surówka",
+   "thaw": "Mroź pokrojone porcje, odgrzewaj w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ziemniaki",
+     "amt": 800,
+     "unit": "g"
+    },
+    {
+     "pid": "boczek",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Boczek z cebulą wytop na patelni.",
+    "Ziemniaki zetrzyj na drobnej tarce i odlej sok.",
+    "Wymieszaj z boczkiem, cebulą, jajkami, mąką i przyprawami.",
+    "Piecz w natłuszczonej formie ok. 70 minut w 190°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kugel"
+  },
+  {
+   "id": "bogracz",
+   "category": "wolowina",
+   "name": "Bogracz",
+   "minutes": 120,
+   "freeze_months": 3,
+   "sides": "pieczywo",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "wolowina_gul",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "lopatka",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kminek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Mięso pokrój w kostkę i obsmaż partiami.",
+    "Dodaj cebulę, czosnek, paprykę słodką i kminek.",
+    "Zalej 1 l wody, dodaj koncentrat i liść, gotuj 70 minut.",
+    "Dodaj ziemniaki i paprykę w kostce, gotuj 20 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/bogracz"
+  },
+  {
+   "id": "wolowina-po-burgundzku",
+   "category": "wolowina",
+   "name": "Wołowina po burgundzku",
+   "minutes": 180,
+   "freeze_months": 3,
+   "sides": "puree, bagietka",
+   "thaw": "Mrozi się znakomicie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "wolowina_gul",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "boczek",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koncentrat",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "wino_czerwone",
+     "amt": 8,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Boczek wytop, wołowinę oprósz mąką i obsmaż partiami.",
+    "Dodaj cebulę, marchew, czosnek i koncentrat.",
+    "Wlej wino i 300 ml wody, dodaj zioła, duś 2–2,5 godziny.",
+    "Pod koniec dodaj obsmażone pieczarki."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/wolowina-po-burgundzku"
+  },
+  {
+   "id": "zrazowe-w-sosie",
+   "category": "wolowina",
+   "name": "Wołowina zrazowa w sosie",
+   "minutes": 130,
+   "freeze_months": 3,
+   "sides": "kasza gryczana, ziemniaki",
+   "thaw": "Mrozi się bardzo dobrze w sosie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "wolowina_zrazowa",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "lisc_laurowy",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "ziele",
+     "amt": 3,
+     "unit": "szt"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Mięso pokrój w plastry, rozbij, dopraw i oprósz mąką.",
+    "Obsmaż z obu stron i przełóż do garnka.",
+    "Dodaj cebulę, startą marchew, przyprawy i 500 ml wody.",
+    "Duś 1,5–2 godziny, na koniec dodaj musztardę."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zrazowe-w-sosie"
+  },
+  {
+   "id": "rumsztyk",
+   "category": "wolowina",
+   "name": "Rumsztyk z cebulką",
+   "minutes": 25,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka",
+   "thaw": "Najlepszy na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "wolowina_zrazowa",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Plastry wołowiny rozbij, natnij brzegi, dopraw.",
+    "Oprósz mąką i smaż na mocno rozgrzanym tłuszczu po 2–3 minuty z każdej strony.",
+    "Na maśle zeszklij cebulę i podaj na mięsie."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/rumsztyk"
+  },
+  {
+   "id": "zupa-ogorkowa-krem",
+   "category": "zupy",
+   "name": "Krem z ogórków kiszonych",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "grzanki, koperek",
+   "thaw": "Mroź bez śmietany, dodaj ją po odgrzaniu.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ogorki_kiszone",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.5,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Na maśle zeszklij cebulę, dodaj ziemniaki i 700 ml bulionu, gotuj 15 minut.",
+    "Dodaj starte ogórki i trochę zalewy, gotuj 10 minut.",
+    "Zmiksuj, zabiel śmietaną i dodaj koperek."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-ogorkowa-krem"
+  },
+  {
+   "id": "krem-z-selera",
+   "category": "zupy",
+   "name": "Krem z selera",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "grzanki, pestki",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "seler",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 60,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Na maśle zeszklij cebulę, dodaj seler i ziemniaki w kostce.",
+    "Zalej 700 ml bulionu, gotuj 25 minut.",
+    "Zmiksuj ze śmietanką, dopraw gałką."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-krem-z-selera"
+  },
+  {
+   "id": "zupa-z-brukselka",
+   "category": "zupy",
+   "name": "Zupa z brukselką i ziemniakami",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "pieczywo",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "brukselka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "ziemniaki",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "boczek",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 80,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Boczek podsmaż z cebulą.",
+    "Dodaj ziemniaki, marchew i 900 ml bulionu, gotuj 15 minut.",
+    "Dodaj przekrojoną brukselkę, gotuj 10 minut.",
+    "Zabiel śmietaną i dopraw majerankiem."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-z-brukselka"
+  },
+  {
+   "id": "zupa-grzybowa-z-makaronem",
+   "category": "zupy",
+   "name": "Zupa grzybowa z makaronem",
+   "minutes": 60,
+   "freeze_months": 3,
+   "sides": "makaron",
+   "thaw": "Mroź bez makaronu.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "grzyby_suszone",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pietruszka",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 80,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Grzyby namocz w 1 l wody na kilka godzin, potem gotuj w tej wodzie 30 minut.",
+    "Dodaj marchew, pietruszkę i kostkę, gotuj 15 minut.",
+    "Pieczarki z cebulą podsmaż na maśle i dodaj do zupy.",
+    "Zabiel śmietaną. Makaron ugotuj osobno."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-grzybowa-z-makaronem"
+  },
+  {
+   "id": "zupa-z-cukinii-i-pomidorow",
+   "category": "zupy",
+   "name": "Zupa z cukinii i pomidorów",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "grzanki, ser",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "cukinia",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bazylia",
+     "amt": 0.25,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zeszklij cebulę i czosnek.",
+    "Dodaj cukinię w kostce, smaż 5 minut.",
+    "Wlej pomidory i 500 ml bulionu, gotuj 15 minut.",
+    "Zmiksuj i dodaj bazylię."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-z-cukinii-i-pomidorow"
+  },
+  {
+   "id": "zupa-musztardowa",
+   "category": "zupy",
+   "name": "Zupa musztardowa",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "jajko na twardo, grzanki",
+   "thaw": "Mroź bez jajek.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ziemniaki",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 120,
+     "unit": "ml"
+    },
+    {
+     "pid": "maka",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Na maśle zeszklij cebulę, dodaj ziemniaki i 800 ml bulionu, gotuj 15 minut.",
+    "Śmietanę wymieszaj z mąką i musztardą, zahartuj i wlej do zupy.",
+    "Zagotuj i dopraw."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-musztardowa"
+  },
+  {
+   "id": "zupa-z-batatow",
+   "category": "zupy",
+   "name": "Krem z batatów",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "pestki, grzanki",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "bataty",
+     "amt": 500,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "imbir",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "mleko_kokos",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zeszklij cebulę, czosnek i imbir.",
+    "Dodaj bataty w kostce i 700 ml bulionu, gotuj 20 minut.",
+    "Zmiksuj z mleczkiem kokosowym."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-z-batatow"
+  },
+  {
+   "id": "zupa-meksykanska-bataty",
+   "category": "zupy",
+   "name": "Zupa meksykańska z batatami",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "nachos, kwaśna śmietana",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "bataty",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "mielone_wol",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "fasola",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "kukurydza",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "kumin",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "chili",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Podsmaż mięso z cebulą i przyprawami.",
+    "Dodaj bataty i paprykę w kostce, pomidory i 700 ml bulionu.",
+    "Gotuj 20 minut, dodaj fasolę i kukurydzę, gotuj 5 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-meksykanska-z-batatami"
+  },
+  {
+   "id": "krem-z-ciecierzycy",
+   "category": "zupy",
+   "name": "Krem z ciecierzycy",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "oliwa, pieczywo",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ciecierzyca",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "kumin",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "cytryna",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zeszklij cebulę i czosnek z przyprawami.",
+    "Dodaj ciecierzycę i 700 ml bulionu, gotuj 15 minut.",
+    "Zmiksuj, dopraw sokiem z cytryny."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-krem-z-ciecierzycy"
+  },
+  {
+   "id": "zupa-pieczarkowa",
+   "category": "zupy",
+   "name": "Zupa pieczarkowa",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "makaron, ziemniaki",
+   "thaw": "Mroź bez makaronu.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "pieczarki",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pietruszka",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "smietana18",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zagotuj 1 l wody z kostką, marchwią i pietruszką, gotuj 15 minut.",
+    "Pieczarki z cebulą podsmaż na maśle i dodaj do bulionu.",
+    "Gotuj 10 minut, zabiel śmietaną."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zupa-pieczarkowa"
+  },
+  {
+   "id": "risotto-z-dynia",
+   "category": "wege",
+   "name": "Risotto z dynią",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Najlepsze na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "ryz_arborio",
+     "amt": 160,
+     "unit": "g"
+    },
+    {
+     "pid": "dynia",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maslo",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "grana",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "wino_biale",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Dynię w kostce podsmaż i odłóż połowę.",
+    "Zeszklij cebulę i czosnek, wsyp ryż, wlej wino.",
+    "Dolewaj stopniowo 700 ml gorącego bulionu, mieszając, dodaj resztę dyni.",
+    "Na koniec wmieszaj masło, ser i podsmażoną dynię."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/risotto-z-dynia"
+  },
+  {
+   "id": "placki-ziemniaczane-z-serem",
+   "category": "wege",
+   "name": "Placki ziemniaczane z serem",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "śmietana, surówka",
+   "thaw": "Mroź usmażone placki, odgrzewaj w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ziemniaki",
+     "amt": 600,
+     "unit": "g"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ziemniaki i cebulę zetrzyj, odlej sok.",
+    "Dodaj starty ser, jajko, mąkę, sól i pieprz.",
+    "Smaż na rozgrzanym oleju na chrupko z obu stron."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/placki-ziemniaczane-z-serem"
+  },
+  {
+   "id": "leczo-z-batatami",
+   "category": "wege",
+   "name": "Leczo z batatami",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ryż, pieczywo",
+   "thaw": "Mrozi się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "bataty",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "cukinia",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zeszklij cebulę i czosnek.",
+    "Dodaj bataty w kostce i smaż 5 minut.",
+    "Dodaj paprykę, cukinię i pomidory, duś 20 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/leczo-z-batatami"
+  },
+  {
+   "id": "leczo-z-pieczarkami",
+   "category": "wege",
+   "name": "Leczo z kabaczkiem i pieczarkami",
+   "minutes": 35,
+   "freeze_months": 2,
+   "sides": "ryż, kasza, pieczywo",
+   "thaw": "Najlepsze w ciągu 2 miesięcy.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "cukinia",
+     "amt": 350,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Podsmaż pieczarki, aż odparują.",
+    "Dodaj cebulę, czosnek, paprykę i cukinię.",
+    "Wlej pomidory i duś 20 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/leczo-z-pieczarkami"
+  },
+  {
+   "id": "kotlety-sojowe",
+   "category": "wege",
+   "name": "Kotlety sojowe w panierce",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka",
+   "thaw": "Mroź usmażone kotlety.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "soja_granulat",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Granulat zalej wrzącym bulionem na 15 minut, odciśnij.",
+    "Wymieszaj z jajkiem, cebulą, czosnkiem, 2 łyżkami bułki i przyprawami.",
+    "Uformuj kotlety, obtocz w bułce i smaż po 4 minuty z każdej strony."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-sojowe"
+  },
+  {
+   "id": "krokiety-z-pieczarkami",
+   "category": "wege",
+   "name": "Krokiety z pieczarkami i kapustą",
+   "minutes": 70,
+   "freeze_months": 3,
+   "sides": "barszcz",
+   "thaw": "Mroź panierowane krokiety.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "maka",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "mleko",
+     "amt": 250,
+     "unit": "ml"
+    },
+    {
+     "pid": "jajka",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "kapusta_kiszona",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kapustę ugotuj, odciśnij i posiekaj, podsmaż z pieczarkami i cebulą.",
+    "Usmaż cienkie naleśniki z mąki, mleka i jednego jajka.",
+    "Nałóż farsz, zwiń, obtocz w jajku i bułce.",
+    "Smaż na złoto."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/krokiety-z-pieczarkami"
+  },
+  {
+   "id": "kotlety-z-ciecierzycy",
+   "category": "wege",
+   "name": "Kotlety z ciecierzycy",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "jogurt, surówka, pita",
+   "thaw": "Mrożą się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ciecierzyca",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "kumin",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ciecierzycę rozgnieć z cebulą, czosnkiem, pietruszką i przyprawami.",
+    "Dodaj jajko i bułkę tartą, uformuj kotlety.",
+    "Smaż po 4 minuty z każdej strony."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-z-ciecierzycy"
+  },
+  {
+   "id": "falafel",
+   "category": "wege",
+   "name": "Falafel",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "pita, hummus, warzywa",
+   "thaw": "Mroź usmażone kulki, odgrzewaj w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ciecierzyca",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "pietruszka_nac",
+     "amt": 0.5,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "kumin",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kolendra_mielona",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 6,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ciecierzycę dobrze osusz.",
+    "Zmiksuj z cebulą, czosnkiem, pietruszką i przyprawami na grudkowatą masę, dodaj mąkę.",
+    "Formuj kulki i smaż na głębokim oleju albo piecz 20 minut w 200°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/falafel"
+  },
+  {
+   "id": "kotlety-z-soczewicy",
+   "category": "wege",
+   "name": "Kotlety z czerwonej soczewicy",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "jogurt, surówka",
+   "thaw": "Mrożą się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "soczewica",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "marchew",
+     "amt": 80,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "curry",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Soczewicę ugotuj na gęsto i przestudź.",
+    "Wymieszaj ze startą marchwią, cebulą, czosnkiem, jajkiem, bułką i curry.",
+    "Smaż kotlety po 3–4 minuty z każdej strony."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-z-soczewicy"
+  },
+  {
+   "id": "kotlety-ziemniaczane",
+   "category": "wege",
+   "name": "Kotlety ziemniaczane",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "surówka, sos",
+   "thaw": "Mroź usmażone kotlety.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "ziemniaki",
+     "amt": 600,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "maka",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ziemniaki ugotuj i przeciśnij przez praskę.",
+    "Dodaj podsmażoną cebulę, jajko, mąkę, koperek i przyprawy.",
+    "Uformuj kotlety, obtocz w bułce i smaż na złoto."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-ziemniaczane"
+  },
+  {
+   "id": "kotlety-z-kalafiora",
+   "category": "wege",
+   "name": "Kotlety z kalafiora",
+   "minutes": 35,
+   "freeze_months": 3,
+   "sides": "ziemniaki, sos czosnkowy",
+   "thaw": "Mroź usmażone kotlety.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kalafior",
+     "amt": 0.6,
+     "unit": "szt"
+    },
+    {
+     "pid": "jajka",
+     "amt": 2,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kalafior ugotuj, odsącz i rozgnieć.",
+    "Dodaj jajka, starty ser, koperek, 3 łyżki bułki i przyprawy.",
+    "Formuj kotlety, obtocz w bułce i smaż."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-z-kalafiora"
+  },
+  {
+   "id": "kotlety-z-kaszy-gryczanej",
+   "category": "wege",
+   "name": "Kotlety z kaszy gryczanej",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "surówka, sos grzybowy",
+   "thaw": "Mrożą się dobrze.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kasza_gryczana",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "pieczarki",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "majeranek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj kaszę i przestudź.",
+    "Pieczarki z cebulą podsmaż i posiekaj.",
+    "Wymieszaj z kaszą, jajkiem, bułką i przyprawami, uformuj kotlety.",
+    "Smaż po 4 minuty z każdej strony."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-z-kaszy-gryczanej"
+  },
+  {
+   "id": "kotlety-z-cukinii",
+   "category": "wege",
+   "name": "Kotlety z cukinii z serem",
+   "minutes": 35,
+   "freeze_months": 2,
+   "sides": "jogurt, surówka",
+   "thaw": "Najlepsze na świeżo, ale można mrozić.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "cukinia",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cukinię zetrzyj, posól i odciśnij.",
+    "Wymieszaj z jajkiem, startym serem, mąką, czosnkiem i koperkiem.",
+    "Smaż kotleciki na złoto."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-z-cukinii"
+  },
+  {
+   "id": "kotlety-jajeczne",
+   "category": "wege",
+   "name": "Kotlety jajeczne",
+   "minutes": 25,
+   "freeze_months": 3,
+   "sides": "ziemniaki, surówka",
+   "thaw": "Najlepsze na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "jajka",
+     "amt": 5,
+     "unit": "szt"
+    },
+    {
+     "pid": "bulka_tarta",
+     "amt": 5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "koperek",
+     "amt": 0.25,
+     "unit": "pęczek"
+    },
+    {
+     "pid": "cebula",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 4,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj 4 jajka na twardo i posiekaj.",
+    "Wymieszaj z surowym jajkiem, cebulą, 2 łyżkami bułki i przyprawami.",
+    "Uformuj kotlety, obtocz w bułce i smaż na złoto."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/kotlety-jajeczne"
+  },
+  {
+   "id": "nalesniki-ze-szpinakiem",
+   "category": "wege",
+   "name": "Naleśniki ze szpinakiem i fetą",
+   "minutes": 40,
+   "freeze_months": 3,
+   "sides": "sos czosnkowy",
+   "thaw": "Mroź zwinięte naleśniki, odgrzewaj na patelni.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "maka",
+     "amt": 8,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "mleko",
+     "amt": 250,
+     "unit": "ml"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "feta",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "maslo",
+     "amt": 10,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Usmaż cienkie naleśniki z mąki, mleka, jajka i soli.",
+    "Szpinak podsmaż na maśle z czosnkiem, wymieszaj z fetą.",
+    "Nałóż farsz, zwiń naleśniki i podsmaż albo zapiecz."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/nalesniki-ze-szpinakiem"
+  },
+  {
+   "id": "sos-pieczarkowy-do-makaronu",
+   "category": "makaron",
+   "name": "Sos pieczarkowy do makaronu",
+   "minutes": 25,
+   "freeze_months": 2,
+   "sides": "tagliatelle, penne",
+   "thaw": "Mroź do 2 miesięcy, odgrzewaj powoli.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "pieczarki",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "grana",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Pieczarki usmaż na maśle do zrumienienia.",
+    "Dodaj cebulę, czosnek i tymianek.",
+    "Wlej śmietankę, gotuj 3 minuty i dodaj ser."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-z-pieczarkami"
+  },
+  {
+   "id": "sos-szpinakowy-do-makaronu",
+   "category": "makaron",
+   "name": "Sos szpinakowy z czosnkiem",
+   "minutes": 20,
+   "freeze_months": 2,
+   "sides": "penne, tagliatelle",
+   "thaw": "Mroź do 2 miesięcy.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "szpinak",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "grana",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 15,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Na maśle podsmaż czosnek.",
+    "Dodaj szpinak i gotuj, aż zwiędnie.",
+    "Wlej śmietankę, dodaj ser i gałkę, gotuj 2 minuty."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-ze-szpinakiem"
+  },
+  {
+   "id": "sos-dyniowy-do-makaronu",
+   "category": "makaron",
+   "name": "Kremowy sos dyniowy",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "penne, rigatoni",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "dynia",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 100,
+     "unit": "ml"
+    },
+    {
+     "pid": "grana",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "tymianek",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Dynię w kostce podsmaż z cebulą i czosnkiem.",
+    "Podlej 150 ml wody i duś 15 minut.",
+    "Zmiksuj ze śmietanką, serem i przyprawami."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-z-sosem-dyniowym"
+  },
+  {
+   "id": "lasagne-ze-szpinakiem",
+   "category": "makaron",
+   "name": "Lasagne ze szpinakiem i ricottą",
+   "minutes": 70,
+   "freeze_months": 3,
+   "sides": "sałata",
+   "thaw": "Mroź porcje, odgrzewaj w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "makaron_lasagne",
+     "amt": 125,
+     "unit": "g"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "ricotta",
+     "amt": 250,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "passata",
+     "amt": 300,
+     "unit": "ml"
+    },
+    {
+     "pid": "ser_tarty",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Szpinak podsmaż z czosnkiem, wymieszaj z ricottą, jajkiem, gałką i solą.",
+    "W naczyniu układaj warstwy: passata, makaron, farsz.",
+    "Ostatnią warstwę posyp serem.",
+    "Piecz 40 minut w 180°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/lasagne-ze-szpinakiem"
+  },
+  {
+   "id": "mac-and-cheese",
+   "category": "makaron",
+   "name": "Mac and cheese",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Mrozi się nieźle, odgrzewaj z odrobiną mleka.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "makaron",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "mleko",
+     "amt": 400,
+     "unit": "ml"
+    },
+    {
+     "pid": "maslo",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 2,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 150,
+     "unit": "g"
+    },
+    {
+     "pid": "musztarda",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "papryka_slodka",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj makaron al dente.",
+    "Na maśle podsmaż mąkę, wlewaj mleko, mieszając, aż zgęstnieje.",
+    "Dodaj starty ser, musztardę i paprykę.",
+    "Wymieszaj z makaronem, opcjonalnie zapiecz 15 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/mac-and-cheese"
+  },
+  {
+   "id": "sos-z-cukinii",
+   "category": "makaron",
+   "name": "Sos z cukinii z czosnkiem i serem",
+   "minutes": 20,
+   "freeze_months": 3,
+   "sides": "spaghetti, penne",
+   "thaw": "Najlepsze na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "cukinia",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "cytryna",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "grana",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "chili_platki",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Cukinię zetrzyj na grubej tarce.",
+    "Podsmaż czosnek z chili, dodaj cukinię i smaż 5 minut.",
+    "Dopraw sokiem z cytryny i serem, wymieszaj z makaronem."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-z-cukinia"
+  },
+  {
+   "id": "zapiekanka-z-brokulami",
+   "category": "makaron",
+   "name": "Zapiekanka makaronowa z brokułami",
+   "minutes": 45,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Mroź porcje, odgrzewaj w piekarniku.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "makaron",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "brokul",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "jajka",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "ser_tarty",
+     "amt": 120,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj makaron i różyczki brokuła.",
+    "Wymieszaj śmietankę z jajkiem, czosnkiem, połową sera i przyprawami.",
+    "Połącz z makaronem i brokułem, przełóż do naczynia, posyp resztą sera.",
+    "Zapiekaj 25 minut w 190°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zapiekanka-z-brokulami"
+  },
+  {
+   "id": "zapiekanka-makaronowa-kalafior",
+   "category": "makaron",
+   "name": "Zapiekanka makaronowa z kalafiorem",
+   "minutes": 45,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Mroź porcje.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "makaron",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "kalafior",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "mleko",
+     "amt": 300,
+     "unit": "ml"
+    },
+    {
+     "pid": "maslo",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "maka",
+     "amt": 1.5,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "ser_zolty",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "galka",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj makaron i różyczki kalafiora.",
+    "Zrób beszamel z masła, mąki i mleka, dodaj połowę sera i gałkę.",
+    "Wymieszaj wszystko, posyp serem i zapiekaj 25 minut w 190°C."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/zapiekanka-makaronowa-z-kalafiorem"
+  },
+  {
+   "id": "orzo-z-ciecierzyca",
+   "category": "makaron",
+   "name": "Makaron orzo z ciecierzycą i pomidorami",
+   "minutes": 25,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Na świeżo, odgrzewane rozrzedź wodą.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "makaron_orzo",
+     "amt": 160,
+     "unit": "g"
+    },
+    {
+     "pid": "ciecierzyca",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "pomidory_puszka",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "papryka_wedzona",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Zeszklij cebulę i czosnek, dodaj orzo i smaż minutę.",
+    "Wlej pomidory i 300 ml bulionu, gotuj 10 minut, mieszając.",
+    "Dodaj ciecierzycę i szpinak."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-orzo-z-ciecierzyca"
+  },
+  {
+   "id": "makaron-z-ricotta",
+   "category": "makaron",
+   "name": "Makaron z ricottą i cytryną",
+   "minutes": 20,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "makaron",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "ricotta",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "cytryna",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "grana",
+     "amt": 30,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 1,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "szpinak",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj makaron, zachowaj szklankę wody.",
+    "Ricottę wymieszaj ze skórką i sokiem z cytryny, serem i czosnkiem.",
+    "Połącz z gorącym makaronem i szpinakiem, rozrzedź wodą z makaronu."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-z-ricotta"
+  },
+  {
+   "id": "udon-z-czosnkiem",
+   "category": "makaron",
+   "name": "Udon z czosnkiem i sosem sojowym",
+   "minutes": 15,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "makaron_udon",
+     "amt": 400,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 5,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "sos_sojowy",
+     "amt": 3,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "miod",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "sezam",
+     "amt": 1,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "chili_platki",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "maslo",
+     "amt": 20,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj udon.",
+    "Na maśle z olejem podsmaż czosnek z chili.",
+    "Dodaj sos sojowy, miód i makaron, wymieszaj i posyp sezamem."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/udon-z-czosnkiem"
+  },
+  {
+   "id": "spaghetti-napoli",
+   "category": "makaron",
+   "name": "Sos Napoli",
+   "minutes": 30,
+   "freeze_months": 3,
+   "sides": "spaghetti",
+   "thaw": "Mrozi się świetnie.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "pomidory_puszka",
+     "amt": 800,
+     "unit": "g"
+    },
+    {
+     "pid": "cebula",
+     "amt": 50,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "bazylia",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "cukier",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "oregano",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Na oliwie zeszklij cebulę i czosnek.",
+    "Dodaj pomidory, cukier i oregano, gotuj 20 minut.",
+    "Dodaj bazylię."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/spaghetti-napoli"
+  },
+  {
+   "id": "makaron-z-brokulami",
+   "category": "makaron",
+   "name": "Makaron z brokułami, czosnkiem i parmezanem",
+   "minutes": 20,
+   "freeze_months": 3,
+   "sides": "",
+   "thaw": "Na świeżo.",
+   "freezer": false,
+   "ingredients": [
+    {
+     "pid": "makaron",
+     "amt": 200,
+     "unit": "g"
+    },
+    {
+     "pid": "brokul",
+     "amt": 1,
+     "unit": "szt"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 3,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "chili_platki",
+     "amt": 0.25,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "grana",
+     "amt": 40,
+     "unit": "g"
+    },
+    {
+     "pid": "cytryna",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Ugotuj makaron, ostatnie 4 minuty z różyczkami brokuła.",
+    "Podsmaż czosnek z chili na oliwie.",
+    "Wymieszaj z makaronem, serem i sokiem z cytryny."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-z-brokulami"
+  },
+  {
+   "id": "makaron-curry-kurczak",
+   "category": "makaron",
+   "name": "Sos curry z kurczakiem do makaronu",
+   "minutes": 25,
+   "freeze_months": 2,
+   "sides": "makaron, ryż",
+   "thaw": "Mroź do 2 miesięcy.",
+   "freezer": true,
+   "ingredients": [
+    {
+     "pid": "kurczak_filet",
+     "amt": 300,
+     "unit": "g"
+    },
+    {
+     "pid": "curry",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "cebula",
+     "amt": 60,
+     "unit": "g"
+    },
+    {
+     "pid": "czosnek",
+     "amt": 2,
+     "unit": "ząbek"
+    },
+    {
+     "pid": "smietanka30",
+     "amt": 150,
+     "unit": "ml"
+    },
+    {
+     "pid": "kostka_rosolowa",
+     "amt": 0.5,
+     "unit": "szt"
+    },
+    {
+     "pid": "papryka",
+     "amt": 100,
+     "unit": "g"
+    },
+    {
+     "pid": "olej",
+     "amt": 1,
+     "unit": "łyżka"
+    },
+    {
+     "pid": "sol",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    },
+    {
+     "pid": "pieprz",
+     "amt": 0.5,
+     "unit": "łyżeczka"
+    }
+   ],
+   "steps": [
+    "Kurczaka w kostce oprósz curry i obsmaż.",
+    "Dodaj cebulę, czosnek i paprykę.",
+    "Wlej 150 ml bulionu i śmietankę, gotuj 5 minut."
+   ],
+   "inspired_by": "Ania Gotuje",
+   "source_url": "https://aniagotuje.pl/przepis/makaron-z-kurczakiem-w-sosie-curry"
+  }
+ ]
+}

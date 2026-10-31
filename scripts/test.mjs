@@ -82,4 +82,21 @@ eq(R.packPrice(rb.items[1], pf, pf.ref), 20.1, 'paragon: cena za kg po rabacie')
 eq(R.packPrice({ name: 'Mascarpone 250 g', qty: 1, unit_price: 5.49, total: 5.49, discount: 0 }, pm, pm.ref), 5.49, 'paragon: cena opakowania');
 eq(R.categoryOf('Piwo Pilsner 0,5 l') + '|' + R.categoryOf('Chleb wiejski') + '|' + R.categoryOf('Mleko', null), 'Alkohol|Pieczywo|Nabiał', 'paragon: kategorie');
 eq(R.joinShots(['a\nb\nc', 'b\nc\nd']), 'a\nb\nc\nd', 'paragon: łączenie zrzutów');
+// --- agregator gazetki.pl ---
+{
+  const E = await import('./extract.mjs');
+  const P = [{ id: 'kurczak_filet', unit: 'kg', pack: 1, loose: true, kw: ['filet z kurczaka', 'filet z piersi kurczaka'], ref: 24 },
+    { id: 'tunczyk', unit: 'kg', pack: 0.17, kw: ['tunczyk'], ref: 8 }, { id: 'limonka', unit: 'szt', pack: 1, kw: ['limonki', 'limonka'], ref: 1.4 }];
+  const items = [{ kw: 'filet z kurczaka', cards: [
+      { href: '/sklepy/biedronka/oferty/x-promocja-1/', text: 'Filet z kurczaka Kraina Mięs 1 kg\n3 dni\n24,90 zł\n14,99 zł' },
+      { href: '/sklepy/biedronka/oferty/y-promocja-2/', text: 'Filet z kurczaka wędzony 100 g\n3 dni\n2,99 zł' },
+      { href: '/sklepy/kaufland/oferty/z-promocja-3/', text: 'Filet z kurczaka\n3 dni\n9,99 zł' }],
+    rows: [['', 'Filet z kurczaka Kraina Mięs 3 kg', 'Biedronka', '24,90 zł', '13,99 zł', '9,91 zł Rabat', '31 października 2026', '02 listopada 2026'],
+      ['', 'Filet z kurczaka 1 kg', 'Biedronka', '', '11,99 zł', '', '01 października 2026', '03 października 2026']] },
+    { kw: 'tunczyk', cards: [{ href: '/sklepy/biedronka/oferty/a/', text: 'Sałatka z tuńczykiem z kuskusem Seko\n6,99 zł' }], rows: [] },
+    { kw: 'limonki', cards: [{ href: '/sklepy/lidl/oferty/a/', text: 'Limonki\n1,00 zł' }], rows: [] }];
+  const o = E.aggOffers(items, P, 'biedronka', 'Biedronka', '2026-11-01');
+  eq(o.map(x => x.product_id + ':' + x.price_for_pack + ':' + (x.valid_to || '')).join(','), 'kurczak_filet:13.99:2026-11-02', 'agregator: tylko ten sklep, aktualne, bez wędlin i sałatek');
+  eq(E.plDate('02 listopada 2026'), '2026-11-02', 'agregator: polska data');
+}
 if (fails) { console.log(fails, 'błędów'); process.exit(1); } else console.log('Wszystkie testy przeszły.');
