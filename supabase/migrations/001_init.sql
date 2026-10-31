@@ -38,7 +38,6 @@ language sql volatile security definer set search_path = public as $$
   update households set name = coalesce(nullif(trim(p_name), ''), name) where id = public.current_household()
 $$;
 
-revoke all on function public.current_household() from public;
 grant execute on function public.current_household(), public.create_household(text), public.household_info(), public.rename_household(text) to anon, authenticated;
 
 -- ---------- wspólne: katalog, ceny, oferty, przepisy ----------
@@ -181,14 +180,16 @@ begin
   -- wspólne: każdy czyta, nikt nie zapisuje z aplikacji (tylko funkcja „sync” kluczem serwisowym)
   foreach t in array array['products','prices','offers','scrape_runs','recipes'] loop
     execute format('alter table %I enable row level security', t);
-    execute format('drop policy if exists czytanie on %I', t);
-    execute format('create policy czytanie on %I for select to anon, authenticated using (true)', t);
+    if not exists (select 1 from pg_policies where tablename = t and policyname = 'czytanie') then
+      execute format('create policy czytanie on %I for select to anon, authenticated using (true)', t);
+    end if;
   end loop;
   alter table sync_state enable row level security;
   -- domowe: tylko dane własnego domu
   foreach t in array array['hh_recipes','reactions','list_items','freezer','hh_prices'] loop
     execute format('alter table %I enable row level security', t);
-    execute format('drop policy if exists dom on %I', t);
-    execute format('create policy dom on %I for all to anon, authenticated using (household_id = public.current_household()) with check (household_id = public.current_household())', t);
+    if not exists (select 1 from pg_policies where tablename = t and policyname = 'dom') then
+      execute format('create policy dom on %I for all to anon, authenticated using (household_id = public.current_household()) with check (household_id = public.current_household())', t);
+    end if;
   end loop;
 end $$;

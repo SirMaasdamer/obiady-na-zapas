@@ -1,0 +1,1 @@
+window.APP_CONFIG={"url":"https://jnomchdxgmoegbpfjtii.supabase.co","anon":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impub21jaGR4Z21vZWdicGZqdGlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMzMDY2MjAsImV4cCI6MjEwODg4MjYyMH0.FWGiKWmVqt8YByEkXRdpWwo3VCp0_UayErgOny07Sos"};
