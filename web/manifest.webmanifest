@@ -3,7 +3,6 @@
   "short_name": "Obiady",
   "description": "Gotowanie na zapas: przepisy, wspólna lista zakupów, ceny z gazetek i zamrażarka.",
   "lang": "pl",
-  "start_url": "./#przepisy",
   "scope": "./",
   "display": "standalone",
   "background_color": "#EDF2F0",

@@ -56,24 +56,15 @@ export function validate({ seedProducts, seedRecipes, batches }) {
   return errors;
 }
 
-// Wgrywa paczki do bazy. Istniejące produkty i przepisy zostają bez zmian.
-export async function importBatches(db, data, log = console.log) {
-  const now = new Date().toISOString();
-  const prods = data.batches.flatMap(b => b.products || []), recs = data.batches.flatMap(b => b.recipes || []);
-  if (prods.length) {
-    let r = await db.from('products').upsert(prods.map(({ regular, ...p }) => ({ ...p, pantry: !!p.pantry, loose: !!p.loose, pack: +p.pack || 1, cat: p.pantry ? 'spiżarnia' : p.cat })), { onConflict: 'id', ignoreDuplicates: true });
-    if (r.error) throw r.error;
-    const pr = prods.flatMap(p => Object.entries(p.regular || {}).map(([store, v]) => ({ product_id: p.id, store, regular: +v, regular_src: 'szac' })));
-    if (pr.length) { r = await db.from('prices').upsert(pr, { onConflict: 'product_id,store', ignoreDuplicates: true }); if (r.error) throw r.error; }
+// Łączy katalog startowy z paczkami od Claude w jeden plik dane/katalog.json (czyta go funkcja „sync”).
+export function buildKatalog({ seedProducts, seedRecipes, batches }) {
+  const products = new Map(seedProducts.map(p => [p.id, p]));
+  for (const b of batches) for (const p of b.products || []) if (!products.has(p.id)) products.set(p.id, { ...p, pantry: !!p.pantry, loose: !!p.loose, pack: +p.pack || 1, cat: p.pantry ? 'spiżarnia' : p.cat });
+  const recipes = seedRecipes.map(({ active, ...r }) => ({ ...r, source: 'seed', default_active: active !== false }));
+  const ids = new Set(recipes.map(r => r.id));
+  for (const b of batches) {
+    const added_on = (b.file.match(/^\d{4}-\d{2}-\d{2}/) || [null])[0];
+    for (const r of b.recipes || []) if (!ids.has(r.id)) { ids.add(r.id); recipes.push({ base: 2, ...r, source: 'claude', default_active: true, added_on }); }
   }
-  if (recs.length) {
-    const { data: existing } = await db.from('recipes').select('id').in('id', recs.map(r => r.id));
-    const have = new Set((existing || []).map(r => r.id));
-    const fresh = recs.filter(r => !have.has(r.id)).map(r => ({
-      id: r.id, name: r.name, category: r.category, base: 2, minutes: +r.minutes || null, freeze_months: +r.freeze_months || 3,
-      sides: r.sides || '', thaw: r.thaw || '', ingredients: r.ingredients, steps: r.steps, source: 'claude', active: true, activated_at: now,
-    }));
-    if (fresh.length) { const { error } = await db.from('recipes').insert(fresh); if (error) throw error; }
-    log(`  nowe przepisy: ${fresh.length} (pominięte, bo już są: ${recs.length - fresh.length})`);
-  } else log('  brak przepisów w folderze przepisy/');
+  return { products: [...products.values()], recipes };
 }

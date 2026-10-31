@@ -200,16 +200,26 @@ details summary{cursor:pointer;font-weight:600;padding:6px 0}
 </head>
 <body>
 
-<div id="login" class="login wrap" hidden>
-  <form class="card" id="f-login">
+<div id="welcome" class="login wrap" hidden>
+  <div class="card">
     <span class="tape">Gotuj raz · jedz cały tydzień</span>
     <h1>Obiady na <span style="background:var(--tape);color:var(--tape-ink);padding:0 6px;border-radius:3px">Zapas</span></h1>
-    <div class="sub">Wpisz kod domu, ten sam dla wszystkich domowników.</div>
-    <div class="field"><label for="l-code">Kod domu</label><input class="input" id="l-code" type="password" autocomplete="current-password" required minlength="6"></div>
-    <div class="field"><label for="l-name">Twoje imię</label><input class="input" id="l-name" autocomplete="given-name" placeholder="np. Michał" required></div>
-    <button class="btn pri" type="submit" id="l-btn">Wejdź</button>
-    <div class="banner" id="l-err" hidden></div>
-  </form>
+    <div class="sub">Przepisy do mrożenia z przelicznikiem porcji, wspólna lista zakupów z wyborem najtańszego sklepu i ceny z ofert Biedronki, Lidla i Kauflandu.</div>
+    <div id="w-install" class="banner" hidden><b>Najpierw dodaj aplikację do ekranu:</b> w Safari stuknij Udostępnij, potem „Do ekranu początkowego”. Możesz też najpierw założyć dom, a ikonę dodać zaraz potem.</div>
+    <div class="field"><label for="w-member">Twoje imię</label><input class="input" id="w-member" autocomplete="given-name" placeholder="np. Michał"></div>
+    <div class="chips" id="w-modes"><button type="button" class="chip" data-act="w-mode" data-k="create" aria-pressed="true">Nowy dom</button><button type="button" class="chip" data-act="w-mode" data-k="join" aria-pressed="false">Mam zaproszenie</button></div>
+    <form id="f-create" class="sec">
+      <div class="field"><label for="w-house">Nazwa domu (opcjonalnie)</label><input class="input" id="w-house" placeholder="np. Dom Kowalskich"></div>
+      <div class="sub">Dom to Wasza wspólna lista zakupów, zamrażarka i ulubione. Domowników zaprosisz linkiem.</div>
+      <button class="btn pri" type="submit" id="c-btn">Załóż dom</button>
+    </form>
+    <form id="f-join" class="sec" hidden>
+      <h4 id="j-title">Dołącz do domu</h4>
+      <div class="field"><label for="w-code">Link zaproszenia</label><input class="input" id="w-code" placeholder="Wklej link od domownika" autocomplete="off"></div>
+      <button class="btn pri" type="submit" id="j-btn">Dołącz</button>
+    </form>
+    <div class="banner" id="w-err" hidden></div>
+  </div>
 </div>
 
 <div id="app" hidden>

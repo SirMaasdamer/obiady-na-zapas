@@ -11,14 +11,17 @@ const CATN = Object.fromEntries(CATEGORIES);
 const PCATS = ['mięso', 'nabiał', 'warzywa', 'puszki i sosy', 'suche', 'spiżarnia'];
 
 const S = L.S; // wspólny stan (produkty, ceny, przepisy…)
-const activeRecipes = () => Object.values(S.recipes).filter(r => r.active !== false && !r.removed);
-const bankFor = cat => Object.values(S.recipes).filter(r => r.active === false && !r.removed && r.category === cat);
+// przepis widoczny w tym domu: według wyboru domu, a bez wyboru według ustawienia domyślnego
+const visible = r => { const h = S.hh[r.id]; return h ? h.active && !h.removed : r.default_active !== false; };
+const activeRecipes = () => Object.values(S.recipes).filter(visible);
+const bankFor = cat => Object.values(S.recipes).filter(r => !visible(r) && !S.hh[r.id]?.removed && r.category === cat);
 const ui = {
   tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', q: '', pq: '', pmode: 'offers',
   portions: lsGet('portions', 8), trip: lsGet('trip', 8), plan: null, sheet: null,
   member: lsGet('member', ''), justAdded: new Set(),
 };
-let db = null;
+let db = null, house = null, chan = null;
+const HH_TABLES = ['hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices'];
 
 function lsGet(k, d) { try { const v = localStorage.getItem('onz_' + k); return v == null ? d : JSON.parse(v); } catch { return d; } }
 function lsSet(k, v) { try { localStorage.setItem('onz_' + k, JSON.stringify(v)); } catch { } }
@@ -35,7 +38,7 @@ const faces = names => names.length ? '<span class="faces">' + names.slice(0, 5)
 
 /* ---------- writes ---------- */
 async function w(fn, ok) {
-  try { const r = await fn(); const errs = [r].flat().map(x => x?.error).filter(Boolean); if (errs.length) throw errs[0]; if (ok) toast(ok); return true; }
+  try { const r = await fn(); const errs = [r].flat().map(x => x?.error).filter(Boolean); if (errs.length) throw errs[0]; if (ok) toast(ok); ping(); return true; }
   catch (e) { console.error(e); toast(navigator.onLine ? 'Nie udało się zapisać. Spróbuj ponownie.' : 'Brak internetu. Spróbuj, gdy wróci połączenie.'); return false; }
 }
 let tt; function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 2800); }
@@ -44,7 +47,9 @@ let tt; function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden =
 const TABLES = {
   products: q => q.select('*'),
   prices: q => q.select('*'),
-  recipes: q => q.select('*').order('created_at'),
+  recipes: q => q.select('*').order('name'),
+  hh_recipes: q => q.select('*'),
+  hh_prices: q => q.select('*'),
   reactions: q => q.select('*'),
   list_items: q => q.select('*').order('created_at'),
   freezer: q => q.select('*'),
@@ -61,10 +66,12 @@ const pending = new Set(); let pt;
 function reload(t) { pending.add(t); clearTimeout(pt); pt = setTimeout(async () => { const ts = [...pending]; pending.clear(); await Promise.all(ts.map(load)); renderAll(); }, 250); }
 async function loadAll() { await Promise.all(Object.keys(TABLES).map(load)); renderAll(); }
 function loadCache() { for (const t of Object.keys(TABLES)) { try { const v = localStorage.getItem('onz_cache_' + t); if (v) L.setTable(t, JSON.parse(v)); } catch { } } }
-function subscribe() {
-  const ch = db.channel('dom');
-  for (const t of ['prices', 'recipes', 'reactions', 'list_items', 'freezer']) ch.on('postgres_changes', { event: '*', schema: 'public', table: t }, () => reload(t));
-  ch.subscribe();
+// Zmiany domowników: po każdym zapisie wysyłamy sygnał na kanał domu, a pozostałe telefony odświeżają dane.
+async function subscribe() {
+  const id = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(house.key)))).slice(0, 12).map(b => b.toString(16).padStart(2, '0')).join('');
+  chan = db.channel('dom-' + id, { config: { broadcast: { self: false } } });
+  chan.on('broadcast', { event: 'zmiana' }, () => HH_TABLES.forEach(reload)).subscribe();
+  setInterval(() => { if (!document.hidden) HH_TABLES.forEach(reload); }, 60000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) loadAll(); });
   window.addEventListener('online', () => { $('#offline').hidden = true; loadAll(); });
   window.addEventListener('offline', () => $('#offline').hidden = false);
@@ -88,9 +95,9 @@ function renderCats() {
 function renderRecipes() {
   const box = $('#rlist'); const all = activeRecipes();
   $('#rcount').textContent = all.length ? `${all.length} dań, które dobrze znoszą mrożenie` : 'Dania, które dobrze znoszą mrożenie';
-  if (!all.length) { box.innerHTML = S.loaded.recipes ? `<div class="empty"><h3>Nie ma jeszcze przepisów</h3><div>Uruchom instalację jeszcze raz w GitHub.</div></div>` : `<div class="empty"><span class="spin"></span>Wczytuję przepisy…</div>`; return; }
+  if (!all.length) { box.innerHTML = S.loaded.recipes ? `<div class="empty"><h3>Nie ma jeszcze przepisów</h3><div>Baza przepisów jeszcze się wczytuje. Zajrzyj za kilka minut.</div></div>` : `<div class="empty"><span class="spin"></span>Wczytuję przepisy…</div>`; return; }
   const q = ui.q.trim().toLowerCase(), week = Date.now() - 7 * 864e5;
-  let list = all.map(r => ({ ...r, c: L.recipeCost(r, 2), re: reactFor(r.id), isNew: ui.justAdded.has(r.id) || (r.activated_at && new Date(r.activated_at).getTime() > week) }))
+  let list = all.map(r => ({ ...r, c: L.recipeCost(r, 2), re: reactFor(r.id), isNew: ui.justAdded.has(r.id) || (S.hh[r.id]?.activated_at && new Date(S.hh[r.id].activated_at).getTime() > week) || (r.source === 'claude' && r.added_on && new Date(r.added_on).getTime() > week) }))
     .filter(r => {
       if (ui.cat !== 'all' && r.category !== ui.cat) return false;
       if (q) { const hay = (r.name + ' ' + (r.ingredients || []).map(i => S.products[i.pid]?.name || '').join(' ')).toLowerCase(); if (!hay.includes(q)) return false; }
@@ -144,7 +151,7 @@ function drawRecipeDyn() {
   <div class="sec"><h4>Składniki · ${n} porcji</h4><div class="box" style="padding-block:4px"><ul class="ing">${ing}</ul></div></div>
   <div class="sec"><h4>Przygotowanie</h4><ol class="steps">${(r.steps || []).map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>
   ${r.thaw ? `<div class="sec"><h4>Mrożenie i odgrzewanie</h4><div class="box">${esc(r.thaw)}</div></div>` : ''}
-  <div>${ui.sheet.confirmDel ? `<div class="row"><span class="sub">Usunąć przepis dla wszystkich?</span><button class="btn sm danger" data-act="del-recipe">Tak, usuń</button><button class="btn sm" data-act="cancel-del">Anuluj</button></div>` : `<button class="btn sm ghost danger" data-act="ask-del">Usuń przepis</button>`}</div>`;
+  <div>${ui.sheet.confirmDel ? `<div class="row"><span class="sub">Usunąć to danie z Waszych przepisów?</span><button class="btn sm danger" data-act="del-recipe">Tak, usuń</button><button class="btn sm" data-act="cancel-del">Anuluj</button></div>` : `<button class="btn sm ghost danger" data-act="ask-del">Usuń przepis</button>`}</div>`;
 }
 async function addRecipeToList() {
   const r = S.recipes[ui.sheet.id], n = ui.portions, m = n / (r.base || 2), batch = r.id + '-' + Date.now();
@@ -168,9 +175,10 @@ async function runGen() {
     .sort((a, b) => b.promo - a.promo || a.rnd - b.rnd).slice(0, st.n).map(x => x.r);
   if (!pick.length) return;
   const ids = pick.map(r => r.id), now = new Date().toISOString();
-  pick.forEach(r => { r.active = true; r.activated_at = now; ui.justAdded.add(r.id); });
+  const rows = ids.map(id => ({ recipe_id: id, active: true, removed: false, activated_at: now }));
+  rows.forEach(r => { S.hh[r.recipe_id] = r; ui.justAdded.add(r.recipe_id); });
   ui.cat = st.cat; lsSet('cat', ui.cat); ui.filter = 'all'; closeSheet(); renderAll(); window.scrollTo(0, 0);
-  if (await w(() => db.from('recipes').update({ active: true, activated_at: now }).in('id', ids), `Dodano ${pick.length} przepisy: ${CATN[st.cat]}`)) reload('recipes');
+  if (await w(() => db.from('hh_recipes').upsert(rows), `Dodano ${pick.length} przepisy: ${CATN[st.cat]}`)) reload('hh_recipes');
 }
 
 /* ---------- LIST ---------- */
@@ -253,16 +261,16 @@ function renderPrices() {
   }
   const all = Object.values(S.products).filter(p => !q || p.name.toLowerCase().includes(q));
   const priced = all.filter(p => !p.pantry), pantry = all.filter(p => p.pantry);
-  let h = `<div class="sub">Czerwone ceny pochodzą z aktualnych gazetek. Pozostałe to ceny regularne. Te z dopiskiem „szac.” są orientacyjne, stuknij, żeby poprawić.</div><div class="ptable"><div class="prow head"><span>Produkt</span>${STORES.map(s => `<span class="store ${s.k}" style="text-align:center">${s.n}</span>`).join('')}</div>`;
+  let h = `<div class="sub">Czerwone ceny pochodzą z aktualnych ofert sklepów. Ceny „szac.” są orientacyjne: stuknij, żeby wpisać prawdziwą. Wpisane ceny widzi tylko Wasz dom.</div><div class="ptable"><div class="prow head"><span>Produkt</span>${STORES.map(s => `<span class="store ${s.k}" style="text-align:center">${s.n}</span>`).join('')}</div>`;
   const cats = [...new Set([...PCATS, ...priced.map(p => p.cat || 'inne')])];
   for (const c of cats) {
     const ps = priced.filter(p => (p.cat || 'inne') === c).sort((a, b) => a.name.localeCompare(b.name, 'pl')); if (!ps.length) continue;
     h += `<div class="prow cat">${esc(c)}</div>` + ps.map(p => {
       const vals = SK.map(s => L.priceOf(p.id, s)), have = vals.filter(Boolean), min = Math.min(...have.map(v => v.p));
       return `<div class="prow"><div class="nm">${esc(p.name)}<small>${p.loose ? 'za kg' : fmtPack(p)}</small></div>${SK.map((s, i) => {
-        const v = vals[i], row = S.prices[p.id]?.[s];
+        const v = vals[i];
         const cls = !v ? 'none' : v.promo ? 'promo' : (v.p === min && have.length > 1 ? 'cheap' : '');
-        const tag = !v ? '' : v.promo ? (v.until ? 'do ' + dPL(v.until) : 'promo') : row?.regular_src === 'szac' ? 'szac.' : row?.regular_src === 'gazetka' ? 'z gazetki' : 'regularna';
+        const tag = !v ? '' : v.promo ? (v.until ? 'do ' + dPL(v.until) : 'promo') : v.own ? 'Wasza' : 'szac.';
         return `<button class="pc ${cls}" data-act="price" data-pid="${esc(p.id)}" data-s="${s}">${v ? zs(v.p) : '+'}<small>${tag}</small></button>`;
       }).join('')}</div>`;
     }).join('');
@@ -272,7 +280,7 @@ function renderPrices() {
   box.innerHTML = h;
 }
 function priceSheet() {
-  const { pid, s } = ui.sheet, p = S.products[pid]; if (!p) return closeSheet(); const row = S.prices[pid]?.[s] || {}, v = L.priceOf(pid, s);
+  const { pid, s } = ui.sheet, p = S.products[pid]; if (!p) return closeSheet(); const v = L.priceOf(pid, s), row = { regular: v?.regular ?? (v && !v.promo ? v.p : null) };
   return `<div class="sheet-head"><div><h2>${esc(p.name)}</h2><div class="sub" style="margin-top:4px">cena regularna ${p.loose ? 'za 1 kg' : 'za opakowanie ' + fmtPack(p)}</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
   <form id="f-price" class="sec" style="gap:12px">
    <div class="chips">${SK.map(k => `<button type="button" class="chip" data-act="price" data-pid="${esc(pid)}" data-s="${k}" aria-pressed="${k === s}">${SN[k]}</button>`).join('')}</div>
@@ -282,7 +290,7 @@ function priceSheet() {
 }
 async function savePrice() {
   const { pid, s } = ui.sheet, v = L.parsePL($('#pp').value); if (v == null) return toast('Wpisz cenę, np. 6,99');
-  if (await w(() => db.from('prices').upsert({ product_id: pid, store: s, regular: v, regular_src: 'sklep', updated_at: new Date().toISOString() }), 'Zapisano cenę')) { closeSheet(); reload('prices'); }
+  if (await w(() => db.from('hh_prices').upsert({ product_id: pid, store: s, regular: v, updated_at: new Date().toISOString() }), 'Zapisano cenę')) { closeSheet(); reload('hh_prices'); }
 }
 
 /* ---------- sheet & routing ---------- */
@@ -293,9 +301,15 @@ function drawSheet() {
   if (st.type === 'recipe') drawRecipeDyn();
 }
 function whoSheet() {
-  return `<div class="sheet-head"><h2>Kim jesteś?</h2><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
-  <form id="f-who" class="sec" style="gap:12px"><div class="field"><label for="w-name">Imię widoczne dla domowników</label><input class="input" id="w-name" value="${esc(ui.member)}"></div>
-  <button class="btn pri" type="submit">Zapisz</button><button class="btn ghost danger" type="button" data-act="logout">Wyloguj z tego telefonu</button></form>`;
+  const st = ui.sheet;
+  return `<div class="sheet-head"><div><h2>${esc(house.name)}</h2><div class="sub" style="margin-top:4px">Ustawienia domu i zaproszenia</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  <div class="sec"><h4>Zaproś domownika</h4><div class="box sub">Wyślij link osobie, z którą dzielisz kuchnię. Zobaczy Waszą listę zakupów, zamrażarkę i ulubione. Znajomemu z innego domu wyślij zwykły adres aplikacji, żeby założył własny dom.</div>
+   <div class="row"><button class="btn pri" type="button" data-act="invite" style="flex:1">Wyślij zaproszenie</button><button class="btn" type="button" data-act="share-app">Adres dla znajomego</button></div></div>
+  <form id="f-who" class="sec" style="gap:12px"><h4>Ty i Twój dom</h4>
+   <div class="field"><label for="w-name">Twoje imię (widoczne dla domowników)</label><input class="input" id="w-name" value="${esc(ui.member)}" autocomplete="given-name"></div>
+   <div class="field"><label for="w-house">Nazwa domu</label><input class="input" id="w-house" value="${esc(house.name)}"></div>
+   <button class="btn pri" type="submit">Zapisz</button></form>
+  <div class="sec"><h4>Ten telefon</h4>${st.confirmLeave ? `<div class="banner">Ten telefon przestanie widzieć dane domu. Wrócisz do niego tylko z linkiem zaproszenia od domownika.</div><div class="row"><button class="btn danger" type="button" data-act="leave">Tak, opuść dom</button><button class="btn" type="button" data-act="cancel-leave">Anuluj</button></div>` : `<button class="btn ghost danger" type="button" data-act="ask-leave">Opuść dom na tym telefonie</button>`}</div>`;
 }
 function closeSheet() { ui.sheet = null; $('#sheet').hidden = true; document.body.style.overflow = ''; }
 const TABS = ['przepisy', 'lista', 'zamrazarka', 'ceny'];
@@ -324,7 +338,7 @@ document.addEventListener('click', async e => {
     case 'to-freezer': { const r = S.recipes[ui.sheet.id]; if (await w(() => db.from('freezer').insert({ recipe_id: r.id, name: r.name, portions: ui.portions, member: ui.member }), `Do zamrażarki: ${ui.portions} porcji`)) reload('freezer'); break; }
     case 'ask-del': ui.sheet.confirmDel = true; drawRecipeDyn(); break;
     case 'cancel-del': ui.sheet.confirmDel = false; drawRecipeDyn(); break;
-    case 'del-recipe': { const id = ui.sheet.id; if (await w(() => db.from('recipes').update({ removed: true }).eq('id', id), 'Usunięto przepis')) { closeSheet(); reload('recipes'); } break; }
+    case 'del-recipe': { const id = ui.sheet.id, row = { recipe_id: id, active: false, removed: true }; S.hh[id] = row; closeSheet(); renderAll(); if (await w(() => db.from('hh_recipes').upsert(row), 'Usunięto przepis')) reload('hh_recipes'); break; }
     case 'gen': ui.sheet = { type: 'gen', cat: ui.cat === 'all' ? null : ui.cat, n: 4 }; drawSheet(); break;
     case 'gen-cat': ui.sheet.cat = d.k; drawSheet(); break;
     case 'gen-n': ui.sheet.n = +d.n; drawSheet(); break;
@@ -340,7 +354,12 @@ document.addEventListener('click', async e => {
     case 'price': ui.sheet = { type: 'price', pid: d.pid, s: d.s }; drawSheet(); break;
     case 'pmode': ui.pmode = d.k; renderPrices(); break;
     case 'whoami': ui.sheet = { type: 'who' }; drawSheet(); break;
-    case 'logout': await db.auth.signOut(); localStorage.clear(); location.reload(); break;
+    case 'invite': shareLink(inviteUrl(), `Dołącz do domu „${house.name}” w Obiadach na Zapas`); break;
+    case 'share-app': shareLink(appUrl(), 'Obiady na Zapas: przepisy do mrożenia, wspólna lista zakupów i ceny z gazetek'); break;
+    case 'ask-leave': ui.sheet.confirmLeave = true; drawSheet(); break;
+    case 'cancel-leave': ui.sheet.confirmLeave = false; drawSheet(); break;
+    case 'leave': leaveHouse(); break;
+    case 'w-mode': $('#f-create').hidden = d.k !== 'create'; $('#f-join').hidden = d.k !== 'join'; document.querySelectorAll('[data-act="w-mode"]').forEach(c => c.setAttribute('aria-pressed', c.dataset.k === d.k)); break;
     case 'hide-install': lsSet('noinstall', true); $('#install').hidden = true; break;
   }
 });
@@ -350,10 +369,16 @@ document.addEventListener('submit', async e => {
   e.preventDefault(); const id = e.target.id;
   if (id === 'f-price') savePrice();
   else if (id === 'f-gen') runGen();
-  else if (id === 'f-who') { const n = $('#w-name').value.trim(); if (n) { ui.member = n; lsSet('member', n); $('#who').textContent = n; closeSheet(); renderAll(); } }
+  else if (id === 'f-who') {
+    const n = $('#w-name').value.trim(), hn = $('#w-house').value.trim();
+    if (n) { ui.member = n; lsSet('member', n); $('#who').textContent = n; }
+    if (hn && hn !== house.name && await w(() => db.rpc('rename_household', { p_name: hn }))) { house.name = hn; lsSet('house', house); }
+    closeSheet(); renderAll(); toast('Zapisano');
+  }
   else if (id === 'f-manual') { const v = $('#manual').value.trim(); if (!v) return; if (await w(() => db.from('list_items').insert({ manual: true, name: v, member: ui.member }))) { $('#manual').value = ''; reload('list_items'); } }
   else if (id === 'f-freeze') { const v = $('#fz-name').value.trim(), n = +$('#fz-n').value || 1; if (!v) return; if (await w(() => db.from('freezer').insert({ name: v, portions: n, member: ui.member }), 'Dodano do zamrażarki')) { $('#fz-name').value = ''; reload('freezer'); } }
-  else if (id === 'f-login') login();
+  else if (id === 'f-create') createHouse();
+  else if (id === 'f-join') joinHouse();
 });
 document.addEventListener('input', e => {
   if (e.target.id === 'q') { ui.q = e.target.value; renderRecipes(); }
@@ -362,28 +387,81 @@ document.addEventListener('input', e => {
 });
 window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (TABS.includes(h)) setTab(h); });
 
-/* ---------- login & boot ---------- */
-async function login() {
-  const code = $('#l-code').value, name = $('#l-name').value.trim(), btn = $('#l-btn'), err = $('#l-err');
-  btn.disabled = true; btn.innerHTML = '<span class="spin"></span>'; err.hidden = true;
-  const { error } = await db.auth.signInWithPassword({ email: CFG.email, password: code });
-  btn.disabled = false; btn.textContent = 'Wejdź';
-  if (error) { err.textContent = navigator.onLine ? 'Nieprawidłowy kod domu. Sprawdź go i spróbuj jeszcze raz.' : 'Brak internetu. Połącz się i spróbuj ponownie.'; err.hidden = false; return; }
-  ui.member = name; lsSet('member', name); start();
+/* ---------- dom: zakładanie, zaproszenia, start ---------- */
+const keyFrom = v => (String(v || '').match(/[0-9a-f]{64}/) || [null])[0];
+const appUrl = () => location.origin + location.pathname;
+const inviteUrl = () => `${appUrl()}?dom=${house.key}`;
+const client = key => createClient(CFG.url, CFG.anon, { auth: { persistSession: false }, global: key ? { headers: { 'x-dom': key } } : {} });
+function ping() { chan?.send({ type: 'broadcast', event: 'zmiana', payload: {} }).catch?.(() => { }); }
+async function shareLink(url, text) {
+  try { if (navigator.share) { await navigator.share({ title: 'Obiady na Zapas', text, url }); return; } } catch (e) { if (e?.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(url); toast('Skopiowano link'); } catch { toast('Nie udało się skopiować. Link: ' + url); }
+}
+async function houseFor(key) {
+  const { data, error } = await client(key).rpc('household_info');
+  if (error) throw error;
+  return data ? { key, name: data.name } : null;
+}
+function welcomeError(m) { const e = $('#w-err'); e.textContent = m; e.hidden = !m; }
+async function busy(btn, fn) { const t = btn.textContent; btn.disabled = true; btn.innerHTML = '<span class="spin"></span>'; try { await fn(); } finally { btn.disabled = false; btn.textContent = t; } }
+async function createHouse() {
+  const name = $('#w-member').value.trim(); if (!name) return welcomeError('Wpisz swoje imię.');
+  await busy($('#c-btn'), async () => {
+    const { data, error } = await client(null).rpc('create_household', { p_name: $('#w-house').value.trim() || `Dom: ${name}` });
+    if (error || !data?.secret) return welcomeError(navigator.onLine ? 'Nie udało się założyć domu. Spróbuj ponownie.' : 'Brak internetu.');
+    enter({ key: data.secret, name: data.name }, name);
+  });
+}
+async function joinHouse() {
+  const name = $('#w-member').value.trim(), key = keyFrom($('#w-code').value);
+  if (!name) return welcomeError('Wpisz swoje imię.');
+  if (!key) return welcomeError('To nie wygląda na link zaproszenia. Wklej cały link od domownika.');
+  await busy($('#j-btn'), async () => {
+    const h = await houseFor(key).catch(() => undefined);
+    if (h === undefined) return welcomeError('Brak połączenia. Spróbuj ponownie.');
+    if (!h) return welcomeError('Nie znaleziono domu z tego zaproszenia. Poproś domownika o nowy link.');
+    enter(h, name);
+  });
+}
+function enter(h, member) {
+  house = h; lsSet('house', h); ui.member = member; lsSet('member', member);
+  // klucz domu w adresie: po „Dodaj do ekranu początkowego” ikona otworzy już ten dom
+  history.replaceState(null, '', `?dom=${h.key}#przepisy`);
+  start();
+}
+function leaveHouse() {
+  try { Object.keys(localStorage).filter(k => k.startsWith('onz_')).forEach(k => localStorage.removeItem(k)); } catch { }
+  location.replace(appUrl());
+}
+function showWelcome(invite) {
+  $('#welcome').hidden = false; $('#app').hidden = true;
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+  $('#w-install').hidden = standalone || !/iPhone|iPad/.test(navigator.userAgent);
+  $('#w-member').value = ui.member || '';
+  if (invite) {
+    $('#w-modes').hidden = true; $('#f-create').hidden = true; $('#f-join').hidden = false;
+    $('#w-code').value = invite.key; $('#j-title').textContent = `Dołączasz do domu „${invite.name}”`;
+  }
 }
 function start() {
-  $('#login').hidden = true; $('#app').hidden = false; $('#who').textContent = ui.member || 'Ustaw imię';
+  db = client(house.key);
+  $('#welcome').hidden = true; $('#app').hidden = false; $('#who').textContent = ui.member || 'Ustawienia';
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
   $('#install').hidden = standalone || lsGet('noinstall', false) || !/iPhone|iPad/.test(navigator.userAgent);
   $('#offline').hidden = navigator.onLine;
   const h = location.hash.slice(1); setTab(TABS.includes(h) ? h : 'przepisy');
   loadCache(); renderAll(); loadAll(); subscribe();
-  if (!ui.member) { ui.sheet = { type: 'who' }; drawSheet(); }
 }
 (async function boot() {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
-  if (!CFG.url) { document.body.innerHTML = '<div class="wrap" style="padding:40px 16px"><h2>Brak konfiguracji</h2><p>Uruchom workflow „Instalacja i publikacja” w GitHub.</p></div>'; return; }
-  db = createClient(CFG.url, CFG.anon, { auth: { persistSession: true, autoRefreshToken: true } });
-  const { data } = await db.auth.getSession();
-  if (data.session) start(); else $('#login').hidden = false;
+  if (!CFG.url) { document.body.innerHTML = '<div class="wrap" style="padding:40px 16px"><h2>Aplikacja jeszcze nie jest skonfigurowana</h2></div>'; return; }
+  const saved = lsGet('house', null), fromUrl = keyFrom(new URLSearchParams(location.search).get('dom'));
+  if (fromUrl && fromUrl !== saved?.key) {
+    // link zaproszenia albo pierwsze otwarcie z ikony
+    const h = await houseFor(fromUrl).catch(() => null);
+    if (h && ui.member) return enter(h, ui.member);
+    if (h) return showWelcome(h);
+  }
+  if (saved?.key) { house = saved; if (!fromUrl) history.replaceState(null, '', `?dom=${saved.key}${location.hash || '#przepisy'}`); return start(); }
+  showWelcome(null);
 })();

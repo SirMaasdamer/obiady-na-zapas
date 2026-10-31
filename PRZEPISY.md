@@ -5,10 +5,10 @@ Nowe przepisy układa Claude w rozmowie, np. „dodaj 4 przepisy z mielonego, co
 ## Instrukcja dla Claude
 
 1. Przeczytaj `seed/products.json` (katalog produktów) i wszystkie pliki w `przepisy/`. Korzystaj z istniejących `id` produktów i nie powtarzaj nazw dań, które już są w `seed/recipes.json` i `przepisy/`.
-2. Przeczytaj `dane/promocje.json` (aktualne promocje z Biedronki, Lidla i Kauflandu). Preferuj składniki, które są teraz w promocji.
+2. Przeczytaj pole `promos` w `dane/oferty.json` (aktualne promocje z Biedronki, Lidla i Kauflandu). Preferuj składniki, które są teraz w promocji.
 3. Zasady dań: obiady gotowane na zapas dla 2 osób. Główny element dania, który dobrze znosi mrożenie i odgrzewanie, a dodatki robi się na świeżo. Kuchnia domowa, składniki z polskich dyskontów.
 4. Zapisz jeden plik na zamówienie: `przepisy/RRRR-MM-DD-krotki-opis.json`.
-5. Sprawdź plik: `node scripts/import-recipes.mjs --check` (nie potrzebuje bazy ani bibliotek). Popraw wszystkie błędy, dopiero wtedy wgraj plik do gałęzi `main`.
+5. Sprawdź i zbuduj katalog: `node scripts/import-recipes.mjs` (nie potrzebuje bazy ani bibliotek). Popraw wszystkie błędy, dopiero wtedy wgraj plik razem z `dane/katalog.json` do gałęzi `main`.
 
 ## Format pliku
 

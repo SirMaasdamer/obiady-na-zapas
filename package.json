@@ -4,13 +4,11 @@
   "type": "module",
   "description": "Gotowanie na zapas: przepisy, wspólna lista zakupów, ceny z gazetek, zamrażarka.",
   "scripts": {
-    "setup": "node scripts/setup.mjs",
     "scrape": "node scripts/scrape.mjs",
+    "katalog": "node scripts/import-recipes.mjs",
     "test": "node scripts/test.mjs"
   },
   "dependencies": {
-    "@supabase/supabase-js": "2.45.4",
-    "pdf-lib": "1.17.1",
     "playwright": "1.47.2"
   }
 }

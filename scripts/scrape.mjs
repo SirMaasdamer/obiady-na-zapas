@@ -11,7 +11,8 @@ import { promisify } from 'node:util';
 import { mkdtemp, writeFile, readdir, readFile, mkdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { adminClient, sleep, today, env } from './lib.mjs';
+import { sleep, today, env } from './lib.mjs';
+import { loadAll, buildKatalog } from './batches.mjs';
 import { matchOffers, findValidity, scoreLink, scoreOfferLink } from './extract.mjs';
 
 const run = promisify(execFile);
@@ -24,12 +25,9 @@ const ONLY = (env('STORES', false) || 'b,l,k').split(',').map(s => s.trim()).fil
 const MAX_PAGES = +(env('MAX_PAGES', false) || 60);
 const log = (...a) => console.log(...a);
 
-const { db } = await adminClient();
-const { data: products } = await db.from('products').select('id,name,unit,pack,loose,pantry,kw');
-const { data: prices } = await db.from('prices').select('product_id,regular');
-const refOf = {};
-for (const p of prices) if (p.regular) (refOf[p.product_id] ??= []).push(+p.regular);
-const catalog = products.filter(p => !p.pantry).map(p => ({ ...p, ref: refOf[p.id] ? refOf[p.id].reduce((a, b) => a + b) / refOf[p.id].length : null }));
+// katalog = produkty startowe + dodane przez Claude (folder przepisy/); cena odniesienia = średnia cena regularna
+const { products } = buildKatalog(await loadAll());
+const catalog = products.filter(p => !p.pantry).map(p => { const v = Object.values(p.regular || {}).filter(x => +x > 0); return { ...p, ref: v.length ? v.reduce((a, b) => a + b) / v.length : null }; });
 log(`Katalog: ${catalog.length} produktów, ${catalog.filter(p => p.ref && p.kw?.length).length} z ceną odniesienia i słowami kluczowymi.`);
 
 const browser = await chromium.launch();
@@ -151,7 +149,8 @@ async function leafletPages(page, url) {
   } finally { page.off('response', onResp); }
 }
 
-async function save(store, leaflet, pages) {
+const OUT = { offers: [], promos: [], runs: [] };
+function collect(store, leaflet, pages) {
   const all = pages.map(p => p.text).join('\n');
   const v = findValidity(all, today()) || { valid_from: today(), valid_to: new Date(Date.now() + 6 * 864e5).toLocaleDateString('sv-SE') };
   // tekst (www, PDF) ma pierwszeństwo; OCR tylko dla produktów, których tam nie było, i z węższym zakresem cen
@@ -160,14 +159,13 @@ async function save(store, leaflet, pages) {
   const fromOcr = matchOffers(pages.filter(p => p.src === 'ocr'), catalog.filter(p => !got.has(p.id)))
     .filter(o => { const p = catalog.find(c => c.id === o.product_id); return o.price_for_pack >= p.ref * 0.5 && o.price_for_pack <= p.ref * 1.1; })
     .map(o => ({ ...o, note: 'odczyt OCR, sprawdź w sklepie' }));
-  const rows = [...exact, ...fromOcr].map(o => ({ store, leaflet, valid_from: v.valid_from, valid_to: v.valid_to, ...o, page: Number.isInteger(o.page) ? o.page : null }));
-  await db.from('offers').delete().eq('store', store).eq('leaflet', leaflet);
-  if (rows.length) { const { error } = await db.from('offers').insert(rows); if (error) throw error; }
-  const up = rows.map(r => ({ product_id: r.product_id, store, promo: r.price_for_pack, promo_from: r.valid_from, promo_to: r.valid_to, promo_note: [r.name, r.note].filter(Boolean).join(' · ').slice(0, 200), promo_leaflet: leaflet, updated_at: new Date().toISOString() }));
-  if (up.length) { const { error } = await db.from('prices').upsert(up, { onConflict: 'product_id,store' }); if (error) throw error; }
+  const rows = [...exact, ...fromOcr].map(o => ({ store, leaflet, valid_from: v.valid_from, valid_to: v.valid_to, ...o }));
+  const name = Object.fromEntries(catalog.map(p => [p.id, p.name]));
+  OUT.offers.push(...rows);
+  OUT.promos.push(...rows.map(r => ({ product_id: r.product_id, name: name[r.product_id], store, store_name: STORES[store].name, promo: r.price_for_pack, regular: r.regular, from: r.valid_from, to: r.valid_to, note: [r.name, r.note].filter(Boolean).join(' · ').slice(0, 200) })));
   const chars = all.replace(/\s/g, '').length, ok = chars > 500;
-  await db.from('scrape_runs').insert({ store, leaflet, valid_from: v.valid_from, valid_to: v.valid_to, pages: pages.length, offers: rows.length, matched: up.length, status: ok ? 'ok' : 'error', message: ok ? `www: ${exact.length} · OCR: ${fromOcr.length}` : 'Nie udało się odczytać tekstu ofert.' });
-  return { matched: up.length, exact: exact.length, ocr: fromOcr.length, valid: v, chars };
+  OUT.runs.push({ store, ran_at: new Date().toISOString(), status: ok ? 'ok' : 'error', valid_from: v.valid_from, valid_to: v.valid_to, matched: rows.length, message: ok ? `tekst: ${exact.length} · OCR: ${fromOcr.length}` : 'Nie udało się odczytać tekstu ofert.' });
+  return { matched: rows.length, exact: exact.length, ocr: fromOcr.length, valid: v, ok };
 }
 
 let failed = 0;
@@ -179,26 +177,31 @@ for (const store of ONLY) {
     const leaflets = await findLeaflets(store, page);
     for (const url of leaflets) { log(`  gazetka: ${url}`); pages.push(...await leafletPages(page, url)); }
     if (!pages.length) throw new Error('Nie znalazłem ani ofert, ani gazetki na stronie sklepu.');
-    const s = await save(store, leaflets[0] || STORES[store].home, pages);
+    const s = collect(store, leaflets[0] || STORES[store].home, pages);
+    if (!s.ok) failed++;
     log(`  ważne ${s.valid.valid_from} – ${s.valid.valid_to}; produkty z katalogu: ${s.exact} z tekstu, ${s.ocr} z OCR`);
   } catch (e) {
     failed++; log(`  ✗ ${e.message}`);
-    await db.from('scrape_runs').insert({ store, status: 'error', message: e.message.slice(0, 500) });
+    OUT.runs.push({ store, ran_at: new Date().toISOString(), status: 'error', message: e.message.slice(0, 500) });
   } finally { await page.close(); }
 }
-await db.from('offers').delete().lt('valid_to', new Date(Date.now() - 2 * 864e5).toLocaleDateString('sv-SE'));
 await browser.close();
 
-// Aktualne promocje do pliku w repozytorium — Claude czyta go, układając nowe przepisy.
+// Wynik do dane/oferty.json (stąd funkcja „sync” w Supabase wgrywa go do bazy, a Claude dobiera przepisy).
+// Sklep, którego nie udało się odczytać, zachowuje poprzednie, wciąż ważne oferty.
 {
-  const t = today();
-  const { data: pr } = await db.from('prices').select('product_id,store,regular,promo,promo_from,promo_to,promo_note').not('promo', 'is', null).gte('promo_to', t);
-  const name = Object.fromEntries(products.map(p => [p.id, p.name]));
-  const promos = (pr || []).filter(p => !p.promo_from || p.promo_from <= new Date(Date.now() + 3 * 864e5).toLocaleDateString('sv-SE'))
-    .map(p => ({ product_id: p.product_id, name: name[p.product_id], store: STORES[p.store]?.name, price: +p.promo, regular: p.regular == null ? null : +p.regular, from: p.promo_from, until: p.promo_to, note: p.promo_note }))
-    .sort((a, b) => (a.name || '').localeCompare(b.name || '', 'pl'));
+  const file = new URL('../dane/oferty.json', import.meta.url), t = today();
+  const prev = JSON.parse(await readFile(file, 'utf8').catch(() => '{}'));
+  const okStores = new Set(OUT.runs.filter(r => r.status === 'ok').map(r => r.store));
+  const keep = (arr, toKey) => (arr || []).filter(x => !okStores.has(x.store) && (x[toKey] || '9999') >= t);
+  const out = {
+    updated: new Date().toISOString(),
+    runs: [...OUT.runs, ...(prev.runs || []).filter(r => !OUT.runs.some(n => n.store === r.store && n.ran_at === r.ran_at))].slice(0, 30),
+    promos: [...OUT.promos, ...keep(prev.promos, 'to')].sort((a, b) => (a.name || '').localeCompare(b.name || '', 'pl')),
+    offers: [...OUT.offers, ...keep(prev.offers, 'valid_to')],
+  };
   await mkdir(new URL('../dane/', import.meta.url), { recursive: true });
-  await writeFile(new URL('../dane/promocje.json', import.meta.url), JSON.stringify({ updated: t, promos }, null, 1) + '\n');
-  log(`\nZapisano dane/promocje.json: ${promos.length} promocji.`);
+  await writeFile(file, JSON.stringify(out, null, 1) + '\n');
+  log(`\nZapisano dane/oferty.json: ${out.promos.length} promocji.`);
 }
 if (failed === ONLY.length) process.exit(1);

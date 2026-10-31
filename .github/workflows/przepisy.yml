@@ -1,28 +1,33 @@
 name: Nowe przepisy
 
-# Gdy Claude doda paczkę przepisów do folderu przepisy/, sprawdza ją i wgrywa do bazy.
+# Gdy w folderze przepisy/ (albo seed/) pojawią się zmiany: sprawdza je, buduje dane/katalog.json
+# i prosi bazę o synchronizację. Bez sekretów.
 on:
   push:
     branches: [main]
-    paths: ["przepisy/**"]
+    paths: ["przepisy/**", "seed/**"]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: dane
+  cancel-in-progress: false
 
 jobs:
   przepisy:
     runs-on: ubuntu-latest
-    env:
-      SUPABASE_PROJECT: ${{ secrets.SUPABASE_PROJECT }}
-      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm install --no-audit --no-fund
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
-      - name: Sprawdzenie i wgranie przepisów
+      - name: Sprawdzenie i budowa katalogu
         run: node scripts/import-recipes.mjs
+      - name: Zapis w repozytorium i synchronizacja bazy
+        run: |
+          git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
+          git add dane/katalog.json
+          if ! git diff --cached --quiet; then git commit -q -m "Katalog przepisów" && git pull -q --rebase && git push -q; fi
+          bash scripts/sync.sh

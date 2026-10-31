@@ -3,12 +3,14 @@ export const STORES = [{ k: 'b', n: 'Biedronka' }, { k: 'l', n: 'Lidl' }, { k: '
 export const SK = STORES.map(s => s.k);
 export const SN = Object.fromEntries(STORES.map(s => [s.k, s.n]));
 
-export const S = { products: {}, prices: {}, recipes: {}, reactions: [], list_items: [], freezer: [], offers: [], scrape_runs: [], loaded: {} };
+export const S = { products: {}, prices: {}, recipes: {}, hh: {}, hhp: {}, reactions: [], list_items: [], freezer: [], offers: [], scrape_runs: [], loaded: {} };
 
 export function setTable(t, data) {
   data = data || [];
   if (t === 'products' || t === 'recipes') S[t] = Object.fromEntries(data.map(r => [r.id, r]));
   else if (t === 'prices') { const o = {}; for (const r of data) (o[r.product_id] ??= {})[r.store] = r; S.prices = o; }
+  else if (t === 'hh_recipes') S.hh = Object.fromEntries(data.map(r => [r.recipe_id, r]));        // przepisy odblokowane/usunięte w tym domu
+  else if (t === 'hh_prices') { const o = {}; for (const r of data) (o[r.product_id] ??= {})[r.store] = r; S.hhp = o; } // ceny wpisane przez dom
   else S[t] = data;
   S.loaded[t] = true;
 }
@@ -25,10 +27,11 @@ export const parsePL = v => { const n = parseFloat(String(v).replace(',', '.').r
 
 /* ceny: promocja z gazetki, jeśli trwa; inaczej cena regularna */
 export function priceOf(pid, s) {
-  const r = S.prices[pid]?.[s]; if (!r) return null; const t = today();
-  if (r.promo != null && (!r.promo_from || r.promo_from <= t) && (!r.promo_to || r.promo_to >= t))
-    return { p: +r.promo, promo: true, until: r.promo_to, note: r.promo_note, regular: r.regular };
-  if (r.regular != null) return { p: +r.regular, promo: false };
+  const r = S.prices[pid]?.[s], own = S.hhp[pid]?.[s]; const t = today();
+  const regular = own ? +own.regular : r?.regular != null ? +r.regular : null;
+  if (r?.promo != null && (!r.promo_from || r.promo_from <= t) && (!r.promo_to || r.promo_to >= t) && !(regular != null && own && +r.promo > regular))
+    return { p: +r.promo, promo: true, until: r.promo_to, note: r.promo_note, regular };
+  if (regular != null) return { p: regular, promo: false, own: !!own };
   return null;
 }
 
