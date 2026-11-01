@@ -21,3 +21,13 @@ updates:
     groups:
       npm:
         patterns: ["*"]
+    ignore:
+      # biblioteki z web/vendor: nowa duża wersja wymaga ręcznego przejścia (np. tesseract.js 7 ma nowy rdzeń WebAssembly)
+      - dependency-name: "tesseract.js"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "tesseract.js-core"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "pdfjs-dist"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@supabase/supabase-js"
+        update-types: ["version-update:semver-major"]

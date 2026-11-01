@@ -80,7 +80,7 @@ try {
   await B.page.locator(`#llist [data-act="tick"][data-pid="${pid2}"]`).click();
   ok(await B.page.locator(`#llist [data-act="tick"][data-pid="${pid2}"].on`).count() > 0, 'B (offline): odhaczenie widać od razu');
   ok(await until(() => B.page.locator('#offline').isVisible()), 'B (offline): baner braku połączenia');
-  ok((await B.page.locator('#offline').textContent()).includes('zapiszę'), 'B (offline): baner mówi o zmianach czekających w telefonie');
+  ok(await until(async () => (await B.page.locator('#offline').textContent()).includes('zapiszę')), 'B (offline): baner mówi o zmianach czekających w telefonie');
   await B.page.reload(); // aplikacja z pamięci (service worker + IndexedDB)
   await B.page.locator('#app').waitFor();
   await B.page.click('button.tab[data-tab="lista"]');
