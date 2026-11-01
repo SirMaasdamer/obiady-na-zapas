@@ -1,7 +1,7 @@
---- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100396027,100408243,100409064,100401586,100410817,100407974,100411025,100395461,100395096,100408539,1004052: 24 pozycji, np.: SILVERCREST® Opiekacz do kanapek typu panini »SPM 2000 E2« Opiekacz do kanapek typu panini »SPM 2000 E2« | 119,00 zł || SILVERCREST® Elektryczny młynek do kawy, 180 W, SKME 180 C2 Elektryczny młynek do kawy, 180 W, SKME 180 C2 | 39,99 zł || SILVERCREST® Pakowarka próżniowa SV 130 A1 Pakowarka próżniowa SV 130 A1 | 69,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100408911,100411967,100409973,100409085,100412774,100398099,100412852,100408512,100410393,100398161,1004098: 20 pozycji, np.: ESMARA MEN Spodnie dresowe męskie Spodnie dresowe męskie | 34,99 zł || ESMARA MEN Bokserki męskie z bawełną, 3 pary Bokserki męskie z bawełną, 3 pary | 25,99 zł || ESMARA MEN Jeansy męskie straight fit z bawełną Jeansy męskie straight fit z bawełną | 59,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100412442,100411013,100411993,100400316,100412332,100409512,100410185,100413375,100411086,100411275,1004094: 20 pozycji, np.: ESMARA® Kamizelka pikowana damska długa Kamizelka pikowana damska długa | 45,99 zł || ESMARA® Jeansy wide leg damskie Jeansy wide leg damskie | 33,99 zł || ESMARA® Legginsy damskie z bawełną Legginsy damskie z bawełną | 12,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100412325,100407440,100405826,100411289,100406614,100410885,100411299,100407757,100410705,100410130,1004143: 20 pozycji, np.: PARKSIDE PERFORMANCE® Akumulatorowa wiertarkowkrętarka 12 V zestaw startowy (z akumulatorem i ładowarką) Akumulatorowa wiertarkowkrętarka 12 V zestaw startowy (z akumulatorem i ładowarką) | 299,00 zł || PARKSIDE PERFORMANCE® Akumulatorowa zakrętarka udarowa 20 V, PDSSAP 20-Li D3 (bez akumulatora i ładowarki) Akumulatorowa zakrętarka udarowa 20 V, PDSSAP 20-Li D3 (bez akumulatora i ładowarki) | 259,00 zł || PARKSIDE PERFORMANCE® Akumulator 12 V / 2,5 Ah, PAPK 12 2.5 B1, z funkcją Cell Balancing Akumulator 12 V / 2,5 Ah, PAPK 12 2.5 B1, z funkcją Cell Balancing | 59,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100088432,100197793,100264541,100287904,100303293,100320149,100329840,100330681,100330682,100332405,1003328: 19 pozycji, np.: GÜDE Praska do owoców, mechaniczna, ze stalowym wrzecionem. Praska do owoców, mechaniczna, ze stalowym wrzecionem. | 304,85 zł || RESPEKTA Zlewozmywak ze stali nierdzewnej Chicago Zlewozmywak ze stali nierdzewnej Chicago | 659,00 zł || Kostkarka do lodu Coca Cola SEB-14CC Kostkarka do lodu Coca Cola SEB-14CC | 549,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100345669,100347922,100348054,100351407,100358333,100359657,100363431,100365297,100371094,100371751,1003763: 20 pozycji, np.: ULTIMATE SPEED® Polerka UPM 120 C3, 120 W Polerka UPM 120 C3, 120 W | 159,00 zł || GARDENA Akumulatorowe nożyce teleskopowe do żywopłotu THS 42/18V Power For All, zestaw Ready-To-Use Akumulatorowe nożyce teleskopowe do żywopłotu THS 42/18V Power For All, zestaw Ready-To-Use | 764,04 zł || PARKSIDE® Wyrzynarka PSTK 800 D3, 800 W Wyrzynarka PSTK 800 D3, 800 W | 169,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100286559,100337510,100339234,100342525,100344281,100345747,100348484,100354077,100354455,100359780,1003598: 20 pozycji, np.: EGERIA Szlafrok męski Bruno w bawełny, w stylu kimono Szlafrok męski Bruno w bawełny, w stylu kimono | 253,25 zł || NOBEL LEAGUE Koszula biznesowa męska, super slim fit, niebieska we wzory Koszula biznesowa męska, super slim fit, niebieska we wzory | 76,90 zł || PUMA Spodnie dresowe męskie teamGoal Spodnie dresowe męskie teamGoal | 138,01 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/PL/pl?erpNumbers=100305890,100334015,100334317,100335348,100337512,100337773,100339412,100340332,100340536,100341527,1003415: 20 pozycji, np.: ESMARA® Parka ciążowa z biobawełną, 1 sztuka Parka ciążowa z biobawełną, 1 sztuka | 169,00 zł || ESMARA® Długa kurtka damska z kapturem Długa kurtka damska z kapturem | 119,00 zł || ESMARA® Jeansy ciążowe, 1 para Jeansy ciążowe, 1 para | 64,90 zł
 
 ===== strona główna: https://www.lidl.pl/ | tytuł: Każdego dnia nowe okazje. To się opłaca. Lidl Polska. | tekst: 5899 znaków
 🍂Jesienne rabaty! Wybierz rabat na całe zamówienie!➡️
@@ -110,13 +110,13 @@ Sprawdź najnowsze promocje
 Produkty
 dnia!
 
-22
+21
 godz.
 
-57
+12
 min.
 
-2
+6
 sek.
 
 Pełna oferta
@@ -330,74 +330,75 @@ Odstąp od umowy
   [0/0] Kuchnia i gospodarstwo domowe → https://www.lidl.pl/c/kuchnia-sprzatanie-i-organizacja/s10067764
   [0/0] Dom i wyposażenie wnętrz → https://www.lidl.pl/c/dom-i-wyposazenie-wnetrz/s10067762
 --- zrzut: dane/debug/l-8.jpg
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412052: 3 pozycji, np.: CRIVIT Śniegowce dziecięce Śniegowce dziecięce | 54,99 zł || Śniegowce dziecięce (navy/pink) | 54,99 zł || Śniegowce dziecięce (blau) | 54,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411953: 4 pozycji, np.: CRIVIT Kurtka narciarska dziecięca Kurtka narciarska dziecięca | 62,99 zł || Kurtka narciarska dziecięca (pink/navy/hellblau) | 62,99 zł || Kurtka narciarska dziecięca (pink) | 62,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100409515: 4 pozycji, np.: LUPILU® Kombinezon wełniany niemowlęcy Kombinezon wełniany niemowlęcy | 229,00 zł || Kombinezon wełniany niemowlęcy (beige) | 229,00 zł || Kombinezon wełniany niemowlęcy (grau) | 229,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412442: 3 pozycji, np.: ESMARA® Dres domowy z weluru damski Dres domowy z weluru damski | 38,99 zł || Dres domowy z weluru damski (schwarz) | 38,99 zł || Dres domowy z weluru damski (rosa) | 38,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406423: 5 pozycji, np.: LUPILU® Piżama dziecięca z bawełny Piżama dziecięca z bawełny | 17,99 zł || Piżama dziecięca z bawełny (Frozen) | 17,99 zł || Piżama dziecięca z bawełny (Avengers) | 17,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100396027: 3 pozycji, np.: SILVERCREST® Pakowarka próżniowa SV 130 A1 Pakowarka próżniowa SV 130 A1 | 69,00 zł || Pakowarka próżniowa SV 130 A1 (schwarz) | 69,00 zł || Pakowarka próżniowa SV 130 A1 (weiß) | 69,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408158: 4 pozycji, np.: LUPILU® T-shirty dziecięce z bawełny, 2 sztuki T-shirty dziecięce z bawełny, 2 sztuki | 11,99 zł || T-shirty dziecięce z bawełny, 2 sztuki (grün/weiß) | 11,99 zł || T-shirty dziecięce z bawełny, 2 sztuki (pink/weiß) | 11,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412442: 3 pozycji, np.: ESMARA® Dres domowy z weluru damski Dres domowy z weluru damski | 38,99 zł || Dres domowy z weluru damski (schwarz) | 38,99 zł || Dres domowy z weluru damski (rosa) | 38,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411953: 4 pozycji, np.: CRIVIT Kurtka narciarska dziecięca Kurtka narciarska dziecięca | 62,99 zł || Kurtka narciarska dziecięca (pink/navy/hellblau) | 62,99 zł || Kurtka narciarska dziecięca (pink) | 62,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399064: 3 pozycji, np.: CRIVIT Bluza damska z polaru Bluza damska z polaru | 26,99 zł || Bluza damska z polaru (schwarz) | 26,99 zł || Bluza damska z polaru (mint) | 26,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412052: 3 pozycji, np.: CRIVIT Śniegowce dziecięce Śniegowce dziecięce | 54,99 zł || Śniegowce dziecięce (navy/pink) | 54,99 zł || Śniegowce dziecięce (blau) | 54,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408158: 4 pozycji, np.: LUPILU® T-shirty dziecięce z bawełny, 2 sztuki T-shirty dziecięce z bawełny, 2 sztuki | 11,99 zł || T-shirty dziecięce z bawełny, 2 sztuki (grün/weiß) | 11,99 zł || T-shirty dziecięce z bawełny, 2 sztuki (pink/weiß) | 11,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100409515: 4 pozycji, np.: LUPILU® Kombinezon wełniany niemowlęcy Kombinezon wełniany niemowlęcy | 229,00 zł || Kombinezon wełniany niemowlęcy (beige) | 229,00 zł || Kombinezon wełniany niemowlęcy (grau) | 229,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100404529: 3 pozycji, np.: SILVERCREST® Elektryczny młynek do soli i pieprzu Elektryczny młynek do soli i pieprzu | 24,99 zł || Elektryczny młynek do soli i pieprzu (silber) | 24,99 zł || Elektryczny młynek do soli i pieprzu (schwarz) | 24,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399844: 3 pozycji, np.: ESMARA® Kamizelka pikowana damska długa Kamizelka pikowana damska długa | 45,99 zł || Kamizelka pikowana damska długa (beige) | 45,99 zł || Kamizelka pikowana damska długa (schwarz) | 45,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406423: 5 pozycji, np.: LUPILU® Piżama dziecięca z bawełny Piżama dziecięca z bawełny | 17,99 zł || Piżama dziecięca z bawełny (Frozen) | 17,99 zł || Piżama dziecięca z bawełny (Avengers) | 17,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408733: 3 pozycji, np.: LUPILU® Kurtka przeciwdeszczowa dziecięca Kurtka przeciwdeszczowa dziecięca  | 35,99 zł || Kurtka przeciwdeszczowa dziecięca  (grau) | 35,99 zł || Kurtka przeciwdeszczowa dziecięca  (navy) | 35,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399096: 3 pozycji, np.: CRIVIT Bluza męska z polaru Bluza męska z polaru | 28,99 zł || Bluza męska z polaru (schwarz) | 28,99 zł || Bluza męska z polaru (braun) | 28,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100398689: 3 pozycji, np.: ESMARA® Damski trencz Damski trencz | 59,90 zł || Damski trencz (beige) | 59,90 zł || Damski trencz (schwarz) | 59,90 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411993: 3 pozycji, np.: ESMARA® Piżama welurowa damska Piżama welurowa damska  | 39,99 zł || Piżama welurowa damska  (beige) | 39,99 zł || Piżama welurowa damska  (grün) | 39,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395310: 4 pozycji, np.: ESMARA® Damska sukienka dzianinowa Damska sukienka dzianinowa | 32,99 zł || Damska sukienka dzianinowa (schwarz) | 32,99 zł || Damska sukienka dzianinowa (weiß) | 32,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411557: 4 pozycji, np.: CRIVIT Spodnie dresowe męskie Spodnie dresowe męskie | 29,99 zł || Spodnie dresowe męskie (beige) | 29,99 zł || Spodnie dresowe męskie (grau) | 29,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411993: 3 pozycji, np.: ESMARA® Piżama welurowa damska Piżama welurowa damska  | 39,99 zł || Piżama welurowa damska  (beige) | 39,99 zł || Piżama welurowa damska  (grün) | 39,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100398689: 3 pozycji, np.: ESMARA® Damski trencz Damski trencz | 59,90 zł || Damski trencz (beige) | 59,90 zł || Damski trencz (schwarz) | 59,90 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399844: 3 pozycji, np.: ESMARA® Kamizelka pikowana damska długa Kamizelka pikowana damska długa | 45,99 zł || Kamizelka pikowana damska długa (beige) | 45,99 zł || Kamizelka pikowana damska długa (schwarz) | 45,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100397359: 4 pozycji, np.: ESMARA MEN Koszulka męska z bawełny z długim rękawem Koszulka męska z bawełny z długim rękawem | 24,99 zł || Koszulka męska z bawełny z długim rękawem (navy) | 24,99 zł || Koszulka męska z bawełny z długim rękawem (olive) | 24,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411556: 3 pozycji, np.: CRIVIT Spodnie dresowe damskie Spodnie dresowe damskie | 29,99 zł || Spodnie dresowe damskie (schwarz) | 29,99 zł || Spodnie dresowe damskie (rot) | 29,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100400330: 4 pozycji, np.: CRIVIT Kask rowerowy Kask rowerowy | 59,99 zł || Kask rowerowy (grau) | 59,99 zł || Kask rowerowy (schwarz) | 59,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412852: 3 pozycji, np.: ESMARA MEN Piżama welurowa męska Piżama welurowa męska | 39,99 zł || Piżama welurowa męska (grau) | 39,99 zł || Piżama welurowa męska (blau) | 39,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100405516: 5 pozycji, np.: Dziecięce szorty dresowe, 2 sztuki Dziecięce szorty dresowe, 2 sztuki | 20,99 zł || Dziecięce szorty dresowe, 2 sztuki (Peppa Pig) | 20,99 zł || Dziecięce szorty dresowe, 2 sztuki (Cars) | 20,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395295: 4 pozycji, np.: ESMARA® Legginsy damskie Legginsy damskie | 29,99 zł || Legginsy damskie (olive) | 29,99 zł || Legginsy damskie (beige) | 29,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411556: 3 pozycji, np.: CRIVIT Spodnie dresowe damskie Spodnie dresowe damskie | 29,99 zł || Spodnie dresowe damskie (schwarz) | 29,99 zł || Spodnie dresowe damskie (rot) | 29,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100405516: 5 pozycji, np.: Dziecięce szorty dresowe, 2 sztuki Dziecięce szorty dresowe, 2 sztuki | 20,99 zł || Dziecięce szorty dresowe, 2 sztuki (Peppa Pig) | 20,99 zł || Dziecięce szorty dresowe, 2 sztuki (Cars) | 20,99 zł
 --- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=48&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 105 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100407079: 4 pozycji, np.: ESMARA® Sukienka damska Sukienka damska | 22,99 zł || Sukienka damska (grün) | 22,99 zł || Sukienka damska (pink) | 22,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411086: 3 pozycji, np.: ESMARA® Piżama damska z frotte Piżama damska z frotte | 35,99 zł || Piżama damska z frotte (burgunder) | 35,99 zł || Piżama damska z frotte (blau) | 35,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100396471: 4 pozycji, np.: ESMARA MEN Spodnie cargo męskie Spodnie cargo męskie | 42,99 zł || Spodnie cargo męskie (beige) | 42,99 zł || Spodnie cargo męskie (schwarz) | 42,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100407079: 4 pozycji, np.: ESMARA® Sukienka damska Sukienka damska | 22,99 zł || Sukienka damska (grün) | 22,99 zł || Sukienka damska (pink) | 22,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411843: 4 pozycji, np.: CRIVIT Skarpety narciarskie dziecięce Skarpety narciarskie dziecięce | 16,99 zł || Skarpety narciarskie dziecięce (grau) | 16,99 zł || Skarpety narciarskie dziecięce (grün) | 16,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411086: 3 pozycji, np.: ESMARA® Piżama damska z frotte Piżama damska z frotte | 35,99 zł || Piżama damska z frotte (burgunder) | 35,99 zł || Piżama damska z frotte (blau) | 35,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100401360: 3 pozycji, np.: CRIVIT Kurtka funkcyjna damska Kurtka funkcyjna damska | 31,99 zł || Kurtka funkcyjna damska (schwarz) | 31,99 zł || Kurtka funkcyjna damska (koralle) | 31,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408581: 2 pozycji, np.: UNDER ARMOUR Szorty funkcyjne męskie Szorty funkcyjne męskie | 71,90 zł || Szorty funkcyjne męskie (schwarz) | 71,90 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394320: 4 pozycji, np.: ESMARA® Sweter damski dzianinowy Sweter damski dzianinowy | 42,99 zł || Sweter damski dzianinowy (grau) | 42,99 zł || Sweter damski dzianinowy (schwarz) | 42,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100400810: 3 pozycji, np.: CRIVIT Buty sportowe męskie Buty sportowe męskie | 39,99 zł || Buty sportowe męskie (schwarz) | 39,99 zł || Buty sportowe męskie (weiß/schwarz) | 39,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100392895: 4 pozycji, np.: ESMARA® Sweter damski Sweter damski | 42,99 zł || Sweter damski (beige) | 42,99 zł || Sweter damski (schwarz) | 42,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100398207: 3 pozycji, np.: LUPILU® Jeggingsy dziecięce Jeggingsy dziecięce | 19,99 zł || Jeggingsy dziecięce (hellblau) | 19,99 zł || Jeggingsy dziecięce (blau) | 19,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408152: 3 pozycji, np.: ROBA Barierka ochronna na drzwi metalowa Barierka ochronna na drzwi metalowa | 218,83 zł || Barierka ochronna na drzwi metalowa (schwarz matt) | 259,00 zł || Barierka ochronna na drzwi metalowa (weiß) | 218,83 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100414260: 6 pozycji, np.: ROBA Krzesełko do karmienia schodkowe Sit Up Flex Krzesełko do karmienia schodkowe Sit Up Flex | 219,00 zł || Krzesełko do karmienia schodkowe Sit Up Flex (natur grau Flex) | 358,42 zł || Krzesełko do karmienia schodkowe Sit Up Flex (grau Flex) | 233,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100397108: 3 pozycji, np.: ROBA Warkocz do łóżeczka Warkocz do łóżeczka | 174,00 zł || Warkocz do łóżeczka (grau) | 174,00 zł || Warkocz do łóżeczka (frosty green) | 194,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100409561: 3 pozycji, np.: LUPILU® Lekka kurtka niemowlęca Lekka kurtka niemowlęca | 25,99 zł || Lekka kurtka niemowlęca (grün) | 25,99 zł || Lekka kurtka niemowlęca (pink) | 25,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100398207: 3 pozycji, np.: LUPILU® Jeggingsy dziecięce Jeggingsy dziecięce | 19,99 zł || Jeggingsy dziecięce (hellblau) | 19,99 zł || Jeggingsy dziecięce (blau) | 19,99 zł
 --- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=96&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 102 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408210: 3 pozycji, np.: REEBOK Klasyczne skórzane sneakersy. Klasyczne skórzane sneakersy. | 219,99 zł || Klasyczne skórzane sneakersy. (schwarz) | 254,00 zł || Klasyczne skórzane sneakersy. (weiß) | 219,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100407024: 4 pozycji, np.: ESMARA® Sukienka midi damska Sukienka midi damska | 22,99 zł || Sukienka midi damska (gelb) | 22,99 zł || Sukienka midi damska (grau) | 22,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100400158: 4 pozycji, np.: CRIVIT Damskie rajstopy funkcjonalne Damskie rajstopy funkcjonalne | 29,99 zł || Damskie rajstopy funkcjonalne (gemustert) | 29,99 zł || Damskie rajstopy funkcjonalne (schwarz) | 29,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406540: 3 pozycji, np.: CRIVIT Szorty funkcyjne męskie Szorty funkcyjne męskie  | 27,99 zł || Szorty funkcyjne męskie  (schwarz) | 27,99 zł || Szorty funkcyjne męskie  (blau) | 27,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408613: 3 pozycji, np.: ADIDAS Samba Samba | 335,87 zł || Samba (schwarz) | 335,87 zł || Samba (weiß) | 337,49 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408618: 3 pozycji, np.: UNDER ARMOUR Szorty funkcyjne damskie Szorty funkcyjne damskie | 87,99 zł || Szorty funkcyjne damskie (graublau) | 261,40 zł || Szorty funkcyjne damskie (schwarz) | 87,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406862: 3 pozycji, np.: CRIVIT Parka przeciwdeszczowa damska Parka przeciwdeszczowa damska | 52,90 zł || Parka przeciwdeszczowa damska (grau) | 52,90 zł || Parka przeciwdeszczowa damska (schwarz) | 52,90 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395642: 3 pozycji, np.: PARKSIDE PERFORMANCE® Spodnie robocze męskie Spodnie robocze męskie | 59,00 zł || Spodnie robocze męskie (dunkelblau) | 59,00 zł || Spodnie robocze męskie (schwarz) | 59,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100386434: 3 pozycji, np.: LIVERGY® Spodnie cargo męskie Spodnie cargo męskie | 45,99 zł || Spodnie cargo męskie (hellbraun) | 45,99 zł || Spodnie cargo męskie (navy) | 45,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406271: 3 pozycji, np.: Dziecięca pościel dwustronna z bawełny 140 x 200 cm Dziecięca pościel dwustronna z bawełny 140 x 200 cm | 71,99 zł || Dziecięca pościel dwustronna z bawełny 140 x 200 cm (Peppa Pig) | 71,99 zł || Dziecięca pościel dwustronna z bawełny 140 x 200 cm (Bluey) | 71,99 zł
 --- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=144&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 105 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412296: 3 pozycji, np.: CRIVIT Spodnie termoaktywne męskie Spodnie termoaktywne męskie | 39,99 zł || Spodnie termoaktywne męskie (schwarz) | 39,99 zł || Spodnie termoaktywne męskie (blau) | 39,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100272773: 3 pozycji, np.: Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny | 539,00 zł || Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny (graphite grey) | 609,00 zł || Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny (zinkgrau) | 539,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394248: 4 pozycji, np.: INTER LINK Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. | 999,00 zł || Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. (Grau) | 999,00 zł || Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. (Natur) | 999,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412528: 3 pozycji, np.: SILVERCREST® Blender kielichowy SSME 600 B1, 1,75 l  Blender kielichowy SSME 600 B1, 1,75 l | 129,00 zł ||  Blender kielichowy SSME 600 B1, 1,75 l (schwarz) | 129,00 zł ||  Blender kielichowy SSME 600 B1, 1,75 l (gebürstet) | 129,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395471: 3 pozycji, np.: ESMARA® Damski kardigan pluszowy Damski kardigan pluszowy | 49,99 zł || Damski kardigan pluszowy (schwarz) | 49,99 zł || Damski kardigan pluszowy (creme) | 49,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394248: 4 pozycji, np.: INTER LINK Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. | 999,00 zł || Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. (Grau) | 999,00 zł || Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. (Natur) | 999,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100366635: 6 pozycji, np.: ROBA Blat do krzesełka do karmienia Blat do krzesełka do karmienia | 76,66 zł || Blat do krzesełka do karmienia (taupe) | 77,90 zł || Blat do krzesełka do karmienia (anthrazit) | 77,90 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395471: 3 pozycji, np.: ESMARA® Damski kardigan pluszowy Damski kardigan pluszowy | 49,99 zł || Damski kardigan pluszowy (schwarz) | 49,99 zł || Damski kardigan pluszowy (creme) | 49,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100293431: 4 pozycji, np.: VCM Szafka na buty Sipos Szafka na buty Sipos | 339,00 zł || Szafka na buty Sipos (Anthrazit) | 339,00 zł || Szafka na buty Sipos (Weiß) | 384,91 zł
 --- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=192&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 98 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406484: 3 pozycji, np.: RESPEKTA Okap skośny Okap skośny | 639,00 zł || Okap skośny (Weiß) | 639,00 zł || Okap skośny (Schwarz) | 639,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100405578: 3 pozycji, np.: CRIVIT Buty sportowe męskie Buty sportowe męskie | 39,99 zł || Buty sportowe męskie (weiß/grün) | 39,99 zł || Buty sportowe męskie (schwarz) | 39,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100336133: 4 pozycji, np.: BABYGO Fotelik samochodowy "Nova  360°Rotation" Fotelik samochodowy "Nova  360°Rotation" | 569,00 zł || Fotelik samochodowy "Nova  360°Rotation" (grau) | 579,00 zł || Fotelik samochodowy "Nova  360°Rotation" (schwarz) | 569,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399612: 3 pozycji, np.: BEBECONFORT Ultrakompaktowy wózek dziecięcy "Azur" Ultrakompaktowy wózek dziecięcy "Azur" | 324,88 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Green) | 403,47 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Graphite) | 324,88 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394671: 5 pozycji, np.: LIVARNO HOME LED-Lampa stołowa akumulatorowa, 2,6 W LED-Lampa stołowa akumulatorowa, 2,6 W | 34,99 zł || LED-Lampa stołowa akumulatorowa, 2,6 W (bronze) | 34,99 zł || LED-Lampa stołowa akumulatorowa, 2,6 W (anthrazit) | 34,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100378531: 4 pozycji, np.: PROSPERPLAST Doniczka »FURU«, z żebrowaną strukturą, okrągła. Doniczka »FURU«, z żebrowaną strukturą, okrągła. | 68,99 zł || Doniczka »FURU«, z żebrowaną strukturą, okrągła. (anthrazit) | 68,99 zł || Doniczka »FURU«, z żebrowaną strukturą, okrągła. (weiß) | 90,98 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399612: 3 pozycji, np.: BEBECONFORT Ultrakompaktowy wózek dziecięcy "Azur" Ultrakompaktowy wózek dziecięcy "Azur" | 324,88 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Green) | 403,47 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Graphite) | 324,88 zł
---- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=240&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 98 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100379436: 3 pozycji, np.: ADIDAS Box Set Junior Box Set Junior | 209,00 zł || Box Set Junior (schwarz/weiß) | 229,00 zł || Box Set Junior (schwarz/rot) | 209,00 zł
+--- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=240&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 99 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100410802: 3 pozycji, np.: SILVERCREST® Czajnik, 3000 W Czajnik, 3000 W | 69,99 zł || Czajnik, 3000 W (silber gebürstet) | 69,99 zł || Czajnik, 3000 W (schwarz) | 69,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408133: 3 pozycji, np.: ROBA Przewijak miękki Przewijak miękki | 174,26 zł || Przewijak miękki (grau) | 174,26 zł || Przewijak miękki (frosty green) | 199,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100379436: 3 pozycji, np.: ADIDAS Box Set Junior Box Set Junior | 209,00 zł || Box Set Junior (schwarz/weiß) | 229,00 zł || Box Set Junior (schwarz/rot) | 209,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100397121: 5 pozycji, np.: ROBA Przewijak Przewijak | 160,45 zł || Przewijak (anthrazit) | 199,00 zł || Przewijak (grau) | 160,45 zł
---- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=288&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 93 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
---- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=336&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 85 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100384945: 3 pozycji, np.: LIVARNO HOME Łóżeczko niemowlęce, 70 x 140 cm Łóżeczko niemowlęce, 70 x 140 cm | 529,00 zł || Łóżeczko niemowlęce, 70 x 140 cm (natur) | 529,00 zł || Łóżeczko niemowlęce, 70 x 140 cm (weiß) | 529,00 zł
+--- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=288&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 92 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/q/api/query/wyprzedaz?offset=336&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 86 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100290574: 4 pozycji, np.: KHW Skrzynka na rośliny z kratą, dł. 100 cm, 110 L Skrzynka na rośliny z kratą, dł. 100 cm, 110 L | 359,00 zł || Skrzynka na rośliny z kratą, dł. 100 cm, 110 L (anthrazit) | 369,00 zł || Skrzynka na rośliny z kratą, dł. 100 cm, 110 L (grau) | 359,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100271514: 3 pozycji, np.: Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno | 719,00 zł || Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno (natur) | 719,00 zł || Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno (grau) | 719,00 zł
 
-===== oferty: https://www.lidl.pl/q/query/wyprzedaz?offset=336 | tytuł: Promocje | tekst: 15188 znaków
+===== oferty: https://www.lidl.pl/q/query/wyprzedaz?offset=336 | tytuł: Promocje | tekst: 15561 znaków
 🍂Jesienne rabaty! Wybierz rabat na całe zamówienie!➡️
 Promocje
 Sport i wypoczynek
@@ -405,7 +406,7 @@ Moda i akcesoria
 Wszystkie filtry
 Sortowanie według: 
 Trafność
-369 produktów
+370 produktów
 Śniegowce dziecięce dla 54.99 PLN
 4.7
 (19)
@@ -693,7 +694,7 @@ Megaokazja
 * Najniższa cena z 30 dni przed obniżką
 także w sklepach stacjonarnych 29.10. - 01.11.
 Drewniane artykuły spożywcze
---- linki (136), najlepiej ocenione:
+--- linki (137), najlepiej ocenione:
   [9/-9] AktualnościNasze gazetki, Sklepy Lidl, Stacje ładowania, Newsletter → https://www.lidl.pl/informacje-dla-klienta/nasze-gazetki
   [6/3] Zestaw drewnianych produktów spożywczych dla 19.99 PLN → https://www.lidl.pl/p/lupilu-zestaw-drewnianych-produktow-spozywczych/p100410958
   [6/3] Drewniane artykuły spożywcze do zabawy dla 29.99 PLN → https://www.lidl.pl/p/lupilu-drewniane-artykuly-spozywcze-do-zabawy/p100410923
@@ -1020,70 +1021,70 @@ Odstąp od umowy
   [0/0] Edge → https://www.microsoft.com/windows/microsoft-edge
   [0/0] Żywność i napoje → https://www.lidl.pl/c/zywnosc-i-napoje/s10068374
 --- zrzut: dane/debug/l-11.jpg
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395310: 4 pozycji, np.: ESMARA® Damska sukienka dzianinowa Damska sukienka dzianinowa | 32,99 zł || Damska sukienka dzianinowa (schwarz) | 32,99 zł || Damska sukienka dzianinowa (weiß) | 32,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412442: 3 pozycji, np.: ESMARA® Dres domowy z weluru damski Dres domowy z weluru damski | 38,99 zł || Dres domowy z weluru damski (schwarz) | 38,99 zł || Dres domowy z weluru damski (rosa) | 38,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408733: 3 pozycji, np.: LUPILU® Kurtka przeciwdeszczowa dziecięca Kurtka przeciwdeszczowa dziecięca  | 35,99 zł || Kurtka przeciwdeszczowa dziecięca  (grau) | 35,99 zł || Kurtka przeciwdeszczowa dziecięca  (navy) | 35,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399064: 3 pozycji, np.: CRIVIT Bluza damska z polaru Bluza damska z polaru | 26,99 zł || Bluza damska z polaru (schwarz) | 26,99 zł || Bluza damska z polaru (mint) | 26,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100397359: 4 pozycji, np.: ESMARA MEN Koszulka męska z bawełny z długim rękawem Koszulka męska z bawełny z długim rękawem | 24,99 zł || Koszulka męska z bawełny z długim rękawem (navy) | 24,99 zł || Koszulka męska z bawełny z długim rękawem (olive) | 24,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100404529: 3 pozycji, np.: SILVERCREST® Elektryczny młynek do soli i pieprzu Elektryczny młynek do soli i pieprzu | 24,99 zł || Elektryczny młynek do soli i pieprzu (silber) | 24,99 zł || Elektryczny młynek do soli i pieprzu (schwarz) | 24,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406423: 5 pozycji, np.: LUPILU® Piżama dziecięca z bawełny Piżama dziecięca z bawełny | 17,99 zł || Piżama dziecięca z bawełny (Frozen) | 17,99 zł || Piżama dziecięca z bawełny (Avengers) | 17,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399096: 3 pozycji, np.: CRIVIT Bluza męska z polaru Bluza męska z polaru | 28,99 zł || Bluza męska z polaru (schwarz) | 28,99 zł || Bluza męska z polaru (braun) | 28,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100409515: 4 pozycji, np.: LUPILU® Kombinezon wełniany niemowlęcy Kombinezon wełniany niemowlęcy | 229,00 zł || Kombinezon wełniany niemowlęcy (beige) | 229,00 zł || Kombinezon wełniany niemowlęcy (grau) | 229,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100397359: 4 pozycji, np.: ESMARA MEN Koszulka męska z bawełny z długim rękawem Koszulka męska z bawełny z długim rękawem | 24,99 zł || Koszulka męska z bawełny z długim rękawem (navy) | 24,99 zł || Koszulka męska z bawełny z długim rękawem (olive) | 24,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408158: 4 pozycji, np.: LUPILU® T-shirty dziecięce z bawełny, 2 sztuki T-shirty dziecięce z bawełny, 2 sztuki | 11,99 zł || T-shirty dziecięce z bawełny, 2 sztuki (grün/weiß) | 11,99 zł || T-shirty dziecięce z bawełny, 2 sztuki (pink/weiß) | 11,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395310: 4 pozycji, np.: ESMARA® Damska sukienka dzianinowa Damska sukienka dzianinowa | 32,99 zł || Damska sukienka dzianinowa (schwarz) | 32,99 zł || Damska sukienka dzianinowa (weiß) | 32,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406423: 5 pozycji, np.: LUPILU® Piżama dziecięca z bawełny Piżama dziecięca z bawełny | 17,99 zł || Piżama dziecięca z bawełny (Frozen) | 17,99 zł || Piżama dziecięca z bawełny (Avengers) | 17,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399064: 3 pozycji, np.: CRIVIT Bluza damska z polaru Bluza damska z polaru | 26,99 zł || Bluza damska z polaru (schwarz) | 26,99 zł || Bluza damska z polaru (mint) | 26,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100409515: 4 pozycji, np.: LUPILU® Kombinezon wełniany niemowlęcy Kombinezon wełniany niemowlęcy | 229,00 zł || Kombinezon wełniany niemowlęcy (beige) | 229,00 zł || Kombinezon wełniany niemowlęcy (grau) | 229,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100404529: 3 pozycji, np.: SILVERCREST® Elektryczny młynek do soli i pieprzu Elektryczny młynek do soli i pieprzu | 24,99 zł || Elektryczny młynek do soli i pieprzu (silber) | 24,99 zł || Elektryczny młynek do soli i pieprzu (schwarz) | 24,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406978: 5 pozycji, np.: ESMARA® T-shirt prążkowany damski T-shirt prążkowany damski  | 11,99 zł || T-shirt prążkowany damski  (schwarz) | 11,99 zł || T-shirt prążkowany damski  (gelb) | 11,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100400330: 4 pozycji, np.: CRIVIT Kask rowerowy Kask rowerowy | 59,99 zł || Kask rowerowy (grau) | 59,99 zł || Kask rowerowy (schwarz) | 59,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100401472: 4 pozycji, np.: CRIVIT Legginsy funkcyjne damskie Legginsy funkcyjne damskie | 29,99 zł || Legginsy funkcyjne damskie (schwarz) | 29,99 zł || Legginsy funkcyjne damskie (grün) | 29,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100413560: 4 pozycji, np.: LIVARNO® Bombki choinkowe, zestaw 16 sztuk Bombki choinkowe, zestaw 16 sztuk | 19,99 zł || Bombki choinkowe, zestaw 16 sztuk (gold) | 19,99 zł || Bombki choinkowe, zestaw 16 sztuk (rot) | 19,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406978: 5 pozycji, np.: ESMARA® T-shirt prążkowany damski T-shirt prążkowany damski  | 11,99 zł || T-shirt prążkowany damski  (schwarz) | 11,99 zł || T-shirt prążkowany damski  (gelb) | 11,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395295: 4 pozycji, np.: ESMARA® Legginsy damskie Legginsy damskie | 29,99 zł || Legginsy damskie (olive) | 29,99 zł || Legginsy damskie (beige) | 29,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100405516: 5 pozycji, np.: Dziecięce szorty dresowe, 2 sztuki Dziecięce szorty dresowe, 2 sztuki | 20,99 zł || Dziecięce szorty dresowe, 2 sztuki (Peppa Pig) | 20,99 zł || Dziecięce szorty dresowe, 2 sztuki (Cars) | 20,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411556: 3 pozycji, np.: CRIVIT Spodnie dresowe damskie Spodnie dresowe damskie | 29,99 zł || Spodnie dresowe damskie (schwarz) | 29,99 zł || Spodnie dresowe damskie (rot) | 29,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412852: 3 pozycji, np.: ESMARA MEN Piżama welurowa męska Piżama welurowa męska | 39,99 zł || Piżama welurowa męska (grau) | 39,99 zł || Piżama welurowa męska (blau) | 39,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411556: 3 pozycji, np.: CRIVIT Spodnie dresowe damskie Spodnie dresowe damskie | 29,99 zł || Spodnie dresowe damskie (schwarz) | 29,99 zł || Spodnie dresowe damskie (rot) | 29,99 zł
 --- JSON https://www.lidl.pl/q/api/cqe/deals?offset=48&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 105 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100401360: 3 pozycji, np.: CRIVIT Kurtka funkcyjna damska Kurtka funkcyjna damska | 31,99 zł || Kurtka funkcyjna damska (schwarz) | 31,99 zł || Kurtka funkcyjna damska (koralle) | 31,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411086: 3 pozycji, np.: ESMARA® Piżama damska z frotte Piżama damska z frotte | 35,99 zł || Piżama damska z frotte (burgunder) | 35,99 zł || Piżama damska z frotte (blau) | 35,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100396471: 4 pozycji, np.: ESMARA MEN Spodnie cargo męskie Spodnie cargo męskie | 42,99 zł || Spodnie cargo męskie (beige) | 42,99 zł || Spodnie cargo męskie (schwarz) | 42,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411843: 4 pozycji, np.: CRIVIT Skarpety narciarskie dziecięce Skarpety narciarskie dziecięce | 16,99 zł || Skarpety narciarskie dziecięce (grau) | 16,99 zł || Skarpety narciarskie dziecięce (grün) | 16,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100407079: 4 pozycji, np.: ESMARA® Sukienka damska Sukienka damska | 22,99 zł || Sukienka damska (grün) | 22,99 zł || Sukienka damska (pink) | 22,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394320: 4 pozycji, np.: ESMARA® Sweter damski dzianinowy Sweter damski dzianinowy | 42,99 zł || Sweter damski dzianinowy (grau) | 42,99 zł || Sweter damski dzianinowy (schwarz) | 42,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100401360: 3 pozycji, np.: CRIVIT Kurtka funkcyjna damska Kurtka funkcyjna damska | 31,99 zł || Kurtka funkcyjna damska (schwarz) | 31,99 zł || Kurtka funkcyjna damska (koralle) | 31,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100396471: 4 pozycji, np.: ESMARA MEN Spodnie cargo męskie Spodnie cargo męskie | 42,99 zł || Spodnie cargo męskie (beige) | 42,99 zł || Spodnie cargo męskie (schwarz) | 42,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411086: 3 pozycji, np.: ESMARA® Piżama damska z frotte Piżama damska z frotte | 35,99 zł || Piżama damska z frotte (burgunder) | 35,99 zł || Piżama damska z frotte (blau) | 35,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411843: 4 pozycji, np.: CRIVIT Skarpety narciarskie dziecięce Skarpety narciarskie dziecięce | 16,99 zł || Skarpety narciarskie dziecięce (grau) | 16,99 zł || Skarpety narciarskie dziecięce (grün) | 16,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100400810: 3 pozycji, np.: CRIVIT Buty sportowe męskie Buty sportowe męskie | 39,99 zł || Buty sportowe męskie (schwarz) | 39,99 zł || Buty sportowe męskie (weiß/schwarz) | 39,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408581: 2 pozycji, np.: UNDER ARMOUR Szorty funkcyjne męskie Szorty funkcyjne męskie | 71,90 zł || Szorty funkcyjne męskie (schwarz) | 71,90 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394320: 4 pozycji, np.: ESMARA® Sweter damski dzianinowy Sweter damski dzianinowy | 42,99 zł || Sweter damski dzianinowy (grau) | 42,99 zł || Sweter damski dzianinowy (schwarz) | 42,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100392895: 4 pozycji, np.: ESMARA® Sweter damski Sweter damski | 42,99 zł || Sweter damski (beige) | 42,99 zł || Sweter damski (schwarz) | 42,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100396111: 4 pozycji, np.: CRIVIT Męska kurtka funkcyjna z systemem lokalizacji RECCO® Męska kurtka funkcyjna z systemem lokalizacji RECCO® | 209,00 zł || Męska kurtka funkcyjna z systemem lokalizacji RECCO® (burgunder) | 209,00 zł || Męska kurtka funkcyjna z systemem lokalizacji RECCO® (schwarz) | 209,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100355579: 3 pozycji, np.: CRIVIT Kurtka narciarska damska Kurtka narciarska damska | 229,00 zł || Kurtka narciarska damska (rosa/schwarz) | 229,00 zł || Kurtka narciarska damska (grün/grau) | 229,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100407713: 5 pozycji, np.: FUNKO Figurka winylowa Pokémon Figurka winylowa Pokémon | 44,99 zł || Figurka winylowa Pokémon (Pikachu) | 44,99 zł || Figurka winylowa Pokémon (Vulpix) | 44,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100398207: 3 pozycji, np.: LUPILU® Jeggingsy dziecięce Jeggingsy dziecięce | 19,99 zł || Jeggingsy dziecięce (hellblau) | 19,99 zł || Jeggingsy dziecięce (blau) | 19,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408152: 3 pozycji, np.: ROBA Barierka ochronna na drzwi metalowa Barierka ochronna na drzwi metalowa | 218,83 zł || Barierka ochronna na drzwi metalowa (schwarz matt) | 259,00 zł || Barierka ochronna na drzwi metalowa (weiß) | 218,83 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100398207: 3 pozycji, np.: LUPILU® Jeggingsy dziecięce Jeggingsy dziecięce | 19,99 zł || Jeggingsy dziecięce (hellblau) | 19,99 zł || Jeggingsy dziecięce (blau) | 19,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100396111: 4 pozycji, np.: CRIVIT Męska kurtka funkcyjna z systemem lokalizacji RECCO® Męska kurtka funkcyjna z systemem lokalizacji RECCO® | 209,00 zł || Męska kurtka funkcyjna z systemem lokalizacji RECCO® (burgunder) | 209,00 zł || Męska kurtka funkcyjna z systemem lokalizacji RECCO® (schwarz) | 209,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100409561: 3 pozycji, np.: LUPILU® Lekka kurtka niemowlęca Lekka kurtka niemowlęca | 25,99 zł || Lekka kurtka niemowlęca (grün) | 25,99 zł || Lekka kurtka niemowlęca (pink) | 25,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100414260: 6 pozycji, np.: ROBA Krzesełko do karmienia schodkowe Sit Up Flex Krzesełko do karmienia schodkowe Sit Up Flex | 219,00 zł || Krzesełko do karmienia schodkowe Sit Up Flex (natur grau Flex) | 358,42 zł || Krzesełko do karmienia schodkowe Sit Up Flex (grau Flex) | 233,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100397108: 3 pozycji, np.: ROBA Warkocz do łóżeczka Warkocz do łóżeczka | 174,00 zł || Warkocz do łóżeczka (grau) | 174,00 zł || Warkocz do łóżeczka (frosty green) | 194,00 zł
 --- JSON https://www.lidl.pl/q/api/cqe/deals?offset=96&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 102 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100407024: 4 pozycji, np.: ESMARA® Sukienka midi damska Sukienka midi damska | 22,99 zł || Sukienka midi damska (gelb) | 22,99 zł || Sukienka midi damska (grau) | 22,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100400158: 4 pozycji, np.: CRIVIT Damskie rajstopy funkcjonalne Damskie rajstopy funkcjonalne | 29,99 zł || Damskie rajstopy funkcjonalne (gemustert) | 29,99 zł || Damskie rajstopy funkcjonalne (schwarz) | 29,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408210: 3 pozycji, np.: REEBOK Klasyczne skórzane sneakersy. Klasyczne skórzane sneakersy. | 219,99 zł || Klasyczne skórzane sneakersy. (schwarz) | 254,00 zł || Klasyczne skórzane sneakersy. (weiß) | 219,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408613: 3 pozycji, np.: ADIDAS Samba Samba | 335,87 zł || Samba (schwarz) | 335,87 zł || Samba (weiß) | 337,49 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395642: 3 pozycji, np.: PARKSIDE PERFORMANCE® Spodnie robocze męskie Spodnie robocze męskie | 59,00 zł || Spodnie robocze męskie (dunkelblau) | 59,00 zł || Spodnie robocze męskie (schwarz) | 59,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100386434: 3 pozycji, np.: LIVERGY® Spodnie cargo męskie Spodnie cargo męskie | 45,99 zł || Spodnie cargo męskie (hellbraun) | 45,99 zł || Spodnie cargo męskie (navy) | 45,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406540: 3 pozycji, np.: CRIVIT Szorty funkcyjne męskie Szorty funkcyjne męskie  | 27,99 zł || Szorty funkcyjne męskie  (schwarz) | 27,99 zł || Szorty funkcyjne męskie  (blau) | 27,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100411702: 3 pozycji, np.: LIVARNO® Składany dywan, 160 x 230 cm Składany dywan, 160 x 230 cm | 169,00 zł || Składany dywan, 160 x 230 cm (weiß/anthrazit) | 169,00 zł || Składany dywan, 160 x 230 cm (grün/grau) | 169,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406862: 3 pozycji, np.: CRIVIT Parka przeciwdeszczowa damska Parka przeciwdeszczowa damska | 52,90 zł || Parka przeciwdeszczowa damska (grau) | 52,90 zł || Parka przeciwdeszczowa damska (schwarz) | 52,90 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406271: 3 pozycji, np.: Dziecięca pościel dwustronna z bawełny 140 x 200 cm Dziecięca pościel dwustronna z bawełny 140 x 200 cm | 71,99 zł || Dziecięca pościel dwustronna z bawełny 140 x 200 cm (Peppa Pig) | 71,99 zł || Dziecięca pościel dwustronna z bawełny 140 x 200 cm (Bluey) | 71,99 zł
 --- JSON https://www.lidl.pl/q/api/cqe/deals?offset=144&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 105 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412296: 3 pozycji, np.: CRIVIT Spodnie termoaktywne męskie Spodnie termoaktywne męskie | 39,99 zł || Spodnie termoaktywne męskie (schwarz) | 39,99 zł || Spodnie termoaktywne męskie (blau) | 39,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394248: 4 pozycji, np.: INTER LINK Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. | 999,00 zł || Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. (Grau) | 999,00 zł || Łóżko dziecięce »Leonie«, z łóżkiem wysuwanym. (Natur) | 999,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100366635: 6 pozycji, np.: ROBA Blat do krzesełka do karmienia Blat do krzesełka do karmienia | 76,66 zł || Blat do krzesełka do karmienia (taupe) | 77,90 zł || Blat do krzesełka do karmienia (anthrazit) | 77,90 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100395471: 3 pozycji, np.: ESMARA® Damski kardigan pluszowy Damski kardigan pluszowy | 49,99 zł || Damski kardigan pluszowy (schwarz) | 49,99 zł || Damski kardigan pluszowy (creme) | 49,99 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100412528: 3 pozycji, np.: SILVERCREST® Blender kielichowy SSME 600 B1, 1,75 l  Blender kielichowy SSME 600 B1, 1,75 l | 129,00 zł ||  Blender kielichowy SSME 600 B1, 1,75 l (schwarz) | 129,00 zł ||  Blender kielichowy SSME 600 B1, 1,75 l (gebürstet) | 129,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100272773: 3 pozycji, np.: Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny | 539,00 zł || Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny (graphite grey) | 609,00 zł || Zbiornik na wodę deszczową 4rain "VASO 2in1 Decor", pojemność 220 litrów, wysokość 120 cm, z donicą na rośliny (zinkgrau) | 539,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100293431: 4 pozycji, np.: VCM Szafka na buty Sipos Szafka na buty Sipos | 339,00 zł || Szafka na buty Sipos (Anthrazit) | 339,00 zł || Szafka na buty Sipos (Weiß) | 384,91 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100343460: 3 pozycji, np.: GRAND CANYON Namiot kopułowy TOPEKA, wodoszczelny, 3-osobowy Namiot kopułowy TOPEKA, wodoszczelny, 3-osobowy | 339,00 zł || Namiot kopułowy TOPEKA, wodoszczelny, 3-osobowy (Capulet Olive) | 339,00 zł || Namiot kopułowy TOPEKA, wodoszczelny, 3-osobowy (Blue Grass) | 349,00 zł
 --- JSON https://www.lidl.pl/q/api/cqe/deals?offset=192&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 98 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100405578: 3 pozycji, np.: CRIVIT Buty sportowe męskie Buty sportowe męskie | 39,99 zł || Buty sportowe męskie (weiß/grün) | 39,99 zł || Buty sportowe męskie (schwarz) | 39,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399612: 3 pozycji, np.: BEBECONFORT Ultrakompaktowy wózek dziecięcy "Azur" Ultrakompaktowy wózek dziecięcy "Azur" | 324,88 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Green) | 403,47 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Graphite) | 324,88 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100336133: 4 pozycji, np.: BABYGO Fotelik samochodowy "Nova  360°Rotation" Fotelik samochodowy "Nova  360°Rotation" | 569,00 zł || Fotelik samochodowy "Nova  360°Rotation" (grau) | 579,00 zł || Fotelik samochodowy "Nova  360°Rotation" (schwarz) | 569,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100406484: 3 pozycji, np.: RESPEKTA Okap skośny Okap skośny | 639,00 zł || Okap skośny (Weiß) | 639,00 zł || Okap skośny (Schwarz) | 639,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100394671: 5 pozycji, np.: LIVARNO HOME LED-Lampa stołowa akumulatorowa, 2,6 W LED-Lampa stołowa akumulatorowa, 2,6 W | 34,99 zł || LED-Lampa stołowa akumulatorowa, 2,6 W (bronze) | 34,99 zł || LED-Lampa stołowa akumulatorowa, 2,6 W (anthrazit) | 34,99 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100398853: 6 pozycji, np.: INTER LINK Krzesło obrotowe Bonnie Krzesło obrotowe Bonnie | 236,59 zł || Krzesło obrotowe Bonnie (grau) | 236,59 zł || Krzesło obrotowe Bonnie (schwarz) | 236,59 zł
---- JSON https://www.lidl.pl/q/api/cqe/deals?offset=240&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 98 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100399612: 3 pozycji, np.: BEBECONFORT Ultrakompaktowy wózek dziecięcy "Azur" Ultrakompaktowy wózek dziecięcy "Azur" | 324,88 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Green) | 403,47 zł || Ultrakompaktowy wózek dziecięcy "Azur" (Mineral Graphite) | 324,88 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100378531: 4 pozycji, np.: PROSPERPLAST Doniczka »FURU«, z żebrowaną strukturą, okrągła. Doniczka »FURU«, z żebrowaną strukturą, okrągła. | 68,99 zł || Doniczka »FURU«, z żebrowaną strukturą, okrągła. (anthrazit) | 68,99 zł || Doniczka »FURU«, z żebrowaną strukturą, okrągła. (weiß) | 90,98 zł
+--- JSON https://www.lidl.pl/q/api/cqe/deals?offset=240&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 99 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100410802: 3 pozycji, np.: SILVERCREST® Czajnik, 3000 W Czajnik, 3000 W | 69,99 zł || Czajnik, 3000 W (silber gebürstet) | 69,99 zł || Czajnik, 3000 W (schwarz) | 69,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100397121: 5 pozycji, np.: ROBA Przewijak Przewijak | 160,45 zł || Przewijak (anthrazit) | 199,00 zł || Przewijak (grau) | 160,45 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100408133: 3 pozycji, np.: ROBA Przewijak miękki Przewijak miękki | 174,26 zł || Przewijak miękki (grau) | 174,26 zł || Przewijak miękki (frosty green) | 199,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100379436: 3 pozycji, np.: ADIDAS Box Set Junior Box Set Junior | 209,00 zł || Box Set Junior (schwarz/weiß) | 229,00 zł || Box Set Junior (schwarz/rot) | 209,00 zł
---- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100410802: 3 pozycji, np.: SILVERCREST® Czajnik, 3000 W Czajnik, 3000 W | 69,99 zł || Czajnik, 3000 W (silber gebürstet) | 69,99 zł || Czajnik, 3000 W (schwarz) | 69,99 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100384945: 3 pozycji, np.: LIVARNO HOME Łóżeczko niemowlęce, 70 x 140 cm Łóżeczko niemowlęce, 70 x 140 cm | 529,00 zł || Łóżeczko niemowlęce, 70 x 140 cm (natur) | 529,00 zł || Łóżeczko niemowlęce, 70 x 140 cm (weiß) | 529,00 zł
---- JSON https://www.lidl.pl/q/api/cqe/deals?offset=288&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 93 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
---- JSON https://www.lidl.pl/q/api/cqe/deals?offset=336&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 85 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/q/api/cqe/deals?offset=288&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 92 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
+--- JSON https://www.lidl.pl/q/api/cqe/deals?offset=336&fetchsize=48&locale=pl_PL&assortment=PL&version=2.1.0: 86 pozycji, np.: 8 | 8,00 zł || 20 | 20,00 zł || 32 | 32,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100290574: 4 pozycji, np.: KHW Skrzynka na rośliny z kratą, dł. 100 cm, 110 L Skrzynka na rośliny z kratą, dł. 100 cm, 110 L | 359,00 zł || Skrzynka na rośliny z kratą, dł. 100 cm, 110 L (anthrazit) | 369,00 zł || Skrzynka na rośliny z kratą, dł. 100 cm, 110 L (grau) | 359,00 zł
 --- JSON https://www.lidl.pl/p/api/gridboxes/v2/PL/pl?erpNumbers=100271514: 3 pozycji, np.: Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno | 719,00 zł || Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno (natur) | 719,00 zł || Stół ogrodowy HABAU z dolną szafką i blatem, 98 x 48 x 95 cm, drewno (grau) | 719,00 zł
 
-===== oferty: https://www.lidl.pl/c/produkty-dnia/s10015672?offset=336 | tytuł: Produkty dnia | tekst: 15276 znaków
+===== oferty: https://www.lidl.pl/c/produkty-dnia/s10015672?offset=336 | tytuł: Produkty dnia | tekst: 15649 znaków
 🍂Jesienne rabaty! Wybierz rabat na całe zamówienie!➡️
 Produkty dnia
 
@@ -1093,7 +1094,7 @@ Każdy dzień to nowa szansa na wyjątkowe okazje! Sprawdź nasze "Produkty dnia
 
 Składany kozioł roboczy dla 129 PLN
 Produkt dnia
-22 godz. | 55 min | 23 s
+21 godz. | 10 min | 38 s
 4.5
 (116)
 4.5 z 5 gwiazdek (116 łącznych ocen)
@@ -1106,7 +1107,7 @@ Megaokazja
 * Najniższa cena z 30 dni przed obniżką
 Akumulatorowa szlifierka wielofunkcyjna 12 V, PAMS 12 B2 (z akumulatorem i ładowarką) dla 99 PLN
 Produkt dnia
-22 godz. | 55 min | 23 s
+21 godz. | 10 min | 38 s
 4.6
 (85)
 4.6 z 5 gwiazdek (85 łącznych ocen)
@@ -1119,7 +1120,7 @@ Megaokazja
 * Najniższa cena z 30 dni przed obniżką
 Akumulatorowa zakrętarka udarowa PDSSA 20-Li C3 Limited-Edition, 20V (bez akumulatora i ładowarki) dla 89 PLN
 Produkt dnia
-22 godz. | 55 min | 23 s
+21 godz. | 10 min | 38 s
 4.5
 (149)
 4.5 z 5 gwiazdek (149 łącznych ocen)
@@ -1132,7 +1133,7 @@ Megaokazja
 * Najniższa cena z 30 dni przed obniżką
 Ekspres do kawy »Brew-Buddy«, 1700 W dla 199 PLN
 Produkt dnia
-22 godz. | 55 min | 23 s
+21 godz. | 10 min | 38 s
 4.1
 (66)
 4.1 z 5 gwiazdek (66 łącznych ocen)
@@ -1145,7 +1146,7 @@ Megaokazja
 * Najniższa cena z 30 dni przed obniżką
 Nakładka na krzesło do masażu Shiatsu SMG 197 dla 169 PLN
 Produkt dnia
-22 godz. | 55 min | 23 s
+21 godz. | 10 min | 38 s
 5
 (1)
 5 z 5 gwiazdek (1 łącznych ocen)
@@ -1157,7 +1158,7 @@ Nakładka na krzesło do masażu Shiatsu SMG 197
 * Najniższa cena z 30 dni przed obniżką
 Budzik świetlny HG13137 dla 60 PLN
 Produkt dnia
-22 godz. | 55 min | 23 s
+21 godz. | 10 min | 38 s
 4.8
 (9)
 4.8 z 5 gwiazdek (9 łącznych ocen)
@@ -1364,7 +1365,7 @@ Koszulka męska z bawełny z długim rękawem
 -16%
 24,99zł
 * Najniższa cena z 
---- linki (134), najlepiej ocenione:
+--- linki (135), najlepiej ocenione:
   [9/-9] AktualnościNasze gazetki, Sklepy Lidl, Stacje ładowania, Newsletter → https://www.lidl.pl/informacje-dla-klienta/nasze-gazetki
   [5/-3] Nasze gazetki → https://www.lidl.pl/c/nasze-gazetki/s10008614
   [1/5] Promocje → https://www.lidl.pl/c/promocje/s10076831
@@ -1547,7 +1548,7 @@ Menu
 --- JSON https://endpoints.leaflets.schwarz/v4/flyer?flyer_identifier=gazetka-02-11-pon-kw45&region_id=0&region_code=0: 5 pozycji, np.: CRIVIT Kurtka freeride męska CRIVIT Kolor: niebieski, wzorzysty, czarny Cecha: kieszeń na skipas z zamkiem błyskawicznym na rękawie, wiatroodporna i wodoszczelna | 199,00 zł || CRIVIT Spodnie narciarskie męskie CRIVIT Kolor: granatowy, czarny Cecha: oddychająca, wiatro- i wodoszczelna;&nbsp;kieszeń na zamek błyskawiczny na udzie | 119,99 zł || CRIVIT Kurtka freeride damska CRIVIT Kolor: wzorzysty, miętowy, czarny Cecha: elastyczny pas śnieżny, wiatro- i wodoszczelna | 199,00 zł
 --- JSON https://endpoints.leaflets.schwarz/v4/flyer?flyer_identifier=gazetka-02-11-pon-kw45&region_id=0&region_code=0: 5 pozycji, np.: CRIVIT Kurtka freeride męska CRIVIT Kolor: niebieski, wzorzysty, czarny Cecha: kieszeń na skipas z zamkiem błyskawicznym na rękawie, wiatroodporna i wodoszczelna | 199,00 zł || CRIVIT Spodnie narciarskie męskie CRIVIT Kolor: granatowy, czarny Cecha: oddychająca, wiatro- i wodoszczelna;&nbsp;kieszeń na zamek błyskawiczny na udzie | 119,99 zł || CRIVIT Kurtka freeride damska CRIVIT Kolor: wzorzysty, miętowy, czarny Cecha: elastyczny pas śnieżny, wiatro- i wodoszczelna | 199,00 zł
 
-===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/lidl | tytuł: Teraz w promocji w Lidl: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 186 znaków
+===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/lidl | tytuł: Teraz w promocji w Lidl: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 5654 znaków
 Nieznana
 Zaloguj się
 Strona domowa
@@ -1563,7 +1564,159 @@ Lidl
 Filet z kurczaka Lidl promocja
 Sklepy
 1
---- linki (13), najlepiej ocenione:
+Filtry
+Dodaj
+Lidl
+ Ważność: 2 lis do 8 lis
+Przejrzyj gazetka
+Wkrótce
+
+W Lidl gazetka znajdziesz szeroką ofertę Filet z kurczaka. W tygodniu 45 gazetka Lidl gazetka nie zawiera promocji Filet z kurczaka, podczas gdy inne sklepy mogą je mieć. 👀
+
+Alternatywne promocje
+Filet z kurczaka
+2 dni
+15,99 zł
+Filet z piersi kurczaka
+3 dni
+23,99 zł
+16,99 zł
+Filet z kurczaka Drobigemex
+Wkrótce
+Ważne za 2 dni
+27,99 zł
+Filet z piersi kurczaka
+Wkrótce
+Ważne za 2 dni
+22,99 zł
+14,99 zł
+Filet z piersi z kurczaka
+2 dni
+21,89 zł
+14,99 zł
+Filet gotowany z kurczaka Krakus
+3 dni
+6,99 zł
+Przejrzyj wszystkie promocje (27)
+Sklepy z Filet z kurczaka w swoim asortymencie
+E.Leclerc
+Kaufland
+Biedronka
+Stokrotka
+Carrefour
+Żabka
+Twój Market
+Netto
+Selgros
+Carrefour Market
+Wafelek
+Delfin
+Delikatesy Piotruś Pan
+Delikatesy Centrum
+EuroSPAR
+ALDI
+Makro
+Lidl
+Gram Market
+Spiżarnia Smakosza
+Dino
+Prim Market
+Market Jan
+Stokrotka Market
+Najbliższa filia Lidl
+
+Ta Filet z kurczaka Lidl promocja jest dostępna w poniższych filiach na podstawie ustawionej lokalizacji:
+
+Warszawa
+Warszawa
+Wykryj automatycznie
+Lidl
+Ul.Tamka 40, 00-355 Warszawa
+0.80 km
+Lidl
+Ul. Sierakowskiego 4, 03-710 Warszawa
+1.67 km
+Lidl
+Ul. Wileńska 14, 03-416 Warszawa
+2.71 km
+Wszystkie lokalizacje
+Cena Filet z kurczaka Lidl🕒
+Oferta	Imię	Sklep	Cena regularna	Cena promocyjna	Promocja	Data rozpoczęcia	Data końca
+	Piratki Filet z indyka lub z kurczaka	Lidl		3,99 zł		28 września 2026	30 września 2026
+	PIRATKI Filet z indyka lub z kurczaka	Lidl	4,99 zł	3,99 zł	
+1,00 zł Rabat
+	13 kwietnia 2026	15 kwietnia 2026
+	Filet pieczony z kurczaka	Lidl		5,99 zł		07 kwietnia 2026	08 kwietnia 2026
+	Orlando Pure Taste Przekąska dla psa filet z kurczaka lub z kaczki	Lidl		13,49 zł		08 stycznia 2026	10 stycznia 2026
+	Filet z kurczaka Orlando Pure Taste	Lidl		8,99 zł		08 stycznia 2026	10 stycznia 2026
+	Filet z kurczaka Rzeźnik	Lidl	24,90 zł	17,99 zł	
+6,91 zł Rabat
+	13 listopada 2025	15 listopada 2025
+	Filet z kurczaka polski XXL Rzeźnik	Lidl		17,99 zł		30 października 2025	31 października 2025
+	Filet z kurczaka Orlando Pure Taste	Lidl		11,99 zł		29 września 2025	04 października 2025
+	Filet z kurczaka Orlando Pure Taste	Lidl		11,99 zł		03 lipca 2025	05 lipca 2025
+	Pikok Piratki, filet z kurczaka 1 opak.	Lidl		4,49 zł		09 czerwca 2025	11 czerwca 2025
+	Filet z kurczaka Rzeźnik	Lidl		21,99 zł		11 kwietnia 2024	13 kwietnia 2024
+	Filet z kurczaka	Lidl	23,99 zł	17,99 zł	
+6,00 zł Rabat
+	12 czerwca 2023	14 czerwca 2023
+	Filet z kurczaka rzeźnik	Lidl	23,90 zł	17,99 zł	
+5,91 zł Rabat
+	06 kwietnia 2023	08 kwietnia 2023
+	Filet z kurczaka rzeźnik	Lidl	23,90 zł	17,99 zł	
+5,91 zł Rabat
+	06 marca 2023	08 marca 2023
+	Filet z kurczaka strips mcennedy	Lidl		16,99 zł		30 stycznia 2023	01 lutego 2023
+	Filet z kurczaka	Lidl	23,90 zł	18,99 zł	
+4,91 zł Rabat
+	02 stycznia 2023	04 stycznia 2023
+	Filet z kurczaka	Lidl		15,99 zł		29 grudnia 2022	31 grudnia 2022
+	Filet z kurczaka rzeźnik	Lidl	23,90 zł	19,99 zł	
+3,91 zł Rabat
+	10 października 2022	12 października 2022
+	Filet z kurczaka	Lidl	32,99 zł	26,19 zł	
+6,80 zł Rabat
+	05 września 2022	07 września 2022
+	Filet z kurczaka	Lidl	29,90 zł	23,90 zł	
+6,00 zł Rabat
+	06 czerwca 2022	08 czerwca 2022
+	Filet z kurczaka paski 1 SZT 400 G	Lidl		6,69 zł		29 listopada 2021	01 grudnia 2021
+	Panierowany filet z kurczaka	Lidl		11,99 zł		09 sierpnia 2021	11 sierpnia 2021
+	Filet z kurczaka w stylu meksykańskim z dipem	Lidl		11,99 zł		29 lipca 2021	31 lipca 2021
+	Filet z kurczaka w chrupiącej panierce, z dipem	Lidl		11,99 zł		05 lipca 2021	07 lipca 2021
+Pobierz darmową aplikację, zawierającą 1100+ sklepów
+Lidl Filet z kurczaka promocja
+Na Lidl znajdziesz szeroki wybór ⭐️promocji Filet z kurczaka⭐️. W tym tygodniu Lidl oferuje 0 promocji Filet z kurczaka. Usuń filtry, aby zobaczyć wszystkie dostępne oferty, porównaj każdą cenę i zaoszczędź przy kolejnym zakupie. Skorzystaj z filtrów, aby szybko znaleźć promocje na Filet z kurczaka i wybrać najlepszą cenę. Zapisz swoje wyszukiwanie, aby otrzymać powiadomienie, gdy Filet z kurczaka znów będzie dostępny w promocji. Produkt nie jest obecnie przeceniony? Sprawdź podobne propozycje, aby znaleźć alternatywę z korzystną ceną.
+Ostatnia aktualizacja: poniedziałek, 28 września 2026
+Informacje
+Najczęściej zadawane pytania
+Reklama?
+Wszystkie oferty
+Marki
+Aplikacja Gazetki.pl
+O nas
+Dodaj gazetkę
+Aktualności
+Usługi
+Zarejestruj się do newslettera
+Śledź nas na Facebook
+Śledź nas na Instagram
+Śledź nas na Youtube
+Śledź nas na TikTok
+Partnerzy
+Zainteresowany współpracą?
+Skontaktuj się z nami
+Gazetki.pl codziennie gromadzi wszystkie aktualne gazetki, oferty tygodnia, broszury reklamacyjne, a także magazyny i katalogi ze wszystkich sklepów w Polsce. Dzięki temu użytkownicy są zawsze na bieżąco ze wszystkimi interesującymi ofertami z gazetek, zniżkami i promocjami. Wszystko to łącznie z wyprzedażami towarów można w łatwy sposób znaleźć w sklepach ze swojego otoczenia. Bardzo często nasza strona jako pierwsza udostępnia najnowsze gazetki, nawet zanim znajdą się one w Twojej skrzynce odbiorczej. Oczywiście, wszystkie oferty można przeglądać w pracy, szkole lub w sklepie. Umieść stronę Gazetki.pl w ulubionych i zaoszczędź dużo czasu i pieniędzy. Oprócz tego, przeglądając gazetki w formie elektronicznej, przyczyniamy się do redukowania zużycia papieru, co bardzo dobrze wpływa na środowisko.
+Wszystkie prawa zastrzeżone © Gazetki.pl 2026 | Klauzula o wyłączeniu odpowiedzialności | Warunki i zasady | Polityka prywatności | Polityka plików cookie
+--- linki (61), najlepiej ocenione:
+  [9/0] Aktualności → https://www.gazetki.pl/blog
+  [7/-12] Lidl Ul.Tamka 40, 00-355 Warszawa 0.80 km → https://www.gazetki.pl/sklepy/lidl/lokalizacje/warszawa
+  [6/-7] Filet z kurczaka 2 dni 15,99 zł → https://www.gazetki.pl/sklepy/delikatesy-piotruy-pan/oferty/filet-z-kurczaka-promocja-69907214/
+  [6/-7] Filet z piersi kurczaka 3 dni 23,99 zł 16,99 zł → https://www.gazetki.pl/sklepy/stokrotka/oferty/filet-z-piersi-kurczaka-promocja-69822179/
+  [6/-7] Filet z kurczaka Drobigemex Wkrótce Ważne za 2 dni 27,99 zł → https://www.gazetki.pl/sklepy/e-leclerc/oferty/filet-z-kurczaka-drobigemex-promocja-69907539/
+  [6/-7] Filet z piersi kurczaka Wkrótce Ważne za 2 dni 22,99 zł 14,99 zł → https://www.gazetki.pl/sklepy/e-leclerc/oferty/filet-z-piersi-kurczaka-promocja-69928774/
+  [6/-7] Filet z piersi z kurczaka 2 dni 21,89 zł 14,99 zł → https://www.gazetki.pl/sklepy/twoj-market/oferty/filet-z-piersi-z-kurczaka-promocja-69755879/
+  [6/-7] Filet gotowany z kurczaka Krakus 3 dni 6,99 zł → https://www.gazetki.pl/sklepy/kaufland/oferty/filet-gotowany-z-kurczaka-krakus-promocja-69717119/
   [5/-3] Gazetki.pl home → https://www.gazetki.pl/
   [5/-3]  → https://www.gazetki.pl/ulubione
   [5/-3]  → https://www.gazetki.pl/powiadomienia
@@ -1577,18 +1730,46 @@ Sklepy
   [5/-3] tutaj → https://www.gazetki.pl/najczesciej-zadawane-pytania
   [5/2] Wszystkie oferty → https://www.gazetki.pl/oferty
   [5/2] Filet z kurczaka → https://www.gazetki.pl/oferty/filet-z-kurczaka
-kafelki: []
-wiersze: []
+  [5/2] Open flyer → https://www.gazetki.pl/przejrzyj/oferty/lidl-gazetka-3871071
+  [5/-12] E.Leclerc → https://www.gazetki.pl/sklepy/e-leclerc/gazetka
+  [5/-12] Kaufland → https://www.gazetki.pl/sklepy/kaufland/gazetka
+  [5/-12] Biedronka → https://www.gazetki.pl/sklepy/biedronka/gazetka
+kafelki: [{"href":"/sklepy/delikatesy-piotruy-pan/oferty/filet-z-kurczaka-promocja-69907214/","text":"Filet z kurczaka\n2 dni\n15,99 zł","logos":"Delikatesy Piotruś Pan https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/delikatesy-piotruy-pan-1583318676.jpg add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Delikatesy Piotruś Pan Filet z kurczaka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69907214/delikatesy-piotruy-pan-filet-z-kurczaka-oferta-thumbSmallWebP-6ae3e7b83f352.webp"},{"href":"/sklepy/stokrotka/oferty/filet-z-piersi-kurczaka-promocja-69822179/","text":"Filet z piersi kurczaka\n3 dni\n23,99 zł\n16,99 zł","logos":"Stokrotka https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/stokrotka-685bfc3e38deb.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Stokrotka Filet z piersi kurczaka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69822179/stokrotka-filet-z-piersi-kurczaka-oferta-thumbSmallWebP.webp"},{"href":"/sklepy/e-leclerc/oferty/filet-z-kurczaka-drobigemex-promocja-69907539/","text":"Filet z kurczaka Drobigemex\nWkrótce\nWażne za 2 dni\n27,99 zł","logos":"E.Leclerc https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/e-leclerc.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg E.Leclerc Filet z kurczaka Drobigemex oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69907539/e-leclerc-filet-z-kurczaka-drobigemex-oferta-thumbSmallWebP.webp"},{"href":"/sklepy/e-leclerc/oferty/filet-z-piersi-kurczaka-promocja-69928774/","text":"Filet z piersi kurczaka\nWkrótce\nWażne za 2 dni\n22,99 zł\n14,99 zł","logos":"E.Leclerc https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/e-leclerc.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg E.Leclerc Filet z piersi kurczaka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69928774/e-leclerc-filet-z-piersi-kurczaka-oferta-thumbSmallWebP.webp"}]
+wiersze: [["Oferta","Imię","Sklep","Cena regularna","Cena promocyjna","Promocja","Data rozpoczęcia","Data końca"],["","Piratki Filet z indyka lub z kurczaka","Lidl","","3,99 zł","","28 września 2026","30 września 2026"],["","PIRATKI Filet z indyka lub z kurczaka","Lidl","4,99 zł","3,99 zł","1,00 zł Rabat","13 kwietnia 2026","15 kwietnia 2026"]]
 agregator: 64 stron, 65 błędów
 
-===== DOPASOWANE (3):
-  papryka: 5.99 zł ← „Papryka mix dla 5.99 PLN” ()
+===== DOPASOWANE (27):
+  indyk_filet: 14.99 zł ← „Filet z indyka Rzeźnik	Lidl		13,99 zł		27 czerwca 2022	29 czerwca 2022” ()
+  lopatka: 7.5 zł ← „RZEŹNIK Łopatka wieprzowa 1 kg	Lidl	15,49 zł	7,99 zł” ()
+  karkowka: 8.99 zł ← „Karkówka wieprzowa bez kości 1 kg	Lidl	18,49 zł	8,99 zł” ()
+  tunczyk: 4.82 zł ← „Tuńczyk w oleju słonecznikowym 185 g	Lidl	7,53 zł	5,25 zł” ()
+  jajka: 4.99 zł ← „Jaja Ściółkowe Złota Nioska 10 szt.	Lidl		4,99 zł” ()
+  czosnek: 1 zł ← „Czosnek, luzem	Lidl	3,99 zł	2,99 zł” ()
+  marchew: 1.2 zł ← „Polska marchew niedoskonała 2,5kg	Lidl	9,99 zł	6,99 zł” ()
+  papryka: 5.28 zł ← „Papryka czerwona 1kg	Lidl	14,27 zł	8,99 zł” ()
+  cukinia: 3 zł ← „Cukinia, luzem	Lidl	7,99 zł	4,99 zł” ()
+  pieczarki: 3 zł ← „Pieczarki 500 g	Lidl	7,99 zł	4,99 zł” ()
+  ziemniaki: 1.6 zł ← „Ziemniaki Polski 2,5 kg	Lidl	8,99 zł	4,99 zł” ()
+  dynia: 2 zł ← „Dynia piżmowa 1 kg	Lidl	6,99 zł	4,99 zł” ()
+  passata: 1.81 zł ← „ITALIAMO Passata pomidorowa 720 ml	Lidl	9,29 zł	6,69 zł” ()
+  kalafior: 4.99 zł ← „Kalafior polski” ()
+  seler: 2 zł ← „Seler naciowy	Lidl	5,99 zł	3,99 zł” ()
+  buraki: 1.2 zł ← „Polskie buraki czerwone, luzem 1 kg	Lidl	3,99 zł	2,79 zł” ()
+  bataty: 3 zł ← „Bataty 1kg	Lidl	9,99 zł	6,99 zł” ()
+  mozzarella: 2.99 zł ← „Mozzarella Light 2+1 GRATIS	Lidl		2,99 zł” ()
+  makaron_orzo: 3.99 zł ← „Makaron orzo z pszenicy durum 500 g	Lidl	7,98 zł	3,99 zł” ()
+  twarog: 2 zł ← „Twaróg sernikowy 6%	Lidl	9,99 zł	7,99 zł” ()
+  tortilla: 2.99 zł ← „PIEKARNIA W SERCU LIDLA Tortilla pszenna proteinowa	Lidl	5,99 zł	3,00 zł” ()
+  bazylia: 2.1 zł ← „Bazylia	Lidl	6,99 zł	4,89 zł” ()
+  cytryna: 1 zł ← „Cytryny	Lidl	4,99 zł	3,99 zł” ()
+  szynka_wieprzowa: 7.99 zł ← „RZEXNIK Szynka wieprzowa XXL 1 kg	Lidl	17,99 zł	7,99 zł” ()
+  jablka: 2 zł ← „Jabłka Polski 1 kg	Lidl	5,99 zł	3,99 zł” ()
   mleko: 1.99 zł ← „Mleko UHT 3,2% z Polskiej Mleczarni dla 1.99 PLN” ()
   maslo: 4.99 zł ← „Masło ekstra 83% dla 2.49 PLN” ()
-źródło www/www: 15188 znaków
+źródło www/www: 15561 znaków
 źródło www/www: 5838 znaków
 źródło www/www: 4295 znaków
-źródło www/www: 15276 znaków
+źródło www/www: 15649 znaków
 źródło ocr/1: 531 znaków
 źródło ocr/1: 529 znaków
 źródło ocr/2: 217 znaków
@@ -1650,4 +1831,4 @@ agregator: 64 stron, 65 błędów
 źródło ocr/58: 900 znaków
 źródło ocr/59: 863 znaków
 źródło ocr/60: 509 znaków
-źródło www/json: 95100 znaków
+źródło www/json: 95075 znaków

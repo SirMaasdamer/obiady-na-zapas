@@ -1,7 +1,7 @@
 
-===== strona główna: https://www.kaufland.pl/ | tytuł: Kaufland.pl - Dostęp zablokowany | tekst: 1151 znaków
-Ray ID: a536b1204fc43222
-IP: 13.83.161.82
+===== strona główna: https://www.kaufland.pl/ | tytuł: Kaufland.pl - Dostęp zablokowany | tekst: 1153 znaków
+Ray ID: a53749b07801c75d
+IP: 130.131.231.50
 Dostęp zablokowany
 Dlaczego zostałem zablokowany?
 
@@ -251,20 +251,10 @@ Stopka redakcyjna Polityka prywatności Polityka prywatności Kaufland Card XTRA
   [0/0] Motoryzacja → https://www.kaufland.pl/c/motoryzacja/~16341/
   [0/0] Pielęgnacja ciała i zdrowie → https://www.kaufland.pl/c/pielegnacja-ciala-i-zdrowie/~11/
   [0/0] Żywność → https://www.kaufland.pl/c/zywnosc/~1311/
+https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060: page.goto: net::ERR_ABORTED at https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060
+Call log:
+  - navigating to "https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060", waiting until "domcontentloaded"
 
-===== gazetki (poziom 1): https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/view/flyer/page/1 | tytuł: Gazetka tygodnia - 29.10.2026 - 04.11.2026 | Gazetka Kaufland | tekst: 95 znaków
-Gazetka tygodnia - 29.10.2026 - 04.11.2026 | Gazetka Kaufland
-Animacje
-1 / 69
-Szukaj
-Menu
-Wyjdź
---- linki (5), najlepiej ocenione:
-  [0/0] Strona główna → https://sklep.kaufland.pl/gazeta-reklamowa.html
-  [0/-9]  → https://sklep.kaufland.pl/polityka-prywatnosci.html
-  [0/0] tutaj → https://sklep.kaufland.pl/stopka-redakcyjna.html
-  [0/-9] Więcej informacji → https://cookiepedia.co.uk/giving-consent-to-cookies
-  [0/0] Powered by OneTrust Otwiera się w nowym oknie → https://www.onetrust.com/products/cookie-consent/
 
 ===== gazetki (poziom 1): https://leaflets.kaufland.com/pl-PL/PL_pl_Wrapper2_0_PL44/view/flyer/page/1 | tytuł: Kaufland - 29.10.2026 - 10.11.2026 | Gazetka Kaufland | tekst: 71 znaków
 Kaufland - 29.10.2026 - 10.11.2026 | Gazetka Kaufland
@@ -278,7 +268,20 @@ Wyjdź
   [0/-9] Więcej informacji → https://cookiepedia.co.uk/giving-consent-to-cookies
   [0/0] Powered by OneTrust Otwiera się w nowym oknie → https://www.onetrust.com/products/cookie-consent/
 
-===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/kaufland | tytuł: Teraz w promocji w Kaufland: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 2966 znaków
+===== gazetki (poziom 1): https://leaflets.kaufland.com/pl-PL/PL_pl_Magazine3_1060_PL42-OC3/view/flyer/page/1 | tytuł: Kaufland - 15.10.2026 - 04.11.2026 | Gazetka Kaufland | tekst: 78 znaków
+Kaufland - 15.10.2026 - 04.11.2026 | Gazetka Kaufland
+1 / 25
+Szukaj
+Menu
+Wyjdź
+--- linki (5), najlepiej ocenione:
+  [0/0] Strona główna → https://sklep.kaufland.pl/gazeta-reklamowa.html
+  [0/-9]  → https://sklep.kaufland.pl/polityka-prywatnosci.html
+  [0/0] tutaj → https://sklep.kaufland.pl/stopka-redakcyjna.html
+  [0/-9] Więcej informacji → https://cookiepedia.co.uk/giving-consent-to-cookies
+  [0/0] Powered by OneTrust Otwiera się w nowym oknie → https://www.onetrust.com/products/cookie-consent/
+
+===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/kaufland | tytuł: Teraz w promocji w Kaufland: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 5637 znaków
 Nieznana
 Zaloguj się
 Strona domowa
@@ -386,8 +389,46 @@ Oferta	Imię	Sklep	Cena regularna	Cena promocyjna	Promocja	Data rozpoczęcia	Dat
 	24 lipca 2025	30 lipca 2025
 	Filet z kurczaka sielskiego Superdrob	Kaufland		29,99 zł		09 stycznia 2025	15 stycznia 2025
 	Filet z kurczaka	Kaufland		15,99 zł		12 sierpnia 2024	18 sierpnia 2024
-	Filet z kurczaka	Kaufland		17,99 zł		24 lipca 2023
---- linki (44), najlepiej ocenione:
+	Filet z kurczaka	Kaufland		17,99 zł		24 lipca 2023	26 lipca 2023
+	Filet z kurczaka	Kaufland		17,99 zł		03 lipca 2023	05 lipca 2023
+	Filet z kurczaka	Kaufland	17,99 zł	14,99 zł	
+3,00 zł Rabat
+	22 czerwca 2023	28 czerwca 2023
+	Filet z kurczaka stąd takie dobre	Kaufland		38,99 zł		15 czerwca 2023	21 czerwca 2023
+	Filet z kurczaka	Kaufland		17,99 zł		05 czerwca 2023	06 czerwca 2023
+	Filet z kurczaka	Kaufland		17,99 zł		22 maja 2023	24 maja 2023
+	Filet z kurczaka	Kaufland		17,99 zł		15 maja 2023	17 maja 2023
+	Filet z kurczaka	Kaufland	23,90 zł	17,99 zł	
+5,91 zł Rabat
+	05 kwietnia 2023	12 kwietnia 2023
+	Filet z kurczaka	Kaufland		15,99 zł		29 grudnia 2022	03 stycznia 2023
+	Filet z kurczaka kaufland	Kaufland		19,99 zł		27 października 2022	02 listopada 2022
+Pobierz darmową aplikację, zawierającą 1100+ sklepów
+Kaufland Filet z kurczaka promocja
+Na Kaufland znajdziesz szeroki wybór ⭐️promocji Filet z kurczaka⭐️. W tym tygodniu Kaufland oferuje 3 promocji Filet z kurczaka. Usuń filtry, aby zobaczyć wszystkie dostępne oferty, porównaj każdą cenę i zaoszczędź przy kolejnym zakupie. Skorzystaj z filtrów, aby szybko znaleźć promocje na Filet z kurczaka i wybrać najlepszą cenę. Zapisz swoje wyszukiwanie, aby otrzymać powiadomienie, gdy Filet z kurczaka znów będzie dostępny w promocji. Produkt nie jest obecnie przeceniony? Sprawdź podobne propozycje, aby znaleźć alternatywę z korzystną ceną.
+Ostatnia aktualizacja: wtorek, 27 października 2026
+Informacje
+Najczęściej zadawane pytania
+Reklama?
+Wszystkie oferty
+Marki
+Aplikacja Gazetki.pl
+O nas
+Dodaj gazetkę
+Aktualności
+Usługi
+Zarejestruj się do newslettera
+Śledź nas na Facebook
+Śledź nas na Instagram
+Śledź nas na Youtube
+Śledź nas na TikTok
+Partnerzy
+Zainteresowany współpracą?
+Skontaktuj się z nami
+Gazetki.pl codziennie gromadzi wszystkie aktualne gazetki, oferty tygodnia, broszury reklamacyjne, a także magazyny i katalogi ze wszystkich sklepów w Polsce. Dzięki temu użytkownicy są zawsze na bieżąco ze wszystkimi interesującymi ofertami z gazetek, zniżkami i promocjami. Wszystko to łącznie z wyprzedażami towarów można w łatwy sposób znaleźć w sklepach ze swojego otoczenia. Bardzo często nasza strona jako pierwsza udostępnia najnowsze gazetki, nawet zanim znajdą się one w Twojej skrzynce odbiorczej. Oczywiście, wszystkie oferty można przeglądać w pracy, szkole lub w sklepie. Umieść stronę Gazetki.pl w ulubionych i zaoszczędź dużo czasu i pieniędzy. Oprócz tego, przeglądając gazetki w formie elektronicznej, przyczyniamy się do redukowania zużycia papieru, co bardzo dobrze wpływa na środowisko.
+Wszystkie prawa zastrzeżone © Gazetki.pl 2026 | Klauzula o wyłączeniu odpowiedzialności | Warunki i zasady | Polityka prywatności | Polityka plików cookie
+--- linki (57), najlepiej ocenione:
+  [9/0] Aktualności → https://www.gazetki.pl/blog
   [7/-12] Kaufland Ul. Stalowa 60 / 64, 03-429 Warszawa 3.49 km → https://www.gazetki.pl/sklepy/kaufland/lokalizacje/warszawa
   [6/-7] Filet gotowany z kurczaka Krakus 3 dni 6,99 zł → https://www.gazetki.pl/sklepy/kaufland/oferty/filet-gotowany-z-kurczaka-krakus-promocja-69717119/
   [6/-7] Filet z piersi kurczaka Krakus 3 dni 9,99 zł 6,99 zł → https://www.gazetki.pl/sklepy/kaufland/oferty/filet-z-piersi-kurczaka-krakus-promocja-69757632/
@@ -412,86 +453,48 @@ Oferta	Imię	Sklep	Cena regularna	Cena promocyjna	Promocja	Data rozpoczęcia	Dat
   [5/-12] Carrefour → https://www.gazetki.pl/sklepy/carrefour/gazetka
   [5/-12] Żabka → https://www.gazetki.pl/sklepy/zabka/gazetka
   [5/-12] Twój Market → https://www.gazetki.pl/sklepy/twoj-market/gazetka
-  [5/-12] Netto → https://www.gazetki.pl/sklepy/netto/gazetka
-kafelki: []
-wiersze: []
+kafelki: [{"href":"/sklepy/kaufland/oferty/filet-gotowany-z-kurczaka-krakus-promocja-69717119/","text":"Filet gotowany z kurczaka Krakus\n3 dni\n6,99 zł","logos":"Kaufland https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/kaufland-68497390a87c1.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Kaufland Filet gotowany z kurczaka Krakus oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69717119/kaufland-filet-gotowany-z-kurczaka-krakus-oferta-thumbSmallWebP.webp"},{"href":"/sklepy/kaufland/oferty/filet-z-piersi-kurczaka-krakus-promocja-69757632/","text":"Filet z piersi kurczaka Krakus\n3 dni\n9,99 zł\n6,99 zł","logos":"Kaufland https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/kaufland-68497390a87c1.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Kaufland Filet z piersi kurczaka Krakus oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69757632/kaufland-filet-z-piersi-kurczaka-krakus-oferta-thumbSmallWebP.webp"},{"href":"/sklepy/kaufland/oferty/filet-gotowany-z-kurczaka-lub-indyka-krakus-promocja-69899749/","text":"Filet gotowany z kurczaka lub indyka Krakus\n3 dni\n9,99 zł\n6,99 zł","logos":"Kaufland https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/kaufland-68497390a87c1.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Kaufland Filet gotowany z kurczaka lub indyka Krakus oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69899749/kaufland-filet-gotowany-z-kurczaka-lub-indyka-krakus-oferta-thumbSmallWebP.webp"},{"href":"","text":"\tFilet wędzony z kurczaka\tKaufland\t3,99 zł\t2,99 zł\t\n1,00 zł Rabat\n\t28 maja 2026\t02 czerwca 2026","logos":"Kaufland Filet wędzony z kurczaka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/62296666/kaufland-filet-wedzony-z-kurczaka-oferta-thumbSmallWebP.webp"}]
+wiersze: [["Oferta","Imię","Sklep","Cena regularna","Cena promocyjna","Promocja","Data rozpoczęcia","Data końca"],["","FILET PIECZONY Z KURCZAKA","Kaufland","","5,99 zł","","23 lipca 2026","29 lipca 2026"],["","BEFOODIE Filet z kurczaka w chrupiącej panierce","Kaufland","","9,99 zł","","02 lipca 2026","08 lipca 2026"]]
 agregator: 66 stron, 59 błędów
 
-===== DOPASOWANE (14):
-  karkowka: 11.99 zł ← „Karkówka Lady” ()
-  mascarpone: 7.99 zł ← „Ser mascarpone Galbani” ()
-  grana: 5.99 zł ← „Ser Grana Padano dojrzewający” ()
+===== DOPASOWANE (37):
+  lopatka: 7.5 zł ← „Łopatka wieprzowa bez kości	Kaufland	15,49 zł	7,99 zł” ()
+  schab: 10 zł ← „Schab bez kości Limit	Kaufland	24,99 zł	14,99 zł” ()
+  karkowka: 9 zł ← „Karkówka wieprzowa bez kości, do pieczenia w całości lub na steki 1 kg	Kaufland	20,99 zł	1” ()
+  tunczyk: 4.49 zł ← „Princes Tuńczyk w kawałkach 120-170 g	Kaufland	7,59 zł	4,49 zł” ()
+  mascarpone: 3 zł ← „Ser mascarpone galbani	Kaufland	11,99 zł	8,99 zł” ()
+  grana: 4.99 zł ← „Ser Grana Padano dojrzewający	Kaufland		4,99 zł” ()
+  cebula: 1.99 zł ← „Cebula żółta 1 kg	Kaufland	4,99 zł	1,99 zł” ()
+  czosnek: 0.69 zł ← „Czosnek 1 sztuka	Kaufland	1,98 zł	1,29 zł” ()
   marchew: 1.99 zł ← „Marchew Polski” ()
-  pieczarki: 4.99 zł ← „Pieczarki polskie Stąd Takie Dobre!” ()
-  dynia: 2.99 zł ← „Dynia” ()
+  papryka: 6.5 zł ← „Papryka czerwona	Kaufland	14,99 zł	8,49 zł” ()
+  cukinia: 3 zł ← „Cukinia	Kaufland	6,99 zł	3,99 zł” ()
+  pieczarki: 3 zł ← „Polskie pieczarki 500 g	Kaufland	7,99 zł	4,99 zł” ()
+  ziemniaki: 1.7 zł ← „Polskie ziemniaki wczesne jadalne luzem	Kaufland	2,99 zł	1,29 zł” ()
+  dynia: 2 zł ← „Dynia 1 kg	Kaufland	4,99 zł	2,99 zł” ()
+  kapusta: 2 zł ← „Kapusta biała	Kaufland	3,99 zł	1,99 zł” ()
+  kapusta_kiszona: 4 zł ← „Kapusta kiszona 1 opak.	Kaufland	18,99 zł	14,99 zł” ()
+  passata: 2.77 zł ← „K-Classic Passata Rustica, Rustica z bazylią 720 ml	Kaufland	6,89 zł	3,99 zł” ()
   koncentrat: 1.79 zł ← „Koncentrat pomidorowy min. 28% ekstraktu K-Classic” ()
-  ser_zolty: 2.99 zł ← „Ser Gouda z kurkami i cebulką Serenada” ()
-  brokul: 3.89 zł ← „Brokuł polski K-Stąd Takie Dobre” ()
+  boczek: 17.33 zł ← „Boczek surowy wędzony 2 x 90 g	Kaufland	7,55 zł	5,99 zł” ()
+  ser_zolty: 2.25 zł ← „SEROVIA Ser Gouda, 100 g	Kaufland		1,99 zł		01 sierpnia 2024	07 sierpnia 2024” ()
+  brokul: 2 zł ← „Brokuł K-Stąd Takie Dobre 500 g	Kaufland	5,99 zł	3,99 zł” ()
+  kalafior: 3 zł ← „Polski kalafior 1 sztuka	Kaufland	7,99 zł	4,99 zł” ()
+  seler: 2.99 zł ← „Seler korzeń na wagę	Biedronka	4,79 zł	2,99 zł” ()
   buraki: 1.49 zł ← „Buraki czerwone polskie” ()
-  brukselka: 5 zł ← „Brukselka 1 kg” ()
+  ananas: 5 zł ← „Ananas w puszce w kawałkach w soku własnym K-Classic” ()
+  kasza_gryczana: 3.04 zł ← „Kasza gryczana prażona 4 x 100 g	Kaufland	4,75 zł	3,99 zł” ()
+  ricotta: 5.49 zł ← „Muffin pistacjowy z ricottą	Kaufland		5,49 zł		11 maja 2026	13 maja 2026” ()
+  mozzarella: 1.5 zł ← „Mozzarella formagia	Kaufland	4,49 zł	2,99 zł” ()
   poledwiczka: 25.99 zł ← „Polska polędwiczka wieprzowa Stoisko Mięsne” ()
+  feta: 3.24 zł ← „Oliwki czarne i zielone z serem feta 100g	Kaufland	4,19 zł	2,99 zł” ()
+  twarog: 2 zł ← „Stąd takie Dobre! Twaróg krajanka półtłusty	Kaufland	7,99 zł	5,99 zł” ()
   tortilla: 2.79 zł ← „Tortilla K-Classic” ()
-  jablka: 2.99 zł ← „Jabłka polskie Jonagold” ()
-źródło ocr/1: 1283 znaków
-źródło ocr/2: 177 znaków
-źródło ocr/3: 458 znaków
-źródło ocr/4: 208 znaków
-źródło ocr/5: 355 znaków
-źródło ocr/6: 158 znaków
-źródło ocr/7: 528 znaków
-źródło ocr/8: 399 znaków
-źródło ocr/9: 827 znaków
-źródło ocr/10: 392 znaków
-źródło ocr/11: 1222 znaków
-źródło ocr/12: 786 znaków
-źródło ocr/13: 999 znaków
-źródło ocr/14: 1153 znaków
-źródło ocr/15: 1258 znaków
-źródło ocr/16: 371 znaków
-źródło ocr/17: 1055 znaków
-źródło ocr/18: 566 znaków
-źródło ocr/19: 1084 znaków
-źródło ocr/20: 114 znaków
-źródło ocr/21: 1132 znaków
-źródło ocr/22: 472 znaków
-źródło ocr/23: 1217 znaków
-źródło ocr/24: 781 znaków
-źródło ocr/25: 655 znaków
-źródło ocr/26: 549 znaków
-źródło ocr/27: 677 znaków
-źródło ocr/28: 1006 znaków
-źródło ocr/29: 291 znaków
-źródło ocr/30: 682 znaków
-źródło ocr/31: 655 znaków
-źródło ocr/32: 811 znaków
-źródło ocr/33: 609 znaków
-źródło ocr/34: 893 znaków
-źródło ocr/35: 610 znaków
-źródło ocr/36: 347 znaków
-źródło ocr/37: 433 znaków
-źródło ocr/38: 769 znaków
-źródło ocr/39: 566 znaków
-źródło ocr/40: 474 znaków
-źródło ocr/41: 960 znaków
-źródło ocr/42: 848 znaków
-źródło ocr/43: 1190 znaków
-źródło ocr/44: 1165 znaków
-źródło ocr/45: 1217 znaków
-źródło ocr/46: 653 znaków
-źródło ocr/47: 1061 znaków
-źródło ocr/48: 1206 znaków
-źródło ocr/49: 1313 znaków
-źródło ocr/50: 879 znaków
-źródło ocr/51: 1236 znaków
-źródło ocr/52: 748 znaków
-źródło ocr/53: 1090 znaków
-źródło ocr/54: 616 znaków
-źródło ocr/55: 828 znaków
-źródło ocr/56: 1450 znaków
-źródło ocr/57: 1476 znaków
-źródło ocr/58: 1351 znaków
-źródło ocr/59: 1049 znaków
-źródło ocr/60: 1132 znaków
+  bazylia: 2 zł ← „Bazylia	Kaufland	6,99 zł	4,99 zł” ()
+  cytryna: 1 zł ← „Cytryny	Kaufland	4,99 zł	3,99 zł” ()
+  szynka_wieprzowa: 9 zł ← „Szynka wieprzowa bez kości	Kaufland	17,99 zł	8,99 zł” ()
+  jablka: 2 zł ← „Jabłka Gala 1 kg	Kaufland	4,99 zł	2,99 zł” ()
+  makaron_lasagne: 3 zł ← „Lasagne	Kaufland	12,99 zł	9,99 zł” ()
 źródło ocr/1: 1005 znaków
 źródło ocr/2: 257 znaków
 źródło ocr/3: 343 znaków
@@ -509,3 +512,28 @@ agregator: 66 stron, 59 błędów
 źródło ocr/15: 2289 znaków
 źródło ocr/16: 598 znaków
 źródło ocr/17: 292 znaków
+źródło ocr/1: 759 znaków
+źródło ocr/2: 874 znaków
+źródło ocr/3: 986 znaków
+źródło ocr/4: 636 znaków
+źródło ocr/5: 1034 znaków
+źródło ocr/6: 890 znaków
+źródło ocr/7: 768 znaków
+źródło ocr/8: 853 znaków
+źródło ocr/9: 1104 znaków
+źródło ocr/10: 1143 znaków
+źródło ocr/11: 1198 znaków
+źródło ocr/12: 1215 znaków
+źródło ocr/13: 1257 znaków
+źródło ocr/14: 476 znaków
+źródło ocr/15: 947 znaków
+źródło ocr/16: 1370 znaków
+źródło ocr/17: 964 znaków
+źródło ocr/18: 233 znaków
+źródło ocr/19: 1140 znaków
+źródło ocr/20: 1127 znaków
+źródło ocr/21: 736 znaków
+źródło ocr/22: 523 znaków
+źródło ocr/23: 776 znaków
+źródło ocr/24: 1144 znaków
+źródło ocr/25: 231 znaków
