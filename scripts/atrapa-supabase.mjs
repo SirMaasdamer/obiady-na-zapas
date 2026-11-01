@@ -41,7 +41,7 @@ const promoP = prices.find(x => x.store === 'b' && products.find(p => p.id === x
 Object.assign(promoP, { promo: +(promoP.regular * 0.6).toFixed(2), promo_from: day(-1), promo_to: day(3), promo_note: 'z kartą', regular_src: 'gazetka' });
 export const M = {
   houses: new Map(), // klucz → { id, name }
-  rows: { list_items: [], freezer: [], reactions: [], hh_recipes: [], hh_prices: [], receipts: [], receipt_items: [], hh_settings: [], recipe_requests: [] },
+  rows: { list_items: [], freezer: [], reactions: [], hh_recipes: [], hh_prices: [], receipts: [], receipt_items: [], hh_settings: [], recipe_requests: [], hh_members: [] },
   hhv: new Map(),
   versions: { katalog: 'k1', oferty: 'o1' },
   shared: {
@@ -51,8 +51,9 @@ export const M = {
   },
   log: [], down: false,
 };
-const PK = { list_items: ['id'], freezer: ['id'], receipts: ['id'], receipt_items: ['id'], recipe_requests: ['id'], reactions: ['household_id', 'recipe_id', 'member'], hh_prices: ['household_id', 'product_id', 'store'], hh_recipes: ['household_id', 'recipe_id'], hh_settings: ['household_id'] };
+const PK = { hh_members: ['id'], list_items: ['id'], freezer: ['id'], receipts: ['id'], receipt_items: ['id'], recipe_requests: ['id'], reactions: ['household_id', 'recipe_id', 'member'], hh_prices: ['household_id', 'product_id', 'store'], hh_recipes: ['household_id', 'recipe_id'], hh_settings: ['household_id'] };
 const DEF = {
+  hh_members: () => ({ created_at: iso(), last_seen: iso(), device: null }),
   list_items: () => ({ done: false, manual: false, pantry: false, qty: null, name: null, created_at: iso() }),
   freezer: () => ({ frozen_on: day(), created_at: iso() }),
   recipe_requests: () => ({ status: 'czeka', attempts: 0, note: null, recipe_ids: [], created_at: iso(), done_at: null, claimed_at: null }),

@@ -23,11 +23,11 @@ const ui = {
   member: String(lsGet('member', '')).slice(0, 40), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
 let db = null, house = null, chan = null, houseTag = '';
-const HH_TABLES = ['recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
+const HH_TABLES = ['hh_members', 'recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
 // tabele wspólne i zbiory, od których zależą (wersje w dataset_versions; „dzien”: oferty filtrujemy po dacie)
 const SHARED = { products: ['katalog'], recipes: ['katalog'], prices: ['katalog', 'oferty'], offers: ['oferty', 'dzien'], scrape_runs: ['oferty'] };
 // klucze wierszy w tabelach domu (bez household_id); hh_settings ma jeden wiersz na dom
-const PK = { list_items: ['id'], freezer: ['id'], receipts: ['id'], receipt_items: ['id'], recipe_requests: ['id'], reactions: ['recipe_id', 'member'], hh_prices: ['product_id', 'store'], hh_recipes: ['recipe_id'], hh_settings: [] };
+const PK = { hh_members: ['id'], list_items: ['id'], freezer: ['id'], receipts: ['id'], receipt_items: ['id'], recipe_requests: ['id'], reactions: ['recipe_id', 'member'], hh_prices: ['product_id', 'store'], hh_recipes: ['recipe_id'], hh_settings: [] };
 const RAW = {}, VER = {};  // wiersze z serwera (albo z kopii w telefonie) i wersja danych, z którą się zgadzają
 let pendingOps = [];       // zapisy czekające na wysłanie (kolejka w IndexedDB); widok = RAW + te zapisy
 let netDown = false;
@@ -136,6 +136,7 @@ const TABLES = {
   receipt_items: q => q.select('*').order('id'),
   hh_settings: q => q.select('*'),
   recipe_requests: q => q.select('*').order('created_at', { ascending: false }).limit(50),
+  hh_members: q => q.select('*').order('created_at'),
 };
 const ONE_PAGE = new Set(['scrape_runs', 'recipe_requests', 'hh_settings']);
 // Supabase oddaje najwyżej 1000 wierszy na zapytanie, więc większe tabele pobieramy stronami.
@@ -623,6 +624,7 @@ function drawSheet() {
 function whoSheet() {
   const st = ui.sheet;
   return `<div class="sheet-head"><div><h2>${esc(house.name)}</h2><div class="sub" style="margin-top:4px">Ustawienia domu i zaproszenia</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  ${membersHtml(st)}
   <div class="sec"><h4>Zaproś domownika</h4><div class="box sub">Wyślij link osobie, z którą dzielisz kuchnię. Zobaczy Waszą listę zakupów, zamrażarkę i ulubione. Znajomemu z innego domu wyślij zwykły adres aplikacji, żeby założył własny dom.</div>
    <div class="row"><button class="btn pri" type="button" data-act="invite" style="flex:1">Wyślij zaproszenie</button><button class="btn" type="button" data-act="share-app">Adres dla znajomego</button></div></div>
   <form id="f-who" class="sec" style="gap:12px"><h4>Ty i Twój dom</h4>
@@ -720,6 +722,9 @@ document.addEventListener('click', async e => {
     case 'trip': ui.trip = ui.trip >= 20 ? 0 : ui.trip + 4; lsSet('trip', ui.trip); ui.plan = null; renderList(); break;
     case 'tick': tickGroup(d.pid); break;
     case 'tick-m': { const m = S.list_items.find(x => x.id === d.id); if (m) write({ t: 'list_items', kind: 'update', values: { done: !m.done }, match: { id: d.id } }); break; }
+    case 'mem-ask': ui.sheet.confirmRm = d.id; drawSheet(); break;
+    case 'mem-cancel': ui.sheet.confirmRm = null; drawSheet(); break;
+    case 'mem-rm': write({ t: 'hh_members', kind: 'delete', match: { id: d.id } }, 'Usunięto z listy domowników'); ui.sheet.confirmRm = null; drawSheet(); break;
     case 'pick': addOwn(d.pid); $('#manual').value = ''; renderSugg(); break;
     case 'own-inc': addOwn(d.pid); break;
     case 'own-dec': { const own = S.list_items.filter(x => x.product_id === d.pid && !x.recipe_id && !x.manual); const last = own[own.length - 1]; if (last) write({ t: 'list_items', kind: 'delete', match: { id: last.id } }); break; }
@@ -768,7 +773,7 @@ document.addEventListener('submit', async e => {
   if (id === 'f-price') savePrice();
   else if (id === 'f-who') {
     const n = $('#w-name').value.trim().slice(0, 40), hn = $('#w-house').value.trim().slice(0, 60);
-    if (n) { ui.member = n; lsSet('member', n); $('#who').textContent = n; }
+    if (n) { const changed = n !== ui.member; ui.member = n; lsSet('member', n); $('#who').textContent = n; if (changed) heartbeat(true); }
     if (hn && hn !== house.name && await w(() => db.rpc('rename_household', { p_name: hn }))) { house.name = hn; lsSet('house', house); remember(house); ping(['dom']); }
     closeSheet(); renderAll(); toast('Zapisano');
   }
@@ -864,7 +869,7 @@ async function rotateKey() {
   forget(house.key); const h = { key: data.secret, name: house.name }; remember(h); lsSet('house', h); lsSet('rotated', true);
   location.replace(`${appUrl()}?dom=${h.key}#przepisy`);
 }
-const EXPORT_ORDER = { recipe_requests: ['created_at', 'id'], hh_recipes: ['recipe_id'], reactions: ['recipe_id', 'member'], list_items: ['created_at', 'id'], freezer: ['id'], hh_prices: ['product_id', 'store'], receipts: ['bought_on', 'id'], receipt_items: ['id'], hh_settings: ['household_id'] };
+const EXPORT_ORDER = { hh_members: ['created_at', 'id'], recipe_requests: ['created_at', 'id'], hh_recipes: ['recipe_id'], reactions: ['recipe_id', 'member'], list_items: ['created_at', 'id'], freezer: ['id'], hh_prices: ['product_id', 'store'], receipts: ['bought_on', 'id'], receipt_items: ['id'], hh_settings: ['household_id'] };
 async function exportData() {
   try {
     const out = { aplikacja: 'Obiady na Zapas', wyeksportowano: new Date().toISOString(), dom: house.name, tabele: {} };
@@ -916,6 +921,21 @@ function showSwitch(invite, saved) {
     <div class="sub">Po przełączeniu dom „${esc(saved.name)}” zostanie zapamiętany i wrócisz do niego w ustawieniach.</div>
     <div class="row"><button class="btn pri" type="button" data-act="switch-house">Przełącz na „${esc(invite.name)}”</button><button class="btn" type="button" data-act="stay-house">Zostań w „${esc(saved.name)}”</button></div>`;
 }
+/* domownicy: ten telefon zapisuje się na liście domu (imię, rodzaj telefonu, ostatnie otwarcie aplikacji) */
+const deviceLabel = () => (isIOS ? 'iPhone' : isAndroid ? 'Android' : 'Komputer') + (isStandalone() ? '' : ' · przeglądarka');
+const myMemberId = (create = true) => { const ids = lsGet('memberIds', {}); if (!ids[houseTag] && create) { ids[houseTag] = newId(); lsSet('memberIds', ids); } return ids[houseTag]; };
+function heartbeat(force) {
+  if (!ui.member || !houseTag) return; const id = myMemberId(), k = 'seen_' + houseTag;
+  if (!force && Date.now() - lsGet(k, 0) < 6 * 3600e3 && (S.hh_members || []).some(m => m.id === id)) return;
+  lsSet(k, Date.now());
+  write({ t: 'hh_members', kind: 'upsert', rows: [{ id, name: ui.member.slice(0, 40), device: deviceLabel(), last_seen: new Date().toISOString() }] });
+}
+const ago = s => { const d = daysSince(String(s).slice(0, 10)); return d === 0 ? 'dziś' : d === 1 ? 'wczoraj' : d < 30 ? `${d} dni temu` : 'ponad miesiąc temu'; };
+function membersHtml(st) {
+  const me = myMemberId(false), ms = [...(S.hh_members || [])].sort((a, b) => (b.id === me) - (a.id === me) || String(b.last_seen).localeCompare(String(a.last_seen)));
+  return `<div class="sec"><h4>Domownicy</h4>${ms.length ? `<div class="grp">${ms.map(m => `<div class="mem"><span class="face" style="background:${colorOf(m.name)}">${esc(m.name[0]?.toUpperCase() || '?')}</span><div class="nm"><b>${esc(m.name)}${m.id === me ? ' <span class="pill want">Ty</span>' : ''}</b><small>${esc(m.device || 'telefon')} · ostatnio ${ago(m.last_seen)} · od ${dPL(String(m.created_at).slice(0, 10))}</small></div>${m.id === me ? '' : st.confirmRm === m.id ? `<span class="row" style="flex-wrap:nowrap"><button class="btn sm danger" data-act="mem-rm" data-id="${esc(m.id)}">Usuń</button><button class="btn sm" data-act="mem-cancel">Nie</button></span>` : `<button class="btn sm ghost" data-act="mem-ask" data-id="${esc(m.id)}" aria-label="Usuń z listy">Usuń</button>`}</div>`).join('')}</div>` : '<div class="sub">Lista pojawi się, gdy domownicy otworzą aplikację.</div>'}
+   <div class="sub">Usunięcie z listy nie odbiera dostępu. Żeby ktoś na pewno stracił dostęp, zmień niżej klucz domu i wyślij nowy link tylko pozostałym.</div></div>`;
+}
 async function start() {
   db = clientFor(house.key); houseTag = await tagOf(house.key); remember(house);
   $('#welcome').hidden = true; $('#app').hidden = false; $('#who').textContent = ui.member || 'Ustawienia';
@@ -931,7 +951,7 @@ async function start() {
   for (const c of cached.length ? cached : old) if (TABLES[c.t] && (SHARED[c.t] || !cached.length || c.house === houseTag)) { RAW[c.t] = c.data; VER[c.t] = c.ver; }
   Object.keys(TABLES).forEach(recompute);
   renderAll(); netBanner();
-  subscribe(); sync();
+  subscribe(); sync(); heartbeat();
   if (lsGet('rotated', false)) { lsDel('rotated'); ui.sheet = { type: 'who', rotated: true }; drawSheet(); }
   if (toastLater) toast(toastLater);
 }
