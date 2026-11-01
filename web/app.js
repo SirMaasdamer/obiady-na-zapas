@@ -529,6 +529,7 @@ document.addEventListener('click', async e => {
     case 'cancel-leave': ui.sheet.confirmLeave = false; drawSheet(); break;
     case 'leave': leaveHouse(); break;
     case 'w-mode': $('#f-create').hidden = d.k !== 'create'; $('#f-join').hidden = d.k !== 'join'; document.querySelectorAll('[data-act="w-mode"]').forEach(c => c.setAttribute('aria-pressed', c.dataset.k === d.k)); break;
+    case 'install-now': if (installEvt) { installEvt.prompt(); installEvt.userChoice.finally(() => { installEvt = null; }); } break;
     case 'hide-install': lsSet('noinstall', true); $('#install').hidden = true; break;
   }
 });
@@ -603,10 +604,23 @@ function leaveHouse() {
   try { Object.keys(localStorage).filter(k => k.startsWith('onz_')).forEach(k => localStorage.removeItem(k)); } catch { }
   location.replace(appUrl());
 }
+/* instrukcja dodania do ekranu głównego: iPhone (Safari) i Android (Chrome) */
+const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const isAndroid = /Android/.test(navigator.userAgent);
+let installEvt = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; document.querySelectorAll('[data-act="install-now"]').forEach(b => b.hidden = false); });
+window.addEventListener('appinstalled', () => { $('#install').hidden = true; $('#w-install').hidden = true; });
+const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+function installHtml(welcome) {
+  const lead = welcome ? '<b>Dodaj aplikację do ekranu głównego</b> – otworzysz ją jak zwykłą aplikację, bez paska przeglądarki. Najlepiej najpierw załóż dom (albo dołącz z zaproszenia), a potem:' : '<b>Dodaj aplikację do ekranu głównego:</b>';
+  const steps = isIOS
+    ? '<ol class="isteps"><li>Otwórz tę stronę w <b>Safari</b>.</li><li>Stuknij <b>Udostępnij</b> (kwadrat ze strzałką w górę).</li><li>Wybierz <b>Do ekranu początkowego</b>, potem <b>Dodaj</b>.</li></ol>'
+    : '<ol class="isteps"><li>Otwórz tę stronę w <b>Chrome</b>.</li><li>Stuknij <b>⋮</b> w prawym górnym rogu.</li><li>Wybierz <b>Zainstaluj aplikację</b> albo <b>Dodaj do ekranu głównego</b>, potem <b>Zainstaluj</b>.</li></ol>';
+  return `${lead}${steps}<div class="row"><button class="btn pri sm" type="button" data-act="install-now" ${installEvt ? '' : 'hidden'}>Zainstaluj teraz</button>${welcome ? '' : '<button class="btn sm ghost" type="button" data-act="hide-install">Ukryj</button>'}</div>`;
+}
 function showWelcome(invite) {
   $('#welcome').hidden = false; $('#app').hidden = true;
-  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  $('#w-install').hidden = standalone || !/iPhone|iPad/.test(navigator.userAgent);
+  const wi = $('#w-install'); wi.hidden = isStandalone() || !(isIOS || isAndroid); if (!wi.hidden) wi.innerHTML = installHtml(true);
   $('#w-member').value = ui.member || '';
   if (invite) {
     $('#w-modes').hidden = true; $('#f-create').hidden = true; $('#f-join').hidden = false;
@@ -616,8 +630,7 @@ function showWelcome(invite) {
 function start() {
   db = client(house.key);
   $('#welcome').hidden = true; $('#app').hidden = false; $('#who').textContent = ui.member || 'Ustawienia';
-  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-  $('#install').hidden = standalone || lsGet('noinstall', false) || !/iPhone|iPad/.test(navigator.userAgent);
+  const ib = $('#install'); ib.hidden = isStandalone() || lsGet('noinstall', false) || !(isIOS || isAndroid); if (!ib.hidden) ib.innerHTML = installHtml(false);
   $('#offline').hidden = navigator.onLine;
   const h = location.hash.slice(1); setTab(TABS.includes(h) ? h : 'przepisy');
   loadCache(); renderAll(); loadAll(); subscribe();

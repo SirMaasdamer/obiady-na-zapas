@@ -367,6 +367,7 @@ main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 /* bez powiększania: dwuklik i fokus w polu nie przybliżają ekranu */
 html,body,button,a,label,input,select,textarea,.card,.chip{touch-action:manipulation}
 input,select,textarea,.input{font-size:16px!important}
+.isteps{margin:6px 0 8px;padding-left:20px;display:flex;flex-direction:column;gap:3px}
 </style>
 </head>
 <body>
@@ -376,7 +377,7 @@ input,select,textarea,.input{font-size:16px!important}
     <span class="tape">Gotuj raz · jedz cały tydzień</span>
     <h1>Obiady na <span style="background:var(--vbtn);color:#fff;padding:0 8px;border-radius:8px">Zapas</span></h1>
     <div class="sub">Przepisy do mrożenia z przelicznikiem porcji, wspólna lista zakupów z wyborem najtańszego sklepu i ceny z ofert Biedronki, Lidla i Kauflandu.</div>
-    <div id="w-install" class="banner" hidden><b>Najpierw dodaj aplikację do ekranu:</b> w Safari stuknij Udostępnij, potem „Do ekranu początkowego”. Możesz też najpierw założyć dom, a ikonę dodać zaraz potem.</div>
+    <div id="w-install" class="banner" hidden></div>
     <div class="field"><label for="w-member">Twoje imię</label><input class="input" id="w-member" autocomplete="given-name" placeholder="np. Michał"></div>
     <div class="chips" id="w-modes"><button type="button" class="chip" data-act="w-mode" data-k="create" aria-pressed="true">Nowy dom</button><button type="button" class="chip" data-act="w-mode" data-k="join" aria-pressed="false">Mam zaproszenie</button></div>
     <form id="f-create" class="sec">
@@ -397,7 +398,7 @@ input,select,textarea,.input{font-size:16px!important}
 <header class="top"><div class="wrap"><div class="brand">Obiady na <span>Zapas</span></div><div class="topr"><button class="iconbtn" data-act="look" aria-label="Wygląd i kolory"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.8 1.7-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.3"/><circle cx="10.5" cy="7" r="1.3"/><circle cx="15" cy="7.5" r="1.3"/></svg></button><button class="who" id="who" data-act="whoami"></button></div></div></header>
 
 <main><div class="wrap">
-  <div id="install" class="banner" hidden>Dodaj aplikację do ekranu: w Safari stuknij <b>Udostępnij</b>, potem <b>Do ekranu początkowego</b>. <button class="btn sm ghost" data-act="hide-install">Ukryj</button></div>
+  <div id="install" class="banner" hidden></div>
   <div id="offline" class="banner" hidden>Brak połączenia. Pokazuję ostatnio wczytane dane.</div>
 
   <section class="view" id="v-przepisy">
