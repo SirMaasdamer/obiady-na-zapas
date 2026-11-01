@@ -1,0 +1,645 @@
+{
+ "opis": "Zakupy domowe: produkty spoza przepisów do listy zakupów (słownik z cenami i słowami do gazetek)",
+ "products": [
+  {
+   "id": "chleb",
+   "name": "Chleb pszenno-żytni",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "pieczywo",
+   "kw": [
+    "chleb",
+    "chleb pszenno-zytni",
+    "chleb zytni",
+    "chleb wiejski"
+   ],
+   "regular": {
+    "b": 4.49,
+    "l": 4.29,
+    "k": 4.79
+   }
+  },
+  {
+   "id": "chleb_tostowy",
+   "name": "Chleb tostowy",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "pieczywo",
+   "kw": [
+    "chleb tostowy",
+    "tost"
+   ],
+   "regular": {
+    "b": 4.99,
+    "l": 4.49,
+    "k": 5.29
+   }
+  },
+  {
+   "id": "bulki",
+   "name": "Bułki pszenne",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "pieczywo",
+   "kw": [
+    "bulka kajzerka",
+    "kajzerka",
+    "bulki",
+    "bulka pszenna"
+   ],
+   "regular": {
+    "b": 0.45,
+    "l": 0.39,
+    "k": 0.49
+   }
+  },
+  {
+   "id": "jogurt_naturalny",
+   "name": "Jogurt naturalny 400 g",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "jogurt naturalny"
+   ],
+   "regular": {
+    "b": 2.99,
+    "l": 2.79,
+    "k": 3.19
+   }
+  },
+  {
+   "id": "kefir",
+   "name": "Kefir",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "kefir"
+   ],
+   "regular": {
+    "b": 2.99,
+    "l": 2.69,
+    "k": 3.09
+   }
+  },
+  {
+   "id": "serek_wiejski",
+   "name": "Serek wiejski",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "serek wiejski"
+   ],
+   "regular": {
+    "b": 2.69,
+    "l": 2.49,
+    "k": 2.89
+   }
+  },
+  {
+   "id": "serek_kanapkowy",
+   "name": "Serek kanapkowy",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "serek kanapkowy",
+    "serek smietankowy",
+    "almette"
+   ],
+   "regular": {
+    "b": 3.99,
+    "l": 3.79,
+    "k": 4.29
+   }
+  },
+  {
+   "id": "ser_plastry",
+   "name": "Ser żółty w plastrach",
+   "unit": "kg",
+   "pack": 0.15,
+   "loose": false,
+   "cat": "nabiał",
+   "kw": [
+    "ser w plastrach",
+    "ser zolty w plastrach",
+    "ser gouda w plastrach"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.29
+   }
+  },
+  {
+   "id": "szynka_plastry",
+   "name": "Szynka w plastrach",
+   "unit": "kg",
+   "pack": 0.15,
+   "loose": false,
+   "cat": "wędliny",
+   "kw": [
+    "szynka w plastrach",
+    "szynka konserwowa w plastrach",
+    "szynka plastry"
+   ],
+   "regular": {
+    "b": 6.99,
+    "l": 6.49,
+    "k": 7.49
+   }
+  },
+  {
+   "id": "parowki",
+   "name": "Parówki",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "wędliny",
+   "kw": [
+    "parowki",
+    "parowki z szynki",
+    "parowki z kurczaka"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.49
+   }
+  },
+  {
+   "id": "losos",
+   "name": "Filet z łososia",
+   "unit": "kg",
+   "pack": 0.25,
+   "loose": false,
+   "cat": "mięso",
+   "kw": [
+    "filet z lososia",
+    "losos",
+    "losos norweski"
+   ],
+   "regular": {
+    "b": 19.99,
+    "l": 17.99,
+    "k": 21.99
+   }
+  },
+  {
+   "id": "banany",
+   "name": "Banany",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "owoce",
+   "kw": [
+    "banany",
+    "banan"
+   ],
+   "regular": {
+    "b": 5.49,
+    "l": 4.99,
+    "k": 5.79
+   }
+  },
+  {
+   "id": "pomarancze",
+   "name": "Pomarańcze",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "owoce",
+   "kw": [
+    "pomarancze",
+    "pomarancza"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.29
+   }
+  },
+  {
+   "id": "mandarynki",
+   "name": "Mandarynki",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "owoce",
+   "kw": [
+    "mandarynki",
+    "klementynki"
+   ],
+   "regular": {
+    "b": 6.99,
+    "l": 6.49,
+    "k": 7.49
+   }
+  },
+  {
+   "id": "gruszki",
+   "name": "Gruszki",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "owoce",
+   "kw": [
+    "gruszki",
+    "gruszka"
+   ],
+   "regular": {
+    "b": 6.99,
+    "l": 6.49,
+    "k": 7.29
+   }
+  },
+  {
+   "id": "winogrona",
+   "name": "Winogrona",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "owoce",
+   "kw": [
+    "winogrona"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 6.99,
+    "k": 8.49
+   }
+  },
+  {
+   "id": "ogorki",
+   "name": "Ogórki zielone",
+   "unit": "kg",
+   "pack": 1,
+   "loose": true,
+   "cat": "warzywa",
+   "kw": [
+    "ogorki szklarniowe",
+    "ogorek zielony",
+    "ogorki gruntowe",
+    "ogorki"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 7.49,
+    "k": 8.49
+   }
+  },
+  {
+   "id": "salata",
+   "name": "Sałata",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "warzywa",
+   "kw": [
+    "salata lodowa",
+    "salata maslowa",
+    "salata"
+   ],
+   "regular": {
+    "b": 3.49,
+    "l": 2.99,
+    "k": 3.69
+   }
+  },
+  {
+   "id": "maka_pszenna",
+   "name": "Mąka pszenna 1 kg",
+   "unit": "kg",
+   "pack": 1,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "maka pszenna",
+    "maka tortowa",
+    "maka"
+   ],
+   "regular": {
+    "b": 2.99,
+    "l": 2.79,
+    "k": 3.19
+   }
+  },
+  {
+   "id": "cukier_kg",
+   "name": "Cukier 1 kg",
+   "unit": "kg",
+   "pack": 1,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "cukier bialy",
+    "cukier"
+   ],
+   "regular": {
+    "b": 3.49,
+    "l": 3.29,
+    "k": 3.69
+   }
+  },
+  {
+   "id": "olej_butelka",
+   "name": "Olej rzepakowy 1 l",
+   "unit": "l",
+   "pack": 1,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "olej rzepakowy",
+    "olej"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 7.49,
+    "k": 8.49
+   }
+  },
+  {
+   "id": "oliwa",
+   "name": "Oliwa z oliwek 0,5 l",
+   "unit": "l",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "oliwa z oliwek",
+    "oliwa extra virgin"
+   ],
+   "regular": {
+    "b": 22.99,
+    "l": 19.99,
+    "k": 24.99
+   }
+  },
+  {
+   "id": "kawa_mielona",
+   "name": "Kawa mielona 500 g",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "napoje",
+   "kw": [
+    "kawa mielona",
+    "kawa"
+   ],
+   "regular": {
+    "b": 24.99,
+    "l": 22.99,
+    "k": 26.99
+   }
+  },
+  {
+   "id": "herbata",
+   "name": "Herbata czarna (torebki)",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "napoje",
+   "kw": [
+    "herbata czarna",
+    "herbata ekspresowa",
+    "herbata"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.49
+   }
+  },
+  {
+   "id": "platki_owsiane",
+   "name": "Płatki owsiane 500 g",
+   "unit": "kg",
+   "pack": 0.5,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "platki owsiane"
+   ],
+   "regular": {
+    "b": 2.99,
+    "l": 2.79,
+    "k": 3.29
+   }
+  },
+  {
+   "id": "dzem",
+   "name": "Dżem",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "suche",
+   "kw": [
+    "dzem",
+    "konfitura"
+   ],
+   "regular": {
+    "b": 4.99,
+    "l": 4.49,
+    "k": 5.29
+   }
+  },
+  {
+   "id": "woda",
+   "name": "Woda mineralna 1,5 l",
+   "unit": "l",
+   "pack": 1.5,
+   "loose": false,
+   "cat": "napoje",
+   "kw": [
+    "woda mineralna",
+    "woda niegazowana",
+    "woda gazowana"
+   ],
+   "regular": {
+    "b": 1.49,
+    "l": 1.29,
+    "k": 1.59
+   }
+  },
+  {
+   "id": "sok_pomaranczowy",
+   "name": "Sok pomarańczowy 1 l",
+   "unit": "l",
+   "pack": 1,
+   "loose": false,
+   "cat": "napoje",
+   "kw": [
+    "sok pomaranczowy",
+    "sok 100"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.49
+   }
+  },
+  {
+   "id": "czekolada",
+   "name": "Czekolada 100 g",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "słodycze",
+   "kw": [
+    "czekolada mleczna",
+    "czekolada gorzka",
+    "czekolada"
+   ],
+   "regular": {
+    "b": 4.99,
+    "l": 4.49,
+    "k": 5.29
+   }
+  },
+  {
+   "id": "papier_toaletowy",
+   "name": "Papier toaletowy (8 rolek)",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "papier toaletowy"
+   ],
+   "regular": {
+    "b": 14.99,
+    "l": 13.99,
+    "k": 15.99
+   }
+  },
+  {
+   "id": "reczniki_papierowe",
+   "name": "Ręczniki papierowe (2 rolki)",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "recznik papierowy",
+    "reczniki papierowe"
+   ],
+   "regular": {
+    "b": 6.99,
+    "l": 6.49,
+    "k": 7.49
+   }
+  },
+  {
+   "id": "plyn_naczynia",
+   "name": "Płyn do naczyń",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "plyn do naczyn",
+    "ludwik",
+    "fairy"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 6.99,
+    "k": 8.49
+   }
+  },
+  {
+   "id": "tabletki_zmywarka",
+   "name": "Tabletki do zmywarki",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "tabletki do zmywarki",
+    "kapsulki do zmywarki"
+   ],
+   "regular": {
+    "b": 39.99,
+    "l": 34.99,
+    "k": 42.99
+   }
+  },
+  {
+   "id": "kapsulki_pranie",
+   "name": "Kapsułki do prania",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "kapsulki do prania",
+    "proszek do prania",
+    "zel do prania"
+   ],
+   "regular": {
+    "b": 29.99,
+    "l": 27.99,
+    "k": 31.99
+   }
+  },
+  {
+   "id": "mydlo",
+   "name": "Mydło w płynie",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "mydlo w plynie",
+    "mydlo"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 4.99,
+    "k": 6.49
+   }
+  },
+  {
+   "id": "pasta_zeby",
+   "name": "Pasta do zębów",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "pasta do zebow"
+   ],
+   "regular": {
+    "b": 7.99,
+    "l": 6.99,
+    "k": 8.49
+   }
+  },
+  {
+   "id": "worki_smieci",
+   "name": "Worki na śmieci",
+   "unit": "szt",
+   "pack": 1,
+   "loose": false,
+   "cat": "chemia",
+   "kw": [
+    "worki na smieci"
+   ],
+   "regular": {
+    "b": 5.99,
+    "l": 5.49,
+    "k": 6.49
+   }
+  }
+ ],
+ "recipes": []
+}

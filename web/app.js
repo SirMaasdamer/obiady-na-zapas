@@ -360,7 +360,7 @@ function renderList() {
       const sub = gs.filter(g => !g.done).reduce((t, g) => t + (chosen.assign[g.pid]?.c || 0), 0);
       h += `<div class="grp"><div class="grp-h"><h3 class="${s !== 'none' ? 'store ' + s : ''}">${s === 'none' ? 'Bez ceny' : SN[s]}</h3>${s !== 'none' ? `<span class="num" style="font-family:var(--f-mono)">${zs(sub)} zł</span>` : ''}</div>${gs.map(g => {
         const a = chosen.assign[g.pid], pr = a ? L.priceOf(g.pid, a.s) : null;
-        return `<div class="item ${g.done ? 'done' : ''}"><button class="ck ${g.done ? 'on' : ''}" data-act="tick" data-pid="${esc(g.pid)}" aria-label="Kupione">${g.done ? CHECK : ''}</button><div class="nm"><b>${esc(g.p.name)}</b><small>${buyText(g.p, g.q)}${pr?.promo ? ` · <span style="color:var(--promo);font-weight:700">promocja${pr.until ? ' do ' + dPL(pr.until) : ''}</span>` : ''}${pr?.note ? ' · ' + esc(pr.note) : ''}</small><small>${esc([...g.srcs].join(', '))}</small></div><div class="pr">${a ? zs(a.c) : ''}</div></div>`;
+        return `<div class="item ${g.done ? 'done' : ''}"><button class="ck ${g.done ? 'on' : ''}" data-act="tick" data-pid="${esc(g.pid)}" aria-label="Kupione">${g.done ? CHECK : ''}</button><div class="nm"><b>${esc(g.p.name)}</b><small>${buyText(g.p, g.q)}${pr?.promo ? ` · <span style="color:var(--promo);font-weight:700">promocja${pr.until ? ' do ' + dPL(pr.until) : ''}</span>` : ''}${pr?.note ? ' · ' + esc(pr.note) : ''}</small><small>${esc([...g.srcs].join(', '))}</small>${g.docs.some(x => !x.recipe_id) ? `<span class="own"><button class="round sm" data-act="own-dec" data-pid="${esc(g.pid)}" aria-label="Mniej">−</button><button class="round sm" data-act="own-inc" data-pid="${esc(g.pid)}" aria-label="Więcej">+</button></span>` : ''}</div><div class="pr">${a ? zs(a.c) : ''}</div></div>`;
       }).join('')}</div>`;
     }
   }
@@ -653,6 +653,19 @@ function setTab(t) {
 let costCache = new Map();
 const costOf = r => { let c = costCache.get(r.id); if (!c) { c = L.recipeCost(r, 2); costCache.set(r.id, c); } return c; };
 let qTimer;
+/* słownik produktów do listy zakupów: podpowiedzi przy wpisywaniu */
+const fold = t => String(t || '').toLowerCase().replace(/ł/g, 'l').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+function renderSugg() {
+  const box = $('#sugg'); if (!box) return; const q = fold($('#manual')?.value.trim());
+  if (q.length < 2) { box.innerHTML = ''; return; }
+  const hits = Object.values(S.products).filter(p => !p.pantry && (fold(p.name).includes(q) || (p.kw || []).some(k => k.includes(q))))
+    .map(p => ({ p, s: fold(p.name).startsWith(q) ? 0 : fold(p.name).split(/\s+/).some(w => w.startsWith(q)) ? 1 : 2 }))
+    .sort((a, b) => a.s - b.s || a.p.name.localeCompare(b.p.name, 'pl')).slice(0, 6);
+  box.innerHTML = hits.map(({ p }) => { const best = SK.map(s => ({ s, pr: L.priceOf(p.id, s) })).filter(x => x.pr).sort((a, b) => a.pr.p - b.pr.p)[0];
+    return `<button type="button" class="sg" data-act="pick" data-pid="${esc(p.id)}"><span><b>${esc(p.name)}</b><small>${p.loose ? 'na wagę' : fmtPack(p)}</small></span>${best ? `<span class="sg-p">od ${zl(best.pr.p)}${p.loose ? '/' + (p.unit === 'kg' ? 'kg' : p.unit) : ''}<small class="store ${best.s}">${SN[best.s]}${best.pr.promo ? ' · promocja' : ''}</small></span>` : ''}</button>`; }).join('')
+    + (hits.length ? `<div class="sub" style="padding:4px 2px">Nie ma na liście? Stuknij „Dodaj”, dopiszę jako zwykłą pozycję.</div>` : '');
+}
+function addOwn(pid) { const p = S.products[pid]; if (!p) return; write({ t: 'list_items', kind: 'insert', rows: [{ id: newId(), product_id: pid, qty: p.pack || 1, pantry: false, name: p.name.slice(0, 200), member: ui.member || null }] }, `Dodano: ${p.name}`); }
 function renderAll() { costCache = new Map();
   renderBadge();
   if (ui.tab === 'przepisy') { renderCats(); renderRecipes(); }
@@ -695,6 +708,9 @@ document.addEventListener('click', async e => {
     case 'trip': ui.trip = ui.trip >= 20 ? 0 : ui.trip + 4; lsSet('trip', ui.trip); ui.plan = null; renderList(); break;
     case 'tick': tickGroup(d.pid); break;
     case 'tick-m': { const m = S.list_items.find(x => x.id === d.id); if (m) write({ t: 'list_items', kind: 'update', values: { done: !m.done }, match: { id: d.id } }); break; }
+    case 'pick': addOwn(d.pid); $('#manual').value = ''; renderSugg(); break;
+    case 'own-inc': addOwn(d.pid); break;
+    case 'own-dec': { const own = S.list_items.filter(x => x.product_id === d.pid && !x.recipe_id && !x.manual); const last = own[own.length - 1]; if (last) write({ t: 'list_items', kind: 'delete', match: { id: last.id } }); break; }
     case 'del-item': write({ t: 'list_items', kind: 'delete', match: { id: d.id } }); break;
     case 'del-batch': write({ t: 'list_items', kind: 'delete', match: { batch: d.k } }, 'Usunięto z listy'); break;
     case 'clear-done': { const ids = S.list_items.filter(x => x.done).map(x => x.id); if (!ids.length) return toast('Nic jeszcze nie jest odhaczone.'); write({ t: 'list_items', kind: 'delete', match: { id: ids } }, `Usunięto ${ids.length} kupionych`); break; }
@@ -745,7 +761,8 @@ document.addEventListener('submit', async e => {
     closeSheet(); renderAll(); toast('Zapisano');
   }
   else if (id === 'f-ask') sendAsk();
-  else if (id === 'f-manual') { const v = $('#manual').value.trim().slice(0, 200); if (!v) return; $('#manual').value = ''; write({ t: 'list_items', kind: 'insert', rows: [{ id: newId(), manual: true, name: v, member: ui.member || null }] }); }
+  else if (id === 'f-manual') { const v = $('#manual').value.trim().slice(0, 200); if (!v) return; $('#manual').value = ''; renderSugg();
+    const exact = Object.values(S.products).find(p => !p.pantry && fold(p.name) === fold(v)); if (exact) { addOwn(exact.id); return; } write({ t: 'list_items', kind: 'insert', rows: [{ id: newId(), manual: true, name: v, member: ui.member || null }] }); }
   else if (id === 'f-freeze') { const v = $('#fz-name').value.trim().slice(0, 200), n = Math.min(200, Math.max(1, Math.round(+$('#fz-n').value) || 1)); if (!v) return; $('#fz-name').value = ''; write({ t: 'freezer', kind: 'insert', rows: [{ id: newId(), name: v, portions: n, member: ui.member || null, frozen_on: today() }] }, 'Dodano do zamrażarki'); }
   else if (id === 'f-create') createHouse();
   else if (id === 'f-budget') saveBudget();
@@ -754,6 +771,7 @@ document.addEventListener('submit', async e => {
 document.addEventListener('change', e => { if (e.target.id === 'rfile' && e.target.files.length) { const fs = [...e.target.files]; e.target.value = ''; importReceipt(fs); } });
 document.addEventListener('input', e => {
   if (e.target.id === 'q') { ui.q = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(renderRecipes, 220); }
+  else if (e.target.id === 'manual') renderSugg();
   else if (e.target.id === 'pq') { ui.pq = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(renderPrices, 220); }
   else if (e.target.id === 'rd-n') { const n = parseInt(e.target.value); if (n > 0 && n <= 40) { ui.portions = n; lsSet('portions', n); document.querySelectorAll('[data-act="pset"]').forEach(c => c.setAttribute('aria-pressed', +c.dataset.n === n)); drawRecipeDyn(); } }
 });

@@ -32,7 +32,8 @@ const log = (...a) => console.log(...a);
 // cena odniesienia = średnia cena regularna
 const { products, recipes } = buildKatalog(await loadAll());
 const used = new Set(recipes.flatMap(r => (r.ingredients || []).map(i => i.pid)));
-const catalog = products.filter(p => !p.pantry && used.has(p.id)).map(p => { const v = Object.values(p.regular || {}).filter(x => +x > 0); return { ...p, ref: v.length ? v.reduce((a, b) => a + b) / v.length : null }; });
+// wszystkie produkty do kupienia: składniki przepisów i słownik zakupów domowych (used zostaje dla diagnostyki)
+const catalog = products.filter(p => !p.pantry).map(p => { const v = Object.values(p.regular || {}).filter(x => +x > 0); return { ...p, ref: v.length ? v.reduce((a, b) => a + b) / v.length : null }; });
 log(`Katalog: ${catalog.length} produktów, ${catalog.filter(p => p.ref && p.kw?.length).length} z ceną odniesienia i słowami kluczowymi.`);
 
 const browser = await chromium.launch();

@@ -386,6 +386,15 @@ input,select,textarea,.input{font-size:16px!important}
 .hrow:first-child{border-top:0}
 .hrow b{font-weight:700;overflow-wrap:anywhere}
 .hrow .row{flex-wrap:nowrap}
+.sugg{display:flex;flex-direction:column;gap:6px}
+.sugg:empty{display:none}
+.sg{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:14px;padding:10px 14px;text-align:left;min-height:52px}
+.sg b{display:block;font-weight:700}
+.sg small{display:block;font-size:12px;color:var(--muted)}
+.sg-p{text-align:right;font-weight:700;white-space:nowrap}
+.sg-p small{font-weight:700}
+.own{display:flex;gap:6px;margin-top:6px}
+.round.sm{width:34px;height:34px;border-radius:10px;font-size:18px}
 </style>
 </head>
 <body>
@@ -434,7 +443,8 @@ input,select,textarea,.input{font-size:16px!important}
   <section class="view" id="v-lista" hidden>
     <div class="vh"><div><h1>Lista zakupów</h1><div class="sub">Wspólna dla całego domu</div></div>
       <button class="btn sm ghost" data-act="clear-done">Usuń kupione</button></div>
-    <form class="row" id="f-manual" style="flex-wrap:nowrap"><input class="input" id="manual" placeholder="Dopisz coś (np. ryż, mleko)" autocomplete="off" maxlength="200"><button class="btn pri" type="submit">Dodaj</button></form>
+    <form class="row" id="f-manual" style="flex-wrap:nowrap"><input class="input" id="manual" placeholder="Dopisz: chleb, banany, papier…" autocomplete="off" maxlength="200"><button class="btn pri" type="submit">Dodaj</button></form>
+    <div class="sugg" id="sugg"></div>
     <div id="llist"></div>
   </section>
 
