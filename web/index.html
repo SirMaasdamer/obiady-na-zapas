@@ -239,6 +239,9 @@ details summary{cursor:pointer;font-weight:600;padding:6px 0}
 /* ===== nowy wygląd: granat + niebieski + fiolet ===== */
 body::before{background:var(--hero)}
 .top{background:var(--hero);color:var(--hero-ink);border-bottom:0;padding-block:12px 6px}
+/* pasek statusu iPhone'a nachodzi na stronę: przesuwamy treść poniżej niego, nagłówek przewija się razem z banerem */
+#app,.login{padding-top:env(safe-area-inset-top,0px)}
+.top{position:relative;top:0}
 .brand{font-weight:800;font-size:19px;letter-spacing:-.01em}
 .brand span{background:var(--vbtn);color:#fff;transform:none;border-radius:8px;padding:1px 8px}
 .who{color:var(--hero-muted)}
