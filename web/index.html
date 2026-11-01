@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <title>Obiady na Zapas</title>
 <meta name="description" content="Gotowanie na zapas: przepisy, wspólna lista zakupów, ceny z gazetek i zamrażarka.">
 <link rel="manifest" href="manifest.webmanifest">
@@ -364,6 +364,9 @@ main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 .sw i{display:flex;flex:none}
 .sw i b{width:20px;height:20px;border-radius:50%;display:block;border:2px solid var(--surface)}
 .sw i b+b{margin-left:-7px}
+/* bez powiększania: dwuklik i fokus w polu nie przybliżają ekranu */
+html,body,button,a,label,input,select,textarea,.card,.chip{touch-action:manipulation}
+input,select,textarea,.input{font-size:16px!important}
 </style>
 </head>
 <body>
