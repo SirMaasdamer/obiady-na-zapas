@@ -21,7 +21,7 @@ const ui = {
   member: lsGet('member', ''), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
 let db = null, house = null, chan = null;
-const HH_TABLES = ['hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
+const HH_TABLES = ['recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
 
 function lsGet(k, d) { try { const v = localStorage.getItem('onz_' + k); return v == null ? d : JSON.parse(v); } catch { return d; } }
 function lsSet(k, v) { try { localStorage.setItem('onz_' + k, JSON.stringify(v)); } catch { } }
@@ -58,12 +58,14 @@ const TABLES = {
   receipts: q => q.select('*').order('bought_on', { ascending: false }).limit(1000),
   receipt_items: q => q.select('*').limit(10000),
   hh_settings: q => q.select('*'),
+  recipe_requests: q => q.select('*').order('created_at', { ascending: false }).limit(50),
 };
 async function load(t) {
   const { data, error } = await TABLES[t](db.from(t));
   if (error) { console.error(t, error); return; }
   L.setTable(t, data);
   try { localStorage.setItem('onz_cache_' + t, JSON.stringify(data)); } catch { }
+  if (t === 'recipe_requests' && S.loaded.recipes && data.some(r => (r.recipe_ids || []).some(id => !S.recipes[id]))) ['products', 'prices', 'recipes'].forEach(reload);
 }
 const pending = new Set(); let pt;
 function reload(t) { pending.add(t); clearTimeout(pt); pt = setTimeout(async () => { const ts = [...pending]; pending.clear(); await Promise.all(ts.map(load)); renderAll(); }, 250); }
@@ -114,6 +116,26 @@ function dealHtml(all) {
   const pricePer = d.p.loose ? d.pr.p / (d.p.pack || 1) : d.pr.p;
   return `<button class="deal" data-act="deal" data-pid="${esc(d.pid)}"><span class="deal-ic"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="deal-t"><b>${esc(d.p.name)} ${zl(pricePer)}${unit} w ${SN[d.s] === 'Lidl' ? 'Lidlu' : SN[d.s] === 'Kaufland' ? 'Kauflandzie' : 'Biedronce'}</b><span>−${Math.round(d.off * 100)}%${d.pr.until ? ' · do ' + dPL(d.pr.until) : ''} · pasuje do ${d.n} ${d.n === 1 ? 'przepisu' : 'przepisów'}</span></span><svg class="deal-go" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>`;
 }
+/* prośby o przepisy (realizuje je zaplanowane zadanie Claude) */
+const REQ_ST = { czeka: ['muted', 'czeka w kolejce'], w_toku: ['want', 'Claude szuka…'], gotowe: ['promo', 'gotowe'], nie_udalo: ['muted', 'nie udało się'] };
+function readyHtml() {
+  const seen = lsGet('seenReq', []), fresh = (S.recipe_requests || []).filter(r => r.status === 'gotowe' && !seen.includes(r.id) && (r.recipe_ids || []).some(id => S.recipes[id]));
+  if (!fresh.length) return '';
+  return fresh.slice(0, 2).map(r => { const n = r.recipe_ids.filter(id => S.recipes[id]).length;
+    return `<button class="deal ready" data-act="req-show" data-id="${esc(r.id)}"><span class="deal-ic"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="deal-t"><b>Gotowe: ${esc(r.query)}</b><span>${n} ${n === 1 ? 'nowy przepis' : n < 5 ? 'nowe przepisy' : 'nowych przepisów'} w bazie · stuknij, żeby zobaczyć</span></span><svg class="deal-go" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>`; }).join('');
+}
+function askSheet() {
+  const st = ui.sheet, reqs = S.recipe_requests || [];
+  return `<div class="sheet-head"><div><h2>Brakuje przepisu?</h2><div class="sub" style="margin-top:4px">Wpisz danie, na które macie ochotę. Claude kilka razy dziennie przegląda prośby, szuka sprawdzonych przepisów i dopisuje 2–3 wersje do bazy. Zwykle trwa to do kilku godzin.</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  <form id="f-ask" class="row" style="flex-wrap:nowrap"><input class="input" id="ask-q" maxlength="120" placeholder="np. burrito, kurczak tikka masala" value="${esc(st.q || '')}" autocomplete="off"><button class="btn pri" type="submit">Poproś</button></form>
+  <div class="sec"><h4>Wasze prośby</h4>${reqs.length ? `<div class="grp">${reqs.map(r => { const [cls, lbl] = REQ_ST[r.status] || REQ_ST.czeka, got = (r.recipe_ids || []).filter(id => S.recipes[id]);
+    return `<div class="req"><div class="nm"><b>${esc(r.query)}</b><small>${esc(r.member || '')}${r.member ? ' · ' : ''}${new Date(r.created_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}${r.note ? ' · ' + esc(r.note) : ''}</small>${got.length ? `<div class="req-r">${got.map(id => `<button class="chip" data-act="open" data-id="${esc(id)}">${esc(S.recipes[id].name)}</button>`).join('')}</div>` : ''}</div><div class="req-s"><span class="pill ${cls}">${lbl}</span>${r.status === 'czeka' ? `<button class="btn sm ghost" data-act="req-del" data-id="${esc(r.id)}" aria-label="Usuń prośbę">Usuń</button>` : ''}</div></div>`; }).join('')}</div>` : '<div class="sub">Na razie nic. Prośby całego domu pojawią się tutaj.</div>'}</div>`;
+}
+async function sendAsk() {
+  const q = $('#ask-q').value.trim().replace(/\s+/g, ' '); if (q.length < 2) return;
+  if ((S.recipe_requests || []).some(r => ['czeka', 'w_toku'].includes(r.status) && r.query.toLowerCase() === q.toLowerCase())) { toast('Ta prośba już czeka'); return; }
+  if (await w(() => db.from('recipe_requests').insert({ query: q, member: ui.member || null }), `Wysłano prośbę: ${q}`)) { ui.sheet.q = ''; await load('recipe_requests'); ping(); drawSheet(); }
+}
 function renderRecipes() {
   const box = $('#rlist'); const all = activeRecipes();
   $('#rcount').textContent = all.length ? `${all.length} dań · ${all.filter(r => r.freezer !== false).length} do mrożenia` : 'Przepisy na obiady';
@@ -131,8 +153,8 @@ function renderRecipes() {
       return true;
     });
   list.sort((a, b) => (b.isNew && ui.justAdded.has(b.id)) - (a.isNew && ui.justAdded.has(a.id)) || b.re.want.length - a.re.want.length || new Set(b.c.promos.map(x => x.pid)).size - new Set(a.c.promos.map(x => x.pid)).size || a.name.localeCompare(b.name, 'pl'));
-  const deal = ui.q ? '' : dealHtml(all);
-  if (!list.length) { box.innerHTML = deal + `<div class="empty"><h3>Nic tu nie pasuje</h3><div>Zmień filtr, kategorię albo wyszukiwanie.</div></div>`; return; }
+  const deal = (ui.q ? '' : dealHtml(all)) + readyHtml();
+  if (!list.length) { box.innerHTML = deal + `<div class="empty"><h3>Nic tu nie pasuje</h3><div>${ui.q ? `Nie mamy jeszcze przepisu na „${esc(ui.q)}”. Poproś, a Claude poszuka przepisów i dopisze je do bazy.` : 'Zmień filtr, kategorię albo wyszukiwanie.'}</div>${ui.q ? `<button class="btn pri" data-act="ask" data-q="${esc(ui.q)}">Poproś o „${esc(ui.q)}”</button>` : ''}</div>`; return; }
   box.innerHTML = deal + '<div class="cards">' + list.map(r => {
     const best = SK.filter(s => !r.c.miss[s]).sort((a, b) => r.c.tot[a] - r.c.tot[b])[0];
     const nPromo = new Set(r.c.promos.map(x => x.pid)).size, liked = r.re.like.includes(ui.member);
@@ -143,7 +165,7 @@ function renderRecipes() {
       <div class="meta">${r.isNew ? '<span class="pill new">Nowe</span>' : ''}${nPromo ? `<span class="pill promo">${nPromo} w promocji</span>` : ''}${r.re.want.length ? `<span class="pill want">Zróbmy to ${faces(r.re.want)}</span>` : ''}${r.re.like.length ? `<span class="pill muted">♥ ${faces(r.re.like)}</span>` : ''}<span>${r.minutes || '?'} min · z: ${esc(r.sides || 'dowolne dodatki')}</span></div>
       <div class="price-line"><span class="sub">porcja od</span><span><b class="num">${zl(r.c.mix / 2)}</b>${best ? ` <span class="sub">· najtaniej <span class="store ${best}">${SN[best]}</span></span>` : ''}</span></div>
     </div>`;
-  }).join('') + '</div>';
+  }).join('') + '</div>' + (ui.q ? `<div class="empty" style="margin-top:12px"><div>Szukasz innej wersji? Claude dopisze kilka przepisów na „${esc(ui.q)}”.</div><button class="btn sm" data-act="ask" data-q="${esc(ui.q)}">Poproś o więcej</button></div>` : '');
 }
 
 function recipeSheet() {
@@ -449,7 +471,7 @@ function historyHtml(pid) {
 /* ---------- sheet & routing ---------- */
 function drawSheet() {
   const st = ui.sheet, el = $('#sheet'), inn = $('#sheet-in'); if (!st) { el.hidden = true; return; }
-  const html = st.type === 'recipe' ? recipeSheet() : st.type === 'price' ? priceSheet() : st.type === 'look' ? lookSheet() : st.type === 'rimport' ? importSheet() : st.type === 'receipt' ? receiptSheet() : st.type === 'budget' ? budgetSheet() : whoSheet();
+  const html = st.type === 'recipe' ? recipeSheet() : st.type === 'price' ? priceSheet() : st.type === 'look' ? lookSheet() : st.type === 'ask' ? askSheet() : st.type === 'rimport' ? importSheet() : st.type === 'receipt' ? receiptSheet() : st.type === 'budget' ? budgetSheet() : whoSheet();
   if (!ui.sheet) return; inn.innerHTML = html; el.hidden = false; document.body.style.overflow = 'hidden';
   if (st.type === 'recipe') drawRecipeDyn();
 }
@@ -488,6 +510,9 @@ document.addEventListener('click', async e => {
     case 'cat': ui.cat = d.k; lsSet('cat', d.k); renderCats(); renderRecipes(); break;
     case 'filter': ui.filter = d.k; renderCats(); renderRecipes(); break;
     case 'deal': { const n = S.products[d.pid]?.name || ''; ui.q = n.toLowerCase(); $('#q').value = n; ui.filter = 'all'; renderCats(); renderRecipes(); window.scrollTo(0, 0); break; }
+    case 'ask': ui.sheet = { type: 'ask', q: d.q || '' }; drawSheet(); break;
+    case 'req-del': if (await w(() => db.from('recipe_requests').delete().eq('id', d.id), 'Usunięto prośbę')) { await load('recipe_requests'); drawSheet(); } break;
+    case 'req-show': { const r = (S.recipe_requests || []).find(x => x.id === d.id); lsSet('seenReq', [...lsGet('seenReq', []), d.id].slice(-50)); ui.sheet = { type: 'ask' }; drawSheet(); renderRecipes(); break; }
     case 'look': ui.sheet = { type: 'look' }; drawSheet(); break;
     case 'set-theme': lsSet('theme', d.k); window.THEME?.apply(); drawSheet(); break;
     case 'set-accent': lsSet('accent', d.k); window.THEME?.apply(); drawSheet(); break;
@@ -544,6 +569,7 @@ document.addEventListener('submit', async e => {
     if (hn && hn !== house.name && await w(() => db.rpc('rename_household', { p_name: hn }))) { house.name = hn; lsSet('house', house); }
     closeSheet(); renderAll(); toast('Zapisano');
   }
+  else if (id === 'f-ask') sendAsk();
   else if (id === 'f-manual') { const v = $('#manual').value.trim(); if (!v) return; if (await w(() => db.from('list_items').insert({ manual: true, name: v, member: ui.member }))) { $('#manual').value = ''; reload('list_items'); } }
   else if (id === 'f-freeze') { const v = $('#fz-name').value.trim(), n = +$('#fz-n').value || 1; if (!v) return; if (await w(() => db.from('freezer').insert({ name: v, portions: n, member: ui.member }), 'Dodano do zamrażarki')) { $('#fz-name').value = ''; reload('freezer'); } }
   else if (id === 'f-create') createHouse();

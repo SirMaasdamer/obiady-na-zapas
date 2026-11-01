@@ -59,3 +59,18 @@ Nowe przepisy układa Claude w rozmowie, np. „dodaj 4 przepisy z mielonego, co
 - `kw`: słowa, po których produkt znajdzie się w ofertach sklepów. Małe litery, bez polskich znaków.
 - `regular`: orientacyjne ceny regularne za opakowanie (`b` Biedronka, `l` Lidl, `k` Kaufland).
 - Produkty ze spiżarni (`pantry`) nie potrzebują `pack`, `kw` ani `regular`.
+
+## Prośby z aplikacji („Brakuje przepisu?”)
+
+Domownicy wpisują w aplikacji danie, którego brakuje. Prośby trafiają do tabeli `recipe_requests` w Supabase (projekt `jnomchdxgmoegbpfjtii`). Zaplanowane zadanie Claude realizuje je kilka razy dziennie:
+
+1. Pobierz prośby: `select id, query from recipe_requests where status = 'czeka' order by created_at limit 5;`. Jeśli nie ma żadnej, zakończ pracę.
+2. Oznacz je jako realizowane: `update recipe_requests set status = 'w_toku' where id in (...);`.
+3. Dla każdej prośby:
+   - Poszukaj w internecie 2–3 sprawdzonych przepisów na to danie, najlepiej z polskich stron. Dodaj `inspired_by` i `source_url` tylko wtedy, gdy masz prawdziwy link do strony z przepisem.
+   - Ułóż z nich 2–3 przepisy w formacie opisanym wyżej, z krokami pisanymi własnymi słowami. Jeśli danie słabo znosi mrożenie, dodaj `"freezer": false`. Możesz też zamrozić tylko jego główną część, np. farsz do burrito, a resztę robić na świeżo.
+   - Sprawdź, czy podobne danie nie jest już w bazie. Jeśli jest, dodaj inne wersje.
+   - Jeśli prośba nie jest daniem obiadowym albo jest niezrozumiała, ustaw jej status `nie_udalo` z krótkim wyjaśnieniem w kolumnie `note`.
+4. Zapisz wszystko w jednym pliku `przepisy/RRRR-MM-DD-prosby-GGMM.json`, uruchom `node scripts/import-recipes.mjs` i popraw błędy.
+5. Wgraj zmiany do `main`. Workflow **Nowe przepisy** zbuduje katalog i zsynchronizuje bazę. Poczekaj, aż przepisy pojawią się w bazie: `select id from recipes where id = any(array[...]);`.
+6. Zamknij każdą prośbę: `update recipe_requests set status = 'gotowe', recipe_ids = array[...], note = null, done_at = now() where id = '...';`.
