@@ -1,7 +1,7 @@
 
-===== strona główna: https://www.kaufland.pl/ | tytuł: Kaufland.pl - Dostęp zablokowany | tekst: 1154 znaków
-Ray ID: a5368af6bd3ac685
-IP: 172.184.209.161
+===== strona główna: https://www.kaufland.pl/ | tytuł: Kaufland.pl - Dostęp zablokowany | tekst: 1151 znaków
+Ray ID: a536b1204fc43222
+IP: 13.83.161.82
 Dostęp zablokowany
 Dlaczego zostałem zablokowany?
 
@@ -251,10 +251,20 @@ Stopka redakcyjna Polityka prywatności Polityka prywatności Kaufland Card XTRA
   [0/0] Motoryzacja → https://www.kaufland.pl/c/motoryzacja/~16341/
   [0/0] Pielęgnacja ciała i zdrowie → https://www.kaufland.pl/c/pielegnacja-ciala-i-zdrowie/~11/
   [0/0] Żywność → https://www.kaufland.pl/c/zywnosc/~1311/
-https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060: page.goto: net::ERR_ABORTED at https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060
-Call log:
-  - navigating to "https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060", waiting until "domcontentloaded"
 
+===== gazetki (poziom 1): https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/view/flyer/page/1 | tytuł: Gazetka tygodnia - 29.10.2026 - 04.11.2026 | Gazetka Kaufland | tekst: 95 znaków
+Gazetka tygodnia - 29.10.2026 - 04.11.2026 | Gazetka Kaufland
+Animacje
+1 / 69
+Szukaj
+Menu
+Wyjdź
+--- linki (5), najlepiej ocenione:
+  [0/0] Strona główna → https://sklep.kaufland.pl/gazeta-reklamowa.html
+  [0/-9]  → https://sklep.kaufland.pl/polityka-prywatnosci.html
+  [0/0] tutaj → https://sklep.kaufland.pl/stopka-redakcyjna.html
+  [0/-9] Więcej informacji → https://cookiepedia.co.uk/giving-consent-to-cookies
+  [0/0] Powered by OneTrust Otwiera się w nowym oknie → https://www.onetrust.com/products/cookie-consent/
 
 ===== gazetki (poziom 1): https://leaflets.kaufland.com/pl-PL/PL_pl_Wrapper2_0_PL44/view/flyer/page/1 | tytuł: Kaufland - 29.10.2026 - 10.11.2026 | Gazetka Kaufland | tekst: 71 znaków
 Kaufland - 29.10.2026 - 10.11.2026 | Gazetka Kaufland
@@ -268,20 +278,7 @@ Wyjdź
   [0/-9] Więcej informacji → https://cookiepedia.co.uk/giving-consent-to-cookies
   [0/0] Powered by OneTrust Otwiera się w nowym oknie → https://www.onetrust.com/products/cookie-consent/
 
-===== gazetki (poziom 1): https://leaflets.kaufland.com/pl-PL/PL_pl_Magazine3_1060_PL42-OC3/view/flyer/page/1 | tytuł: Kaufland - 15.10.2026 - 04.11.2026 | Gazetka Kaufland | tekst: 78 znaków
-Kaufland - 15.10.2026 - 04.11.2026 | Gazetka Kaufland
-1 / 25
-Szukaj
-Menu
-Wyjdź
---- linki (5), najlepiej ocenione:
-  [0/0] Strona główna → https://sklep.kaufland.pl/gazeta-reklamowa.html
-  [0/-9]  → https://sklep.kaufland.pl/polityka-prywatnosci.html
-  [0/0] tutaj → https://sklep.kaufland.pl/stopka-redakcyjna.html
-  [0/-9] Więcej informacji → https://cookiepedia.co.uk/giving-consent-to-cookies
-  [0/0] Powered by OneTrust Otwiera się w nowym oknie → https://www.onetrust.com/products/cookie-consent/
-
-===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/kaufland | tytuł: Teraz w promocji w Kaufland: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 5637 znaków
+===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/kaufland | tytuł: Teraz w promocji w Kaufland: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 2966 znaków
 Nieznana
 Zaloguj się
 Strona domowa
@@ -389,46 +386,8 @@ Oferta	Imię	Sklep	Cena regularna	Cena promocyjna	Promocja	Data rozpoczęcia	Dat
 	24 lipca 2025	30 lipca 2025
 	Filet z kurczaka sielskiego Superdrob	Kaufland		29,99 zł		09 stycznia 2025	15 stycznia 2025
 	Filet z kurczaka	Kaufland		15,99 zł		12 sierpnia 2024	18 sierpnia 2024
-	Filet z kurczaka	Kaufland		17,99 zł		24 lipca 2023	26 lipca 2023
-	Filet z kurczaka	Kaufland		17,99 zł		03 lipca 2023	05 lipca 2023
-	Filet z kurczaka	Kaufland	17,99 zł	14,99 zł	
-3,00 zł Rabat
-	22 czerwca 2023	28 czerwca 2023
-	Filet z kurczaka stąd takie dobre	Kaufland		38,99 zł		15 czerwca 2023	21 czerwca 2023
-	Filet z kurczaka	Kaufland		17,99 zł		05 czerwca 2023	06 czerwca 2023
-	Filet z kurczaka	Kaufland		17,99 zł		22 maja 2023	24 maja 2023
-	Filet z kurczaka	Kaufland		17,99 zł		15 maja 2023	17 maja 2023
-	Filet z kurczaka	Kaufland	23,90 zł	17,99 zł	
-5,91 zł Rabat
-	05 kwietnia 2023	12 kwietnia 2023
-	Filet z kurczaka	Kaufland		15,99 zł		29 grudnia 2022	03 stycznia 2023
-	Filet z kurczaka kaufland	Kaufland		19,99 zł		27 października 2022	02 listopada 2022
-Pobierz darmową aplikację, zawierającą 1100+ sklepów
-Kaufland Filet z kurczaka promocja
-Na Kaufland znajdziesz szeroki wybór ⭐️promocji Filet z kurczaka⭐️. W tym tygodniu Kaufland oferuje 3 promocji Filet z kurczaka. Usuń filtry, aby zobaczyć wszystkie dostępne oferty, porównaj każdą cenę i zaoszczędź przy kolejnym zakupie. Skorzystaj z filtrów, aby szybko znaleźć promocje na Filet z kurczaka i wybrać najlepszą cenę. Zapisz swoje wyszukiwanie, aby otrzymać powiadomienie, gdy Filet z kurczaka znów będzie dostępny w promocji. Produkt nie jest obecnie przeceniony? Sprawdź podobne propozycje, aby znaleźć alternatywę z korzystną ceną.
-Ostatnia aktualizacja: wtorek, 27 października 2026
-Informacje
-Najczęściej zadawane pytania
-Reklama?
-Wszystkie oferty
-Marki
-Aplikacja Gazetki.pl
-O nas
-Dodaj gazetkę
-Aktualności
-Usługi
-Zarejestruj się do newslettera
-Śledź nas na Facebook
-Śledź nas na Instagram
-Śledź nas na Youtube
-Śledź nas na TikTok
-Partnerzy
-Zainteresowany współpracą?
-Skontaktuj się z nami
-Gazetki.pl codziennie gromadzi wszystkie aktualne gazetki, oferty tygodnia, broszury reklamacyjne, a także magazyny i katalogi ze wszystkich sklepów w Polsce. Dzięki temu użytkownicy są zawsze na bieżąco ze wszystkimi interesującymi ofertami z gazetek, zniżkami i promocjami. Wszystko to łącznie z wyprzedażami towarów można w łatwy sposób znaleźć w sklepach ze swojego otoczenia. Bardzo często nasza strona jako pierwsza udostępnia najnowsze gazetki, nawet zanim znajdą się one w Twojej skrzynce odbiorczej. Oczywiście, wszystkie oferty można przeglądać w pracy, szkole lub w sklepie. Umieść stronę Gazetki.pl w ulubionych i zaoszczędź dużo czasu i pieniędzy. Oprócz tego, przeglądając gazetki w formie elektronicznej, przyczyniamy się do redukowania zużycia papieru, co bardzo dobrze wpływa na środowisko.
-Wszystkie prawa zastrzeżone © Gazetki.pl 2026 | Klauzula o wyłączeniu odpowiedzialności | Warunki i zasady | Polityka prywatności | Polityka plików cookie
---- linki (57), najlepiej ocenione:
-  [9/0] Aktualności → https://www.gazetki.pl/blog
+	Filet z kurczaka	Kaufland		17,99 zł		24 lipca 2023
+--- linki (44), najlepiej ocenione:
   [7/-12] Kaufland Ul. Stalowa 60 / 64, 03-429 Warszawa 3.49 km → https://www.gazetki.pl/sklepy/kaufland/lokalizacje/warszawa
   [6/-7] Filet gotowany z kurczaka Krakus 3 dni 6,99 zł → https://www.gazetki.pl/sklepy/kaufland/oferty/filet-gotowany-z-kurczaka-krakus-promocja-69717119/
   [6/-7] Filet z piersi kurczaka Krakus 3 dni 9,99 zł 6,99 zł → https://www.gazetki.pl/sklepy/kaufland/oferty/filet-z-piersi-kurczaka-krakus-promocja-69757632/
@@ -453,55 +412,86 @@ Wszystkie prawa zastrzeżone © Gazetki.pl 2026 | Klauzula o wyłączeniu odpowi
   [5/-12] Carrefour → https://www.gazetki.pl/sklepy/carrefour/gazetka
   [5/-12] Żabka → https://www.gazetki.pl/sklepy/zabka/gazetka
   [5/-12] Twój Market → https://www.gazetki.pl/sklepy/twoj-market/gazetka
-agregator https://www.gazetki.pl/oferty/mieso-mielone-wieprzowe/kaufland: HTTP 404
-agregator: 46 stron, 20 błędów
+  [5/-12] Netto → https://www.gazetki.pl/sklepy/netto/gazetka
+kafelki: []
+wiersze: []
+agregator: 66 stron, 59 błędów
 
-===== DOPASOWANE (45):
-  kurczak_filet: 9.97 zł ← „E Filet z kurczaka Kaufland” (300 g)
-  indyk_filet: 26.99 zł ← „Filet z indyka 🕒” ()
-  lopatka: 7.5 zł ← „6” (1 kg)
-  schab: 9.99 zł ← „a Schab bez kości Kaufland🕒” ()
-  karkowka: 9 zł ← „Karkówka bez kości” (1 kg)
-  kielbasa: 10.99 zł ← „e Kiełbasa podwawelska” ()
-  mascarpone: 2.99 zł ← „mascarpone” ()
-  grana: 4.99 zł ← „r Grana Padano dojrzewający Kaufland 8,99 zł 4,99 zł” (200 g)
-  cebula: 1.4 zł ← „3” (5 kg)
-  czosnek: 0.69 zł ← „6” ()
-  marchew: 1.49 zł ← „a marchew młoda luzem 1 kg Kaufland” (1 kg)
-  papryka: 6.5 zł ← „5” (1 kg)
-  cukinia: 3 zł ← „5” ()
-  jablka: 1.59 zł ← „ak jabłko banan Drugie Śniadanie Kaufland” ()
-  pieczarki: 3 zł ← „Pieczarki Kaufland🕒” (500 g)
-  ziemniaki: 1.2 zł ← „Ziemniaki” (5 kg)
-  dynia: 1.99 zł ← „z dynią Kaufland 1,49 zł 0,99 zł” ()
-  kapusta: 1.69 zł ← „5” (1 kg)
-  kapusta_kiszona: 2.49 zł ← „e Kapusta kiszona” ()
-  pomidory_puszka: 2.49 zł ← „Pomidory krojone w puszce” (400 g)
-  passata: 2.77 zł ← „Passata pomidorowa” (720 ml)
+===== DOPASOWANE (14):
+  karkowka: 11.99 zł ← „Karkówka Lady” ()
+  mascarpone: 7.99 zł ← „Ser mascarpone Galbani” ()
+  grana: 5.99 zł ← „Ser Grana Padano dojrzewający” ()
+  marchew: 1.99 zł ← „Marchew Polski” ()
+  pieczarki: 4.99 zł ← „Pieczarki polskie Stąd Takie Dobre!” ()
+  dynia: 2.99 zł ← „Dynia” ()
   koncentrat: 1.79 zł ← „Koncentrat pomidorowy min. 28% ekstraktu K-Classic” ()
-  tunczyk: 6.99 zł ← „tuńczykiem z kuskusem Seko” ()
-  ciecierzyca: 1.91 zł ← „Ciecierzyca w puszce” (500 g)
-  kukurydza: 2.59 zł ← „j Kukurydza konserwowa Mondello” ()
-  mleko_kokos: 4.49 zł ← „Mleczko kokosowe” ()
-  soczewica: 3.49 zł ← „Soczewica czerwona” ()
-  kasza_jeczmienna: 1.78 zł ← „Kasza Jęczmienna” ()
-  boczek: 17.33 zł ← „Boczek wędzony” (90 g)
-  podudzia: 5.99 zł ← „Podudzia z kurczaka” ()
-  zeberka: 10.99 zł ← „ł Żeberka wieprzowe trójkąty” ()
-  ser_zolty: 2.25 zł ← „A Ser Gouda, 100 g Kaufland” (100 g)
-  tofu: 3.41 zł ← „Tofu naturalne” (200 g)
-  brokul: 2 zł ← „Brokuł” ()
-  kalafior: 2.95 zł ← „3” ()
-  por: 2 zł ← „6” ()
-  seler: 2.99 zł ← „Seler korzeń” ()
+  ser_zolty: 2.99 zł ← „Ser Gouda z kurkami i cebulką Serenada” ()
+  brokul: 3.89 zł ← „Brokuł polski K-Stąd Takie Dobre” ()
   buraki: 1.49 zł ← „Buraki czerwone polskie” ()
-  ogorki_kiszone: 3.99 zł ← „Ogórki kiszone 🕒” ()
-  fasola_biala: 2.28 zł ← „Fasola biała w puszce” (400 g)
-  ananas: 4.95 zł ← „Ananas w puszce” ()
-  chrzan: 2.19 zł ← „Chrzan tarty 🕒” ()
-  szynka_wieprzowa: 7.99 zł ← „6” (1 kg)
-  pomidory_suszone: 4.99 zł ← „ł Suszone pomidory / Przyprawa do rosołu Herbapol Wrocław” ()
-  limonka: 1 zł ← „i limonki Biedronka” ()
+  brukselka: 5 zł ← „Brukselka 1 kg” ()
+  poledwiczka: 25.99 zł ← „Polska polędwiczka wieprzowa Stoisko Mięsne” ()
+  tortilla: 2.79 zł ← „Tortilla K-Classic” ()
+  jablka: 2.99 zł ← „Jabłka polskie Jonagold” ()
+źródło ocr/1: 1283 znaków
+źródło ocr/2: 177 znaków
+źródło ocr/3: 458 znaków
+źródło ocr/4: 208 znaków
+źródło ocr/5: 355 znaków
+źródło ocr/6: 158 znaków
+źródło ocr/7: 528 znaków
+źródło ocr/8: 399 znaków
+źródło ocr/9: 827 znaków
+źródło ocr/10: 392 znaków
+źródło ocr/11: 1222 znaków
+źródło ocr/12: 786 znaków
+źródło ocr/13: 999 znaków
+źródło ocr/14: 1153 znaków
+źródło ocr/15: 1258 znaków
+źródło ocr/16: 371 znaków
+źródło ocr/17: 1055 znaków
+źródło ocr/18: 566 znaków
+źródło ocr/19: 1084 znaków
+źródło ocr/20: 114 znaków
+źródło ocr/21: 1132 znaków
+źródło ocr/22: 472 znaków
+źródło ocr/23: 1217 znaków
+źródło ocr/24: 781 znaków
+źródło ocr/25: 655 znaków
+źródło ocr/26: 549 znaków
+źródło ocr/27: 677 znaków
+źródło ocr/28: 1006 znaków
+źródło ocr/29: 291 znaków
+źródło ocr/30: 682 znaków
+źródło ocr/31: 655 znaków
+źródło ocr/32: 811 znaków
+źródło ocr/33: 609 znaków
+źródło ocr/34: 893 znaków
+źródło ocr/35: 610 znaków
+źródło ocr/36: 347 znaków
+źródło ocr/37: 433 znaków
+źródło ocr/38: 769 znaków
+źródło ocr/39: 566 znaków
+źródło ocr/40: 474 znaków
+źródło ocr/41: 960 znaków
+źródło ocr/42: 848 znaków
+źródło ocr/43: 1190 znaków
+źródło ocr/44: 1165 znaków
+źródło ocr/45: 1217 znaków
+źródło ocr/46: 653 znaków
+źródło ocr/47: 1061 znaków
+źródło ocr/48: 1206 znaków
+źródło ocr/49: 1313 znaków
+źródło ocr/50: 879 znaków
+źródło ocr/51: 1236 znaków
+źródło ocr/52: 748 znaków
+źródło ocr/53: 1090 znaków
+źródło ocr/54: 616 znaków
+źródło ocr/55: 828 znaków
+źródło ocr/56: 1450 znaków
+źródło ocr/57: 1476 znaków
+źródło ocr/58: 1351 znaków
+źródło ocr/59: 1049 znaków
+źródło ocr/60: 1132 znaków
 źródło ocr/1: 1005 znaków
 źródło ocr/2: 257 znaków
 źródło ocr/3: 343 znaków
@@ -519,74 +509,3 @@ agregator: 46 stron, 20 błędów
 źródło ocr/15: 2289 znaków
 źródło ocr/16: 598 znaków
 źródło ocr/17: 292 znaków
-źródło ocr/1: 759 znaków
-źródło ocr/2: 874 znaków
-źródło ocr/3: 986 znaków
-źródło ocr/4: 636 znaków
-źródło ocr/5: 1034 znaków
-źródło ocr/6: 890 znaków
-źródło ocr/7: 768 znaków
-źródło ocr/8: 853 znaków
-źródło ocr/9: 1104 znaków
-źródło ocr/10: 1143 znaków
-źródło ocr/11: 1198 znaków
-źródło ocr/12: 1215 znaków
-źródło ocr/13: 1257 znaków
-źródło ocr/14: 476 znaków
-źródło ocr/15: 947 znaków
-źródło ocr/16: 1370 znaków
-źródło ocr/17: 964 znaków
-źródło ocr/18: 233 znaków
-źródło ocr/19: 1140 znaków
-źródło ocr/20: 1127 znaków
-źródło ocr/21: 736 znaków
-źródło ocr/22: 523 znaków
-źródło ocr/23: 776 znaków
-źródło ocr/24: 1144 znaków
-źródło ocr/25: 231 znaków
-źródło agg/agregator: 5637 znaków
-źródło agg/agregator: 1849 znaków
-źródło agg/agregator: 5092 znaków
-źródło agg/agregator: 8279 znaków
-źródło agg/agregator: 5419 znaków
-źródło agg/agregator: 7244 znaków
-źródło agg/agregator: 3841 znaków
-źródło agg/agregator: 9231 znaków
-źródło agg/agregator: 4708 znaków
-źródło agg/agregator: 7954 znaków
-źródło agg/agregator: 3917 znaków
-źródło agg/agregator: 8610 znaków
-źródło agg/agregator: 6798 znaków
-źródło agg/agregator: 3910 znaków
-źródło agg/agregator: 8386 znaków
-źródło agg/agregator: 6702 znaków
-źródło agg/agregator: 6438 znaków
-źródło agg/agregator: 8167 znaków
-źródło agg/agregator: 3721 znaków
-źródło agg/agregator: 4552 znaków
-źródło agg/agregator: 4704 znaków
-źródło agg/agregator: 6118 znaków
-źródło agg/agregator: 4438 znaków
-źródło agg/agregator: 4932 znaków
-źródło agg/agregator: 4266 znaków
-źródło agg/agregator: 7406 znaków
-źródło agg/agregator: 4816 znaków
-źródło agg/agregator: 4581 znaków
-źródło agg/agregator: 3764 znaków
-źródło agg/agregator: 4410 znaków
-źródło agg/agregator: 3543 znaków
-źródło agg/agregator: 3326 znaków
-źródło agg/agregator: 4657 znaków
-źródło agg/agregator: 8876 znaków
-źródło agg/agregator: 8146 znaków
-źródło agg/agregator: 8075 znaków
-źródło agg/agregator: 4446 znaków
-źródło agg/agregator: 6907 znaków
-źródło agg/agregator: 4664 znaków
-źródło agg/agregator: 4934 znaków
-źródło agg/agregator: 4948 znaków
-źródło agg/agregator: 4711 znaków
-źródło agg/agregator: 8003 znaków
-źródło agg/agregator: 7428 znaków
-źródło agg/agregator: 3245 znaków
-źródło agg/agregator: 4692 znaków

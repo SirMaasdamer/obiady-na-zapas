@@ -86,8 +86,8 @@ Autorzy: Isobar Poland
   [5/2] KUP NA BIEDRONKA HOME → https://home.biedronka.pl/gazetka/?utm_source=biedronka.pl&utm_medium=linkowanie+pod+pierwszymi+banerami&utm_campaign=hityzgazetki
   [1/5] KUP NA BIEDRONKA HOME → https://home.biedronka.pl/promocje/?utm_source=biedronka.pl&utm_medium=linkowanie+pod+drugimi+banerami&utm_campaign=promocjebiedronkahome
   [4/3] Codziennie Niskie Ceny → https://www.biedronka.pl/pl/w-tym-tygodniu
-  [-9/3]  → https://www.biedronka.pl/pl/mieso-ryby
   [0/3]  → https://www.biedronka.pl/pl/owoce-warzywa
+  [-9/3]  → https://www.biedronka.pl/pl/mieso-ryby
   [1/-4] Regulaminy i zasady promocji → https://www.biedronka.pl/pl/regulaminy
   [1/-4] Moja Biedronka → https://www.biedronka.pl/pl/oferta-z-karta-moja-biedronka
   [0/0]  → https://www.biedronka.pl/swieta
@@ -1015,7 +1015,7 @@ Zezwalaj Blokuj
   [0/0] BiedroNOWE → https://www.biedronka.pl/pl/biedronowe
 --- zrzut: dane/debug/b-6.jpg
 
-===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/biedronka | tytuł: Teraz w promocji w Biedronka: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 7918 znaków
+===== agregator (pierwsza strona): https://www.gazetki.pl/oferty/filet-z-kurczaka/biedronka | tytuł: Teraz w promocji w Biedronka: Filet z kurczaka. Kliknij tutaj, aby zobaczyć najniższą cenę! | tekst: 287 znaków
 Nieznana
 Zaloguj się
 Strona domowa
@@ -1034,142 +1034,7 @@ W ofercie Biedronka od 01.11.2026 dostępnych jest 2 nowych promocji na Filet z 
 
 Sklepy
 1
-Filtry
-Dodaj
-2 z 27 promocji
-Trafność
-Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka
-3 dni
-24,90 zł
-14,99 zł
-Świeży filet z piersi kurczaka Kraina Mięs Mega Paka
-3 dni
-14,99 zł
-Sklepy z Filet z kurczaka w swoim asortymencie
-E.Leclerc
-Kaufland
-Biedronka
-Stokrotka
-Carrefour
-Żabka
-Twój Market
-Netto
-Selgros
-Carrefour Market
-Wafelek
-Delfin
-Delikatesy Piotruś Pan
-Delikatesy Centrum
-EuroSPAR
-ALDI
-Makro
-Lidl
-Gram Market
-Spiżarnia Smakosza
-Dino
-Prim Market
-Market Jan
-Stokrotka Market
-Najbliższa filia Biedronka
-
-Ta Filet z kurczaka Biedronka promocja jest dostępna w poniższych filiach na podstawie ustawionej lokalizacji:
-
-Warszawa
-Warszawa
-Wykryj automatycznie
-Biedronka
-Solec 24, 00-456 Warszawa
-0.23 km
-Biedronka
-Dobra 42, 00-344 Warszawa
-0.80 km
-Biedronka
-Nowy Świat 68, 00-357 Warszawa
-1.01 km
-Wszystkie lokalizacje
-Cena Filet z kurczaka Biedronka🕒
-Oferta	Imię	Sklep	Cena regularna	Cena promocyjna	Promocja	Data rozpoczęcia	Data końca
-	Maślany filet z kurczaka z boczkiem, 600 g	Biedronka		15,99 zł		22 października 2026	28 października 2026
-	Filet wędzony z kurczaka Kraina Wędlin 100 g	Biedronka	3,99 zł	2,99 zł	
-1,00 zł Rabat
-	19 października 2026	24 października 2026
-	Maślany filet z kurczaka z boczkiem 600 g	Biedronka		19,99 zł		19 października 2026	24 października 2026
-	Filet z kurczaka lub rumsztyk wieprzowy Nasze Smaki 400 g	Biedronka	11,99 zł	9,99 zł	
-2,00 zł Rabat
-	08 października 2026	10 października 2026
-	Filet z kurczaka o smaku maślanym pieczony 100 g	Biedronka	4,99 zł	4,19 zł	
-16% TANIEJ
-	05 października 2026	10 października 2026
-	Filet z kurczaka Kraina Mięs 3 kg	Biedronka	24,90 zł	14,99 zł	
-9,91 zł Rabat
-	02 października 2026	03 października 2026
-	Filet pieczony z kurczaka Kraina Wędlin Nature, 200 g	Biedronka		12,99 zł		01 października 2026	07 października 2026
-	Filet z kurczaka bio Kraina Wędlin Nature, 80 g	Biedronka		5,99 zł		01 października 2026	07 października 2026
-	Filet pieczony z kurczaka premium, 100 g	Biedronka		7,99 zł		01 października 2026	07 października 2026
-	Filet z kurczaka bio Kraina Wędlin Nature	Biedronka	8,49 zł	5,99 zł	
-2,50 zł Rabat
-	01 października 2026	03 października 2026
-	Filet pieczony z kurczaka premium Biedronka	Biedronka		7,99 zł		01 października 2026	03 października 2026
-	Filet wędzony z kurczaka Kraina Wędlin	Biedronka	3,99 zł	2,99 zł	
-Drugi 50% TANIEJ
-	28 września 2026	03 października 2026
-	Świeży filet z kurczaka Kraina Mięs Mega Paka	Biedronka				31 sierpnia 2026	31 sierpnia 2026
-	Filet z kurczaka Kraina Mięs 1 kg	Biedronka	24,90 zł	14,99 zł	
-9,91 zł Rabat
-	13 sierpnia 2026	14 sierpnia 2026
-	Świeży filet z kurczaka 1 kg	Biedronka	24,79 zł	18,99 zł	
--23%
-	12 sierpnia 2026	18 sierpnia 2026
-	Filet z kurczaka bio Kraina Wędlin Nature, 80 g	Biedronka		7,99 zł		06 sierpnia 2026	12 sierpnia 2026
-	Filet z kurczaka bio Kraina Wędlin Nature 80 g	Biedronka		7,99 zł		06 sierpnia 2026	08 sierpnia 2026
-	Filet wędzony z kurczaka Kraina Wędlin 100 g	Biedronka	3,99 zł	2,99 zł	
--25%
-	03 sierpnia 2026	08 sierpnia 2026
-	Filet z kurczaka Kraina Mięs	Biedronka	24,90 zł	14,99 zł	
-9,91 zł Rabat
-	28 lipca 2026	29 lipca 2026
-	Filet z kurczaka lub rumsztyk wieprzowy Nasze Smaki, 400 g	Biedronka		8,99 zł		29 czerwca 2026	04 lipca 2026
-	Filet wędzony z kurczaka Kraina Wędlin	Biedronka	3,99 zł	2,99 zł	
-1,00 zł Rabat
-	22 czerwca 2026	28 czerwca 2026
-	Filet wędzony z kurczaka Kraina Wędlin	Biedronka	3,99 zł	2,99 zł	
-1,00 zł Rabat
-	01 czerwca 2026	06 czerwca 2026
-	Dania Nasze Smaki, 400 g: filet z kurczaka, rumsztyk wieprzowy, kotlet mielony, kotlet drobiowy	Biedronka		8,99 zł		25 maja 2026	30 maja 2026
-	Suszony filet z kurczaka dla psów Activ Pet	Biedronka		7,49 zł		22 maja 2026	30 czerwca 2026
-	Filet z kurczaka bio wędzony Kraina Wędlin Nature	Biedronka		7,99 zł		21 maja 2026	27 maja 2026
-	Filet pieczony z kurczaka Nature, 200 g	Biedronka		12,99 zł		21 maja 2026	27 maja 2026
-	Filet z kurczaka bio Kraina Wędlin Nature, 80 g: pieczony, wędzony	Biedronka		7,99 zł		21 maja 2026	23 maja 2026
-	Filet pieczony z kurczaka Nature 200 g	Biedronka		12,99 zł		21 maja 2026	23 maja 2026
-	Filet z kurczaka lub rumsztyk wieprzowy Nasze Smaki, 400 g	Biedronka		11,99 zł		04 maja 2026	09 maja 2026
-	Filet z kurczaka lub rumsztyk wieprzowy Nasze Smaki, 400 g	Biedronka		9,99 zł		27 kwietnia 2026	02 maja 2026
-	Filet z kurczaka Kraina Mięs 3 kg	Biedronka	24,90 zł	14,99 zł	
-9,91 zł Rabat
-	17 kwietnia 2026	18 kwietnia 2026
-	Filet z kurczaka lub rumsztyk wieprzowy 400g	Biedronka		12,99 zł		12 kwietnia 2026	19 kwietnia 2026
-	Filet gotowany z kurczaka	Biedronka		6,99 zł		12 kwietnia 2026	19 kwietnia 2026
-	Filet z kurczaka lub rumsztyk wieprzowy Nasze Smaki 400 g	Biedronka	11,99 zł	9,99 zł	
-2,00 zł Rabat
-	07 kwietnia 2026	11 kwietnia 2026
-	Filet z kurczaka o smaku maślanym pieczony Biedronka	Biedronka		3,99 zł		29 marca 2026	04 kwietnia 2026
-	Filet z kurczaka o smaku maślanym pieczony	Biedronka		4,99 zł		19 marca 2026	25 marca 2026
-	Filet z kurczaka Biedronka 100 gram	Biedronka		4,99 zł		19 marca 2026	21 marca 2026
-	Kraina Wędlin Filet wędzony z kurczaka 100 g	Biedronka	3,99 zł	2,99 zł	
-25% taniej
-	16 marca 2026	21 marca 2026
-	Filet z kurczaka Biedronka	Biedronka		14,99 zł		12 marca 2026	18 marca 2026
-	Filet z kurczaka pieczony	Biedronka		7,99 zł		12 marca 2026	18 marca 2026
-	Filet pieczony z kurczaka	Biedronka		5,99 zł		09 marca 2026	14 marca 2026
-	Filet z kurczaka lub rumsztyk wieprzowy Nasze Smaki, 400 g	Biedronka		9,99 zł		02 marca 2026	07 marca 2026
-	Filet gotowany z kurczaka	Biedronka		6,99 zł		23 lutego 2026	28 lutego 2026
-	Filet pieczony z kurczaka	Biedronka		12,99 zł		20 lutego 2026	23 lutego 2026
-	Filet gotowany z kurczaka	Biedronka		10,99 zł		19 lutego 2026	25 lutego 2026
-	Filet z kurczaka high protein w puszce	
---- linki (56), najlepiej ocenione:
-  [9/0] Aktualności → https://www.gazetki.pl/blog
-  [7/-12] Biedronka Solec 24, 00-456 Warszawa 0.23 km → https://www.gazetki.pl/sklepy/biedronka/lokalizacje/warszawa
-  [6/-7] Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka 3 dni 24,90 zł 14,99 zł → https://www.gazetki.pl/sklepy/biedronka/oferty/swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-promocja-69838667/
-  [6/-7] Świeży filet z piersi kurczaka Kraina Mięs Mega Paka 3 dni 14,99 zł → https://www.gazetki.pl/sklepy/biedronka/oferty/swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-promocja-69839044/
+--- linki (13), najlepiej ocenione:
   [5/-3] Gazetki.pl home → https://www.gazetki.pl/
   [5/-3]  → https://www.gazetki.pl/ulubione
   [5/-3]  → https://www.gazetki.pl/powiadomienia
@@ -1183,104 +1048,21 @@ Drugi 50% TANIEJ
   [5/-3] tutaj → https://www.gazetki.pl/najczesciej-zadawane-pytania
   [5/2] Wszystkie oferty → https://www.gazetki.pl/oferty
   [5/2] Filet z kurczaka → https://www.gazetki.pl/oferty/filet-z-kurczaka
-  [5/-12] E.Leclerc → https://www.gazetki.pl/sklepy/e-leclerc/gazetka
-  [5/-12] Kaufland → https://www.gazetki.pl/sklepy/kaufland/gazetka
-  [5/-12] Biedronka → https://www.gazetki.pl/sklepy/biedronka/gazetka
-  [5/-12] Stokrotka → https://www.gazetki.pl/sklepy/stokrotka/gazetka
-  [5/-12] Carrefour → https://www.gazetki.pl/sklepy/carrefour/gazetka
-  [5/-12] Żabka → https://www.gazetki.pl/sklepy/zabka/gazetka
-  [5/-12] Twój Market → https://www.gazetki.pl/sklepy/twoj-market/gazetka
-  [5/-12] Netto → https://www.gazetki.pl/sklepy/netto/gazetka
 --- zrzut: dane/debug/b-7.jpg
-agregator https://www.gazetki.pl/oferty/filet-z-uda-kurczaka/biedronka: HTTP 404
-agregator: 42 stron, 24 błędów
+kafelki: []
+wiersze: []
+agregator: 67 stron, 61 błędów
 
-===== DOPASOWANE (42):
-  indyk_filet: 15.99 zł ← „5” ()
-  lopatka: 7.5 zł ← „6” ()
-  schab: 9.75 zł ← „Schab bez kości” (1 kg)
-  karkowka: 8.93 zł ← „Karkówka bez kości” (560 g)
-  kielbasa: 10.99 zł ← „e Kiełbasa podwawelska” ()
-  mascarpone: 2.99 zł ← „i mascarpone z nadzieniem malinowym kavis 300 g Biedronka” (300 g)
-  grana: 5.99 zł ← „r Grana Padano dojrzewający” ()
-  jajka: 4.4 zł ← „e jaja ściółkowe Moja Kurka Biedronka” ()
-  cebula: 1.99 zł ← „e Cebula żółta” ()
-  czosnek: 0.99 zł ← „6” ()
-  marchew: 1.33 zł ← „Marchew” (3 kg)
-  jablka: 1.33 zł ← „Jabłka” (1.5 kg)
-  papryka: 6.5 zł ← „4” (1 kg)
-  cukinia: 3 zł ← „6” ()
-  pieczarki: 3 zł ← „Pieczarki” (500 g)
-  ziemniaki: 1.29 zł ← „Ziemniaki” ()
-  dynia: 2.99 zł ← „Dynia” ()
-  kapusta: 1.49 zł ← „Kapusta biała” ()
-  kapusta_kiszona: 2.39 zł ← „2” ()
-  passata: 1.83 zł ← „Passata pomidorowa” (700 ml)
-  koncentrat: 1.67 zł ← „6” (190 g)
-  tunczyk: 6.99 zł ← „i tuńczykiem z kuskusem Seko” ()
-  ciecierzyca: 1.5 zł ← „6” (500 g)
-  mleko_kokos: 4.49 zł ← „Mleczko kokosowe” ()
-  kasza_jeczmienna: 1.78 zł ← „Kasza Jęczmienna” ()
-  boczek: 13.9 zł ← „4” (100 g)
-  podudzia: 5.99 zł ← „Podudzia z kurczaka” ()
-  zeberka: 10.99 zł ← „ł Żeberka wieprzowe trójkąty” ()
-  ser_zolty: 5.69 zł ← „Gouda Światowid, 2x250 g/500 g” (250 g)
-  tofu: 2.99 zł ← „a Tofu Biedronka🕒” (180 g)
-  brokul: 2 zł ← „Brokuł” ()
-  kalafior: 2.99 zł ← „6” ()
-  por: 2.49 zł ← „in por 10-pak Biedronka” ()
-  seler: 4.9 zł ← „a Seler korzeń Biedronka🕒” ()
-  buraki: 1.17 zł ← „4” (3 kg)
-  ogorki_kiszone: 3.99 zł ← „Ogórki kiszone 🕒” ()
-  kukurydza: 3.99 zł ← „Kukurydza konserwowa” ()
-  soczewica: 4.32 zł ← „b soczewica Bonduelle Auchan 4,98 zł 4,32 zł” ()
-  fasola_biala: 2.28 zł ← „Fasola biała w puszce” (400 g)
-  ananas: 4.95 zł ← „Ananas w puszce” ()
-  szynka_wieprzowa: 7.99 zł ← „Szynka wieprzowa bez kości” ()
-  pomidory_suszone: 6.49 zł ← „Pomidory suszone w oleju” (280 g)
+===== DOPASOWANE (8):
+  schab: 9.99 zł ← „Schab wieprzowy bez kości pakowany próżniowo Kraina Mięs” ()
+  karkowka: 9.99 zł ← „Karkówka Duda” ()
+  marchew: 1.99 zł ← „Marchew na wagę” ()
+  pieczarki: 4.99 zł ← „Pieczarki polskie” ()
+  passata: 4.99 zł ← „Passata w kartoniku Gusto Bello” ()
+  brokul: 3.89 zł ← „Brokuł, opak” ()
+  jablka: 3.49 zł ← „Jabłka polskie Jonagold” ()
+  pomidory_suszone: 8.49 zł ← „Suszone pomidory z papryczką chilli Gusto Bello” ()
 źródło www/www: 1636 znaków
 źródło www/www: 16502 znaków
 źródło www/www: 1488 znaków
 źródło www/www: 1356 znaków
-źródło agg/agregator: 316 znaków
-źródło agg/agregator: 5623 znaków
-źródło agg/agregator: 10606 znaków
-źródło agg/agregator: 7187 znaków
-źródło agg/agregator: 10815 znaków
-źródło agg/agregator: 3762 znaków
-źródło agg/agregator: 7809 znaków
-źródło agg/agregator: 3926 znaków
-źródło agg/agregator: 9921 znaków
-źródło agg/agregator: 3227 znaków
-źródło agg/agregator: 9736 znaków
-źródło agg/agregator: 8264 znaków
-źródło agg/agregator: 3849 znaków
-źródło agg/agregator: 8633 znaków
-źródło agg/agregator: 9292 znaków
-źródło agg/agregator: 7334 znaków
-źródło agg/agregator: 7292 znaków
-źródło agg/agregator: 4507 znaków
-źródło agg/agregator: 4276 znaków
-źródło agg/agregator: 2860 znaków
-źródło agg/agregator: 8539 znaków
-źródło agg/agregator: 5068 znaków
-źródło agg/agregator: 7464 znaków
-źródło agg/agregator: 7406 znaków
-źródło agg/agregator: 3226 znaków
-źródło agg/agregator: 4581 znaków
-źródło agg/agregator: 4170 znaków
-źródło agg/agregator: 4410 znaków
-źródło agg/agregator: 3903 znaków
-źródło agg/agregator: 3256 znaków
-źródło agg/agregator: 7036 znaków
-źródło agg/agregator: 6844 znaków
-źródło agg/agregator: 8334 znaków
-źródło agg/agregator: 4935 znaków
-źródło agg/agregator: 3545 znaków
-źródło agg/agregator: 7744 znaków
-źródło agg/agregator: 4664 znaków
-źródło agg/agregator: 4934 znaków
-źródło agg/agregator: 4948 znaków
-źródło agg/agregator: 10601 znaków
-źródło agg/agregator: 8657 znaków
-źródło agg/agregator: 3439 znaków
