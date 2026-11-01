@@ -661,6 +661,13 @@ function start() {
   const h = location.hash.slice(1); setTab(TABS.includes(h) ? h : 'przepisy');
   loadCache(); renderAll(); loadAll(); subscribe();
 }
+/* iOS (aplikacja z ekranu głównego): po schowaniu klawiatury albo powrocie do aplikacji Safari potrafi zostawić
+   przesunięty widok – dolne menu wisi wtedy wyżej, a pod nim zostaje pusty pas. Wymuszamy ponowne ułożenie widoku. */
+function fixViewport() { requestAnimationFrame(() => { window.scrollTo(window.scrollX, window.scrollY); document.documentElement.style.setProperty('--vh', window.innerHeight + 'px'); }); }
+document.addEventListener('focusout', e => { if (e.target.matches?.('input,textarea,select')) setTimeout(fixViewport, 60); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) setTimeout(fixViewport, 60); });
+window.addEventListener('pageshow', fixViewport);
+window.visualViewport?.addEventListener('resize', () => { if (Math.abs(window.visualViewport.height - window.innerHeight) < 2) fixViewport(); });
 (async function boot() {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
   if (!CFG.url) { document.body.innerHTML = '<div class="wrap" style="padding:40px 16px"><h2>Aplikacja jeszcze nie jest skonfigurowana</h2></div>'; return; }
