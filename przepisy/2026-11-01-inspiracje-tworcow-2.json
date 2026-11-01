@@ -26,7 +26,9 @@
    "pack": 0.25,
    "cat": "nabiał",
    "kw": [
-    "twarog"
+    "twarog",
+    "twarog poltlusty",
+    "twarog sernikowy"
    ],
    "regular": {
     "b": 4.49,
@@ -235,10 +237,10 @@
    "pack": 0.5,
    "cat": "suche",
    "kw": [
-    "makaron penne",
+    "makaron",
     "makaron spaghetti",
-    "makaron swiderki",
-    "makaron"
+    "makaron penne",
+    "makaron swiderki"
    ],
    "regular": {
     "b": 3.99,

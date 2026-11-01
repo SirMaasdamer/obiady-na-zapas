@@ -130,10 +130,11 @@
    "loose": false,
    "cat": "nabiał",
    "kw": [
+    "mleko",
     "mleko uht",
     "mleko 3,2",
-    "mleko 2%",
-    "mleko swieze"
+    "mleko swieze",
+    "mleko 2%"
    ],
    "regular": {
     "b": 3.49,
@@ -149,9 +150,9 @@
    "loose": false,
    "cat": "nabiał",
    "kw": [
+    "maslo",
     "maslo ekstra",
-    "maslo 82",
-    "maslo"
+    "maslo 82"
    ],
    "regular": {
     "b": 6.99,

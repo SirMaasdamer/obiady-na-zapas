@@ -94,11 +94,11 @@ ctx.on('response', async r => {
 // ---------- agregatory gazetek: wyszukiwanie produktu w ofertach danego sklepu (tekst, nie obrazy) ----------
 const AGG_SLUG = { b: 'biedronka', l: 'lidl', k: 'kaufland' };
 async function aggregatorPages(store, page) {
-  // dla każdego produktu próbujemy kolejnych słów kluczowych, aż strona istnieje (max 2 próby)
+  // dla każdego produktu odwiedzamy strony do 4 słów kluczowych (różne nazwy tego samego produktu dają różne oferty)
   const items = [], seen = new Set(); let ok = 0, fail = 0;
   for (const p of catalog.filter(p => p.kw?.length && p.ref)) {
-    for (const kw of p.kw.slice(0, 2).map(k => k.trim())) {
-      if (seen.has(kw)) break; seen.add(kw);
+    for (const kw of p.kw.slice(0, 4).map(k => k.trim())) {
+      if (seen.has(kw)) continue; seen.add(kw);
       const url = `https://www.gazetki.pl/oferty/${encodeURIComponent(kw.replace(/\s+/g, '-'))}/${AGG_SLUG[store]}`;
       await sleep(PAUSE + Math.random() * 500);
       try {
@@ -125,7 +125,6 @@ async function aggregatorPages(store, page) {
         const rows = await page.$$eval('table tr', trs => trs.map(tr => [...tr.cells].map(td => td.innerText.trim()))).catch(() => []);
         if (ok === 0) { await snapshot(store, page, 'agregator (pierwsza strona)'); dbg(store, `kafelki: ${JSON.stringify(cards.slice(0, 4))}\nwiersze: ${JSON.stringify(rows.slice(0, 3))}`); }
         ok++; items.push({ kw, cards, rows });
-        break;
       } catch (e) { fail++; if (fail >= 8 && !ok) return items; }
     }
   }
@@ -294,6 +293,39 @@ for (const store of ONLY) {
     OUT.runs.push({ store, ran_at: new Date().toISOString(), status: 'error', message: e.message.slice(0, 500) });
   } finally { await page.close(); }
 }
+// ---------- próba: Blix (blix.pl) – tylko diagnostyka, nic nie trafia do ofert ----------
+// Zapisuje w dane/debug/blix.txt, co serwis pokazuje (tekst, linki, odpowiedzi JSON), żeby ocenić, czy nadaje się na drugie źródło.
+async function blixProbe() {
+  const st = 'blix', page = await ctx.newPage(), json = [];
+  page.on('response', async r => { try { const ct = r.headers()['content-type'] || ''; if (!ct.includes('json') || !/blix/.test(r.url())) return; const t = await r.text(); json.push(`${r.url().slice(0, 220)} :: ${t.length} B :: ${t.slice(0, 900).replace(/\s+/g, ' ')}`); } catch { } });
+  let shots = 0;
+  const visit = async (url, label) => {
+    try {
+      await open(page, url); await sleep(1500);
+      const text = (await page.innerText('body').catch(() => '')).replace(/\n{3,}/g, '\n\n');
+      dbg(st, `\n===== ${label}: ${page.url()} | tytuł: ${await page.title().catch(() => '')} | tekst: ${text.length} znaków`);
+      dbg(st, text.slice(0, 5000));
+      const ls = (await links(page)).filter(l => /blix\.pl/.test(l.href));
+      dbg(st, `--- linki blix (${ls.length}):`); for (const l of ls.slice(0, 120)) dbg(st, `  ${l.text.slice(0, 60)} → ${l.href}`);
+      if (shots++ < 6) { await mkdir(new URL('../dane/debug/', import.meta.url), { recursive: true }); await page.screenshot({ path: new URL(`../dane/debug/blix-${shots}.jpg`, import.meta.url).pathname, type: 'jpeg', quality: 45, scale: 'css' }); }
+      return ls;
+    } catch (e) { dbg(st, `${label} ${url}: ${e.message}`); return []; }
+  };
+  try {
+    const home = await visit('https://blix.pl/', 'strona główna');
+    for (const [k, n] of [['l', 'lidl'], ['b', 'biedronka'], ['k', 'kaufland']]) {
+      const shop = home.find(l => new RegExp(`/${n}/?$`, 'i').test(new URL(l.href).pathname) || new RegExp(`sklep/${n}`, 'i').test(l.href))?.href || `https://blix.pl/sklep/${n}/`;
+      const ls = await visit(shop, `sklep ${n}`);
+      const leaflet = ls.find(l => /gazetka/i.test(l.href) && new RegExp(n, 'i').test(l.href) && l.href !== shop)?.href;
+      if (leaflet) await visit(leaflet, `gazetka ${n}`);
+      if (k === 'l') await visit(`https://blix.pl/szukaj/?szukaj=${encodeURIComponent('filet z kurczaka')}`, 'wyszukiwarka');
+    }
+  } finally {
+    dbg(st, `\n===== odpowiedzi JSON (${json.length}):`); for (const j of json.slice(0, 60)) dbg(st, j);
+    await page.close();
+  }
+}
+if (env('BLIX_PROBE', false) !== '0') { log('\n▶ Blix (próba)'); await blixProbe().catch(e => log('  blix: ' + e.message)); }
 await browser.close();
 
 // Podgląd dla diagnostyki
