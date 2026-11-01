@@ -1,0 +1,111 @@
+{
+  "opis": "Prośba z aplikacji: burrito z kurczakiem",
+  "products": [],
+  "recipes": [
+    {
+      "id": "burrito-kurczak-fasola-ryz",
+      "category": "drob",
+      "name": "Burrito z kurczakiem, fasolą i ryżem",
+      "minutes": 40,
+      "freeze_months": 3,
+      "sides": "salsa, kwaśna śmietana, sałata",
+      "thaw": "Zawinięte burrito mroź pojedynczo w folii. Odgrzewaj z zamrożenia w piekarniku (180°C, ok. 25 minut) albo rozmrożone na suchej patelni.",
+      "freezer": true,
+      "inspired_by": "przepisy.pl",
+      "source_url": "https://www.przepisy.pl/przepis/burrito-z-fasola-i-kurczakiem",
+      "ingredients": [
+        { "pid": "kurczak_filet", "amt": 300, "unit": "g" },
+        { "pid": "fasola", "amt": 200, "unit": "g" },
+        { "pid": "ryz", "amt": 60, "unit": "g" },
+        { "pid": "cebula", "amt": 80, "unit": "g" },
+        { "pid": "czosnek", "amt": 2, "unit": "ząbek" },
+        { "pid": "koncentrat", "amt": 20, "unit": "g" },
+        { "pid": "tortilla", "amt": 4, "unit": "szt" },
+        { "pid": "ser_zolty", "amt": 80, "unit": "g" },
+        { "pid": "kumin", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "papryka_wedzona", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "chili", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "olej", "amt": 1, "unit": "łyżka" },
+        { "pid": "sol", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "pieprz", "amt": 0.5, "unit": "łyżeczka" }
+      ],
+      "steps": [
+        "Ugotuj ryż na sypko i przestudź.",
+        "Kurczaka pokrój w drobną kostkę i obsmaż na oleju, dodaj posiekaną cebulę i czosnek.",
+        "Wsyp kumin, wędzoną paprykę i chili, dodaj koncentrat i odcedzoną fasolę, duś kilka minut, aż farsz zgęstnieje. Lekko rozgnieć część fasoli i dopraw.",
+        "Na tortille nałóż ryż, farsz i starty ser, podwiń boki i ciasno zawiń.",
+        "Zrumień burrito na suchej patelni z obu stron. Do mrożenia całkowicie wystudź przed zawinięciem w folię."
+      ]
+    },
+    {
+      "id": "burrito-kurczak-warzywa",
+      "category": "drob",
+      "name": "Burrito z kurczakiem i warzywami",
+      "minutes": 35,
+      "freeze_months": 3,
+      "sides": "tortille, guacamole, jogurt naturalny",
+      "thaw": "Mrozisz sam farsz. Rozmroź w lodówce, odgrzej na patelni i zawijaj w świeże tortille.",
+      "freezer": true,
+      "inspired_by": "przepisy.pl",
+      "source_url": "https://www.przepisy.pl/przepis/burritos-z-kurczakiem-i-warzywami",
+      "ingredients": [
+        { "pid": "kurczak_filet", "amt": 300, "unit": "g" },
+        { "pid": "papryka", "amt": 200, "unit": "g" },
+        { "pid": "cukinia", "amt": 150, "unit": "g" },
+        { "pid": "kukurydza", "amt": 100, "unit": "g" },
+        { "pid": "cebula", "amt": 80, "unit": "g" },
+        { "pid": "czosnek", "amt": 1, "unit": "ząbek" },
+        { "pid": "passata", "amt": 100, "unit": "ml" },
+        { "pid": "tortilla", "amt": 4, "unit": "szt" },
+        { "pid": "kumin", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "papryka_slodka", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "oregano", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "chili", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "olej", "amt": 1, "unit": "łyżka" },
+        { "pid": "sol", "amt": 0.5, "unit": "łyżeczka" }
+      ],
+      "steps": [
+        "Kurczaka pokrój w paski, obtocz w kuminie, papryce i chili i podsmaż na mocno rozgrzanym oleju.",
+        "Dorzuć cebulę i czosnek, a po chwili paprykę i cukinię pokrojone w paski. Smaż kilka minut, aż warzywa zmiękną, ale nie rozpadną się.",
+        "Wlej passatę, dodaj kukurydzę i oregano, duś 5 minut, aż sos odparuje. Dopraw solą.",
+        "Część do zjedzenia od razu zawiń w podgrzane tortille, resztę farszu wystudź i zamroź w pojemniku."
+      ]
+    },
+    {
+      "id": "burrito-bowl-kurczak",
+      "category": "drob",
+      "name": "Burrito bowl z kurczakiem",
+      "minutes": 35,
+      "freeze_months": 3,
+      "sides": "ryż z limonką, jogurt grecki, świeże warzywa",
+      "thaw": "Mrozisz kurczaka z fasolą bez ryżu. Odgrzewaj na patelni pod przykryciem z odrobiną wody, ryż gotuj na świeżo.",
+      "freezer": true,
+      "inspired_by": "Kwestia Smaku",
+      "source_url": "https://www.kwestiasmaku.com/przepis/burrito-bowl-z-mielonym-indykiem",
+      "ingredients": [
+        { "pid": "kurczak_filet", "amt": 300, "unit": "g" },
+        { "pid": "fasola", "amt": 200, "unit": "g" },
+        { "pid": "kukurydza", "amt": 100, "unit": "g" },
+        { "pid": "pomidory_puszka", "amt": 200, "unit": "g" },
+        { "pid": "cebula", "amt": 80, "unit": "g" },
+        { "pid": "czosnek", "amt": 2, "unit": "ząbek" },
+        { "pid": "ryz", "amt": 140, "unit": "g" },
+        { "pid": "limonka", "amt": 1, "unit": "szt" },
+        { "pid": "jogurt_grecki", "amt": 100, "unit": "g" },
+        { "pid": "kumin", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "papryka_wedzona", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "oregano", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "olej", "amt": 1, "unit": "łyżka" },
+        { "pid": "sol", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "pieprz", "amt": 0.5, "unit": "łyżeczka" }
+      ],
+      "steps": [
+        "Kurczaka pokrój w kostkę, dopraw kuminem, wędzoną papryką, solą i pieprzem, obsmaż na oleju.",
+        "Dodaj posiekaną cebulę i czosnek, a gdy zmiękną, pomidory z puszki, fasolę i oregano. Duś 10 minut.",
+        "Wmieszaj kukurydzę i skrop sokiem z połowy limonki.",
+        "Ugotuj ryż i wymieszaj ze skórką i resztą soku z limonki.",
+        "Podawaj w miskach: ryż, kurczak z fasolą i łyżka jogurtu greckiego."
+      ]
+    }
+  ]
+}
