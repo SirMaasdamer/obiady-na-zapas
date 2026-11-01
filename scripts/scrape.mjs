@@ -94,17 +94,20 @@ ctx.on('response', async r => {
 
 // ---------- agregatory gazetek: wyszukiwanie produktu w ofertach danego sklepu (tekst, nie obrazy) ----------
 const AGG_SLUG = { b: 'biedronka', l: 'lidl', k: 'kaufland' };
+// strona /oferty/<słowo> nie istnieje dla żadnego sklepu, jeśli nie istnieje dla pierwszego: kolejne sklepy jej nie sprawdzają
+const MISSING_KW = new Set();
 async function aggregatorPages(store, page) {
   // dla każdego produktu odwiedzamy strony do 4 słów kluczowych (różne nazwy tego samego produktu dają różne oferty)
   const items = [], seen = new Set(); let ok = 0, fail = 0;
   for (const p of catalog.filter(p => p.kw?.length && p.ref)) {
-    for (const kw of p.kw.slice(0, 4).map(k => k.trim())) {
-      if (seen.has(kw)) continue; seen.add(kw);
+    // składniki przepisów: do 4 nazw, produkty z zakupów domowych: 2 (krótszy przebieg)
+    for (const kw of p.kw.slice(0, used.has(p.id) ? 4 : 2).map(k => k.trim())) {
+      if (seen.has(kw) || MISSING_KW.has(kw)) continue; seen.add(kw);
       const url = `https://www.gazetki.pl/oferty/${encodeURIComponent(kw.replace(/\s+/g, '-'))}/${AGG_SLUG[store]}`;
       await sleep(PAUSE + Math.random() * 500);
       try {
         const r = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-        if (!r || r.status() >= 400) { fail++; if (fail >= 8 && !ok) return items; continue; }
+        if (!r || r.status() >= 400) { fail++; if (r?.status() === 404) MISSING_KW.add(kw); if (fail >= 8 && !ok) return items; continue; }
         if (ok === 0) { await sleep(1500); await dismissCookies(page); }
         // kafelki doładowują się skryptem: czekamy aż pojawi się cena (albo strona bez ofert się ustabilizuje)
         await page.waitForFunction(() => /\d,\d{2}\s*zł/.test(document.body.innerText) || /\b0 promocji|brak (ofert|promocji)/i.test(document.body.innerText), null, { timeout: 7000 }).catch(() => { });
