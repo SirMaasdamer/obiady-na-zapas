@@ -96,6 +96,26 @@ function renderCats() {
   $('#rfilters').innerHTML = `<button class="chip soft" data-act="only-freezer" aria-pressed="${ui.onlyFreezer}">❄ Do mrożenia</button>` + [['all', 'Wszystkie dania'], ['fav', '♥ Moje ulubione'], ['want', 'Zróbmy to'], ['promo', 'Z promocją'], ['new', 'Nowe']].map(([k, n]) => `<button class="chip soft" data-act="filter" data-k="${k}" aria-pressed="${ui.filter === k}">${n}</button>`).join('');
   $('#b-gen').textContent = ui.cat === 'all' ? '✦ Nowe przepisy' : `✦ Nowe: ${CATN[ui.cat]}`;
 }
+// największa obniżka z gazetek wśród produktów używanych w aktywnych przepisach
+function bestDeal(all) {
+  const uses = {}; for (const r of all) for (const pid of new Set((r.ingredients || []).map(i => i.pid))) uses[pid] = (uses[pid] || 0) + 1;
+  let best = null;
+  for (const pid of Object.keys(uses)) {
+    const p = S.products[pid]; if (!p || p.pantry) continue;
+    for (const s of SK) {
+      const pr = L.priceOf(pid, s); if (!pr?.promo || !pr.regular || pr.regular <= pr.p) continue;
+      const off = 1 - pr.p / pr.regular;
+      if (off >= 0.15 && (!best || off > best.off)) best = { pid, p, s, pr, off, n: uses[pid] };
+    }
+  }
+  return best;
+}
+function dealHtml(all) {
+  const d = bestDeal(all); if (!d) return '';
+  const unit = d.p.loose ? (d.p.unit === 'kg' ? '/kg' : d.p.unit === 'l' ? '/l' : '') : '';
+  const pricePer = d.p.loose ? d.pr.p / (d.p.pack || 1) : d.pr.p;
+  return `<button class="deal" data-act="deal" data-pid="${esc(d.pid)}"><span class="deal-ic"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="deal-t"><b>${esc(d.p.name)} ${zl(pricePer)}${unit} w ${SN[d.s] === 'Lidl' ? 'Lidlu' : SN[d.s] === 'Kaufland' ? 'Kauflandzie' : 'Biedronce'}</b><span>−${Math.round(d.off * 100)}%${d.pr.until ? ' · do ' + dPL(d.pr.until) : ''} · pasuje do ${d.n} ${d.n === 1 ? 'przepisu' : 'przepisów'}</span></span><svg class="deal-go" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>`;
+}
 function renderRecipes() {
   const box = $('#rlist'); const all = activeRecipes();
   $('#rcount').textContent = all.length ? `${all.length} dań · ${all.filter(r => r.freezer !== false).length} do mrożenia` : 'Przepisy na obiady';
@@ -113,8 +133,9 @@ function renderRecipes() {
       return true;
     });
   list.sort((a, b) => (b.isNew && ui.justAdded.has(b.id)) - (a.isNew && ui.justAdded.has(a.id)) || b.re.want.length - a.re.want.length || new Set(b.c.promos.map(x => x.pid)).size - new Set(a.c.promos.map(x => x.pid)).size || a.name.localeCompare(b.name, 'pl'));
-  if (!list.length) { box.innerHTML = `<div class="empty"><h3>Nic tu nie pasuje</h3><div>Zmień filtr albo dobierz nowe dania w tej kategorii.</div><button class="btn pri" data-act="gen">✦ Nowe przepisy</button></div>`; return; }
-  box.innerHTML = '<div class="cards">' + list.map(r => {
+  const deal = ui.q ? '' : dealHtml(all);
+  if (!list.length) { box.innerHTML = deal + `<div class="empty"><h3>Nic tu nie pasuje</h3><div>Zmień filtr albo dobierz nowe dania w tej kategorii.</div><button class="btn pri" data-act="gen">✦ Nowe przepisy</button></div>`; return; }
+  box.innerHTML = deal + '<div class="cards">' + list.map(r => {
     const best = SK.filter(s => !r.c.miss[s]).sort((a, b) => r.c.tot[a] - r.c.tot[b])[0];
     const nPromo = new Set(r.c.promos.map(x => x.pid)).size, liked = r.re.like.includes(ui.member);
     return `<div class="card" role="button" tabindex="0" data-act="open" data-id="${esc(r.id)}">
@@ -228,12 +249,16 @@ async function tickGroup(pid) {
 /* ---------- FREEZER ---------- */
 function renderFreezer() {
   const box = $('#flist'); const fs = [...S.freezer].sort((a, b) => (a.frozen_on || '').localeCompare(b.frozen_on || ''));
+  const soonN = fs.filter(f => daysSince(f.frozen_on) > (S.recipes[f.recipe_id]?.freeze_months || 3) * 30 - 14).length;
+  const totalP = fs.reduce((t, f) => t + (f.portions || 0), 0);
+  $('#fstats').innerHTML = fs.length ? `<div class="tile"><b class="num">${num(totalP / 2, 0)}</b><span>obiadów</span></div><div class="tile"><b class="num">${fs.length}</b><span>${fs.length === 1 ? 'pudełko' : 'pudełek'}</span></div><div class="tile ${soonN ? 'hot' : ''}"><b class="num">${soonN}</b><span>zjeść wkrótce</span></div>` : '';
+  $('#fsub').textContent = fs.length ? `Starczy na ok. ${num(totalP / 2, 0)} ${totalP / 2 >= 5 ? 'obiadów' : 'obiady'} dla 2 osób` : 'Najstarsze pudełka na górze';
   if (!fs.length) { box.innerHTML = `<div class="empty"><h3>Zamrażarka jest pusta</h3><div>Po ugotowaniu otwórz przepis i wybierz „Ugotowane → do zamrażarki”. Zobaczysz tu, ile porcji zostało i co zjeść najpierw.</div></div>`; return; }
   const total = fs.reduce((t, f) => t + (f.portions || 0), 0);
-  box.innerHTML = `<div class="sub">Razem ${total} porcji · ok. ${num(total / 2, 1)} obiadów dla 2 osób</div>` + fs.map(f => {
+  box.innerHTML = `<div class="sub">Najstarsze na górze · razem ${total} porcji</div>` + fs.map(f => {
     const age = daysSince(f.frozen_on), lim = (S.recipes[f.recipe_id]?.freeze_months || 3) * 30, old = age > lim;
-    return `<div class="fz"><span class="tape">${dPL(f.frozen_on)} · ${age} dni${old ? ' · zjedz szybko' : ''}</span><div><h3>${esc(f.name)}</h3><div class="sub ${old ? 'old' : ''}">${old ? 'Przekroczony zalecany czas mrożenia' : 'Dobre jeszcze ok. ' + Math.max(0, Math.round((lim - age) / 7)) + ' tyg.'}</div></div>
-    <div class="life ${old ? 'old' : ''}"><i style="width:${Math.min(100, Math.round(age / lim * 100))}%"></i></div><div class="n"><button class="round" data-act="fz-dec" data-id="${esc(f.id)}" aria-label="Wyjmij porcję">−</button><b class="num">${f.portions}</b><button class="round" data-act="fz-inc" data-id="${esc(f.id)}" aria-label="Dodaj porcję">+</button></div></div>`;
+    return `<div class="fz"><span class="tape">${dPL(f.frozen_on)} · ${age} dni${old ? ' · zjedz szybko' : ''}</span><div><h3>${esc(f.name)}</h3><div class="sub ${old ? 'old' : ''}">${old ? 'Przekroczony zalecany czas mrożenia' : (lim - age < 7 ? 'Zjedz w tym tygodniu' : 'Dobre jeszcze ok. ' + Math.round((lim - age) / 7) + ' tyg.')}</div></div>
+    <div class="n"><button class="round" data-act="fz-dec" data-id="${esc(f.id)}" aria-label="Wyjmij porcję">−</button><b class="num">${f.portions}</b><button class="round" data-act="fz-inc" data-id="${esc(f.id)}" aria-label="Dodaj porcję">+</button></div><div class="life ${old || lim - age < 14 ? 'old' : ''}"><i style="width:${Math.min(100, Math.round(age / lim * 100))}%"></i></div></div>`;
   }).join('');
 }
 async function fzChange(id, d) {
@@ -313,6 +338,11 @@ function renderSpend() {
   const box = $('#wlist'); if (!box) return;
   const recs = S.receipts.filter(r => (r.bought_on || '').startsWith(ui.month));
   const spent = recs.reduce((t, r) => t + +r.total, 0), budget = +S.settings.budget || 0;
+  { const [y, mo] = ui.month.split('-').map(Number), last = new Date(y, mo, 0).getDate();
+    const wk = [[1, 7], [8, 14], [15, 21], [22, last]].map(([a, b]) => ({ a, b, v: recs.filter(r => { const d = +String(r.bought_on).slice(8, 10); return d >= a && d <= b; }).reduce((t, r) => t + +r.total, 0) }));
+    const mx = Math.max(...wk.map(x => x.v), 1), tdy = today(), cur = tdy.startsWith(ui.month) ? +tdy.slice(8, 10) : 0;
+    $('#wchart').innerHTML = recs.length ? wk.map(x => `<div class="wk ${cur >= x.a && cur <= x.b ? 'now' : ''}"><small class="num">${x.v ? Math.round(x.v) + ' zł' : ''}</small><i style="height:${Math.max(4, Math.round(x.v / mx * 64))}px"></i><span>${x.a}–${x.b}</span></div>`).join('') : '';
+    $('#wsub').textContent = recs.length ? `${monthName(ui.month)} · ${zl(spent)}` : 'Z paragonów Waszego domu'; }
   let h = `<div class="month"><button data-act="month" data-d="-1" aria-label="Poprzedni miesiąc">‹</button><b>${monthName(ui.month)}</b><button data-act="month" data-d="1" aria-label="Następny miesiąc">›</button></div>`;
   const pct = budget ? spent / budget : 0;
   h += `<div class="budget"><div class="row" style="justify-content:space-between;align-items:baseline"><span class="big num">${zl(spent)}</span><button class="btn sm" data-act="budget">${budget ? 'Budżet ' + zs(budget) + ' zł' : 'Ustaw budżet'}</button></div>
@@ -475,6 +505,7 @@ document.addEventListener('click', async e => {
     case 'close': closeSheet(); break;
     case 'cat': ui.cat = d.k; lsSet('cat', d.k); renderCats(); renderRecipes(); break;
     case 'filter': ui.filter = d.k; renderCats(); renderRecipes(); break;
+    case 'deal': { const n = S.products[d.pid]?.name || ''; ui.q = n.toLowerCase(); $('#q').value = n; ui.filter = 'all'; renderCats(); renderRecipes(); window.scrollTo(0, 0); break; }
     case 'only-freezer': ui.onlyFreezer = !ui.onlyFreezer; lsSet('onlyFreezer', ui.onlyFreezer); renderCats(); renderRecipes(); break;
     case 'like': e.stopPropagation(); toggleReact(d.id, 'liked'); break;
     case 'want': toggleReact(d.id, 'wanted'); break;

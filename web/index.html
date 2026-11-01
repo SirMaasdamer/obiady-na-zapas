@@ -295,6 +295,7 @@ ol.steps li::marker{color:var(--accent)}
 .fz{padding:14px 16px;row-gap:8px}
 .fz h3{font-size:16px;font-weight:800}
 .round{width:44px;height:44px;border-radius:14px;border:0;background:var(--soft);color:var(--soft-ink);font-weight:800;font-size:20px}
+.fz .tape{justify-self:start}
 .life{grid-column:1/-1;height:6px;border-radius:3px;background:var(--sunk);overflow:hidden}
 .life i{display:block;height:100%;border-radius:3px;background:var(--accent)}
 .life.old i{background:var(--violet)}
@@ -320,6 +321,28 @@ main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 /* ekran powitalny */
 .login{background:var(--hero)}
 .login .card{box-shadow:0 12px 40px rgba(0,0,0,.25)}
+
+/* okazja tygodnia, kafelki zamrażarki, wykres tygodni */
+.deal{display:flex;align-items:center;gap:14px;width:100%;border:0;border-radius:var(--r);background:var(--vbtn);color:#fff;padding:14px 16px;text-align:left;margin-bottom:12px}
+.deal-ic{width:46px;height:46px;flex:none;border-radius:14px;background:rgba(255,255,255,.16);display:grid;place-items:center}
+.deal-ic svg,.deal-go{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.deal-go{flex:none;width:20px;height:20px}
+.deal-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.deal-t b{font-size:15px;line-height:1.25}
+.deal-t span{font-size:12.5px;color:#EDE6FF}
+.tiles{flex-basis:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tiles:empty,.wchart:empty{display:none}
+.tile{background:var(--hero-2);border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:1px}
+.tile b{font-size:24px;font-weight:800;line-height:1.1}
+.tile span{font-size:12px;font-weight:600;color:var(--hero-muted)}
+.tile.hot{background:var(--vbtn)}
+.tile.hot span{color:#EDE6FF}
+.wchart{flex-basis:100%;display:flex;gap:10px;align-items:flex-end;padding-top:6px}
+.wk{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px}
+.wk i{display:block;width:100%;border-radius:10px;background:var(--hero-3)}
+.wk.now i{background:#B9A3FF}
+.wk small{font-size:11px;font-weight:700;color:var(--hero-muted);min-height:14px}
+.wk span{font-size:11px;font-weight:600;color:var(--hero-muted)}
 </style>
 </head>
 <body>
@@ -370,7 +393,7 @@ main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
   </section>
 
   <section class="view" id="v-zamrazarka" hidden>
-    <div class="vh"><div><h1>Zamrażarka</h1><div class="sub">Najstarsze pudełka na górze</div></div></div>
+    <div class="vh"><div><h1>Zamrażarka</h1><div class="sub" id="fsub">Najstarsze pudełka na górze</div></div><div class="tiles" id="fstats"></div></div>
     <form class="row" id="f-freeze" style="flex-wrap:nowrap"><input class="input" id="fz-name" placeholder="Pudełko spoza przepisów" autocomplete="off"><input class="input" id="fz-n" type="number" min="1" value="2" style="width:72px;flex:none" aria-label="Porcje"><button class="btn pri" type="submit">Dodaj</button></form>
     <div id="flist"></div>
   </section>
@@ -383,8 +406,8 @@ main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
     <div id="plist"></div>
   </section>
   <section class="view" id="v-wydatki" hidden>
-    <div class="vh"><div><h1>Wydatki</h1><div class="sub">Z paragonów Waszego domu</div></div>
-      <label class="btn pri sm" for="rfile">+ Paragon</label></div>
+    <div class="vh"><div><h1>Wydatki</h1><div class="sub" id="wsub">Z paragonów Waszego domu</div></div>
+      <label class="btn pri sm" for="rfile">+ Paragon</label><div class="wchart" id="wchart"></div></div>
     <input type="file" id="rfile" accept="image/*,application/pdf" multiple hidden>
     <div id="wlist"></div>
   </section>
