@@ -266,7 +266,7 @@ function renderRecipes() {
   $('#rcount').textContent = all.length ? `${all.length} dań · ${all.filter(r => r.freezer !== false).length} do mrożenia` : 'Przepisy na obiady';
   if (!all.length) { box.innerHTML = S.loaded.recipes ? `<div class="empty"><h3>Nie ma jeszcze przepisów</h3><div>Baza przepisów jeszcze się wczytuje. Zajrzyj za kilka minut.</div></div>` : `<div class="empty"><span class="spin"></span>Wczytuję przepisy…</div>`; return; }
   const q = ui.q.trim().toLowerCase(), week = Date.now() - 7 * 864e5;
-  let list = all.map(r => ({ ...r, c: L.recipeCost(r, 2), re: reactFor(r.id), isNew: ui.justAdded.has(r.id) || (S.hh[r.id]?.activated_at && new Date(S.hh[r.id].activated_at).getTime() > week) || (r.source === 'claude' && r.added_on && new Date(r.added_on).getTime() > week) }))
+  let list = all.map(r => ({ ...r, c: costOf(r), re: reactFor(r.id), isNew: ui.justAdded.has(r.id) || (S.hh[r.id]?.activated_at && new Date(S.hh[r.id].activated_at).getTime() > week) || (r.source === 'claude' && r.added_on && new Date(r.added_on).getTime() > week) }))
     .filter(r => {
       if (ui.cat !== 'all' && r.category !== ui.cat) return false;
       if (ui.onlyFreezer && r.freezer === false) return false;
@@ -649,7 +649,11 @@ function setTab(t) {
   if (changed && db) renderAll();
 }
 // Rysujemy tylko widoczny widok (pozostałe przy przełączeniu zakładki) i licznik na zakładce „Lista”.
-function renderAll() {
+// koszt porcji liczony raz na wczytanie danych (wyszukiwarka nie przelicza 300 przepisów przy każdej literze)
+let costCache = new Map();
+const costOf = r => { let c = costCache.get(r.id); if (!c) { c = L.recipeCost(r, 2); costCache.set(r.id, c); } return c; };
+let qTimer;
+function renderAll() { costCache = new Map();
   renderBadge();
   if (ui.tab === 'przepisy') { renderCats(); renderRecipes(); }
   else if (ui.tab === 'lista') renderList();
@@ -749,8 +753,8 @@ document.addEventListener('submit', async e => {
 });
 document.addEventListener('change', e => { if (e.target.id === 'rfile' && e.target.files.length) { const fs = [...e.target.files]; e.target.value = ''; importReceipt(fs); } });
 document.addEventListener('input', e => {
-  if (e.target.id === 'q') { ui.q = e.target.value; renderRecipes(); }
-  else if (e.target.id === 'pq') { ui.pq = e.target.value; renderPrices(); }
+  if (e.target.id === 'q') { ui.q = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(renderRecipes, 220); }
+  else if (e.target.id === 'pq') { ui.pq = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(renderPrices, 220); }
   else if (e.target.id === 'rd-n') { const n = parseInt(e.target.value); if (n > 0 && n <= 40) { ui.portions = n; lsSet('portions', n); document.querySelectorAll('[data-act="pset"]').forEach(c => c.setAttribute('aria-pressed', +c.dataset.n === n)); drawRecipeDyn(); } }
 });
 window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (TABS.includes(h)) setTab(h); });
