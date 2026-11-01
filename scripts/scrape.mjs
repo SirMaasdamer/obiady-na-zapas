@@ -23,7 +23,7 @@ const STORES = {
   l: { name: 'Lidl', home: 'https://www.lidl.pl/', start: ['https://www.lidl.pl/c/nasze-gazetki/s10008614', 'https://www.lidl.pl/'] },
   k: { name: 'Kaufland', home: 'https://www.kaufland.pl/', start: ['https://sklep.kaufland.pl/gazeta-reklamowa.html'] },
 };
-const ONLY = (env('STORES', false) || 'b,l,k').split(',').map(s => s.trim()).filter(s => STORES[s]);
+const ONLY = (env('STORES', false) || 'b,l,k').split(',').map(s => s.trim()).filter(s => STORES[s]); // STORES=blix: tylko próba Blix
 const MAX_PAGES = +(env('MAX_PAGES', false) || 60);
 const PAUSE = +(env('PAUSE_MS', false) || 1200); // przerwa między stronami agregatora (uprzejmość wobec serwisu)
 const log = (...a) => console.log(...a);
@@ -308,6 +308,10 @@ async function blixProbe() {
       dbg(st, text.slice(0, 5000));
       const ls = (await links(page)).filter(l => /blix\.pl/.test(l.href));
       dbg(st, `--- linki blix (${ls.length}):`); for (const l of ls.slice(0, 120)) dbg(st, `  ${l.text.slice(0, 60)} → ${l.href}`);
+      // skrót w logu przebiegu (artefakty bywają niedostępne): tytuł, początek tekstu, ciekawe linki
+      log(`  [blix] ${label}: ${page.url()} | ${await page.title().catch(() => '')} | tekst ${text.length} zn., linki ${ls.length}`);
+      log(`  [blix]   tekst: ${text.replace(/\s+/g, ' ').slice(0, 700)}`);
+      for (const l of ls.filter(l => /gazetk|promoc|oferta|produkt|szukaj|lidl|biedronk|kaufland/i.test(l.href)).slice(0, 15)) log(`  [blix]   link: ${l.text.replace(/\s+/g, ' ').slice(0, 50)} → ${l.href}`);
       if (shots++ < 6) { await mkdir(new URL('../dane/debug/', import.meta.url), { recursive: true }); await page.screenshot({ path: new URL(`../dane/debug/blix-${shots}.jpg`, import.meta.url).pathname, type: 'jpeg', quality: 45, scale: 'css' }); }
       return ls;
     } catch (e) { dbg(st, `${label} ${url}: ${e.message}`); return []; }
@@ -323,6 +327,7 @@ async function blixProbe() {
     }
   } finally {
     dbg(st, `\n===== odpowiedzi JSON (${json.length}):`); for (const j of json.slice(0, 60)) dbg(st, j);
+    log(`  [blix] odpowiedzi JSON: ${json.length}`); for (const j of json.slice(0, 8)) log(`  [blix]   ${j.slice(0, 400)}`);
     await page.close();
   }
 }
@@ -332,6 +337,8 @@ await browser.close();
 // Podgląd dla diagnostyki
 await mkdir(new URL('../dane/debug/', import.meta.url), { recursive: true });
 for (const [st, lines] of Object.entries(DEBUG)) await writeFile(new URL(`../dane/debug/${st}.txt`, import.meta.url), lines.join('\n').slice(0, 400000) + '\n');
+
+if (!ONLY.length) { log('\nTylko próba Blix: bez zapisu ofert.'); process.exit(0); }
 
 // Wynik tego przebiegu (bez łączenia z poprzednimi): bazę uzupełnia funkcja „ingest”, a sklep, którego nie udało się
 // odczytać, zachowuje w bazie poprzednie, wciąż ważne oferty. Podgląd w repozytorium: scripts/oferty-podglad.mjs.
