@@ -261,6 +261,7 @@ async function sendAsk() {
   if (!navigator.onLine) { toast('Prośbę wyślesz, gdy wróci internet.'); return; }
   if (await w(() => db.from('recipe_requests').insert({ query: q, member: ui.member || null }), `Wysłano prośbę: ${q}`)) { ui.sheet.q = ''; ping(['recipe_requests']); await sync(); drawSheet(); }
 }
+let rObserver = null;
 function renderRecipes() {
   const box = $('#rlist'); const all = activeRecipes();
   $('#rcount').textContent = all.length ? `${all.length} dań · ${all.filter(r => r.freezer !== false).length} do mrożenia` : 'Przepisy na obiady';
@@ -280,7 +281,8 @@ function renderRecipes() {
   list.sort((a, b) => (b.isNew && ui.justAdded.has(b.id)) - (a.isNew && ui.justAdded.has(a.id)) || b.re.want.length - a.re.want.length || new Set(b.c.promos.map(x => x.pid)).size - new Set(a.c.promos.map(x => x.pid)).size || a.name.localeCompare(b.name, 'pl'));
   const deal = (ui.q ? '' : dealHtml(all)) + readyHtml();
   if (!list.length) { box.innerHTML = deal + `<div class="empty"><h3>Nic tu nie pasuje</h3><div>${ui.q ? `Nie mamy jeszcze przepisu na „${esc(ui.q)}”. Poproś, a Claude poszuka przepisów i dopisze je do bazy.` : 'Zmień filtr, kategorię albo wyszukiwanie.'}</div>${ui.q ? `<button class="btn pri" data-act="ask" data-q="${esc(ui.q)}">Poproś o „${esc(ui.q)}”</button>` : ''}</div>`; return; }
-  box.innerHTML = deal + '<div class="cards">' + list.map(r => {
+  // karty dokładamy partiami przy przewijaniu: pierwsze 24 od razu, kolejne gdy użytkownik dojedzie do końca
+  const card = r => {
     const best = SK.filter(s => !r.c.miss[s]).sort((a, b) => r.c.tot[a] - r.c.tot[b])[0];
     const nPromo = new Set(r.c.promos.map(x => x.pid)).size, liked = r.re.like.includes(ui.member);
     return `<div class="card" role="button" tabindex="0" data-act="open" data-id="${esc(r.id)}">
@@ -290,7 +292,15 @@ function renderRecipes() {
       <div class="meta">${r.isNew ? '<span class="pill new">Nowe</span>' : ''}${nPromo ? `<span class="pill promo">${nPromo} w promocji</span>` : ''}${r.re.want.length ? `<span class="pill want">Zróbmy to ${faces(r.re.want)}</span>` : ''}${r.re.like.length ? `<span class="pill muted">♥ ${faces(r.re.like)}</span>` : ''}<span>${r.minutes || '?'} min · z: ${esc(r.sides || 'dowolne dodatki')}</span></div>
       <div class="price-line"><span class="sub">porcja od</span><span><b class="num">${zl(r.c.mix / 2)}</b>${best ? ` <span class="sub">· najtaniej <span class="store ${best}">${SN[best]}</span></span>` : ''}</span></div>
     </div>`;
-  }).join('') + '</div>' + (ui.q ? `<div class="empty" style="margin-top:12px"><div>Szukasz innej wersji? Claude dopisze kilka przepisów na „${esc(ui.q)}”.</div><button class="btn sm" data-act="ask" data-q="${esc(ui.q)}">Poproś o więcej</button></div>` : '');
+  };
+  let shown = Math.min(list.length, 24);
+  const more = () => list.length > shown ? `<div class="rmore" id="rmore"><span class="spin"></span> Wczytuję kolejne przepisy…</div>` : (ui.q ? `<div class="empty" style="margin-top:12px"><div>Szukasz innej wersji? Claude dopisze kilka przepisów na „${esc(ui.q)}”.</div><button class="btn sm" data-act="ask" data-q="${esc(ui.q)}">Poproś o więcej</button></div>` : '');
+  box.innerHTML = deal + '<div class="cards">' + list.slice(0, shown).map(card).join('') + '</div>' + more();
+  rObserver?.disconnect();
+  const watch = () => { const el = $('#rmore'); if (!el) return; rObserver = new IntersectionObserver(es => { if (!es.some(e => e.isIntersecting)) return; rObserver.disconnect();
+    const next = list.slice(shown, shown + 24); shown += next.length; box.querySelector('.cards').insertAdjacentHTML('beforeend', next.map(card).join(''));
+    el.outerHTML = more(); watch(); }, { rootMargin: '600px' }); rObserver.observe(el); };
+  watch();
 }
 
 function recipeSheet() {
