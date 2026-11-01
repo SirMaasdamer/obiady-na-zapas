@@ -1,0 +1,44 @@
+name: Biblioteki przeglądarki
+
+# Kopiuje biblioteki aplikacji (supabase-js, pdf.js, tesseract.js z danymi języka polskiego) z npm
+# do web/vendor/, żeby aplikacja nie ładowała kodu z obcych serwerów (CDN).
+# Wersje: package.json + package-lock.json; sumy SHA-256 plików: web/vendor/WERSJE.json.
+# Uruchamiany ręcznie: wynik trafia na nową gałąź „biblioteki-<numer>” do przejrzenia i scalenia.
+on:
+  workflow_dispatch:
+  push:
+    branches: [bezpieczenstwo-i-pipeline] # tymczasowo: pierwsze pobranie bibliotek
+    paths: ["package.json", "scripts/vendor.mjs", ".github/workflows/biblioteki.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: biblioteki
+  cancel-in-progress: false
+
+jobs:
+  biblioteki:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Instalacja pakietów (bez skryptów instalacyjnych)
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Kopia bibliotek do web/vendor
+        run: node scripts/vendor.mjs
+      - name: Zapis
+        run: |
+          git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
+          git add package-lock.json web/vendor
+          if git diff --cached --quiet; then echo "Bez zmian."; exit 0; fi
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            git commit -q -m "Biblioteki przeglądarki w web/vendor" && git push -q
+          else
+            b="biblioteki-$GITHUB_RUN_ID"; git switch -q -c "$b"
+            git commit -q -m "Aktualizacja bibliotek przeglądarki" && git push -q origin "$b"
+            echo "### Nowa gałąź $b: przejrzyj zmiany i scal przez pull request" >> "$GITHUB_STEP_SUMMARY"
+          fi
