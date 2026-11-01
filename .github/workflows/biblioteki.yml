@@ -6,9 +6,6 @@ name: Biblioteki przeglądarki
 # Uruchamiany ręcznie: wynik trafia na nową gałąź „biblioteki-<numer>” do przejrzenia i scalenia.
 on:
   workflow_dispatch:
-  push:
-    branches: [bezpieczenstwo-i-pipeline] # tymczasowo: pierwsze pobranie bibliotek
-    paths: ["package.json", "scripts/vendor.mjs", ".github/workflows/biblioteki.yml"]
 
 permissions:
   contents: write

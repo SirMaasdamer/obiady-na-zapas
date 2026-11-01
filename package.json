@@ -11,7 +11,8 @@
     "katalog": "node scripts/import-recipes.mjs",
     "test": "node scripts/test.mjs && node scripts/test-bezpieczenstwo.mjs",
     "biblioteki": "node scripts/vendor.mjs",
-    "biblioteki:sprawdz": "node scripts/vendor.mjs --check"
+    "biblioteki:sprawdz": "node scripts/vendor.mjs --check",
+    "test:aplikacja": "node scripts/test-aplikacji.mjs"
   },
   "dependencies": {
     "playwright": "1.64.1"

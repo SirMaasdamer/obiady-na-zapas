@@ -1,5 +1,5 @@
 // Sprawdza katalog startowy i paczki przepisów z folderu przepisy/, po czym buduje dane/katalog.json.
-// Funkcja „sync” w Supabase co godzinę pobiera ten plik i aktualizuje bazę.
+// Plik nie trafia do repozytorium: workflow „Nowe przepisy” buduje go i wysyła do bazy (scripts/ingest.mjs katalog).
 //   node scripts/import-recipes.mjs          → sprawdzenie + zapis dane/katalog.json
 //   node scripts/import-recipes.mjs --check  → tylko sprawdzenie
 import { writeFile, mkdir } from 'node:fs/promises';

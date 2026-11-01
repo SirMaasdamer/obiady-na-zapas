@@ -1,5 +1,3 @@
--- Prośby o przepisy: domownik wpisuje danie, którego brakuje (np. „burrito”).
--- Zaplanowane zadanie Claude kilka razy dziennie szuka przepisów, dopisuje je do bazy i oznacza prośbę jako gotową.
 create table if not exists recipe_requests (
   id uuid primary key default gen_random_uuid(),
   household_id uuid not null default public.current_household() references households(id) on delete cascade,
@@ -13,7 +11,6 @@ create table if not exists recipe_requests (
 );
 create index if not exists recipe_requests_hh on recipe_requests(household_id);
 create index if not exists recipe_requests_status on recipe_requests(status) where status in ('czeka', 'w_toku');
-
 alter table recipe_requests enable row level security;
 do $$ begin
   if not exists (select 1 from pg_policies where tablename = 'recipe_requests' and policyname = 'dom') then
@@ -22,5 +19,4 @@ do $$ begin
   end if;
 end $$;
 grant select, insert, delete on recipe_requests to anon, authenticated;
--- domownik nie zmienia statusu ani wyniku – robi to tylko zadanie przetwarzające (dostęp administracyjny)
 revoke update on recipe_requests from anon, authenticated;

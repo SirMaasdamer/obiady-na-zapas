@@ -1,0 +1,23 @@
+# Cotygodniowe propozycje aktualizacji akcji GitHub i pakietów npm (z tygodniowym odczekaniem po wydaniu).
+# Uwaga: po aktualizacji bibliotek przeglądarki (supabase-js, pdfjs-dist, tesseract.js) test „Biblioteki w web/vendor”
+# nie przejdzie, dopóki nie uruchomisz workflowu „Biblioteki przeglądarki” (opis w web/vendor/README.md).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      akcje:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      npm:
+        patterns: ["*"]

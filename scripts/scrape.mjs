@@ -4,6 +4,8 @@
 // 2) gazetka w PDF z warstwą tekstu (pdftotext),
 // 3) gazetka jako obrazy → zrzuty stron + OCR (Tesseract); najmniej pewne, więc z ostrzejszą kontrolą cen.
 // Produkty z katalogu wyszukiwane po słowach kluczowych, ceny sprawdzane z ceną regularną.
+// Wynik: dane/oferty-przebieg.json (tylko ten przebieg). Workflow „Ceny z gazetek” wysyła go do funkcji „ingest”
+// w osobnym jobie; diagnostyka (dane/debug/) trafia do artefaktu workflowu, nie do repozytorium.
 import { chromium } from 'playwright';
 import { createHash } from 'node:crypto';
 import { execFile } from 'node:child_process';
@@ -23,17 +25,21 @@ const STORES = {
 };
 const ONLY = (env('STORES', false) || 'b,l,k').split(',').map(s => s.trim()).filter(s => STORES[s]);
 const MAX_PAGES = +(env('MAX_PAGES', false) || 60);
+const PAUSE = +(env('PAUSE_MS', false) || 1200); // przerwa między stronami agregatora (uprzejmość wobec serwisu)
 const log = (...a) => console.log(...a);
 
-// katalog = produkty startowe + dodane przez Claude (folder przepisy/); cena odniesienia = średnia cena regularna
-const { products } = buildKatalog(await loadAll());
-const catalog = products.filter(p => !p.pantry).map(p => { const v = Object.values(p.regular || {}).filter(x => +x > 0); return { ...p, ref: v.length ? v.reduce((a, b) => a + b) / v.length : null }; });
+// katalog = produkty startowe + dodane przez Claude (folder przepisy/); szukamy tylko produktów używanych w przepisach;
+// cena odniesienia = średnia cena regularna
+const { products, recipes } = buildKatalog(await loadAll());
+const used = new Set(recipes.flatMap(r => (r.ingredients || []).map(i => i.pid)));
+const catalog = products.filter(p => !p.pantry && used.has(p.id)).map(p => { const v = Object.values(p.regular || {}).filter(x => +x > 0); return { ...p, ref: v.length ? v.reduce((a, b) => a + b) / v.length : null }; });
 log(`Katalog: ${catalog.length} produktów, ${catalog.filter(p => p.ref && p.kw?.length).length} z ceną odniesienia i słowami kluczowymi.`);
 
 const browser = await chromium.launch();
+// uczciwy User-Agent: prawdziwa przeglądarka i system oraz nazwa robota z adresem projektu
+const UA = `Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${browser.version().split('.')[0]}.0.0.0 Safari/537.36 ObiadyNaZapas/1.0 (+https://github.com/SirMaasdamer/obiady-na-zapas)`;
 const ctx = await browser.newContext({
-  locale: 'pl-PL', timezoneId: 'Europe/Warsaw', viewport: { width: 1100, height: 1500 }, deviceScaleFactor: 1.5, acceptDownloads: true,
-  userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36',
+  locale: 'pl-PL', timezoneId: 'Europe/Warsaw', viewport: { width: 1100, height: 1500 }, deviceScaleFactor: 1.5, acceptDownloads: true, userAgent: UA,
 });
 
 // ---------- diagnostyka: co robot widzi (zapis w dane/debug/, żeby dało się poprawiać odczyt) ----------
@@ -94,6 +100,7 @@ async function aggregatorPages(store, page) {
     for (const kw of p.kw.slice(0, 2).map(k => k.trim())) {
       if (seen.has(kw)) break; seen.add(kw);
       const url = `https://www.gazetki.pl/oferty/${encodeURIComponent(kw.replace(/\s+/g, '-'))}/${AGG_SLUG[store]}`;
+      await sleep(PAUSE + Math.random() * 500);
       try {
         const r = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
         if (!r || r.status() >= 400) { fail++; if (fail >= 8 && !ok) return items; continue; }
@@ -254,7 +261,7 @@ function collect(store, leaflet, pages, agg = []) {
   const fromOcr = matchOffers(pages.filter(p => p.src === 'ocr'), catalog.filter(p => !got.has(p.id)))
     .filter(o => { const p = catalog.find(c => c.id === o.product_id); return o.price_for_pack >= p.ref * 0.5 && o.price_for_pack <= p.ref * 1.1; })
     .map(o => ({ ...o, note: 'odczyt OCR, sprawdź w sklepie' }));
-  const rows = [...exact, ...fromOcr].map(o => ({ store, leaflet: o.page === 'gazetki.pl' ? `https://www.gazetki.pl/sklepy/${AGG_SLUG[store]}/gazetka` : leaflet, valid_from: v.valid_from, valid_to: v.valid_to, ...o }));
+  const rows = [...exact, ...fromOcr].map(o => ({ store, leaflet: o.page === 'gazetki.pl' ? `https://www.gazetki.pl/sklepy/${AGG_SLUG[store]}/gazetka` : leaflet, valid_from: v.valid_from, valid_to: v.valid_to, ...o, page: o.page == null ? null : String(o.page) }));
   const name = Object.fromEntries(catalog.map(p => [p.id, p.name]));
   OUT.offers.push(...rows);
   dbg(store, `\n===== DOPASOWANE (${rows.length}):`); rows.forEach(r => dbg(store, `  ${r.product_id}: ${r.price_for_pack} zł ← „${r.name}” (${r.unit_info || ''})`));
@@ -276,7 +283,7 @@ for (const store of ONLY) {
     for (const url of leaflets) { log(`  gazetka: ${url}`); pages.push(...await leafletPages(page, url)); }
     const agg = await aggregatorPages(store, page);
     const js = [...(JSON_LINES[store]?.values() || [])].flat();
-    if (js.length) { pages.push({ page: 'json', text: js.join('\n\n'), src: 'www' }); log(`   dane JSON: ${js.length} pozycji`); }
+    if (js.length) { pages.push({ page: 'json', text: js.join('\n\n'), src: 'json' }); log(`   dane JSON: ${js.length} pozycji`); }
     curStore = null;
     if (!pages.length && !agg.length) throw new Error('Nie znalazłem ani ofert, ani gazetki na stronie sklepu.');
     const s = collect(store, leaflets[0] || STORES[store].home, pages, agg);
@@ -293,21 +300,12 @@ await browser.close();
 await mkdir(new URL('../dane/debug/', import.meta.url), { recursive: true });
 for (const [st, lines] of Object.entries(DEBUG)) await writeFile(new URL(`../dane/debug/${st}.txt`, import.meta.url), lines.join('\n').slice(0, 400000) + '\n');
 
-// Wynik do dane/oferty.json (stąd funkcja „sync” w Supabase wgrywa go do bazy, a Claude dobiera przepisy).
-// Sklep, którego nie udało się odczytać, zachowuje poprzednie, wciąż ważne oferty.
+// Wynik tego przebiegu (bez łączenia z poprzednimi): bazę uzupełnia funkcja „ingest”, a sklep, którego nie udało się
+// odczytać, zachowuje w bazie poprzednie, wciąż ważne oferty. Podgląd w repozytorium: scripts/oferty-podglad.mjs.
 {
-  const file = new URL('../dane/oferty.json', import.meta.url), t = today();
-  const prev = JSON.parse(await readFile(file, 'utf8').catch(() => '{}'));
-  const okStores = new Set(OUT.runs.filter(r => r.status === 'ok').map(r => r.store));
-  const keep = (arr, toKey) => (arr || []).filter(x => !okStores.has(x.store) && (x[toKey] || '9999') >= t);
-  const out = {
-    updated: new Date().toISOString(),
-    runs: [...OUT.runs, ...(prev.runs || []).filter(r => !OUT.runs.some(n => n.store === r.store && n.ran_at === r.ran_at))].slice(0, 30),
-    promos: [...OUT.promos, ...keep(prev.promos, 'to')].sort((a, b) => (a.name || '').localeCompare(b.name || '', 'pl')),
-    offers: [...OUT.offers, ...keep(prev.offers, 'valid_to')],
-  };
+  const out = { updated: new Date().toISOString(), runs: OUT.runs, promos: OUT.promos, offers: OUT.offers };
   await mkdir(new URL('../dane/', import.meta.url), { recursive: true });
-  await writeFile(file, JSON.stringify(out, null, 1) + '\n');
-  log(`\nZapisano dane/oferty.json: ${out.promos.length} promocji.`);
+  await writeFile(new URL('../dane/oferty-przebieg.json', import.meta.url), JSON.stringify(out, null, 1) + '\n');
+  log(`\nZapisano dane/oferty-przebieg.json: ${out.offers.length} ofert, ${out.runs.length} przebiegów.`);
 }
 if (failed === ONLY.length) process.exit(1);

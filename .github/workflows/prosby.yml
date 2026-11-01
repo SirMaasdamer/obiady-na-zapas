@@ -1,0 +1,35 @@
+name: Prośby o przepisy
+
+# Co godzinę pobiera z bazy prośby o przepisy (funkcja „ingest”, token OIDC) i zapisuje je w dane/prosby.json.
+# Zadanie Claude „Przepisy na życzenie” czyta ten plik z repozytorium, więc nie potrzebuje dostępu do bazy.
+# Commit powstaje tylko wtedy, gdy lista próśb się zmieni. Przy okazji to codzienna aktywność, dzięki której
+# darmowy projekt Supabase nie jest usypiany.
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: prosby
+  cancel-in-progress: false
+
+jobs:
+  prosby:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Prośby z bazy
+        run: node scripts/ingest.mjs prosby dane/prosby.json
+      - name: Zapis w repozytorium
+        run: |
+          git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
+          git add dane/prosby.json
+          if ! git diff --cached --quiet; then git commit -q -m "Prośby o przepisy"; for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 10; done; fi

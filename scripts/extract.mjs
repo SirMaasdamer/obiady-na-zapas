@@ -104,7 +104,7 @@ export function matchOffers(pages, products) {
               product_id: p.id, name: line || p.name, price: best.v, price_for_pack: best.forPack,
               regular: reg ? reg.v : null,
               unit_info: best.perKg ? 'za kg' : size ? (size >= 1 ? size + (p.unit === 'kg' ? ' kg' : ' l') : Math.round(size * 1000) + (p.unit === 'kg' ? ' g' : ' ml')) : null,
-              page: pg.page,
+              page: pg.page, source: pg.src || 'www', // źródło: www, json, pdf albo ocr (ingest odrzuca inne)
             };
           }
         }
@@ -205,7 +205,7 @@ export function aggOffers(items, products, slug, storeName, todayIso) {
     for (const c of cands) for (const p of prods) {
       if (!aggNameFits(c.name, p)) continue;
       const forPack = aggPackPrice(c.price, c.name, p); if (forPack == null) continue;
-      consider(p, { product_id: p.id, name: c.name.slice(0, 90), price: c.price, price_for_pack: forPack, regular: c.regular, unit_info: null, page: 'gazetki.pl', valid_from: c.from || undefined, valid_to: c.to || undefined });
+      consider(p, { product_id: p.id, name: c.name.slice(0, 90), price: c.price, price_for_pack: forPack, regular: c.regular, unit_info: null, page: 'gazetki.pl', source: 'gazetki.pl', valid_from: c.from || undefined, valid_to: c.to || undefined });
     }
   }
   return Object.values(res).map(o => { for (const k of ['valid_from', 'valid_to']) if (!o[k]) delete o[k]; return o; });

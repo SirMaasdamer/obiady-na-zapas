@@ -1,13 +1,11 @@
--- Paragony i wydatki (osobne dla każdego domu).
-
 create table if not exists receipts (
   id uuid primary key default gen_random_uuid(),
   household_id uuid not null default public.current_household() references households(id) on delete cascade,
-  store text not null,              -- b | l | k | inny kod
+  store text not null,
   store_name text not null,
   bought_on date not null,
   total numeric not null,
-  source text,                      -- pdf | zdjęcie | ręcznie
+  source text,
   member text,
   created_at timestamptz not null default now()
 );
@@ -19,9 +17,9 @@ create table if not exists receipt_items (
   household_id uuid not null default public.current_household() references households(id) on delete cascade,
   name text not null,
   qty numeric not null default 1,
-  weighed boolean not null default false, -- ilość w kg
+  weighed boolean not null default false,
   unit_price numeric,
-  total numeric not null,           -- po rabatach
+  total numeric not null,
   discount numeric not null default 0,
   product_id text references products(id) on delete set null,
   category text
@@ -33,7 +31,7 @@ create table if not exists hh_settings (
   budget numeric
 );
 
-alter table hh_prices add column if not exists src text;      -- ręcznie | paragon
+alter table hh_prices add column if not exists src text;
 alter table hh_prices add column if not exists seen_on date;
 
 do $$

@@ -1,1 +1,5 @@
 node_modules/
+# Dane generowane w CI: trafiają do bazy (funkcja „ingest”) albo do artefaktów workflowów, nie do repozytorium
+dane/katalog.json
+dane/oferty-przebieg.json
+dane/debug/
