@@ -104,7 +104,7 @@ async function aggregatorPages(store, page) {
         const cards = await page.evaluate(() => {
           // kafelek = najbliższy przodek ceny, który ma obrazek i kilka linii tekstu (niezależnie od klas CSS)
           const out = [], seen = new Set();
-          const leaves = [...document.querySelectorAll('body *')].filter(e => !e.children.length && /\d,\d{2}\s*zł/.test(e.textContent || ''));
+          const leaves = [...document.querySelectorAll('body *')].filter(e => !e.children.length && !e.closest('table') && /\d,\d{2}\s*zł/.test(e.textContent || ''));
           for (const leaf of leaves) {
             let el = leaf;
             while (el.parentElement && !(el.querySelector('img') && (el.innerText || '').split('\n').filter(x => x.trim()).length >= 2)) el = el.parentElement;

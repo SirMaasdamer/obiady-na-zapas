@@ -142,7 +142,7 @@ export function scoreOfferLink(l) {
 // ---------- agregator gazetki.pl: oferty jako dane strukturalne (kafelki + tabela historii) ----------
 // Słowa wskazujące na przetworzony lub inny produkt (wędlina zamiast mięsa, danie gotowe, karma…).
 // Pomijane, jeśli samo słowo kluczowe produktu je zawiera (np. „boczek wędzony”).
-const OTHER = /wedzon|pieczon|gotowan|grillowan|panierowan|marynowan|dla (psow|psa|kota|kotow)|karma|danie|dania|pasztet|kabanos|parowk|chips|baton|zupa|sos |salatk|surowk|pierog|krokiet|nalesnik|kanapk|sloiczek|hipp|bobovit|gerber|kuskus|z nadzieniem|nadziewan|lody|deser|ciast|krem |napoj|sok |nektar|syrop|przekask|snack|mrozon|w sosie|plastr|w plastrach|krojon(?:y|a) w plastry|nasze smaki|high protein|z boczkiem|maslan|z kurkami|z cebulk|z ziolami|z czosnkiem niedzw/;
+const OTHER = /wedzon|pieczon|gotowan|grillowan|panierowan|marynowan|dla (psow|psa|kota|kotow)|karma|danie|dania|pasztet|kabanos|parowk|chips|baton|zupa|sos |salatk|surowk|pierog|krokiet|nalesnik|kanapk|sloiczek|hipp|bobovit|gerber|kuskus|z nadzieniem|nadziewan|lody|deser|ciast|krem |napoj|sok |nektar|syrop|przekask|snack|mrozon|w sosie|plastr|w plastrach|krojon(?:y|a) w plastry|nasze smaki|high protein|z boczkiem|maslan|z kurkami|z cebulk|z ziolami|z czosnkiem niedzw|mrozn|krain[ay] wedlin|lemoniad|muffin|bulk[ai]|z kurczakiem|z miesem|bolognese/;
 const PL_MONTHS = { stycznia: 1, lutego: 2, marca: 3, kwietnia: 4, maja: 5, czerwca: 6, lipca: 7, sierpnia: 8, wrzesnia: 9, pazdziernika: 10, listopada: 11, grudnia: 12 };
 const isoAdd = (iso, n) => { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + n); return d.toLocaleDateString('sv-SE'); };
 export function plDate(s) { const m = norm(s || '').match(/(\d{1,2})\s+([a-z]+)\s+(\d{4})/); if (!m || !PL_MONTHS[m[2]]) return null; return `${m[3]}-${String(PL_MONTHS[m[2]]).padStart(2, '0')}-${m[1].padStart(2, '0')}`; }
@@ -153,6 +153,9 @@ export function aggNameFits(name, p) {
   const n = norm(name);
   const kw = (p.kw || []).find(k => { const i = n.indexOf(k); return i !== -1 && !/[a-z]/.test(n[i - 1] || '') && !/[a-z]/.test(n[i + k.length] || ''); });
   if (!kw) return false;
+  // „Bułka z dynią”, „Oliwki z serem feta”, „Lemoniada o smaku cytryny” – produkt jest tylko dodatkiem
+  const before = ' ' + n.slice(0, n.indexOf(kw));
+  if (/ (z|ze|o smaku|w|na|do|dla) /.test(before) && !/ (z|ze|w) /.test(' ' + kw + ' ')) return false;
   const bad = n.match(OTHER);
   return !bad || (p.kw || []).some(k => k.includes(bad[0].trim()));
 }

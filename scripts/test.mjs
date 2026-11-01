@@ -102,6 +102,9 @@ eq(R.joinShots(['a\nb\nc', 'b\nc\nd']), 'a\nb\nc\nd', 'paragon: łączenie zrzut
       { href: '', logos: 'Netto /img/netto.png', text: 'Filet z kurczaka\n3 dni\n9,99 zł' }], rows: [] }], P, 'biedronka', 'Biedronka', '2026-11-01');
   eq(o2.map(x => x.product_id + ':' + x.price_for_pack).join(','), 'kurczak_filet:12.99', 'agregator: kafelek rozpoznany po logo sklepu');
   eq(E.aggOffers([{ kw: 'gouda', cards: [{ href: '/sklepy/biedronka/oferty/a/', text: 'Ser Gouda z kurkami i cebulką\n2,99 zł' }], rows: [] }], [{ id: 'ser', unit: 'kg', pack: 0.15, kw: ['gouda'], ref: 5 }], 'biedronka', 'Biedronka', '2026-11-01').length, 0, 'agregator: bez serów smakowych');
+  const P3 = [{ id: 'dynia', unit: 'kg', pack: 1, loose: true, kw: ['dynia'], ref: 4.5 }, { id: 'cytryna', unit: 'szt', pack: 1, kw: ['cytryna', 'cytryny'], ref: 1.3 }];
+  eq(E.aggOffers([{ kw: 'dynia', cards: [{ href: '/sklepy/biedronka/oferty/a/', text: 'Bułka z dynią 70 g\n1,25 zł' }, { href: '/sklepy/biedronka/oferty/b/', text: 'Dynia piżmowa 1 kg\n2,99 zł' }], rows: [] },
+    { kw: 'cytryny', cards: [{ href: '/sklepy/biedronka/oferty/c/', text: 'Lemoniada o smaku cytryny 1 l\n0,99 zł' }], rows: [] }], P3, 'biedronka', 'Biedronka', '2026-11-01').map(x => x.product_id + ':' + x.price_for_pack).join(','), 'dynia:2.99', 'agregator: produkt jako dodatek pomijany');
   eq(E.plDate('02 listopada 2026'), '2026-11-02', 'agregator: polska data');
 }
 if (fails) { console.log(fails, 'błędów'); process.exit(1); } else console.log('Wszystkie testy przeszły.');
