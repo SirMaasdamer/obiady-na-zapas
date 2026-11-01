@@ -26,6 +26,7 @@ create table public.hh_invites (
   expires_at timestamptz not null default now() + interval '14 days'
 );
 create index hh_invites_hh on public.hh_invites (household_id);
+create index hh_invites_by on public.hh_invites (created_by);
 alter table public.hh_invites enable row level security;
 revoke all on public.hh_invites from anon, authenticated;
 comment on table public.hh_invites is 'Kody zaproszeń (skróty). Brak polityk RLS jest celowy: dostęp wyłącznie przez funkcje.';

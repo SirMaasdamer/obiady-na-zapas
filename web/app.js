@@ -171,7 +171,7 @@ async function syncOnce() {
   $('#lost').hidden = !!data?.dom;
   if (!data?.dom) { $('#lost').innerHTML = lostHtml(); return; }
   if (data.dom.name && data.dom.name !== house.name) { house.name = data.dom.name; lsSet('house', house); remember(house); }
-  if (data.dom.id && !house.id) { house.id = data.dom.id; lsSet('house', house); }
+  if (data.dom.id && !house.id) { house.id = data.dom.id; lsSet('house', house); remember(house); await chanTag(); chan?.unsubscribe(); subscribe(); }
   const want = {};
   for (const [t, deps] of Object.entries(SHARED)) want[t] = deps.map(d => d === 'dzien' ? today() : d + '=' + (data.zbiory?.[d] ?? '?')).join('|');
   for (const t of HH_TABLES) want[t] = data.tabele?.[t] ?? 'brak';
@@ -642,7 +642,7 @@ function whoSheet() {
 }
 /* domy zapamiętane na tym telefonie (zaproszenie do innego domu nie kasuje poprzedniego) */
 const knownHouses = () => (lsGet('houses', []) || []).filter(h => keyFrom(h?.key));
-function remember(h) { lsSet('houses', [{ key: h.key, name: h.name }, ...knownHouses().filter(x => x.key !== h.key)].slice(0, 8)); }
+function remember(h) { lsSet('houses', [{ key: h.key, name: h.name, id: h.id, member: h.member, member_id: h.member_id }, ...knownHouses().filter(x => x.key !== h.key)].slice(0, 8)); }
 function forget(key) { lsSet('houses', knownHouses().filter(x => x.key !== key)); }
 function knownHtml(exceptKey, where) {
   const hs = knownHouses().filter(h => h.key !== exceptKey); if (!hs.length) return '';
@@ -857,7 +857,7 @@ function switchTo(h) {
   const name = (ui.member || $('#w-member')?.value || '').trim().slice(0, 40);
   if (!name) return welcomeError('Wpisz swoje imię.');
   const cur = lsGet('house', null); if (cur?.key) remember(cur);
-  remember(h); lsSet('house', { key: h.key, name: h.name }); ui.member = name; lsSet('member', name);
+  remember(h); lsSet('house', { key: h.key, name: h.name, id: h.id, member: h.member, member_id: h.member_id }); ui.member = name; lsSet('member', name);
   location.replace(`${appUrl()}?dom=${h.key}#przepisy`);
 }
 function stayHere() { pendingInvite = null; $('#w-switch').hidden = true; house = lsGet('house', null); if (house?.key) start(); else showWelcome(null); }
@@ -956,10 +956,10 @@ function heartbeat(force) {
   lsSet(k, Date.now());
   db.rpc('member_touch', { p_name: ui.member.slice(0, 40), p_device: deviceLabel() }).then(() => sync(), () => { });
 }
-const ago = s => { const d = daysSince(String(s).slice(0, 10)); return d === 0 ? 'dziś' : d === 1 ? 'wczoraj' : d < 30 ? `${d} dni temu` : 'ponad miesiąc temu'; };
+const ago = s => { const d = daysSince(new Date(s).toLocaleDateString('sv-SE', { timeZone: 'Europe/Warsaw' })); return d === 0 ? 'dziś' : d === 1 ? 'wczoraj' : d < 30 ? `${d} dni temu` : 'ponad miesiąc temu'; };
 function membersHtml(st) {
   const me = house.member_id, ms = [...(S.hh_members || [])].sort((a, b) => (b.id === me) - (a.id === me) || String(b.last_seen).localeCompare(String(a.last_seen)));
-  return `<div class="sec"><h4>Domownicy</h4>${ms.length ? `<div class="grp">${ms.map(m => `<div class="mem"><span class="face" style="background:${colorOf(m.name)}">${esc(m.name[0]?.toUpperCase() || '?')}</span><div class="nm"><b>${esc(m.name)}${m.id === me ? ' <span class="pill want">Ty</span>' : ''}</b><small>${esc(m.device || 'telefon')} · ostatnio ${ago(m.last_seen)} · od ${dPL(String(m.created_at).slice(0, 10))}</small></div>${m.id === me || !house.member ? '' : st.confirmRm === m.id ? `<span class="row" style="flex-wrap:nowrap"><button class="btn sm danger" data-act="mem-rm" data-id="${esc(m.id)}">Usuń</button><button class="btn sm" data-act="mem-cancel">Nie</button></span>` : `<button class="btn sm ghost" data-act="mem-ask" data-id="${esc(m.id)}" aria-label="Usuń domownika">Usuń</button>`}</div>`).join('')}</div>` : '<div class="sub">Lista pojawi się, gdy domownicy otworzą aplikację.</div>'}
+  return `<div class="sec"><h4>Domownicy</h4>${ms.length ? `<div class="grp">${ms.map(m => `<div class="mem"><span class="face" style="background:${colorOf(m.name)}">${esc(m.name[0]?.toUpperCase() || '?')}</span><div class="nm"><b>${esc(m.name)}${m.id === me ? ' <span class="pill want">Ty</span>' : ''}</b><small>${esc(m.device || 'telefon')} · ostatnio ${ago(m.last_seen)} · od ${dPL(new Date(m.created_at).toLocaleDateString('sv-SE', { timeZone: 'Europe/Warsaw' }))}</small></div>${m.id === me || !house.member ? '' : st.confirmRm === m.id ? `<span class="row" style="flex-wrap:nowrap"><button class="btn sm danger" data-act="mem-rm" data-id="${esc(m.id)}">Usuń</button><button class="btn sm" data-act="mem-cancel">Nie</button></span>` : `<button class="btn sm ghost" data-act="mem-ask" data-id="${esc(m.id)}" aria-label="Usuń domownika">Usuń</button>`}</div>`).join('')}</div>` : '<div class="sub">Lista pojawi się, gdy domownicy otworzą aplikację.</div>'}
    ${st.confirmRm ? `<div class="banner">Usunięty domownik od razu straci dostęp do domu, a wysłane wcześniej zaproszenia przestaną działać. Pozostali domownicy nic nie muszą robić.</div>` : ''}</div>`;
 }
 async function removeMember(id) {

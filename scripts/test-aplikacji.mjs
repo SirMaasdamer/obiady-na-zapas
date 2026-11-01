@@ -159,8 +159,8 @@ try {
   ok(memText.includes('Bartek') && memText.includes('Ty'), 'A: lista domowników z Bartkiem i oznaczeniem „Ty”');
   const keyB = new URL(B.page.url()).searchParams.get('dom');
   ok(M.members.has(keyB) && keyB !== keyA, 'B: własny klucz telefonu');
-  await A.page.click('[data-act="mem-ask"]');
-  await A.page.click('[data-act="mem-rm"]');
+  ok(await until(() => A.page.evaluate(() => { const b = document.querySelector('[data-act="mem-ask"]'); b?.click(); return !!b; })), 'A: przycisk usunięcia domownika');
+  ok(await until(() => A.page.evaluate(() => { const b = document.querySelector('[data-act="mem-rm"]'); b?.click(); return !!b; })), 'A: potwierdzenie usunięcia');
   ok(await until(() => !M.members.has(keyB)), 'A: Bartek usunięty z domu');
   ok(M.members.has(keyA) && rowsOf('list_items', keyA).length > 0, 'A: pozostali domownicy działają bez zmian');
   ok(await until(() => B.page.locator('#lost').isVisible(), 8000), 'B: komunikat o utracie dostępu');

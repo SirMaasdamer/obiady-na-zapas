@@ -125,7 +125,7 @@ export async function handle(route) {
       if (body?.p_id === me.id) return send(400, { code: 'P0001', message: 'Siebie odłączasz opcją „Odłącz ten telefon”.' });
       const t = [...M.members].find(([, m]) => m.id === body?.p_id && m.hh === me.hh); if (!t) return send(400, { code: 'P0001', message: 'Nie ma takiego domownika.' });
       M.members.delete(t[0]); for (const [c, i] of M.invites) if (i.hh === me.hh) M.invites.delete(c);
-      for (const [k, v] of M.houses) if (v.id === me.hh) { M.houses.delete(k); M.houses.set(randomBytes(32).toString('hex'), v); }
+      for (const [k, v] of [...M.houses]) if (v.id === me.hh) { M.houses.delete(k); M.houses.set(randomBytes(32).toString('hex'), v); }
       bump(me.hh, 'hh_members'); return route.fulfill({ status: 204, headers: CORS });
     }
     if (fn === 'leave_household') { if (me) { M.members.delete(key); bump(me.hh, 'hh_members'); } return route.fulfill({ status: 204, headers: CORS }); }
