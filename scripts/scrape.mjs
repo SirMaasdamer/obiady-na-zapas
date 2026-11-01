@@ -97,8 +97,24 @@ async function aggregatorPages(store, page) {
       try {
         const r = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
         if (!r || r.status() >= 400) { fail++; if (fail >= 8 && !ok) return items; continue; }
-        await sleep(600); if (ok === 0) await dismissCookies(page);
-        const cards = await page.$$eval('a[href*="/oferty/"]', as => as.map(a => ({ href: a.getAttribute('href') || '', text: a.innerText || '' })).filter(a => /zł/.test(a.text))).catch(() => []);
+        if (ok === 0) { await sleep(1500); await dismissCookies(page); }
+        // kafelki doładowują się skryptem: czekamy aż pojawi się cena (albo strona bez ofert się ustabilizuje)
+        await page.waitForFunction(() => /\d,\d{2}\s*zł/.test(document.body.innerText) || /\b0 promocji|brak (ofert|promocji)/i.test(document.body.innerText), null, { timeout: 7000 }).catch(() => { });
+        await sleep(400);
+        const cards = await page.evaluate(() => {
+          // kafelek = najbliższy przodek ceny, który ma obrazek i kilka linii tekstu (niezależnie od klas CSS)
+          const out = [], seen = new Set();
+          const leaves = [...document.querySelectorAll('body *')].filter(e => !e.children.length && /\d,\d{2}\s*zł/.test(e.textContent || ''));
+          for (const leaf of leaves) {
+            let el = leaf;
+            while (el.parentElement && !(el.querySelector('img') && (el.innerText || '').split('\n').filter(x => x.trim()).length >= 2)) el = el.parentElement;
+            if (!el || el === document.body || seen.has(el) || (el.innerText || '').length > 400) continue; seen.add(el);
+            const a = el.closest('a[href]') || el.querySelector('a[href]');
+            const logos = [...el.querySelectorAll('img')].map(i => (i.alt || '') + ' ' + (i.getAttribute('src') || '')).join(' ').slice(0, 600);
+            out.push({ href: a ? a.getAttribute('href') || '' : '', text: el.innerText || '', logos });
+          }
+          return out;
+        }).catch(() => []);
         const rows = await page.$$eval('table tr', trs => trs.map(tr => [...tr.cells].map(td => td.innerText.trim()))).catch(() => []);
         if (ok === 0) { await snapshot(store, page, 'agregator (pierwsza strona)'); dbg(store, `kafelki: ${JSON.stringify(cards.slice(0, 4))}\nwiersze: ${JSON.stringify(rows.slice(0, 3))}`); }
         ok++; items.push({ kw, cards, rows });

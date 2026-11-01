@@ -142,7 +142,7 @@ export function scoreOfferLink(l) {
 // ---------- agregator gazetki.pl: oferty jako dane strukturalne (kafelki + tabela historii) ----------
 // Słowa wskazujące na przetworzony lub inny produkt (wędlina zamiast mięsa, danie gotowe, karma…).
 // Pomijane, jeśli samo słowo kluczowe produktu je zawiera (np. „boczek wędzony”).
-const OTHER = /wedzon|pieczon|gotowan|grillowan|panierowan|marynowan|dla (psow|psa|kota|kotow)|karma|danie|dania|pasztet|kabanos|parowk|chips|baton|zupa|sos |salatk|surowk|pierog|krokiet|nalesnik|kanapk|sloiczek|hipp|bobovit|gerber|kuskus|z nadzieniem|nadziewan|lody|deser|ciast|krem |napoj|sok |nektar|syrop|przekask|snack|mrozon|w sosie|plastr|w plastrach|krojon(?:y|a) w plastry|nasze smaki|high protein|z boczkiem|maslan/;
+const OTHER = /wedzon|pieczon|gotowan|grillowan|panierowan|marynowan|dla (psow|psa|kota|kotow)|karma|danie|dania|pasztet|kabanos|parowk|chips|baton|zupa|sos |salatk|surowk|pierog|krokiet|nalesnik|kanapk|sloiczek|hipp|bobovit|gerber|kuskus|z nadzieniem|nadziewan|lody|deser|ciast|krem |napoj|sok |nektar|syrop|przekask|snack|mrozon|w sosie|plastr|w plastrach|krojon(?:y|a) w plastry|nasze smaki|high protein|z boczkiem|maslan|z kurkami|z cebulk|z ziolami|z czosnkiem niedzw/;
 const PL_MONTHS = { stycznia: 1, lutego: 2, marca: 3, kwietnia: 4, maja: 5, czerwca: 6, lipca: 7, sierpnia: 8, wrzesnia: 9, pazdziernika: 10, listopada: 11, grudnia: 12 };
 const isoAdd = (iso, n) => { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + n); return d.toLocaleDateString('sv-SE'); };
 export function plDate(s) { const m = norm(s || '').match(/(\d{1,2})\s+([a-z]+)\s+(\d{4})/); if (!m || !PL_MONTHS[m[2]]) return null; return `${m[3]}-${String(PL_MONTHS[m[2]]).padStart(2, '0')}-${m[1].padStart(2, '0')}`; }
@@ -179,7 +179,8 @@ export function aggOffers(items, products, slug, storeName, todayIso) {
     const prods = products.filter(p => p.ref && (p.kw || []).includes(it.kw));
     const cands = [];
     for (const c of it.cards || []) {
-      if (!new RegExp(`/sklepy/${slug}/oferty/`).test(c.href || '')) continue;      // kafelek innego sklepu
+      const own = new RegExp(`/sklepy/${slug}/`).test(c.href || '') || new RegExp(slug, 'i').test(c.logos || '');
+      const other = /\/sklepy\/([a-z0-9-]+)\//.exec(c.href || ''); if (!own || (other && other[1] !== slug)) continue;   // kafelek innego sklepu
       const lines = String(c.text || '').split('\n').map(s => s.trim()).filter(Boolean);
       const prices = zlv(c.text); if (!prices.length || !lines.length) continue;
       const t = norm(c.text); let from = null, to = null;

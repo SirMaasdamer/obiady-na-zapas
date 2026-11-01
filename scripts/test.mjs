@@ -97,6 +97,11 @@ eq(R.joinShots(['a\nb\nc', 'b\nc\nd']), 'a\nb\nc\nd', 'paragon: łączenie zrzut
     { kw: 'limonki', cards: [{ href: '/sklepy/lidl/oferty/a/', text: 'Limonki\n1,00 zł' }], rows: [] }];
   const o = E.aggOffers(items, P, 'biedronka', 'Biedronka', '2026-11-01');
   eq(o.map(x => x.product_id + ':' + x.price_for_pack + ':' + (x.valid_to || '')).join(','), 'kurczak_filet:13.99:2026-11-02', 'agregator: tylko ten sklep, aktualne, bez wędlin i sałatek');
+  const o2 = E.aggOffers([{ kw: 'filet z kurczaka', cards: [
+      { href: '', logos: 'Biedronka /img/biedronka-logo.png', text: 'Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka\n3 dni\n24,90 zł\n12,99 zł' },
+      { href: '', logos: 'Netto /img/netto.png', text: 'Filet z kurczaka\n3 dni\n9,99 zł' }], rows: [] }], P, 'biedronka', 'Biedronka', '2026-11-01');
+  eq(o2.map(x => x.product_id + ':' + x.price_for_pack).join(','), 'kurczak_filet:12.99', 'agregator: kafelek rozpoznany po logo sklepu');
+  eq(E.aggOffers([{ kw: 'gouda', cards: [{ href: '/sklepy/biedronka/oferty/a/', text: 'Ser Gouda z kurkami i cebulką\n2,99 zł' }], rows: [] }], [{ id: 'ser', unit: 'kg', pack: 0.15, kw: ['gouda'], ref: 5 }], 'biedronka', 'Biedronka', '2026-11-01').length, 0, 'agregator: bez serów smakowych');
   eq(E.plDate('02 listopada 2026'), '2026-11-02', 'agregator: polska data');
 }
 if (fails) { console.log(fails, 'błędów'); process.exit(1); } else console.log('Wszystkie testy przeszły.');
