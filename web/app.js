@@ -65,7 +65,7 @@ let tt; function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden =
 async function write(ops, okMsg) {
   ops = [ops].flat().map(op => ({ ...op, key: house.key, at: Date.now() }));
   pendingOps.push(...ops);
-  new Set(ops.map(o => o.t)).forEach(recompute); renderAll();
+  new Set(ops.map(o => o.t)).forEach(recompute); renderAll(); netBanner();
   for (const op of ops) op.seq = await D.outboxAdd(op);
   if (okMsg) toast(navigator.onLine ? okMsg : okMsg + ' · wyślę, gdy wróci internet');
   sync();
