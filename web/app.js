@@ -1,6 +1,8 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm';
+// Biblioteki są w repozytorium (vendor/, wersje i sumy w vendor/WERSJE.json), nie z CDN.
+import { createClient } from './vendor/supabase/supabase.mjs';
 import * as L from './logic.js';
 import * as RC from './receipt.js';
+import * as D from './dane.js';
 
 const CFG = window.APP_CONFIG || {};
 const STORES = L.STORES, SK = L.SK, SN = L.SN;
@@ -18,10 +20,17 @@ const activeRecipes = () => Object.values(S.recipes).filter(visible);
 const ui = {
   tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', onlyFreezer: lsGet('onlyFreezer', false), q: '', pq: '', pmode: 'offers',
   portions: lsGet('portions', 8), trip: lsGet('trip', 8), plan: null, sheet: null,
-  member: lsGet('member', ''), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
+  member: String(lsGet('member', '')).slice(0, 40), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
-let db = null, house = null, chan = null;
+let db = null, house = null, chan = null, houseTag = '';
 const HH_TABLES = ['recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
+// tabele wspólne i zbiory, od których zależą (wersje w dataset_versions; „dzien”: oferty filtrujemy po dacie)
+const SHARED = { products: ['katalog'], recipes: ['katalog'], prices: ['katalog', 'oferty'], offers: ['oferty', 'dzien'], scrape_runs: ['oferty'] };
+// klucze wierszy w tabelach domu (bez household_id); hh_settings ma jeden wiersz na dom
+const PK = { list_items: ['id'], freezer: ['id'], receipts: ['id'], receipt_items: ['id'], recipe_requests: ['id'], reactions: ['recipe_id', 'member'], hh_prices: ['product_id', 'store'], hh_recipes: ['recipe_id'], hh_settings: [] };
+const RAW = {}, VER = {};  // wiersze z serwera (albo z kopii w telefonie) i wersja danych, z którą się zgadzają
+let pendingOps = [];       // zapisy czekające na wysłanie (kolejka w IndexedDB); widok = RAW + te zapisy
+let netDown = false;
 
 function lsGet(k, d) { try { const v = localStorage.getItem('onz_' + k); return v == null ? d : JSON.parse(v); } catch { return d; } }
 function lsSet(k, v) { try { localStorage.setItem('onz_' + k, JSON.stringify(v)); } catch { } }
@@ -36,60 +45,172 @@ const COLORS = ['#2F5BEA', '#6D3FE0', '#B8327E', '#0B7285', '#B25E09', '#3D3880'
 const colorOf = n => COLORS[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORS.length];
 const faces = names => names.length ? '<span class="faces">' + names.slice(0, 5).map(n => `<span class="face" style="background:${colorOf(n)}" title="${esc(n)}">${esc(n[0]?.toUpperCase() || '?')}</span>`).join('') + '</span>' : '';
 
-/* ---------- writes ---------- */
+/* ---------- zapisy ---------- */
+// Komunikat o błędzie zapisu: limity z bazy mają już polskie komunikaty (kod P0001).
+function errorText(e) {
+  if (e?.code === 'P0001' && e.message) return e.message;
+  if (e?.code === '23514' || e?.code === '22001') return 'Nie zapisano: za długi tekst albo niepoprawna wartość.';
+  if (e?.code === '42501') return 'Nie zapisano: brak dostępu do domu (może zmieniono klucz domu).';
+  return navigator.onLine ? 'Nie udało się zapisać. Spróbuj ponownie.' : 'Brak internetu. Spróbuj, gdy wróci połączenie.';
+}
+// Zapis od razu do bazy (funkcje RPC, prośby o przepisy): wymaga internetu.
 async function w(fn, ok) {
-  try { const r = await fn(); const errs = [r].flat().map(x => x?.error).filter(Boolean); if (errs.length) throw errs[0]; if (ok) toast(ok); ping(); return true; }
-  catch (e) { console.error(e); toast(navigator.onLine ? 'Nie udało się zapisać. Spróbuj ponownie.' : 'Brak internetu. Spróbuj, gdy wróci połączenie.'); return false; }
+  try { const r = await fn(); const errs = [r].flat().map(x => x?.error).filter(Boolean); if (errs.length) throw errs[0]; if (ok) toast(ok); return true; }
+  catch (e) { (e?.code === 'P0001' ? console.warn : console.error)(e); toast(errorText(e)); return false; }
 }
 let tt; function toast(m) { const t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 2800); }
 
-/* ---------- data loading ---------- */
+// Zmiana w danych domu: od razu widać ją na ekranie, trafia do kolejki w telefonie i jest wysyłana, gdy jest internet.
+// Ponowne wysłanie niczego nie dubluje: nowe wiersze mają identyfikatory nadane w telefonie.
+async function write(ops, okMsg) {
+  ops = [ops].flat().map(op => ({ ...op, key: house.key, at: Date.now() }));
+  pendingOps.push(...ops);
+  new Set(ops.map(o => o.t)).forEach(recompute); renderAll();
+  for (const op of ops) op.seq = await D.outboxAdd(op);
+  if (okMsg) toast(navigator.onLine ? okMsg : okMsg + ' · wyślę, gdy wróci internet');
+  sync();
+}
+const newId = () => crypto.randomUUID();
+// Nałożenie zapisu na wiersze tabeli (w telefonie, zanim odpowie serwer).
+function applyOp(rows, op) {
+  const pk = PK[op.t] || ['id'], same = (a, b) => pk.every(k => a[k] === b[k]);
+  const hit = r => Object.entries(op.match || {}).every(([k, v]) => Array.isArray(v) ? v.includes(r[k]) : r[k] === v);
+  if (op.kind === 'insert' || op.kind === 'upsert') {
+    const out = rows.slice();
+    for (const row of op.rows) {
+      const i = pk.length ? out.findIndex(r => same(r, row)) : out.length ? 0 : -1;
+      if (i < 0) out.push({ ...row }); else if (op.kind === 'upsert') out[i] = { ...out[i], ...row };
+    }
+    return out;
+  }
+  if (op.kind === 'update') return rows.map(r => hit(r) ? { ...r, ...op.values } : r);
+  if (op.kind === 'delete') return rows.filter(r => !hit(r));
+  return rows;
+}
+function recompute(t) {
+  const mine = pendingOps.filter(o => o.t === t && o.key === house?.key);
+  if (!(t in RAW) && !mine.length) return;
+  L.setTable(t, mine.reduce(applyOp, RAW[t] || []));
+}
+const clients = new Map();
+const clientFor = key => clients.get(key) ?? clients.set(key, client(key)).get(key);
+function execOp(op) {
+  let q = clientFor(op.key).from(op.t);
+  if (op.kind === 'insert') q = q.upsert(op.rows, { onConflict: (PK[op.t] || ['id']).join(','), ignoreDuplicates: true });
+  else if (op.kind === 'upsert') q = q.upsert(op.rows);
+  else if (op.kind === 'update') q = q.update(op.values);
+  else q = q.delete();
+  for (const [k, v] of Object.entries(op.match || {})) q = Array.isArray(v) ? q.in(k, v) : q.eq(k, v);
+  return q;
+}
+// Wysyła kolejkę po kolei. Brak sieci albo błąd serwera: zostaje na później. Odrzucenie przez bazę: cofamy na ekranie.
+async function flush() {
+  const sent = new Set();
+  for (const op of [...pendingOps]) {
+    if (op.seq == null) break; // jeszcze nie zapisana w telefonie
+    const r = await execOp(op).then(x => x, e => ({ error: e, status: 0 })); // zapytanie supabase ma tylko then()
+    if (r.error && (!r.status || r.status >= 500 || r.status === 408 || r.status === 429)) { netDown = true; break; }
+    pendingOps = pendingOps.filter(x => x !== op); D.outboxDel(op.seq);
+    if (op.key !== house?.key) continue;
+    if (r.error) { console.error(op.t, r.error); toast(errorText(r.error)); recompute(op.t); continue; }
+    RAW[op.t] = applyOp(RAW[op.t] || [], op); recompute(op.t); sent.add(op.t);
+    D.cachePut({ t: op.t, data: RAW[op.t], ver: VER[op.t], house: houseTag });
+  }
+  if (sent.size) ping([...sent]);
+  netBanner();
+}
+
+/* ---------- wczytywanie danych ---------- */
 const TABLES = {
-  products: q => q.select('*'),
-  prices: q => q.select('*'),
-  recipes: q => q.select('*').order('name'),
-  hh_recipes: q => q.select('*'),
-  hh_prices: q => q.select('*'),
-  reactions: q => q.select('*'),
-  list_items: q => q.select('*').order('created_at'),
-  freezer: q => q.select('*'),
-  offers: q => q.select('*').gte('valid_to', L.daysAgo(0)).order('store').limit(1500),
+  products: q => q.select('*').order('id'),
+  prices: q => q.select('*').order('product_id').order('store'),
+  recipes: q => q.select('*').order('name').order('id'),
+  hh_recipes: q => q.select('*').order('recipe_id'),
+  hh_prices: q => q.select('*').order('product_id').order('store'),
+  reactions: q => q.select('*').order('recipe_id').order('member'),
+  list_items: q => q.select('*').order('created_at').order('id'),
+  freezer: q => q.select('*').order('id'),
+  offers: q => q.select('*').gte('valid_to', L.daysAgo(0)).order('store').order('id'),
   scrape_runs: q => q.select('*').order('ran_at', { ascending: false }).limit(30),
-  receipts: q => q.select('*').order('bought_on', { ascending: false }).limit(1000),
-  receipt_items: q => q.select('*').limit(10000),
+  receipts: q => q.select('*').order('bought_on', { ascending: false }).order('id'),
+  receipt_items: q => q.select('*').order('id'),
   hh_settings: q => q.select('*'),
   recipe_requests: q => q.select('*').order('created_at', { ascending: false }).limit(50),
 };
-async function load(t) {
-  const { data, error } = await TABLES[t](db.from(t));
-  if (error) { console.error(t, error); return; }
-  L.setTable(t, data);
-  try { localStorage.setItem('onz_cache_' + t, JSON.stringify(data)); } catch { }
-  if (t === 'recipe_requests' && S.loaded.recipes && data.some(r => (r.recipe_ids || []).some(id => !S.recipes[id]))) ['products', 'prices', 'recipes'].forEach(reload);
+const ONE_PAGE = new Set(['scrape_runs', 'recipe_requests', 'hh_settings']);
+// Supabase oddaje najwyżej 1000 wierszy na zapytanie, więc większe tabele pobieramy stronami.
+async function fetchAll(t, build = TABLES[t], all = false) {
+  if (ONE_PAGE.has(t) && !all) { const { data, error } = await build(db.from(t)); if (error) throw error; return data || []; }
+  const out = [], PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await build(db.from(t)).range(from, from + PAGE - 1);
+    if (error) throw error;
+    out.push(...data); if (data.length < PAGE) return out;
+  }
 }
-const pending = new Set(); let pt;
-function reload(t) { pending.add(t); clearTimeout(pt); pt = setTimeout(async () => { const ts = [...pending]; pending.clear(); await Promise.all(ts.map(load)); renderAll(); }, 250); }
-async function loadAll() { await Promise.all(Object.keys(TABLES).map(load)); renderAll(); }
-function loadCache() { for (const t of Object.keys(TABLES)) { try { const v = localStorage.getItem('onz_cache_' + t); if (v) L.setTable(t, JSON.parse(v)); } catch { } } }
-// Zmiany domowników: po każdym zapisie wysyłamy sygnał na kanał domu, a pozostałe telefony odświeżają dane.
-async function subscribe() {
-  const id = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(house.key)))).slice(0, 12).map(b => b.toString(16).padStart(2, '0')).join('');
-  chan = db.channel('dom-' + id, { config: { broadcast: { self: false } } });
-  chan.on('broadcast', { event: 'zmiana' }, () => HH_TABLES.forEach(reload)).subscribe();
-  setInterval(() => { if (!document.hidden) HH_TABLES.forEach(reload); }, 60000);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) loadAll(); });
-  window.addEventListener('online', () => { $('#offline').hidden = true; loadAll(); });
-  window.addEventListener('offline', () => $('#offline').hidden = false);
+async function load(t, ver) {
+  try {
+    const rows = await fetchAll(t);
+    RAW[t] = rows; VER[t] = ver; recompute(t);
+    D.cachePut({ t, data: rows, ver, house: SHARED[t] ? '' : houseTag });
+  } catch (e) { console.error(t, e); }
+}
+// Synchronizacja: wysyła kolejkę zapisów, pyta o wersje danych (jedno małe zapytanie) i pobiera tylko to, co się zmieniło.
+let syncP = null, syncAgain = false;
+function sync() {
+  if (!db) return Promise.resolve();
+  if (syncP) { syncAgain = true; return syncP; }
+  return syncP = (async () => { do { syncAgain = false; await syncOnce(); } while (syncAgain); })().finally(() => { syncP = null; });
+}
+async function syncOnce() {
+  await flush();
+  const { data, error, status } = await db.rpc('app_state').then(r => r, e => ({ error: e, status: 0 }));
+  if (error) { if (!status || status >= 500) netDown = true; netBanner(); return; }
+  netDown = false; netBanner();
+  $('#lost').hidden = !!data?.dom;
+  if (!data?.dom) { $('#lost').innerHTML = lostHtml(); return; }
+  if (data.dom.name && data.dom.name !== house.name) { house.name = data.dom.name; lsSet('house', house); remember(house); }
+  const want = {};
+  for (const [t, deps] of Object.entries(SHARED)) want[t] = deps.map(d => d === 'dzien' ? today() : d + '=' + (data.zbiory?.[d] ?? '?')).join('|');
+  for (const t of HH_TABLES) want[t] = data.tabele?.[t] ?? 'brak';
+  const stale = Object.keys(want).filter(t => VER[t] !== want[t]);
+  if (stale.length) { await Promise.all(stale.map(t => load(t, want[t]))); renderAll(); }
+}
+let soonT; const syncSoon = () => { clearTimeout(soonT); soonT = setTimeout(sync, 400); };
+function netBanner() {
+  const n = pendingOps.filter(o => o.key === house?.key).length, off = !navigator.onLine || netDown, el = $('#offline');
+  el.hidden = !off;
+  el.textContent = 'Brak połączenia. Pokazuję ostatnio wczytane dane.' + (n ? ` Zmiany (${n}) zapiszę, gdy wróci internet.` : '');
+}
+const lostHtml = () => `<b>Ten telefon nie ma już dostępu do domu „${esc(house.name)}”.</b> Klucz domu zmieniono na innym telefonie albo dom usunięto. Otwórz nowy link zaproszenia od domownika.<div class="row" style="margin-top:8px"><button class="btn sm" data-act="ask-leave-lost">Opuść ten dom</button></div>`;
+// Zmiany domowników: po zapisie wysyłamy sygnał na kanał domu, a pozostałe telefony sprawdzają wersje danych.
+function subscribe() {
+  chan = db.channel('dom-' + houseTag, { config: { broadcast: { self: false } } });
+  chan.on('broadcast', { event: 'zmiana' }, syncSoon).subscribe();
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); });
+window.addEventListener('online', () => { netDown = false; netBanner(); sync(); });
+window.addEventListener('offline', netBanner);
+setInterval(() => { if (!document.hidden) sync(); }, 120000);
+// Pierwsze uruchomienie po aktualizacji: dane z poprzedniej wersji aplikacji (localStorage) jako punkt startowy.
+function oldCache() {
+  const out = [];
+  try {
+    for (const k of Object.keys(localStorage).filter(k => k.startsWith('onz_cache_'))) {
+      const t = k.slice(10); if (TABLES[t]) out.push({ t, data: JSON.parse(localStorage.getItem(k)) });
+      localStorage.removeItem(k);
+    }
+  } catch { }
+  return out;
 }
 
 /* ---------- RECIPES ---------- */
 function reactFor(rid) { const rs = S.reactions.filter(x => x.recipe_id === rid); return { like: rs.filter(x => x.liked).map(x => x.member), want: rs.filter(x => x.wanted).map(x => x.member) }; }
-async function toggleReact(rid, field) {
+function toggleReact(rid, field) {
+  if (!ui.member) { toast('Najpierw wpisz swoje imię w ustawieniach (przycisk w prawym górnym rogu).'); return; }
   const cur = S.reactions.find(x => x.recipe_id === rid && x.member === ui.member) || { liked: false, wanted: false };
   const row = { recipe_id: rid, member: ui.member, liked: !!cur.liked, wanted: !!cur.wanted }; row[field] = !row[field];
-  const i = S.reactions.findIndex(x => x.recipe_id === rid && x.member === ui.member);
-  if (i >= 0) S.reactions[i] = row; else S.reactions.push(row); renderAll();
-  await w(() => db.from('reactions').upsert(row));
+  write({ t: 'reactions', kind: 'upsert', rows: [row] });
 }
 function renderCats() {
   const counts = {}; activeRecipes().forEach(r => counts[r.category] = (counts[r.category] || 0) + 1);
@@ -117,7 +238,8 @@ function dealHtml(all) {
   return `<button class="deal" data-act="deal" data-pid="${esc(d.pid)}"><span class="deal-ic"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><span class="deal-t"><b>${esc(d.p.name)} ${zl(pricePer)}${unit} w ${SN[d.s] === 'Lidl' ? 'Lidlu' : SN[d.s] === 'Kaufland' ? 'Kauflandzie' : 'Biedronce'}</b><span>−${Math.round(d.off * 100)}%${d.pr.until ? ' · do ' + dPL(d.pr.until) : ''} · pasuje do ${d.n} ${d.n === 1 ? 'przepisu' : 'przepisów'}</span></span><svg class="deal-go" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>`;
 }
 /* prośby o przepisy (realizuje je zaplanowane zadanie Claude) */
-const REQ_ST = { czeka: ['muted', 'czeka w kolejce'], w_toku: ['want', 'Claude szuka…'], gotowe: ['promo', 'gotowe'], nie_udalo: ['muted', 'nie udało się'] };
+// statusy jak w bazie (recipe_requests_status_check)
+const REQ_ST = { czeka: ['muted', 'czeka w kolejce'], w_trakcie: ['want', 'Claude szuka…'], gotowe: ['promo', 'gotowe'], blad: ['muted', 'nie udało się'] };
 function readyHtml() {
   const seen = lsGet('seenReq', []), fresh = (S.recipe_requests || []).filter(r => r.status === 'gotowe' && !seen.includes(r.id) && (r.recipe_ids || []).some(id => S.recipes[id]));
   if (!fresh.length) return '';
@@ -127,14 +249,17 @@ function readyHtml() {
 function askSheet() {
   const st = ui.sheet, reqs = S.recipe_requests || [];
   return `<div class="sheet-head"><div><h2>Brakuje przepisu?</h2><div class="sub" style="margin-top:4px">Wpisz danie, na które macie ochotę. Claude kilka razy dziennie przegląda prośby, szuka sprawdzonych przepisów i dopisuje 2–3 wersje do bazy. Zwykle trwa to do kilku godzin.</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
-  <form id="f-ask" class="row" style="flex-wrap:nowrap"><input class="input" id="ask-q" maxlength="120" placeholder="np. burrito, kurczak tikka masala" value="${esc(st.q || '')}" autocomplete="off"><button class="btn pri" type="submit">Poproś</button></form>
+  <form id="f-ask" class="row" style="flex-wrap:nowrap"><input class="input" id="ask-q" maxlength="80" placeholder="np. burrito, kurczak tikka masala" value="${esc(st.q || '')}" autocomplete="off"><button class="btn pri" type="submit">Poproś</button></form>
+  <div class="sub">Dom może mieć naraz najwyżej 3 oczekujące prośby.</div>
   <div class="sec"><h4>Wasze prośby</h4>${reqs.length ? `<div class="grp">${reqs.map(r => { const [cls, lbl] = REQ_ST[r.status] || REQ_ST.czeka, got = (r.recipe_ids || []).filter(id => S.recipes[id]);
     return `<div class="req"><div class="nm"><b>${esc(r.query)}</b><small>${esc(r.member || '')}${r.member ? ' · ' : ''}${new Date(r.created_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}${r.note ? ' · ' + esc(r.note) : ''}</small>${got.length ? `<div class="req-r">${got.map(id => `<button class="chip" data-act="open" data-id="${esc(id)}">${esc(S.recipes[id].name)}</button>`).join('')}</div>` : ''}</div><div class="req-s"><span class="pill ${cls}">${lbl}</span>${r.status === 'czeka' ? `<button class="btn sm ghost" data-act="req-del" data-id="${esc(r.id)}" aria-label="Usuń prośbę">Usuń</button>` : ''}</div></div>`; }).join('')}</div>` : '<div class="sub">Na razie nic. Prośby całego domu pojawią się tutaj.</div>'}</div>`;
 }
 async function sendAsk() {
-  const q = $('#ask-q').value.trim().replace(/\s+/g, ' '); if (q.length < 2) return;
-  if ((S.recipe_requests || []).some(r => ['czeka', 'w_toku'].includes(r.status) && r.query.toLowerCase() === q.toLowerCase())) { toast('Ta prośba już czeka'); return; }
-  if (await w(() => db.from('recipe_requests').insert({ query: q, member: ui.member || null }), `Wysłano prośbę: ${q}`)) { ui.sheet.q = ''; await load('recipe_requests'); ping(); drawSheet(); }
+  // baza przyjmuje 2–80 znaków, bez < > { } i znaków nowej linii
+  const q = $('#ask-q').value.replace(/[<>{}\r\n\t]/g, ' ').trim().replace(/\s+/g, ' ').slice(0, 80); if (q.length < 2) return;
+  if ((S.recipe_requests || []).some(r => ['czeka', 'w_trakcie'].includes(r.status) && r.query.toLowerCase() === q.toLowerCase())) { toast('Ta prośba już czeka'); return; }
+  if (!navigator.onLine) { toast('Prośbę wyślesz, gdy wróci internet.'); return; }
+  if (await w(() => db.from('recipe_requests').insert({ query: q, member: ui.member || null }), `Wysłano prośbę: ${q}`)) { ui.sheet.q = ''; ping(['recipe_requests']); await sync(); drawSheet(); }
 }
 function renderRecipes() {
   const box = $('#rlist'); const all = activeRecipes();
@@ -200,17 +325,22 @@ function drawRecipeDyn() {
   ${r.thaw ? `<div class="sec"><h4>${r.freezer === false ? 'Przechowywanie' : 'Mrożenie i odgrzewanie'}</h4><div class="box">${esc(r.thaw)}</div></div>` : ''}
   <div>${ui.sheet.confirmDel ? `<div class="row"><span class="sub">Usunąć to danie z Waszych przepisów?</span><button class="btn sm danger" data-act="del-recipe">Tak, usuń</button><button class="btn sm" data-act="cancel-del">Anuluj</button></div>` : `<button class="btn sm ghost danger" data-act="ask-del">Usuń przepis</button>`}</div>`;
 }
-async function addRecipeToList() {
+function addRecipeToList() {
   const r = S.recipes[ui.sheet.id], n = ui.portions, m = n / (r.base || 2), batch = r.id + '-' + Date.now();
-  const rows = (r.ingredients || []).map(i => { const p = S.products[i.pid]; if (!p) return null; return { product_id: i.pid, qty: L.needOf(i, m, p) ?? 0, pantry: !!p.pantry, recipe_id: r.id, recipe_name: r.name, servings: n, batch, member: ui.member }; }).filter(Boolean);
-  if (await w(() => db.from('list_items').insert(rows), `Dodano ${r.name} (${n} porcji) do listy`)) { closeSheet(); reload('list_items'); }
+  const rows = (r.ingredients || []).map(i => { const p = S.products[i.pid]; if (!p) return null; return { id: newId(), product_id: i.pid, qty: L.needOf(i, m, p) ?? 0, pantry: !!p.pantry, recipe_id: r.id, recipe_name: r.name, servings: n, batch, member: ui.member || null }; }).filter(Boolean);
+  closeSheet();
+  write({ t: 'list_items', kind: 'insert', rows }, `Dodano ${r.name} (${n} porcji) do listy`);
 }
 
 /* ---------- LIST ---------- */
+// liczba rzeczy do kupienia na zakładce „Lista” (widoczna z każdego widoku)
+function renderBadge() {
+  const { rows, manual } = L.aggList(), left = rows.filter(g => !g.done).length + manual.filter(m => !m.done).length;
+  const b = $('#lbadge'); b.hidden = !left; b.textContent = left;
+}
 function renderList() {
   const box = $('#llist'), { rows, pantry, manual } = L.aggList();
-  const left = rows.filter(g => !g.done).length + manual.filter(m => !m.done).length;
-  const b = $('#lbadge'); b.hidden = !left; b.textContent = left;
+  renderBadge();
   if (!S.list_items.length) { box.innerHTML = `<div class="empty"><h3>Lista jest pusta</h3><div>Otwórz przepis, ustaw liczbę porcji i dodaj składniki. Policzę, gdzie wyjdzie najtaniej.</div><button class="btn pri" data-tab="przepisy">Wybierz danie</button></div>`; return; }
   const batches = {}; S.list_items.forEach(x => { if (x.batch && !batches[x.batch]) batches[x.batch] = { name: x.recipe_name, n: x.servings }; });
   let h = '';
@@ -238,10 +368,10 @@ function renderList() {
   if (pantry.length) h += `<div class="grp"><div class="grp-h"><h3>Sprawdź w domu</h3><span class="sub">przyprawy i zapasy</span></div>${pantry.map(g => `<div class="item ${g.done ? 'done' : ''}"><button class="ck ${g.done ? 'on' : ''}" data-act="tick" data-pid="${esc(g.pid)}" aria-label="Mam">${g.done ? CHECK : ''}</button><div class="nm"><b>${esc(g.p.name)}</b><small>${esc([...g.srcs].join(', '))}</small></div><div class="pr"></div></div>`).join('')}</div>`;
   box.innerHTML = h;
 }
-async function tickGroup(pid) {
-  const items = S.list_items.filter(x => x.product_id === pid && !x.manual); const done = !items.every(d => d.done);
-  items.forEach(i => i.done = done); renderList();
-  await w(() => db.from('list_items').update({ done }).in('id', items.map(i => i.id)));
+function tickGroup(pid) {
+  const items = S.list_items.filter(x => x.product_id === pid && !x.manual); if (!items.length) return;
+  const done = !items.every(d => d.done);
+  write({ t: 'list_items', kind: 'update', values: { done }, match: { id: items.map(i => i.id) } });
 }
 
 /* ---------- FREEZER ---------- */
@@ -259,10 +389,10 @@ function renderFreezer() {
     <div class="n"><button class="round" data-act="fz-dec" data-id="${esc(f.id)}" aria-label="Wyjmij porcję">−</button><b class="num">${f.portions}</b><button class="round" data-act="fz-inc" data-id="${esc(f.id)}" aria-label="Dodaj porcję">+</button></div><div class="life ${old || lim - age < 14 ? 'old' : ''}"><i style="width:${Math.min(100, Math.round(age / lim * 100))}%"></i></div></div>`;
   }).join('');
 }
-async function fzChange(id, d) {
-  const f = S.freezer.find(x => x.id === id); if (!f) return; const n = (f.portions || 0) + d;
-  if (n <= 0) { if (await w(() => db.from('freezer').delete().eq('id', id), 'Pudełko zjedzone. Usunięto z zamrażarki.')) reload('freezer'); }
-  else { f.portions = n; renderFreezer(); await w(() => db.from('freezer').update({ portions: n }).eq('id', id)); }
+function fzChange(id, d) {
+  const f = S.freezer.find(x => x.id === id); if (!f) return; const n = Math.min(200, (f.portions || 0) + d);
+  if (n <= 0) write({ t: 'freezer', kind: 'delete', match: { id } }, 'Pudełko zjedzone. Usunięto z zamrażarki.');
+  else write({ t: 'freezer', kind: 'update', values: { portions: n }, match: { id } });
 }
 
 /* ---------- PRICES ---------- */
@@ -270,8 +400,9 @@ function renderStores() {
   const runs = S.scrape_runs || [];
   $('#pstores').innerHTML = `<div class="stores">${STORES.map(s => {
     const ok = runs.find(r => r.store === s.k && r.status === 'ok'), last = runs.find(r => r.store === s.k);
-    const err = last && last.status !== 'ok';
-    return `<div class="st ${err ? 'err' : ''}"><b class="store ${s.k}">${s.n}</b>${ok ? `<span>gazetka ${dPL(ok.valid_from)}–${dPL(ok.valid_to)}</span><span>${ok.matched} produktów w promocji</span>` : '<span>jeszcze nie pobrano</span>'}${err ? `<span class="old">ostatnia próba: błąd</span>` : last ? `<span>pobrano ${new Date(last.ran_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}</span>` : ''}</div>`;
+    // „ostrzezenie”: przebieg znalazł podejrzanie mało ofert, więc zostały poprzednie
+    const err = last && last.status !== 'ok', warn = last?.status === 'ostrzezenie';
+    return `<div class="st ${err ? 'err' : ''}"><b class="store ${s.k}">${s.n}</b>${ok ? `<span>gazetka ${dPL(ok.valid_from)}–${dPL(ok.valid_to)}</span><span>${ok.matched} produktów w promocji</span>` : '<span>jeszcze nie pobrano</span>'}${warn ? `<span class="old">ostatnio mniej ofert niż zwykle, pokazuję poprzednie</span>` : err ? `<span class="old">ostatnia próba: błąd</span>` : last ? `<span>pobrano ${new Date(last.ran_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}</span>` : ''}</div>`;
   }).join('')}</div>`;
   $('#pm-offers').setAttribute('aria-pressed', ui.pmode === 'offers'); $('#pm-table').setAttribute('aria-pressed', ui.pmode === 'table');
 }
@@ -290,7 +421,7 @@ function renderPrices() {
   }
   const all = Object.values(S.products).filter(p => !q || p.name.toLowerCase().includes(q));
   const priced = all.filter(p => !p.pantry), pantry = all.filter(p => p.pantry);
-  let h = `<div class="sub">Czerwone ceny pochodzą z aktualnych ofert sklepów. Ceny „szac.” są orientacyjne: stuknij, żeby wpisać prawdziwą. Wpisane ceny widzi tylko Wasz dom.</div><div class="ptable"><div class="prow head"><span>Produkt</span>${STORES.map(s => `<span class="store ${s.k}" style="text-align:center">${s.n}</span>`).join('')}</div>`;
+  let h = `<div class="sub">Czerwone ceny pochodzą z aktualnych ofert sklepów. „Gazetka” to cena regularna przekreślona w ostatniej gazetce, a „szac.” to cena orientacyjna: stuknij, żeby wpisać prawdziwą. Wpisane ceny widzi tylko Wasz dom.</div><div class="ptable"><div class="prow head"><span>Produkt</span>${STORES.map(s => `<span class="store ${s.k}" style="text-align:center">${s.n}</span>`).join('')}</div>`;
   const cats = [...new Set([...PCATS, ...priced.map(p => p.cat || 'inne')])];
   for (const c of cats) {
     const ps = priced.filter(p => (p.cat || 'inne') === c).sort((a, b) => a.name.localeCompare(b.name, 'pl')); if (!ps.length) continue;
@@ -299,7 +430,7 @@ function renderPrices() {
       return `<div class="prow"><div class="nm">${esc(p.name)}<small>${p.loose ? 'za kg' : fmtPack(p)}</small></div>${SK.map((s, i) => {
         const v = vals[i];
         const cls = !v ? 'none' : v.promo ? 'promo' : (v.p === min && have.length > 1 ? 'cheap' : '');
-        const tag = !v ? '' : v.promo ? (v.until ? 'do ' + dPL(v.until) : 'promo') : v.src === 'paragon' ? 'paragon' : v.own ? 'Wasza' : 'szac.';
+        const tag = !v ? '' : v.promo ? (v.until ? 'do ' + dPL(v.until) : 'promo') : v.src === 'paragon' ? 'paragon' : v.own ? 'Wasza' : v.rsrc === 'gazetka' ? 'gazetka' : 'szac.';
         return `<button class="pc ${cls}" data-act="price" data-pid="${esc(p.id)}" data-s="${s}">${v ? zs(v.p) : '+'}<small>${tag}</small></button>`;
       }).join('')}</div>`;
     }).join('');
@@ -318,9 +449,10 @@ function priceSheet() {
    <button class="btn pri" type="submit">Zapisz cenę</button></form>
   ${historyHtml(pid)}`;
 }
-async function savePrice() {
-  const { pid, s } = ui.sheet, v = L.parsePL($('#pp').value); if (v == null) return toast('Wpisz cenę, np. 6,99');
-  if (await w(() => db.from('hh_prices').upsert({ product_id: pid, store: s, regular: v, src: 'ręcznie', seen_on: L.today(), updated_at: new Date().toISOString() }), 'Zapisano cenę')) { closeSheet(); reload('hh_prices'); }
+function savePrice() {
+  const { pid, s } = ui.sheet, v = L.parsePL($('#pp').value); if (v == null || !(v > 0 && v < 10000)) return toast('Wpisz cenę, np. 6,99');
+  closeSheet();
+  write({ t: 'hh_prices', kind: 'upsert', rows: [{ product_id: pid, store: s, regular: v, src: 'ręcznie', seen_on: L.today(), updated_at: new Date().toISOString() }] }, 'Zapisano cenę');
 }
 
 /* ---------- WYDATKI: paragony, budżet, analizy ---------- */
@@ -370,9 +502,11 @@ function budgetSheet() {
   <form id="f-budget" class="sec" style="gap:12px"><div class="field"><label for="b-val">Kwota na miesiąc (zł)</label><input class="input" id="b-val" inputmode="decimal" value="${S.settings.budget ? String(S.settings.budget).replace('.', ',') : ''}" placeholder="np. 1500"></div>
   <button class="btn pri" type="submit">Zapisz</button></form>`;
 }
-async function saveBudget() {
+function saveBudget() {
   const v = L.parsePL($('#b-val').value);
-  if (await w(() => db.from('hh_settings').upsert({ budget: v }), 'Zapisano budżet')) { S.settings = { ...S.settings, budget: v }; closeSheet(); renderSpend(); reload('hh_settings'); }
+  if (v != null && !(v >= 0 && v < 1000000)) return toast('Wpisz kwotę mniejszą niż milion zł.');
+  closeSheet();
+  write({ t: 'hh_settings', kind: 'upsert', rows: [{ budget: v }] }, 'Zapisano budżet');
 }
 
 // Odczyt wybranych plików: PDF → tekst; zdjęcia/zrzuty → OCR w telefonie. Kilka zrzutów = jeden paragon.
@@ -432,8 +566,9 @@ async function saveReceipt() {
   readForm(); const d = ui.sheet.draft, src = ui.sheet.source;
   if (!d.bought_on) return toast('Wpisz datę zakupów.');
   if (!(+d.total > 0)) return toast('Wpisz kwotę do zapłaty.');
-  const id = crypto.randomUUID();
-  const items = d.items.filter(i => i.name.trim() && +i.total > 0).map(i => ({ receipt_id: id, name: i.name.trim().slice(0, 120), qty: +i.qty || 1, weighed: !!i.weighed, unit_price: i.unit_price ?? null, total: +i.total, discount: +i.discount || 0, product_id: i.product_id || null, category: i.category || 'Inne' }));
+  if (!(+d.total < 100000)) return toast('Kwota do zapłaty wygląda na błędną.');
+  const id = newId();
+  const items = d.items.filter(i => i.name.trim() && +i.total > 0 && +i.total < 100000).map(i => ({ id: newId(), receipt_id: id, name: i.name.trim().slice(0, 120), qty: +i.qty > 0 && +i.qty < 10000 ? +i.qty : 1, weighed: !!i.weighed, unit_price: i.unit_price ?? null, total: +i.total, discount: +i.discount > 0 ? +i.discount : 0, product_id: i.product_id || null, category: (i.category || 'Inne').slice(0, 40) }));
   // prawdziwe ceny regularne (bez rabatu) dla produktów z katalogu w Biedronce, Lidlu i Kauflandzie
   const prices = [];
   if (SK.includes(d.store)) for (const i of items) {
@@ -444,14 +579,12 @@ async function saveReceipt() {
     if (cur?.seen_on && cur.seen_on > d.bought_on) continue;
     if (!prices.some(x => x.product_id === p.id)) prices.push({ product_id: p.id, store: d.store, regular: v, src: 'paragon', seen_on: d.bought_on, updated_at: new Date().toISOString() });
   }
-  const ok = await w(async () => {
-    const r1 = await db.from('receipts').insert({ id, store: d.store, store_name: RC.STORE_NAMES[d.store] || d.store_name, bought_on: d.bought_on, total: +d.total, source: src, member: ui.member });
-    if (r1.error) return r1;
-    const r2 = items.length ? await db.from('receipt_items').insert(items) : { error: null };
-    if (r2.error) return r2;
-    return prices.length ? db.from('hh_prices').upsert(prices) : { error: null };
-  }, `Zapisano paragon${prices.length ? ` · zaktualizowano ${prices.length} cen` : ''}`);
-  if (ok) { ui.month = d.bought_on.slice(0, 7); closeSheet(); ['receipts', 'receipt_items', 'hh_prices'].forEach(reload); }
+  // trzy zapisy w kolejności (paragon, pozycje, ceny); bez internetu czekają w telefonie
+  const ops = [{ t: 'receipts', kind: 'insert', rows: [{ id, store: String(d.store).slice(0, 10), store_name: String(RC.STORE_NAMES[d.store] || d.store_name || 'Inny sklep').slice(0, 60), bought_on: d.bought_on, total: +d.total, source: src, member: ui.member || null }] }];
+  if (items.length) ops.push({ t: 'receipt_items', kind: 'insert', rows: items });
+  if (prices.length) ops.push({ t: 'hh_prices', kind: 'upsert', rows: prices });
+  ui.month = d.bought_on.slice(0, 7); closeSheet();
+  write(ops, `Zapisano paragon${prices.length ? ` · zaktualizowano ${prices.length} cen` : ''}`);
 }
 function receiptSheet() {
   const r = S.receipts.find(x => x.id === ui.sheet.id); if (!r) return closeSheet();
@@ -481,10 +614,25 @@ function whoSheet() {
   <div class="sec"><h4>Zaproś domownika</h4><div class="box sub">Wyślij link osobie, z którą dzielisz kuchnię. Zobaczy Waszą listę zakupów, zamrażarkę i ulubione. Znajomemu z innego domu wyślij zwykły adres aplikacji, żeby założył własny dom.</div>
    <div class="row"><button class="btn pri" type="button" data-act="invite" style="flex:1">Wyślij zaproszenie</button><button class="btn" type="button" data-act="share-app">Adres dla znajomego</button></div></div>
   <form id="f-who" class="sec" style="gap:12px"><h4>Ty i Twój dom</h4>
-   <div class="field"><label for="w-name">Twoje imię (widoczne dla domowników)</label><input class="input" id="w-name" value="${esc(ui.member)}" autocomplete="given-name"></div>
-   <div class="field"><label for="w-house">Nazwa domu</label><input class="input" id="w-house" value="${esc(house.name)}"></div>
+   <div class="field"><label for="w-name">Twoje imię (widoczne dla domowników)</label><input class="input" id="w-name" value="${esc(ui.member)}" autocomplete="given-name" maxlength="40"></div>
+   <div class="field"><label for="w-house">Nazwa domu</label><input class="input" id="w-house" value="${esc(house.name)}" maxlength="60"></div>
    <button class="btn pri" type="submit">Zapisz</button></form>
-  <div class="sec"><h4>Ten telefon</h4>${st.confirmLeave ? `<div class="banner">Ten telefon przestanie widzieć dane domu. Wrócisz do niego tylko z linkiem zaproszenia od domownika.</div><div class="row"><button class="btn danger" type="button" data-act="leave">Tak, opuść dom</button><button class="btn" type="button" data-act="cancel-leave">Anuluj</button></div>` : `<button class="btn ghost danger" type="button" data-act="ask-leave">Opuść dom na tym telefonie</button>`}</div>`;
+  ${knownHtml(house.key, 'who')}
+  <div class="sec"><h4>Klucz domu</h4><div class="box sub">Link zaproszenia działa jak klucz: kto go ma, widzi dane domu. Jeśli trafił do niewłaściwej osoby, zmień klucz. Stare linki przestaną działać, a domownicy muszą dostać nowy link.</div>
+   ${st.rotated ? `<div class="banner">Klucz zmieniony. Wyślij domownikom nowy link zaproszenia.</div>` : ''}
+   ${st.confirmRotate ? `<div class="row"><button class="btn danger" type="button" data-act="rotate">Tak, zmień klucz</button><button class="btn" type="button" data-act="cancel-rotate">Anuluj</button></div>` : `<button class="btn ghost" type="button" data-act="ask-rotate" style="align-self:flex-start">Zmień klucz domu</button>`}</div>
+  <div class="sec"><h4>Dane domu</h4><div class="box sub">Kopia listy zakupów, zamrażarki, paragonów, cen i ustawień domu w pliku JSON.</div>
+   <button class="btn ghost" type="button" data-act="export" style="align-self:flex-start">Pobierz dane domu</button></div>
+  <div class="sec"><h4>Ten telefon</h4>${st.confirmLeave ? `<div class="banner">Ten telefon przestanie widzieć dane domu. Wrócisz do niego tylko z linkiem zaproszenia od domownika.${pendingOps.some(o => o.key === house.key) ? ' Uwaga: część zmian nie została jeszcze wysłana i przepadnie.' : ''}</div><div class="row"><button class="btn danger" type="button" data-act="leave">Tak, opuść dom</button><button class="btn" type="button" data-act="cancel-leave">Anuluj</button></div>` : `<button class="btn ghost danger" type="button" data-act="ask-leave">Opuść dom na tym telefonie</button>`}</div>
+  <div class="sec"><h4>Usunięcie domu</h4>${st.confirmDelete ? `<div class="banner">Z serwera znikną lista zakupów, zamrażarka, paragony, ceny, prośby i ustawienia domu, a wszyscy domownicy stracą do niego dostęp. Tego nie da się cofnąć.</div><div class="row"><button class="btn danger" type="button" data-act="delete-house">Tak, usuń dom i dane</button><button class="btn" type="button" data-act="cancel-delete">Anuluj</button></div>` : `<button class="btn ghost danger" type="button" data-act="ask-delete" style="align-self:flex-start">Usuń dom i wszystkie jego dane</button>`}</div>`;
+}
+/* domy zapamiętane na tym telefonie (zaproszenie do innego domu nie kasuje poprzedniego) */
+const knownHouses = () => (lsGet('houses', []) || []).filter(h => keyFrom(h?.key));
+function remember(h) { lsSet('houses', [{ key: h.key, name: h.name }, ...knownHouses().filter(x => x.key !== h.key)].slice(0, 8)); }
+function forget(key) { lsSet('houses', knownHouses().filter(x => x.key !== key)); }
+function knownHtml(exceptKey, where) {
+  const hs = knownHouses().filter(h => h.key !== exceptKey); if (!hs.length) return '';
+  return `<div class="sec"><h4>${where === 'who' ? 'Inne domy na tym telefonie' : 'Twoje domy na tym telefonie'}</h4><div class="box">${hs.map(h => `<div class="hrow"><b>${esc(h.name)}</b><div class="row"><button class="btn sm pri" type="button" data-act="open-known" data-k="${esc(h.key)}">${where === 'who' ? 'Przełącz' : 'Otwórz'}</button><button class="btn sm ghost" type="button" data-act="forget-known" data-k="${esc(h.key)}" aria-label="Zapomnij ten dom">✕</button></div></div>`).join('')}</div></div>`;
 }
 function lookSheet() {
   const t = lsGet('theme', 'light'), a = lsGet('accent', 'niebieski'), P = window.THEME?.presets || {};
@@ -495,10 +643,21 @@ function lookSheet() {
 function closeSheet() { ui.sheet = null; $('#sheet').hidden = true; document.body.style.overflow = ''; }
 const TABS = ['przepisy', 'lista', 'zamrazarka', 'wydatki', 'ceny'];
 function setTab(t) {
+  const changed = ui.tab !== t;
   ui.tab = t; document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-current', b.dataset.tab === t ? 'page' : 'false'));
   TABS.forEach(v => $('#v-' + v).hidden = v !== t); if (location.hash !== '#' + t) history.replaceState(null, '', '#' + t); window.scrollTo(0, 0);
+  if (changed && db) renderAll();
 }
-function renderAll() { renderCats(); renderRecipes(); renderList(); renderFreezer(); renderSpend(); renderPrices(); if (ui.sheet?.type === 'recipe') drawRecipeDyn(); }
+// Rysujemy tylko widoczny widok (pozostałe przy przełączeniu zakładki) i licznik na zakładce „Lista”.
+function renderAll() {
+  renderBadge();
+  if (ui.tab === 'przepisy') { renderCats(); renderRecipes(); }
+  else if (ui.tab === 'lista') renderList();
+  else if (ui.tab === 'zamrazarka') renderFreezer();
+  else if (ui.tab === 'wydatki') renderSpend();
+  else if (ui.tab === 'ceny') renderPrices();
+  if (ui.sheet?.type === 'recipe') drawRecipeDyn();
+}
 
 document.addEventListener('click', async e => {
   const t = e.target.closest('[data-act],[data-tab]'); if (!t) return;
@@ -511,7 +670,7 @@ document.addEventListener('click', async e => {
     case 'filter': ui.filter = d.k; renderCats(); renderRecipes(); break;
     case 'deal': { const n = S.products[d.pid]?.name || ''; ui.q = n.toLowerCase(); $('#q').value = n; ui.filter = 'all'; renderCats(); renderRecipes(); window.scrollTo(0, 0); break; }
     case 'ask': ui.sheet = { type: 'ask', q: d.q || '' }; drawSheet(); break;
-    case 'req-del': if (await w(() => db.from('recipe_requests').delete().eq('id', d.id), 'Usunięto prośbę')) { await load('recipe_requests'); drawSheet(); } break;
+    case 'req-del': await write({ t: 'recipe_requests', kind: 'delete', match: { id: d.id } }, 'Usunięto prośbę'); drawSheet(); break;
     case 'req-show': { const r = (S.recipe_requests || []).find(x => x.id === d.id); lsSet('seenReq', [...lsGet('seenReq', []), d.id].slice(-50)); ui.sheet = { type: 'ask' }; drawSheet(); renderRecipes(); break; }
     case 'look': ui.sheet = { type: 'look' }; drawSheet(); break;
     case 'set-theme': lsSet('theme', d.k); window.THEME?.apply(); drawSheet(); break;
@@ -524,17 +683,17 @@ document.addEventListener('click', async e => {
       $('#rd-n').value = ui.portions; document.querySelectorAll('[data-act="pset"]').forEach(c => c.setAttribute('aria-pressed', +c.dataset.n === ui.portions)); drawRecipeDyn(); break;
     }
     case 'to-list': addRecipeToList(); break;
-    case 'to-freezer': { const r = S.recipes[ui.sheet.id]; if (await w(() => db.from('freezer').insert({ recipe_id: r.id, name: r.name, portions: ui.portions, member: ui.member }), `Do zamrażarki: ${ui.portions} porcji`)) reload('freezer'); break; }
+    case 'to-freezer': { const r = S.recipes[ui.sheet.id]; write({ t: 'freezer', kind: 'insert', rows: [{ id: newId(), recipe_id: r.id, name: r.name.slice(0, 200), portions: ui.portions, member: ui.member || null, frozen_on: today() }] }, `Do zamrażarki: ${ui.portions} porcji`); break; }
     case 'ask-del': ui.sheet.confirmDel = true; drawRecipeDyn(); break;
     case 'cancel-del': ui.sheet.confirmDel = false; drawRecipeDyn(); break;
-    case 'del-recipe': { const id = ui.sheet.id, row = { recipe_id: id, active: false, removed: true }; S.hh[id] = row; closeSheet(); renderAll(); if (await w(() => db.from('hh_recipes').upsert(row), 'Usunięto przepis')) reload('hh_recipes'); break; }
+    case 'del-recipe': { const id = ui.sheet.id; closeSheet(); write({ t: 'hh_recipes', kind: 'upsert', rows: [{ recipe_id: id, active: false, removed: true }] }, 'Usunięto przepis'); break; }
     case 'plan': ui.plan = d.k; renderList(); break;
     case 'trip': ui.trip = ui.trip >= 20 ? 0 : ui.trip + 4; lsSet('trip', ui.trip); ui.plan = null; renderList(); break;
     case 'tick': tickGroup(d.pid); break;
-    case 'tick-m': { const m = S.list_items.find(x => x.id === d.id); if (m) { m.done = !m.done; renderList(); w(() => db.from('list_items').update({ done: m.done }).eq('id', d.id)); } break; }
-    case 'del-item': if (await w(() => db.from('list_items').delete().eq('id', d.id))) reload('list_items'); break;
-    case 'del-batch': if (await w(() => db.from('list_items').delete().eq('batch', d.k), 'Usunięto z listy')) reload('list_items'); break;
-    case 'clear-done': { const ids = S.list_items.filter(x => x.done).map(x => x.id); if (!ids.length) return toast('Nic jeszcze nie jest odhaczone.'); if (await w(() => db.from('list_items').delete().in('id', ids), `Usunięto ${ids.length} kupionych`)) reload('list_items'); break; }
+    case 'tick-m': { const m = S.list_items.find(x => x.id === d.id); if (m) write({ t: 'list_items', kind: 'update', values: { done: !m.done }, match: { id: d.id } }); break; }
+    case 'del-item': write({ t: 'list_items', kind: 'delete', match: { id: d.id } }); break;
+    case 'del-batch': write({ t: 'list_items', kind: 'delete', match: { batch: d.k } }, 'Usunięto z listy'); break;
+    case 'clear-done': { const ids = S.list_items.filter(x => x.done).map(x => x.id); if (!ids.length) return toast('Nic jeszcze nie jest odhaczone.'); write({ t: 'list_items', kind: 'delete', match: { id: ids } }, `Usunięto ${ids.length} kupionych`); break; }
     case 'fz-dec': fzChange(d.id, -1); break;
     case 'fz-inc': fzChange(d.id, 1); break;
     case 'price': ui.sheet = { type: 'price', pid: d.pid, s: d.s }; drawSheet(); break;
@@ -542,7 +701,7 @@ document.addEventListener('click', async e => {
     case 'month': ui.month = shiftMonth(ui.month, +d.d); renderSpend(); break;
     case 'budget': ui.sheet = { type: 'budget' }; drawSheet(); break;
     case 'open-receipt': ui.sheet = { type: 'receipt', id: d.id }; drawSheet(); break;
-    case 'del-receipt': if (await w(() => db.from('receipts').delete().eq('id', ui.sheet.id), 'Usunięto paragon')) { closeSheet(); reload('receipts'); reload('receipt_items'); } break;
+    case 'del-receipt': { const id = ui.sheet.id; closeSheet(); write([{ t: 'receipt_items', kind: 'delete', match: { receipt_id: id } }, { t: 'receipts', kind: 'delete', match: { id } }], 'Usunięto paragon'); break; }
     case 'ask-del-receipt': ui.sheet.confirmDel = true; drawSheet(); break;
     case 'ri-del': readForm(); ui.sheet.draft.items.splice(+d.i, 1); drawSheet(); break;
     case 'ri-add': readForm(); ui.sheet.draft.items.push({ name: '', qty: 1, weighed: false, unit_price: null, total: 0, discount: 0, category: 'Inne' }); drawSheet(); break;
@@ -551,8 +710,20 @@ document.addEventListener('click', async e => {
     case 'invite': shareLink(inviteUrl(), `Dołącz do domu „${house.name}” w Obiadach na Zapas`); break;
     case 'share-app': shareLink(appUrl(), 'Obiady na Zapas: przepisy do mrożenia, wspólna lista zakupów i ceny z gazetek'); break;
     case 'ask-leave': ui.sheet.confirmLeave = true; drawSheet(); break;
+    case 'ask-leave-lost': ui.sheet = { type: 'who', confirmLeave: true }; drawSheet(); break;
     case 'cancel-leave': ui.sheet.confirmLeave = false; drawSheet(); break;
     case 'leave': leaveHouse(); break;
+    case 'ask-rotate': ui.sheet.confirmRotate = true; drawSheet(); break;
+    case 'cancel-rotate': ui.sheet.confirmRotate = false; drawSheet(); break;
+    case 'rotate': busy(t, rotateKey); break;
+    case 'export': busy(t, exportData); break;
+    case 'ask-delete': ui.sheet.confirmDelete = true; drawSheet(); break;
+    case 'cancel-delete': ui.sheet.confirmDelete = false; drawSheet(); break;
+    case 'delete-house': busy(t, deleteHouse); break;
+    case 'open-known': { const h = knownHouses().find(x => x.key === d.k); if (h) switchTo(h); break; }
+    case 'forget-known': forget(d.k); if (ui.sheet) drawSheet(); else showKnown(); break;
+    case 'switch-house': if (pendingInvite) switchTo(pendingInvite); break;
+    case 'stay-house': stayHere(); break;
     case 'w-mode': $('#f-create').hidden = d.k !== 'create'; $('#f-join').hidden = d.k !== 'join'; document.querySelectorAll('[data-act="w-mode"]').forEach(c => c.setAttribute('aria-pressed', c.dataset.k === d.k)); break;
     case 'install-now': if (installEvt) { installEvt.prompt(); installEvt.userChoice.finally(() => { installEvt = null; }); } break;
     case 'hide-install': lsSet('noinstall', true); $('#install').hidden = true; break;
@@ -564,14 +735,14 @@ document.addEventListener('submit', async e => {
   e.preventDefault(); const id = e.target.id;
   if (id === 'f-price') savePrice();
   else if (id === 'f-who') {
-    const n = $('#w-name').value.trim(), hn = $('#w-house').value.trim();
+    const n = $('#w-name').value.trim().slice(0, 40), hn = $('#w-house').value.trim().slice(0, 60);
     if (n) { ui.member = n; lsSet('member', n); $('#who').textContent = n; }
-    if (hn && hn !== house.name && await w(() => db.rpc('rename_household', { p_name: hn }))) { house.name = hn; lsSet('house', house); }
+    if (hn && hn !== house.name && await w(() => db.rpc('rename_household', { p_name: hn }))) { house.name = hn; lsSet('house', house); remember(house); ping(['dom']); }
     closeSheet(); renderAll(); toast('Zapisano');
   }
   else if (id === 'f-ask') sendAsk();
-  else if (id === 'f-manual') { const v = $('#manual').value.trim(); if (!v) return; if (await w(() => db.from('list_items').insert({ manual: true, name: v, member: ui.member }))) { $('#manual').value = ''; reload('list_items'); } }
-  else if (id === 'f-freeze') { const v = $('#fz-name').value.trim(), n = +$('#fz-n').value || 1; if (!v) return; if (await w(() => db.from('freezer').insert({ name: v, portions: n, member: ui.member }), 'Dodano do zamrażarki')) { $('#fz-name').value = ''; reload('freezer'); } }
+  else if (id === 'f-manual') { const v = $('#manual').value.trim().slice(0, 200); if (!v) return; $('#manual').value = ''; write({ t: 'list_items', kind: 'insert', rows: [{ id: newId(), manual: true, name: v, member: ui.member || null }] }); }
+  else if (id === 'f-freeze') { const v = $('#fz-name').value.trim().slice(0, 200), n = Math.min(200, Math.max(1, Math.round(+$('#fz-n').value) || 1)); if (!v) return; $('#fz-name').value = ''; write({ t: 'freezer', kind: 'insert', rows: [{ id: newId(), name: v, portions: n, member: ui.member || null, frozen_on: today() }] }, 'Dodano do zamrażarki'); }
   else if (id === 'f-create') createHouse();
   else if (id === 'f-budget') saveBudget();
   else if (id === 'f-join') joinHouse();
@@ -587,9 +758,17 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
 /* ---------- dom: zakładanie, zaproszenia, start ---------- */
 const keyFrom = v => (String(v || '').match(/[0-9a-f]{64}/) || [null])[0];
 const appUrl = () => location.origin + location.pathname;
-const inviteUrl = () => `${appUrl()}?dom=${house.key}`;
+// Zaproszenie ma klucz po „#”: ta część adresu nie jest wysyłana do serwerów (GitHub Pages, podglądy linków).
+const inviteUrl = () => `${appUrl()}#dom=${house.key}`;
+const inviteKey = () => { const m = location.hash.match(/[#&]dom=([0-9a-f]{64})/); return m ? m[1] : keyFrom(new URLSearchParams(location.search).get('dom')); };
 const client = key => createClient(CFG.url, CFG.anon, { auth: { persistSession: false }, global: key ? { headers: { 'x-dom': key } } : {} });
-function ping() { chan?.send({ type: 'broadcast', event: 'zmiana', payload: {} }).catch?.(() => { }); }
+function ping(t = []) { chan?.send({ type: 'broadcast', event: 'zmiana', payload: { t } })?.catch?.(() => { }); }
+function lsDel(k) { try { localStorage.removeItem('onz_' + k); } catch { } }
+async function tagOf(key) { // skrót klucza: nazwa kanału domu i znacznik kopii danych w telefonie
+  const b = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(key)));
+  return Array.from(b.slice(0, 12), x => x.toString(16).padStart(2, '0')).join('');
+}
+let pendingInvite = null, toastLater = '';
 async function shareLink(url, text) {
   try { if (navigator.share) { await navigator.share({ title: 'Obiady na Zapas', text, url }); return; } } catch (e) { if (e?.name === 'AbortError') return; }
   try { await navigator.clipboard.writeText(url); toast('Skopiowano link'); } catch { toast('Nie udało się skopiować. Link: ' + url); }
@@ -621,14 +800,52 @@ async function joinHouse() {
   });
 }
 function enter(h, member) {
-  house = h; lsSet('house', h); ui.member = member; lsSet('member', member);
-  // klucz domu w adresie: po „Dodaj do ekranu początkowego” ikona otworzy już ten dom
-  history.replaceState(null, '', `?dom=${h.key}#przepisy`);
+  remember(h); house = h; lsSet('house', h); ui.member = member.slice(0, 40); lsSet('member', ui.member);
   start();
 }
-function leaveHouse() {
-  try { Object.keys(localStorage).filter(k => k.startsWith('onz_')).forEach(k => localStorage.removeItem(k)); } catch { }
+// Zmiana domu na tym telefonie: poprzedni zostaje na liście znanych domów; pełne przeładowanie = czysty stan.
+function switchTo(h) {
+  const name = (ui.member || $('#w-member')?.value || '').trim().slice(0, 40);
+  if (!name) return welcomeError('Wpisz swoje imię.');
+  const cur = lsGet('house', null); if (cur?.key) remember(cur);
+  remember(h); lsSet('house', { key: h.key, name: h.name }); ui.member = name; lsSet('member', name);
+  location.replace(`${appUrl()}?dom=${h.key}#przepisy`);
+}
+function stayHere() { pendingInvite = null; $('#w-switch').hidden = true; house = lsGet('house', null); if (house?.key) start(); else showWelcome(null); }
+async function leaveHouse() {
+  if (house?.key) forget(house.key);
+  lsDel('house'); lsDel('seenReq'); lsDel('rotated');
+  if (!knownHouses().length) try { Object.keys(localStorage).filter(k => k.startsWith('onz_') && !['onz_theme', 'onz_accent'].includes(k)).forEach(k => localStorage.removeItem(k)); } catch { }
+  await D.wipe();
+  try { await Promise.all((await caches.keys()).map(k => caches.delete(k))); } catch { }
   location.replace(appUrl());
+}
+async function rotateKey() {
+  await sync();
+  if (pendingOps.some(o => o.key === house.key)) return toast('Najpierw muszę wysłać zapisane zmiany. Połącz się z internetem.');
+  const { data, error } = await db.rpc('rotate_household_secret');
+  if (error || !data?.secret) return toast(errorText(error));
+  // domownicy na starym kanale od razu zobaczą, że ich link przestał działać
+  await Promise.race([chan?.send({ type: 'broadcast', event: 'zmiana', payload: { t: ['dom'] } }), new Promise(r => setTimeout(r, 1500))]).catch(() => { });
+  forget(house.key); const h = { key: data.secret, name: house.name }; remember(h); lsSet('house', h); lsSet('rotated', true);
+  location.replace(`${appUrl()}?dom=${h.key}#przepisy`);
+}
+const EXPORT_ORDER = { recipe_requests: ['created_at', 'id'], hh_recipes: ['recipe_id'], reactions: ['recipe_id', 'member'], list_items: ['created_at', 'id'], freezer: ['id'], hh_prices: ['product_id', 'store'], receipts: ['bought_on', 'id'], receipt_items: ['id'], hh_settings: ['household_id'] };
+async function exportData() {
+  try {
+    const out = { aplikacja: 'Obiady na Zapas', wyeksportowano: new Date().toISOString(), dom: house.name, tabele: {} };
+    for (const t of HH_TABLES) out.tabele[t] = await fetchAll(t, q => EXPORT_ORDER[t].reduce((x, c) => x.order(c), q.select('*')), true);
+    const url = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' }));
+    const a = Object.assign(document.createElement('a'), { href: url, download: `obiady-na-zapas-${today()}.json` });
+    document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
+    toast('Pobrano dane domu');
+  } catch (e) { console.error(e); toast(navigator.onLine ? 'Nie udało się pobrać danych.' : 'Do pobrania danych potrzebny jest internet.'); }
+}
+async function deleteHouse() {
+  const { error } = await db.rpc('delete_household');
+  if (error) return toast(error.code === 'PGRST202' ? 'Usuwanie domu nie jest jeszcze włączone w bazie.' : errorText(error));
+  ping(['dom']);
+  await leaveHouse();
 }
 /* instrukcja dodania do ekranu głównego: iPhone (Safari) i Android (Chrome) */
 const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -649,17 +866,40 @@ function showWelcome(invite) {
   const wi = $('#w-install'); wi.hidden = isStandalone() || !(isIOS || isAndroid); if (!wi.hidden) wi.innerHTML = installHtml(true);
   $('#w-member').value = ui.member || '';
   if (invite) {
+    pendingInvite = invite;
     $('#w-modes').hidden = true; $('#f-create').hidden = true; $('#f-join').hidden = false;
     $('#w-code').value = invite.key; $('#j-title').textContent = `Dołączasz do domu „${invite.name}”`;
   }
+  showKnown();
 }
-function start() {
-  db = client(house.key);
+function showKnown() { const el = $('#w-known'), h = knownHtml(pendingInvite?.key, 'welcome'); el.innerHTML = h; el.hidden = !h; }
+// Link do innego domu, gdy na telefonie jest już dom: pytamy, zamiast po cichu przełączać.
+function showSwitch(invite, saved) {
+  showWelcome(null); pendingInvite = invite; showKnown();
+  $('#w-modes').hidden = true; $('#f-create').hidden = true; $('#f-join').hidden = true;
+  const el = $('#w-switch'); el.hidden = false;
+  el.innerHTML = `<div class="banner">Ten link zaprasza do domu <b>„${esc(invite.name)}”</b>. Na tym telefonie masz dom <b>„${esc(saved.name)}”</b>.</div>
+    <div class="sub">Po przełączeniu dom „${esc(saved.name)}” zostanie zapamiętany i wrócisz do niego w ustawieniach.</div>
+    <div class="row"><button class="btn pri" type="button" data-act="switch-house">Przełącz na „${esc(invite.name)}”</button><button class="btn" type="button" data-act="stay-house">Zostań w „${esc(saved.name)}”</button></div>`;
+}
+async function start() {
+  db = clientFor(house.key); houseTag = await tagOf(house.key); remember(house);
   $('#welcome').hidden = true; $('#app').hidden = false; $('#who').textContent = ui.member || 'Ustawienia';
   const ib = $('#install'); ib.hidden = isStandalone() || lsGet('noinstall', false) || !(isIOS || isAndroid); if (!ib.hidden) ib.innerHTML = installHtml(false);
-  $('#offline').hidden = navigator.onLine;
-  const h = location.hash.slice(1); setTab(TABS.includes(h) ? h : 'przepisy');
-  loadCache(); renderAll(); loadAll(); subscribe();
+  // klucz domu w adresie (bez zaproszenia po „#”): ikona dodana do ekranu początkowego otworzy ten dom.
+  // Do serwera strony klucz nie trafia: service worker pobiera stronę bez parametrów.
+  const h = location.hash.slice(1), tab = TABS.includes(h) ? h : 'przepisy';
+  history.replaceState(null, '', `?dom=${house.key}#${tab}`);
+  setTab(tab);
+  // najpierw dane z telefonu (kopia + zapisy czekające na wysłanie), potem tylko zmiany z serwera
+  const [cached, ops, old] = await Promise.all([D.cacheAll(), D.outboxAll(), oldCache()]);
+  pendingOps = ops;
+  for (const c of cached.length ? cached : old) if (TABLES[c.t] && (SHARED[c.t] || !cached.length || c.house === houseTag)) { RAW[c.t] = c.data; VER[c.t] = c.ver; }
+  Object.keys(TABLES).forEach(recompute);
+  renderAll(); netBanner();
+  subscribe(); sync();
+  if (lsGet('rotated', false)) { lsDel('rotated'); ui.sheet = { type: 'who', rotated: true }; drawSheet(); }
+  if (toastLater) toast(toastLater);
 }
 /* iOS (aplikacja z ekranu głównego): po pierwszym otwarciu klawiatury WebKit potrafi na stałe „zmniejszyć” ekran –
    dolne menu wisi wtedy wyżej, a pod nim zostaje pusty pas. Pomaga tylko wymuszenie ponownego pomiaru:
@@ -677,15 +917,18 @@ document.addEventListener('focusout', e => { if (e.target.matches?.('input,texta
 document.addEventListener('visibilitychange', () => { if (!document.hidden) setTimeout(healViewport, 150); });
 window.addEventListener('pageshow', () => setTimeout(healViewport, 150));
 (async function boot() {
+  if (window.top !== window.self) return; // nie działamy w ramce cudzej strony
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
   if (!CFG.url) { document.body.innerHTML = '<div class="wrap" style="padding:40px 16px"><h2>Aplikacja jeszcze nie jest skonfigurowana</h2></div>'; return; }
-  const saved = lsGet('house', null), fromUrl = keyFrom(new URLSearchParams(location.search).get('dom'));
+  const saved = lsGet('house', null), fromUrl = inviteKey();
   if (fromUrl && fromUrl !== saved?.key) {
-    // link zaproszenia albo pierwsze otwarcie z ikony
-    const h = await houseFor(fromUrl).catch(() => null);
-    if (h && ui.member) return enter(h, ui.member);
+    // link zaproszenia albo pierwsze otwarcie z ikony na ekranie początkowym
+    const h = await houseFor(fromUrl).catch(() => undefined); // undefined: brak połączenia, null: nieaktualny link
+    if (h && saved?.key) return showSwitch(h, saved);
     if (h) return showWelcome(h);
+    if (!saved?.key) { showWelcome(null); return welcomeError(h === null ? 'Ten link zaproszenia jest nieaktualny. Poproś domownika o nowy.' : 'Brak połączenia. Otwórz link zaproszenia ponownie, gdy wróci internet.'); }
+    toastLater = h === null ? 'Link zaproszenia był nieaktualny. Zostajesz w swoim domu.' : 'Brak połączenia: link zaproszenia otwórz ponownie, gdy wróci internet.';
   }
-  if (saved?.key) { house = saved; if (!fromUrl) history.replaceState(null, '', `?dom=${saved.key}${location.hash || '#przepisy'}`); return start(); }
+  if (saved?.key) { house = saved; return start(); }
   showWelcome(null);
 })();

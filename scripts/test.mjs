@@ -62,7 +62,8 @@ const bad = { file: 'zly.json', products: [{ id: 'nowy_ser', name: 'Ser', unit: 
   { id: 'bolognese', category: 'makaron', name: 'X', ingredients: [{ pid: 'mielone_wol', amt: 1, unit: 'g' }, { pid: 'mielone_wol', amt: 1, unit: 'g' }], steps: ['a', 'b'] },
   { id: 'nowe-danie', category: 'ryby', name: 'Y', ingredients: [{ pid: 'nie_ma', amt: 1, unit: 'g' }, { pid: 'cebula', amt: 2, unit: 'szklanka' }], steps: ['a'] }] };
 const errs = validate({ ...base, batches: [bad] });
-eq(errs.length, 7, 'błędne przepisy są wyłapywane (' + errs.length + ')');
+eq(errs.length, 8, 'błędne przepisy są wyłapywane (' + errs.length + ')');
+eq(errs.some(e => e.includes('„szklanka” spoza listy')), true, 'jednostka spoza listy jest nazwana w komunikacie');
 
 // --- paragony ---
 const R = await import('../web/receipt.js');

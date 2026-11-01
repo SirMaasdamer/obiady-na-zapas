@@ -1,33 +1,34 @@
 name: Nowe przepisy
 
-# Gdy w folderze przepisy/ (albo seed/) pojawią się zmiany: sprawdza je, buduje dane/katalog.json
-# i prosi bazę o synchronizację. Bez sekretów.
+# Gdy w folderze przepisy/ (albo seed/) pojawią się zmiany: sprawdza je, buduje katalog i wysyła go do bazy
+# (funkcja „ingest”, token OIDC, bez sekretów). Razem z katalogiem trafiają wyniki próśb z aplikacji.
+# Nic nie commituje: katalog nie jest przechowywany w repozytorium.
 on:
   push:
     branches: [main]
-    paths: ["przepisy/**", "seed/**"]
+    paths: ["przepisy/**", "seed/**", "scripts/batches.mjs", "scripts/import-recipes.mjs", "supabase/functions/ingest/walidacja.mjs"]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  id-token: write
 
 concurrency:
-  group: dane
+  group: przepisy
   cancel-in-progress: false
 
 jobs:
   przepisy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: 20
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
       - name: Sprawdzenie i budowa katalogu
         run: node scripts/import-recipes.mjs
-      - name: Zapis w repozytorium i synchronizacja bazy
-        run: |
-          git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
-          git add dane/katalog.json
-          if ! git diff --cached --quiet; then git commit -q -m "Katalog przepisów" && git pull -q --rebase && git push -q; fi
-          bash scripts/sync.sh
+      - name: Zapis w bazie
+        run: node scripts/ingest.mjs katalog dane/katalog.json

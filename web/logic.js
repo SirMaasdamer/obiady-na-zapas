@@ -32,7 +32,8 @@ export function priceOf(pid, s) {
   const regular = own ? +own.regular : r?.regular != null ? +r.regular : null;
   if (r?.promo != null && (!r.promo_from || r.promo_from <= t) && (!r.promo_to || r.promo_to >= t) && !(regular != null && own && +r.promo > regular))
     return { p: +r.promo, promo: true, until: r.promo_to, note: r.promo_note, regular };
-  if (regular != null) return { p: regular, promo: false, own: !!own, src: own?.src || null, seen: own?.seen_on || null };
+  // rsrc: skąd cena regularna spoza domu – „gazetka” (cena przekreślona w gazetce) albo „szacunek” (katalog)
+  if (regular != null) return { p: regular, promo: false, own: !!own, src: own?.src || null, seen: own?.seen_on || null, rsrc: own ? null : r?.regular_src || null };
   return null;
 }
 
@@ -49,7 +50,7 @@ export const costBuy = (p, s, q) => { const pr = priceOf(p.id, s); if (!pr) retu
 export function fmtAmt(a, u) {
   if (u === 'g' || u === 'ml') { const big = u === 'g' ? 'kg' : 'l'; if (a >= 1000) return num(a / 1000, 2) + ' ' + big; return (a < 20 ? num(a, 0) : Math.round(a / 5) * 5) + ' ' + u; }
   if (u === 'kg' || u === 'l') return num(a, 2) + ' ' + u;
-  return num(Math.ceil(a * 2 - 1e-6) / 2, 1) + ' ' + u;
+  return num(Math.ceil(a * 2 - 1e-6) / 2, 1) + ' ' + esc(u); // jednostka trafia do HTML: zawsze escapowana
 }
 export function fmtQ(p, q) { if (p.unit === 'kg') return q < 1 ? fmtAmt(q * 1000, 'g') : num(q, 2) + ' kg'; if (p.unit === 'l') return q < 1 ? fmtAmt(q * 1000, 'ml') : num(q, 2) + ' l'; return fmtAmt(q, p.unit); }
 export const fmtPack = p => fmtQ(p, p.pack || 1);

@@ -170,13 +170,23 @@ export function packPrice(item, p, ref) {
 }
 
 /* ---------- odczyt plików (w przeglądarce) ---------- */
+// pdf.js i tesseract.js leżą w vendor/ (wersje i sumy SHA-256: vendor/WERSJE.json), razem z danymi języka polskiego.
+const VENDOR = new URL('./vendor/', import.meta.url).href;
 const loaded = {};
-function script(src) { return loaded[src] ??= new Promise((ok, err) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => err(new Error('Nie udało się wczytać ' + src)); document.head.append(s); }); }
+function script(src) { return loaded[src] ??= new Promise((ok, err) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => { delete loaded[src]; err(new Error('Nie udało się wczytać ' + src)); }; document.head.append(s); }); }
+let pdfjs = null;
+async function pdfLib() {
+  if (!pdfjs) { pdfjs = await import(VENDOR + 'pdfjs/pdf.mjs'); pdfjs.GlobalWorkerOptions.workerSrc = VENDOR + 'pdfjs/pdf.worker.mjs'; }
+  return pdfjs;
+}
 
 export async function pdfText(file, onProgress) {
-  await script('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
-  const lib = window.pdfjsLib; lib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-  const doc = await lib.getDocument({ data: await file.arrayBuffer() }).promise;
+  const lib = await pdfLib();
+  // skrypty z PDF są wyłączone (domyślnie w pdf.js); dekodery obrazów (wasm) z vendor/
+  const task = lib.getDocument({ data: await file.arrayBuffer(), wasmUrl: VENDOR + 'pdfjs/wasm/' });
+  try { return await readPdf(await task.promise, onProgress); } finally { task.destroy(); } // zwalnia workera pdf.js
+}
+async function readPdf(doc, onProgress) {
   const out = [];
   for (let n = 1; n <= Math.min(doc.numPages, 10); n++) {
     const page = await doc.getPage(n), tc = await page.getTextContent();
@@ -204,8 +214,15 @@ export async function pdfText(file, onProgress) {
 
 let worker = null;
 async function ocrBlob(blob, onProgress) {
-  await script('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
-  if (!worker) { worker = await window.Tesseract.createWorker('pol', 1, { logger: m => m.status === 'recognizing text' && worker?._onProgress?.(m.progress) }); await worker.setParameters({ preserve_interword_spaces: '1', tessedit_pageseg_mode: '6' }); }
+  await script(VENDOR + 'tesseract/tesseract.min.js');
+  if (!worker) {
+    worker = await window.Tesseract.createWorker('pol', 1, {
+      workerPath: VENDOR + 'tesseract/worker.min.js', workerBlobURL: false, // worker z tej samej strony (CSP: worker-src 'self')
+      corePath: VENDOR + 'tesseract/core/', langPath: VENDOR + 'tesseract/lang',
+      logger: m => m.status === 'recognizing text' && worker?._onProgress?.(m.progress),
+    });
+    await worker.setParameters({ preserve_interword_spaces: '1', tessedit_pageseg_mode: '6' });
+  }
   worker._onProgress = onProgress;
   const { data } = await worker.recognize(blob);
   return data.text;

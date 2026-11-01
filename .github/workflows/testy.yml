@@ -1,0 +1,48 @@
+name: Testy
+
+# Testy logiki, zabezpieczeń i walidacji przepisów oraz kontrola, że biblioteki w web/vendor/
+# są dokładnie takie jak w przypiętych pakietach npm.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Testy (logika, zabezpieczenia)
+        run: npm test
+      - name: Paczki przepisów
+        run: node scripts/import-recipes.mjs --check
+      - name: Składnia skryptów aplikacji
+        run: for f in web/*.js; do node --check "$f"; done
+      - name: Biblioteki w web/vendor zgodne z package-lock.json
+        run: npm run biblioteki:sprawdz
+
+  aplikacja:
+    # Aplikacja w Chromium z atrapą Supabase: CSP, praca bez sieci, zaproszenia, klucz domu, paragony (PDF i OCR)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - run: npm ci --omit=dev --ignore-scripts --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - name: Testy aplikacji w przeglądarce
+        run: npm run test:aplikacja

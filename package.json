@@ -3,12 +3,26 @@
   "private": true,
   "type": "module",
   "description": "Gotowanie na zapas: przepisy, wspólna lista zakupów, ceny z gazetek, zamrażarka.",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "scrape": "node scripts/scrape.mjs",
     "katalog": "node scripts/import-recipes.mjs",
-    "test": "node scripts/test.mjs"
+    "test": "node scripts/test.mjs && node scripts/test-bezpieczenstwo.mjs",
+    "biblioteki": "node scripts/vendor.mjs",
+    "biblioteki:sprawdz": "node scripts/vendor.mjs --check",
+    "test:aplikacja": "node scripts/test-aplikacji.mjs"
   },
   "dependencies": {
-    "playwright": "1.47.2"
+    "playwright": "1.64.1"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "@tesseract.js-data/pol": "^1.0.0",
+    "esbuild": "0.28.2",
+    "pdfjs-dist": "6.4.299",
+    "tesseract.js": "5.1.1",
+    "tesseract.js-core": "^5.1.1"
   }
 }

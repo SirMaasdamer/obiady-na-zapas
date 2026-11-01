@@ -1,7 +1,8 @@
 name: Ceny z gazetek
 
-# Pobiera oferty i gazetki Biedronki, Lidla i Kauflandu, zapisuje je w dane/oferty.json
-# i prosi bazę o synchronizację. Za darmo, bez AI i bez sekretów.
+# Pobiera oferty Biedronki, Lidla i Kauflandu i wysyła je do bazy (funkcja „ingest”, token OIDC, bez sekretów).
+# Dwa joby: przeglądarka na obcych stronach działa bez prawa zapisu do repozytorium, a zapis robi osobny job,
+# który nie uruchamia nic poza skryptami z repozytorium. Diagnostyka (zrzuty, logi) trafia do artefaktu na 7 dni.
 on:
   push:
     branches: [main]
@@ -14,34 +15,72 @@ on:
         description: "Sklepy (b = Biedronka, l = Lidl, k = Kaufland)"
         default: "b,l,k"
 
-permissions:
-  contents: write
+permissions: {}
 
 concurrency:
-  group: dane
+  group: ceny
   cancel-in-progress: false
 
 jobs:
-  ceny:
+  pobranie:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    permissions:
+      contents: read
     env:
       STORES: ${{ inputs.stores || 'b,l,k' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: 20
-      - run: npm install --no-audit --no-fund
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - run: npm ci --omit=dev --ignore-scripts --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - name: Darmowe narzędzia do odczytu PDF i OCR
         run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils tesseract-ocr tesseract-ocr-pol
       - name: Pobieranie i odczyt ofert
         run: node scripts/scrape.mjs
-      - name: Zapis w repozytorium i synchronizacja bazy
-        if: always()
+      - name: Wynik przebiegu
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: oferty
+          path: dane/oferty-przebieg.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Diagnostyka (zrzuty i logi odczytu)
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: diagnostyka
+          path: dane/debug/
+          if-no-files-found: ignore
+          retention-days: 7
+
+  zapis:
+    needs: pobranie
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write # podgląd promocji dane/oferty.json dla Claude
+      id-token: write # token OIDC dla funkcji „ingest”
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: oferty
+          path: dane
+      - name: Zapis w bazie
+        run: node scripts/ingest.mjs oferty dane/oferty-przebieg.json
+      - name: Podgląd promocji w repozytorium
         run: |
+          node scripts/oferty-podglad.mjs
           git config user.name "obiady-bot"; git config user.email "bot@users.noreply.github.com"
-          git add dane/oferty.json dane/debug
-          if ! git diff --cached --quiet; then git commit -q -m "Oferty $(date +%F)" && git pull -q --rebase && git push -q; fi
-          bash scripts/sync.sh
+          git add dane/oferty.json
+          if ! git diff --cached --quiet; then git commit -q -m "Oferty $(date +%F)"; for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 10; done; fi
