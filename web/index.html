@@ -2,6 +2,10 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
+<!-- Polityka bezpieczeństwa: kod tylko z tej strony (biblioteki leżą w vendor/), połączenia tylko z bazą Supabase.
+     GitHub Pages nie pozwala ustawić nagłówków, dlatego meta. Ramki blokuje theme.js. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; worker-src 'self'; connect-src 'self' https://jnomchdxgmoegbpfjtii.supabase.co wss://jnomchdxgmoegbpfjtii.supabase.co; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <title>Obiady na Zapas</title>
 <meta name="description" content="Gotowanie na zapas: przepisy, wspólna lista zakupów, ceny z gazetek i zamrażarka.">
@@ -15,9 +19,10 @@
 <meta name="theme-color" content="#1E1B4B" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14122E" media="(prefers-color-scheme: dark)">
 <script src="theme.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="preload" href="vendor/fonts/PlusJakartaSans.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Font z repozytorium (vendor/fonts, licencja OFL) zamiast Google Fonts: otwarcie aplikacji nie wysyła adresu IP do Google */
+@font-face{font-family:"Plus Jakarta Sans";src:url(vendor/fonts/PlusJakartaSans.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
 /* Layout: aplikacja jednokolumnowa; karty jak etykiety na pudełkach do mrożenia (pasek taśmy), górny pasek, dolne zakładki */
 :root{
   --bg:#F4F5FB; --surface:#FFFFFF; --sunk:#ECEEF8; --ink:#17163A; --muted:#5A5C7A; --line:#E1E3F1;
@@ -377,6 +382,10 @@ input,select,textarea,.input{font-size:16px!important}
 .req-r .chip{font-size:12.5px;padding:6px 10px;text-align:left}
 .req-s{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
 #app{min-height:100vh}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.hrow:first-child{border-top:0}
+.hrow b{font-weight:700;overflow-wrap:anywhere}
+.hrow .row{flex-wrap:nowrap}
 </style>
 </head>
 <body>
@@ -387,10 +396,12 @@ input,select,textarea,.input{font-size:16px!important}
     <h1>Obiady na <span style="background:var(--vbtn);color:#fff;padding:0 8px;border-radius:8px">Zapas</span></h1>
     <div class="sub">Przepisy do mrożenia z przelicznikiem porcji, wspólna lista zakupów z wyborem najtańszego sklepu i ceny z ofert Biedronki, Lidla i Kauflandu.</div>
     <div id="w-install" class="banner" hidden></div>
-    <div class="field"><label for="w-member">Twoje imię</label><input class="input" id="w-member" autocomplete="given-name" placeholder="np. Michał"></div>
+    <div id="w-switch" class="sec" hidden></div>
+    <div id="w-known" class="sec" hidden></div>
+    <div class="field"><label for="w-member">Twoje imię</label><input class="input" id="w-member" autocomplete="given-name" placeholder="np. Michał" maxlength="40"></div>
     <div class="chips" id="w-modes"><button type="button" class="chip" data-act="w-mode" data-k="create" aria-pressed="true">Nowy dom</button><button type="button" class="chip" data-act="w-mode" data-k="join" aria-pressed="false">Mam zaproszenie</button></div>
     <form id="f-create" class="sec">
-      <div class="field"><label for="w-house">Nazwa domu (opcjonalnie)</label><input class="input" id="w-house" placeholder="np. Dom Kowalskich"></div>
+      <div class="field"><label for="w-house">Nazwa domu (opcjonalnie)</label><input class="input" id="w-house" placeholder="np. Dom Kowalskich" maxlength="60"></div>
       <div class="sub">Dom to Wasza wspólna lista zakupów, zamrażarka i ulubione. Domowników zaprosisz linkiem.</div>
       <button class="btn pri" type="submit" id="c-btn">Załóż dom</button>
     </form>
@@ -409,6 +420,7 @@ input,select,textarea,.input{font-size:16px!important}
 <main><div class="wrap">
   <div id="install" class="banner" hidden></div>
   <div id="offline" class="banner" hidden>Brak połączenia. Pokazuję ostatnio wczytane dane.</div>
+  <div id="lost" class="warnbox" hidden></div>
 
   <section class="view" id="v-przepisy">
     <div class="vh"><div><h1>Przepisy</h1><div class="sub" id="rcount">Dania, które dobrze znoszą mrożenie</div></div>
@@ -422,13 +434,13 @@ input,select,textarea,.input{font-size:16px!important}
   <section class="view" id="v-lista" hidden>
     <div class="vh"><div><h1>Lista zakupów</h1><div class="sub">Wspólna dla całego domu</div></div>
       <button class="btn sm ghost" data-act="clear-done">Usuń kupione</button></div>
-    <form class="row" id="f-manual" style="flex-wrap:nowrap"><input class="input" id="manual" placeholder="Dopisz coś (np. ryż, mleko)" autocomplete="off"><button class="btn pri" type="submit">Dodaj</button></form>
+    <form class="row" id="f-manual" style="flex-wrap:nowrap"><input class="input" id="manual" placeholder="Dopisz coś (np. ryż, mleko)" autocomplete="off" maxlength="200"><button class="btn pri" type="submit">Dodaj</button></form>
     <div id="llist"></div>
   </section>
 
   <section class="view" id="v-zamrazarka" hidden>
     <div class="vh"><div><h1>Zamrażarka</h1><div class="sub" id="fsub">Najstarsze pudełka na górze</div></div><div class="tiles" id="fstats"></div></div>
-    <form class="row" id="f-freeze" style="flex-wrap:nowrap"><input class="input" id="fz-name" placeholder="Pudełko spoza przepisów" autocomplete="off"><input class="input" id="fz-n" type="number" min="1" value="2" style="width:72px;flex:none" aria-label="Porcje"><button class="btn pri" type="submit">Dodaj</button></form>
+    <form class="row" id="f-freeze" style="flex-wrap:nowrap"><input class="input" id="fz-name" placeholder="Pudełko spoza przepisów" autocomplete="off" maxlength="200"><input class="input" id="fz-n" type="number" min="1" max="200" value="2" style="width:72px;flex:none" aria-label="Porcje"><button class="btn pri" type="submit">Dodaj</button></form>
     <div id="flist"></div>
   </section>
 

@@ -1,5 +1,8 @@
 // Wygląd: motyw (jasny / ciemny / jak w telefonie) i zestaw kolorów. Ładowany w <head>, żeby nie mignęło.
 (function () {
+  // Aplikacja nie działa osadzona w ramce cudzej strony (ochrona przed podstępnym klikaniem, „clickjacking”).
+  // GitHub Pages nie pozwala ustawić nagłówka frame-ancestors, więc robimy to tutaj.
+  if (window.top !== window.self) { document.documentElement.style.display = 'none'; if (window.stop) window.stop(); return; }
   var P = {
     niebieski: { n: 'Niebieski + fiolet', l: ['#2F5BEA', '#6D3FE0'], d: ['#7D9BFF', '#A58BFF'] },
     fiolet: { n: 'Fiolet + niebieski', l: ['#6D3FE0', '#2F5BEA'], d: ['#A58BFF', '#7D9BFF'] },
