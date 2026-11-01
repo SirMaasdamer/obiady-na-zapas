@@ -33,7 +33,7 @@ const HEART = '<svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7
 const HEART_O = HEART.replace('fill="currentColor"', 'fill="none" stroke="currentColor" stroke-width="1.8"');
 
 /* ---------- people ---------- */
-const COLORS = ['#1E6B59', '#C84B3B', '#2C5FB8', '#7A3E8F', '#A8670B', '#2E7D8F'];
+const COLORS = ['#2F5BEA', '#6D3FE0', '#B8327E', '#0B7285', '#B25E09', '#3D3880'];
 const colorOf = n => COLORS[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORS.length];
 const faces = names => names.length ? '<span class="faces">' + names.slice(0, 5).map(n => `<span class="face" style="background:${colorOf(n)}" title="${esc(n)}">${esc(n[0]?.toUpperCase() || '?')}</span>`).join('') + '</span>' : '';
 
@@ -233,7 +233,7 @@ function renderFreezer() {
   box.innerHTML = `<div class="sub">Razem ${total} porcji · ok. ${num(total / 2, 1)} obiadów dla 2 osób</div>` + fs.map(f => {
     const age = daysSince(f.frozen_on), lim = (S.recipes[f.recipe_id]?.freeze_months || 3) * 30, old = age > lim;
     return `<div class="fz"><span class="tape">${dPL(f.frozen_on)} · ${age} dni${old ? ' · zjedz szybko' : ''}</span><div><h3>${esc(f.name)}</h3><div class="sub ${old ? 'old' : ''}">${old ? 'Przekroczony zalecany czas mrożenia' : 'Dobre jeszcze ok. ' + Math.max(0, Math.round((lim - age) / 7)) + ' tyg.'}</div></div>
-    <div class="n"><button class="round" data-act="fz-dec" data-id="${esc(f.id)}" aria-label="Wyjmij porcję">−</button><b class="num">${f.portions}</b><button class="round" data-act="fz-inc" data-id="${esc(f.id)}" aria-label="Dodaj porcję">+</button></div></div>`;
+    <div class="life ${old ? 'old' : ''}"><i style="width:${Math.min(100, Math.round(age / lim * 100))}%"></i></div><div class="n"><button class="round" data-act="fz-dec" data-id="${esc(f.id)}" aria-label="Wyjmij porcję">−</button><b class="num">${f.portions}</b><button class="round" data-act="fz-inc" data-id="${esc(f.id)}" aria-label="Dodaj porcję">+</button></div></div>`;
   }).join('');
 }
 async function fzChange(id, d) {

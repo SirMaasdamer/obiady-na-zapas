@@ -11,28 +11,33 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Obiady">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#EDF2F0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0D1614" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1E1B4B" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14122E" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 /* Layout: aplikacja jednokolumnowa; karty jak etykiety na pudełkach do mrożenia (pasek taśmy), górny pasek, dolne zakładki */
 :root{
-  --bg:#EDF2F0; --surface:#FFFFFF; --sunk:#E2EAE7; --ink:#132A25; --muted:#5A6E68; --line:#CFDBD7;
-  --accent:#1E6B59; --accent-ink:#FFFFFF; --tape:#F1C640; --tape-ink:#3A2D00;
-  --promo:#C23B26; --good:#24774A; --warn:#A8670B;
-  --s-b:#C84B3B; --s-l:#2C5FB8; --s-k:#7A3E8F;
-  --f-display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
-  --f-body:"Figtree",-apple-system,"Segoe UI",system-ui,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --r:14px; color-scheme:light;
+  --bg:#F4F5FB; --surface:#FFFFFF; --sunk:#ECEEF8; --ink:#17163A; --muted:#5A5C7A; --line:#E1E3F1;
+  --accent:#2F5BEA; --accent-ink:#FFFFFF; --soft:#E8EEFF; --soft-ink:#1E3FB0;
+  --violet:#6D3FE0; --vbtn:#6D3FE0; --vsoft:#EFE8FF; --vink:#5B2FD0;
+  --hero:#1E1B4B; --hero-2:#2E2A6B; --hero-3:#3D3880; --hero-ink:#FFFFFF; --hero-muted:#C7C4F5;
+  --tape:var(--vsoft); --tape-ink:var(--vink);
+  --promo:#6D3FE0; --good:#1F7A4D; --warn:#B25E09;
+  --s-b:#B8327E; --s-l:#2F5BEA; --s-k:#5F3DC4;
+  --f-display:"Plus Jakarta Sans",-apple-system,system-ui,sans-serif;
+  --f-body:"Plus Jakarta Sans",-apple-system,"Segoe UI",system-ui,sans-serif;
+  --f-mono:"Plus Jakarta Sans",-apple-system,system-ui,sans-serif;
+  --r:20px; --shadow:0 1px 2px rgba(23,22,58,.06),0 2px 10px rgba(23,22,58,.04); color-scheme:light;
 }
 @media (prefers-color-scheme: dark){:root{
-  --bg:#0D1614; --surface:#15211E; --sunk:#1B2926; --ink:#E2EEEA; --muted:#93A9A2; --line:#263732;
-  --accent:#5FC4A6; --accent-ink:#06231B; --tape:#DDB436; --tape-ink:#261C00;
-  --promo:#F2775F; --good:#6CCB91; --warn:#E3A645;
-  --s-b:#F07D6C; --s-l:#79A3F0; --s-k:#C58BDA; color-scheme:dark}}
+  --bg:#0E0D1F; --surface:#18172F; --sunk:#222040; --ink:#ECEBFF; --muted:#A3A2C7; --line:#2C2A4D;
+  --accent:#7D9BFF; --accent-ink:#0B1033; --soft:#1F2A55; --soft-ink:#B3C4FF;
+  --violet:#A58BFF; --vbtn:#6D3FE0; --vsoft:#2C2160; --vink:#CDBDFF;
+  --hero:#14122E; --hero-2:#25224F; --hero-3:#332F66; --hero-ink:#FFFFFF; --hero-muted:#B8B5E8;
+  --promo:#B9A3FF; --good:#6CCB91; --warn:#E3A645;
+  --s-b:#F08BC5; --s-l:#7D9BFF; --s-k:#B9A3FF; --shadow:none; color-scheme:dark}}
 *{box-sizing:border-box}
 html,body{background:var(--bg);color:var(--ink);margin:0}
 body{font-family:var(--f-body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
@@ -224,6 +229,97 @@ details summary{cursor:pointer;font-weight:600;padding:6px 0}
 .prog{height:6px;border-radius:999px;background:var(--sunk);overflow:hidden}
 .prog i{display:block;height:100%;background:var(--accent);transition:width .3s}
 @media (prefers-reduced-motion:no-preference){.sheet-inner{animation:up .22s ease-out}@keyframes up{from{transform:translateY(24px);opacity:.6}}}
+
+/* ===== nowy wygląd: granat + niebieski + fiolet ===== */
+body::before{background:var(--hero)}
+.top{background:var(--hero);color:var(--hero-ink);border-bottom:0;padding-block:12px 6px}
+.brand{font-weight:800;font-size:19px;letter-spacing:-.01em}
+.brand span{background:var(--vbtn);color:#fff;transform:none;border-radius:8px;padding:1px 8px}
+.who{color:var(--hero-muted)}
+main{padding-top:0}
+.vh{background:var(--hero);color:var(--hero-ink);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:6px max(16px,env(safe-area-inset-left,0px)) 20px;border-radius:0 0 28px 28px;margin-bottom:2px}
+.vh h1{font-size:28px;letter-spacing:-.02em}
+.vh .sub{color:var(--hero-muted)}
+.vh .btn.pri{background:var(--vbtn);border-color:var(--vbtn);color:#fff}
+.vh .btn.ghost,.vh .btn:not(.pri){background:var(--hero-2);border-color:var(--hero-2);color:#fff}
+.vh .input{background:var(--hero-2);border:0;color:#fff;flex-basis:100%}
+.vh .input::placeholder{color:var(--hero-muted)}
+.vh > .input{margin-top:4px}
+.btn{border-radius:14px;padding:10px 16px}
+.btn.sm{border-radius:12px;padding:7px 12px}
+.btn.pri{box-shadow:none}
+.input{border-radius:14px;border-color:var(--line)}
+.chip{border-radius:999px;padding:8px 14px;font-size:13.5px;color:var(--ink);border-color:var(--line)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.chip.soft[aria-pressed="true"]{background:var(--vsoft);color:var(--vink);border-color:var(--violet)}
+.banner{background:var(--soft);color:var(--soft-ink);border-radius:16px}
+.banner b{color:inherit}
+.card,.box,.plan,.grp,.fz,.budget,.ptable,.st,.cost{border:0;box-shadow:var(--shadow)}
+.card{padding:14px 16px 14px;gap:8px}
+.tape{margin-top:0;border-radius:8px;font-family:var(--f-body);font-size:11px;letter-spacing:.04em;padding:4px 8px}
+.card h3{font-size:17px;font-weight:800}
+.price-line{border-top:1px solid var(--line)}
+.pill{border-radius:8px;padding:3px 8px}
+.pill.promo{background:var(--vsoft);color:var(--vink)}
+.pill.want{background:var(--soft);color:var(--soft-ink)}
+.pill.new{background:var(--vbtn);color:#fff}
+.heart{top:8px;right:8px;width:44px;height:44px}
+.heart.on{color:var(--violet)}
+.empty{border-color:var(--line);border-radius:var(--r);background:var(--surface)}
+.sheet{background:color-mix(in srgb,#0E0D1F 55%,transparent)}
+.sheet-inner{border-radius:28px 28px 0 0}
+.x{width:44px;height:44px;border-radius:14px}
+.sec h4{font-family:var(--f-body);font-weight:800;letter-spacing:.06em}
+.stepper .n{border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:16px}
+.stepper .n button{width:44px;height:44px;color:var(--accent);font-weight:800}
+.stepper input{font-size:20px;font-weight:800}
+.ing .q{font-weight:700;color:var(--soft-ink)}
+.cost{border-radius:14px;padding:10px}
+.cost.best{background:var(--vsoft);box-shadow:inset 0 0 0 2px var(--violet)}
+.cost.best .lbl,.cost.best b{color:var(--vink)}
+ol.steps li::marker{color:var(--accent)}
+.plan{background:var(--hero);color:var(--hero-ink);box-shadow:none}
+.plan .sub,.plan .d{color:var(--hero-muted)}
+.plan .opt{border-color:var(--hero-3);background:var(--hero-2);color:#fff;border-radius:12px;padding:10px 12px}
+.plan .opt[aria-pressed="true"]{background:#fff;color:var(--hero);border-color:#fff}
+.plan .opt[aria-pressed="true"] .d{color:var(--muted)}
+.plan .store.b{color:#F2A6D2}.plan .store.l{color:#A9BCFF}.plan .store.k{color:#C9B8FF}
+.plan .opt[aria-pressed="true"] .store.b{color:var(--s-b)}.plan .opt[aria-pressed="true"] .store.l{color:var(--s-l)}.plan .opt[aria-pressed="true"] .store.k{color:var(--s-k)}
+.plan .btn{background:var(--hero-2);border-color:var(--hero-3);color:#fff}
+.plan .btn.pri{background:var(--vbtn);border-color:var(--vbtn)}
+.grp-h{background:transparent;padding:14px 16px 8px}
+.grp-h h3{font-size:16px;font-weight:800}
+.item{padding:11px 16px;border-top-color:var(--line)}
+.ck{border-radius:8px;width:26px;height:26px}
+.batch{border:0;box-shadow:var(--shadow)}
+.fz{padding:14px 16px;row-gap:8px}
+.fz h3{font-size:16px;font-weight:800}
+.round{width:44px;height:44px;border-radius:14px;border:0;background:var(--soft);color:var(--soft-ink);font-weight:800;font-size:20px}
+.life{grid-column:1/-1;height:6px;border-radius:3px;background:var(--sunk);overflow:hidden}
+.life i{display:block;height:100%;border-radius:3px;background:var(--accent)}
+.life.old i{background:var(--violet)}
+.old{color:var(--vink)}
+.month{border:0;box-shadow:var(--shadow)}
+.month button{width:44px;height:44px;border-radius:14px;background:var(--soft);color:var(--soft-ink)}
+.budget .big,.plan .big{letter-spacing:-.02em}
+.meter i,.bar .t i,.prog i{background:var(--accent)}
+.meter.warn i{background:var(--warn)} .meter.over i{background:var(--violet)}
+.pc{border-radius:10px}
+.pc.cheap{border-color:var(--accent);color:var(--soft-ink);background:var(--soft)}
+.pc.promo{background:var(--vsoft);color:var(--vink)}
+.offer .pr{color:var(--vink)}
+.toast{background:var(--hero);color:#fff;bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+/* pływające menu */
+.tabs{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:6px;border:0;border-radius:24px;background:var(--surface);box-shadow:0 8px 28px rgba(30,27,75,.16);max-width:616px;margin:0 auto}
+.tabs .wrap{padding:0;gap:2px}
+.tab{border-radius:16px;padding:8px 0 7px;font-size:11px}
+.tab svg{stroke-width:2}
+.tab[aria-current="page"]{background:var(--soft);color:var(--accent);font-weight:800}
+.tab .badge{background:var(--vbtn);top:3px}
+main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+/* ekran powitalny */
+.login{background:var(--hero)}
+.login .card{box-shadow:0 12px 40px rgba(0,0,0,.25)}
 </style>
 </head>
 <body>
@@ -231,7 +327,7 @@ details summary{cursor:pointer;font-weight:600;padding:6px 0}
 <div id="welcome" class="login wrap" hidden>
   <div class="card">
     <span class="tape">Gotuj raz · jedz cały tydzień</span>
-    <h1>Obiady na <span style="background:var(--tape);color:var(--tape-ink);padding:0 6px;border-radius:3px">Zapas</span></h1>
+    <h1>Obiady na <span style="background:var(--vbtn);color:#fff;padding:0 8px;border-radius:8px">Zapas</span></h1>
     <div class="sub">Przepisy do mrożenia z przelicznikiem porcji, wspólna lista zakupów z wyborem najtańszego sklepu i ceny z ofert Biedronki, Lidla i Kauflandu.</div>
     <div id="w-install" class="banner" hidden><b>Najpierw dodaj aplikację do ekranu:</b> w Safari stuknij Udostępnij, potem „Do ekranu początkowego”. Możesz też najpierw założyć dom, a ikonę dodać zaraz potem.</div>
     <div class="field"><label for="w-member">Twoje imię</label><input class="input" id="w-member" autocomplete="given-name" placeholder="np. Michał"></div>
@@ -259,8 +355,8 @@ details summary{cursor:pointer;font-weight:600;padding:6px 0}
 
   <section class="view" id="v-przepisy">
     <div class="vh"><div><h1>Przepisy</h1><div class="sub" id="rcount">Dania, które dobrze znoszą mrożenie</div></div>
-      <button class="btn pri sm" data-act="gen" id="b-gen">✦ Nowe przepisy</button></div>
-    <input class="input" id="q" type="search" placeholder="Szukaj: kurczak, mielone, curry…" autocomplete="off">
+      <button class="btn pri sm" data-act="gen" id="b-gen">✦ Nowe przepisy</button>
+      <input class="input" id="q" type="search" placeholder="Szukaj: kurczak, mielone, curry…" autocomplete="off"></div>
     <div class="chips" id="rcats"></div>
     <div class="chips" id="rfilters"></div>
     <div id="rlist"></div>
