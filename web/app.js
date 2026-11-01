@@ -261,7 +261,7 @@ async function sendAsk() {
   if (!navigator.onLine) { toast('Prośbę wyślesz, gdy wróci internet.'); return; }
   if (await w(() => db.from('recipe_requests').insert({ query: q, member: ui.member || null }), `Wysłano prośbę: ${q}`)) { ui.sheet.q = ''; ping(['recipe_requests']); await sync(); drawSheet(); }
 }
-let rObserver = null;
+let rObserver = null, rKey = '', rShown = 24;
 function renderRecipes() {
   const box = $('#rlist'); const all = activeRecipes();
   $('#rcount').textContent = all.length ? `${all.length} dań · ${all.filter(r => r.freezer !== false).length} do mrożenia` : 'Przepisy na obiady';
@@ -293,12 +293,14 @@ function renderRecipes() {
       <div class="price-line"><span class="sub">porcja od</span><span><b class="num">${zl(r.c.mix / 2)}</b>${best ? ` <span class="sub">· najtaniej <span class="store ${best}">${SN[best]}</span></span>` : ''}</span></div>
     </div>`;
   };
-  let shown = Math.min(list.length, 24);
+  // przy odświeżeniu danych zostaje tyle kart, ile było widać; nowy filtr lub wyszukiwanie zaczyna od 24
+  const fkey = [ui.cat, ui.filter, ui.onlyFreezer, ui.q].join('|'); if (fkey !== rKey) { rKey = fkey; rShown = 24; }
+  let shown = Math.min(list.length, Math.max(24, rShown));
   const more = () => list.length > shown ? `<div class="rmore" id="rmore"><span class="spin"></span> Wczytuję kolejne przepisy…</div>` : (ui.q ? `<div class="empty" style="margin-top:12px"><div>Szukasz innej wersji? Claude dopisze kilka przepisów na „${esc(ui.q)}”.</div><button class="btn sm" data-act="ask" data-q="${esc(ui.q)}">Poproś o więcej</button></div>` : '');
   box.innerHTML = deal + '<div class="cards">' + list.slice(0, shown).map(card).join('') + '</div>' + more();
   rObserver?.disconnect();
   const watch = () => { const el = $('#rmore'); if (!el) return; rObserver = new IntersectionObserver(es => { if (!es.some(e => e.isIntersecting)) return; rObserver.disconnect();
-    const next = list.slice(shown, shown + 24); shown += next.length; box.querySelector('.cards').insertAdjacentHTML('beforeend', next.map(card).join(''));
+    const next = list.slice(shown, shown + 24); shown += next.length; rShown = shown; box.querySelector('.cards').insertAdjacentHTML('beforeend', next.map(card).join(''));
     el.outerHTML = more(); watch(); }, { rootMargin: '600px' }); rObserver.observe(el); };
   watch();
 }

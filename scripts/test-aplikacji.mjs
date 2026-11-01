@@ -38,7 +38,7 @@ try {
   const keyA = await until(() => new URL(A.page.url()).searchParams.get('dom'));
   ok(/^[0-9a-f]{64}$/.test(keyA || ''), 'A: klucz domu w adresie (?dom=)');
   ok(await until(() => A.page.locator('.card[data-act="open"]').count().then(n => n >= 24)), 'A: przepisy wczytane z bazy (pierwsza partia)');
-  await A.page.locator('#rmore').scrollIntoViewIfNeeded();
+  await A.page.evaluate(() => document.getElementById('rmore')?.scrollIntoView());
   ok(await until(() => A.page.locator('.card[data-act="open"]').count().then(n => n > 24)), 'A: kolejne przepisy dochodzą przy przewijaniu');
   await A.page.evaluate(() => window.scrollTo(0, 0));
   ok(await A.page.locator('.deal').count() >= 1, 'A: baner promocji');

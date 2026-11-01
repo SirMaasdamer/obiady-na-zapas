@@ -1,7 +1,7 @@
 // Service worker: aplikacja otwiera się także bez internetu (dane z ostatniego wczytania są w IndexedDB).
 // Klucz domu z adresu (?dom=…) nie trafia do serwera strony: przy otwieraniu aplikacji pobieramy ją bez parametrów,
 // a w pamięci podręcznej zapisujemy tylko poprawne odpowiedzi.
-const CACHE = 'obiady-v21';
+const CACHE = 'obiady-v22';
 const SHELL = ['./', 'app.js', 'dane.js', 'theme.js', 'logic.js', 'receipt.js', 'config.js', 'manifest.webmanifest',
   'vendor/supabase/supabase.mjs', 'vendor/fonts/PlusJakartaSans.woff2', 'icons/icon-192.png', 'icons/apple-touch-icon.png'];
 const SCOPE = new URL('./', self.location).pathname;
