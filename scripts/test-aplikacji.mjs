@@ -3,7 +3,7 @@
 //   npx playwright install chromium && npm run test:aplikacja
 import { readFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
-import { startServer, handle, routeRealtime, M, SUPA, served, rowsOf, newHouse, wsLog } from './atrapa-supabase.mjs';
+import { startServer, handle, routeRealtime, M, SUPA, served, rowsOf, newHouse, newInvite, houseOf, wsLog } from './atrapa-supabase.mjs';
 
 let fails = 0;
 const ok = (c, m) => { if (c) console.log('✓', m); else { fails++; console.log('✗', m); } };
@@ -37,6 +37,7 @@ try {
   await A.page.locator('#app').waitFor();
   const keyA = await until(() => new URL(A.page.url()).searchParams.get('dom'));
   ok(/^[0-9a-f]{64}$/.test(keyA || ''), 'A: klucz domu w adresie (?dom=)');
+  ok(M.members.has(keyA) && !M.houses.has(keyA), 'A: telefon ma własny klucz domownika (nie wspólny klucz domu)');
   ok(await until(() => A.page.locator('.card[data-act="open"]').count().then(n => n >= 24)), 'A: przepisy wczytane z bazy (pierwsza partia)');
   await A.page.evaluate(() => document.getElementById('rmore')?.scrollIntoView());
   ok(await until(() => A.page.locator('.card[data-act="open"]').count().then(n => n > 24)), 'A: kolejne przepisy dochodzą przy przewijaniu');
@@ -60,7 +61,7 @@ try {
 
   /* 3. Telefon B dołącza z zaproszenia (#dom=) */
   const B = await phone('B');
-  await B.page.goto(APP + '#dom=' + keyA);
+  await B.page.goto(APP + '#dom=' + newInvite(keyA));
   await B.page.locator('#f-join').waitFor({ state: 'visible' });
   ok((await B.page.locator('#j-title').textContent()).includes('Dom testowy'), 'B: zaproszenie pokazuje nazwę domu');
   await B.page.fill('#w-member', 'Bartek');
@@ -109,7 +110,7 @@ try {
   ok(new URL(A.page.url()).searchParams.get('dom') === keyA, 'A: „Zostań” – dalej własny dom');
   await A.page.goto(APP + '#dom=' + other.key);
   await A.page.click('[data-act="switch-house"]');
-  await until(() => new URL(A.page.url()).searchParams.get('dom') === other.key);
+  await until(() => { const k = new URL(A.page.url()).searchParams.get('dom'); return k && k !== keyA && houseOf(k)?.name === 'Obcy dom'; });
   await A.page.locator('#app').waitFor();
   await A.page.click('#who');
   ok(await A.page.locator('[data-act="open-known"]').count() === 1, 'A: poprzedni dom na liście znanych domów');
@@ -132,7 +133,7 @@ try {
   M.rows.recipe_requests.find(r => r.query === 'burrito').status = 'w_trakcie';
   M.rows.recipe_requests.find(r => r.query === 'leczo').status = 'blad';
   M.rows.recipe_requests.find(r => r.query === 'leczo').note = 'Nie znalazłem sprawdzonego przepisu.';
-  M.hhv.set(M.houses.get(keyA).id + '|recipe_requests', new Date().toISOString());
+  M.hhv.set(houseOf(keyA).id + '|recipe_requests', new Date().toISOString());
   await A.page.click('[data-act="close"]').catch(() => { });
   await A.page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
   await sleep(800);
@@ -153,14 +154,16 @@ try {
   ok(await until(async () => (await toastText(A.page)).includes('nie jest jeszcze włączone')), 'A: łagodny komunikat bez funkcji delete_household');
   ok(new URL(A.page.url()).searchParams.get('dom') === keyA, 'A: dom nie został opuszczony');
 
-  /* 11. Zmiana klucza: B traci dostęp i widzi komunikat */
-  await A.page.click('[data-act="ask-rotate"]');
-  await A.page.click('[data-act="rotate"]');
-  const newKey = await until(() => { const k = new URL(A.page.url()).searchParams.get('dom'); return k && k !== keyA ? k : null; });
-  ok(!!newKey && M.houses.has(newKey) && !M.houses.has(keyA), 'A: nowy klucz domu');
-  await A.page.locator('#sheet-in').waitFor();
-  ok((await A.page.locator('#sheet-in').textContent()).includes('Klucz zmieniony'), 'A: po zmianie klucza prośba o wysłanie nowego linku');
-  ok(await until(() => B.page.locator('#lost').isVisible(), 8000), 'B: komunikat o utracie dostępu (sygnał ze starego kanału)');
+  /* 11. Domownicy: lista i usunięcie – B od razu traci dostęp */
+  const memText = await A.page.locator('#sheet-in').textContent();
+  ok(memText.includes('Bartek') && memText.includes('Ty'), 'A: lista domowników z Bartkiem i oznaczeniem „Ty”');
+  const keyB = new URL(B.page.url()).searchParams.get('dom');
+  ok(M.members.has(keyB) && keyB !== keyA, 'B: własny klucz telefonu');
+  await A.page.click('[data-act="mem-ask"]');
+  await A.page.click('[data-act="mem-rm"]');
+  ok(await until(() => !M.members.has(keyB)), 'A: Bartek usunięty z domu');
+  ok(M.members.has(keyA) && rowsOf('list_items', keyA).length > 0, 'A: pozostali domownicy działają bez zmian');
+  ok(await until(() => B.page.locator('#lost').isVisible(), 8000), 'B: komunikat o utracie dostępu');
 
   /* 12. Paragony: PDF z tekstem, PDF z obrazkiem (OCR) – biblioteki z vendor/ pod CSP */
   const gen = await browser.newPage();
