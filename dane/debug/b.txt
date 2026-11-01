@@ -1192,48 +1192,20 @@ Drugi 50% TANIEJ
   [5/-12] Twój Market → https://www.gazetki.pl/sklepy/twoj-market/gazetka
   [5/-12] Netto → https://www.gazetki.pl/sklepy/netto/gazetka
 --- zrzut: dane/debug/b-7.jpg
-kafelki: [{"href":"/sklepy/biedronka/oferty/swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-promocja-69838667/","text":"Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka\n3 dni\n24,90 zł\n14,99 zł","logos":"Biedronka https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/biedronka-66991b912a52d.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Biedronka Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69838667/biedronka-swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-oferta-thumbSmallWebP.webp"},{"href":"/sklepy/biedronka/oferty/swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-promocja-69839044/","text":"Świeży filet z piersi kurczaka Kraina Mięs Mega Paka\n3 dni\n14,99 zł","logos":"Biedronka https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/biedronka-66991b912a52d.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Biedronka Świeży filet z piersi kurczaka Kraina Mięs Mega Paka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69839044/biedronka-swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-oferta-thumbSmallWebP.webp"},{"href":"","text":"\tFilet wędzony z kurczaka Kraina Wędlin 100 g\tBiedronka\t3,99 zł\t2,99 zł\t\n1,00 zł Rabat\n\t19 października 2026\t24 października 2026","logos":"Biedronka Filet wędzony z kurczaka Kraina Wędlin oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69268714/biedronka-filet-wedzony-z-kurczaka-kraina-wedlin-oferta-thumbSmallWebP.webp"},{"href":"","text":"\tFilet z kurczaka lub rumsztyk wieprzowy Nasze Smaki 400 g\tBiedronka\t11,99 zł\t9,99 zł\t\n2,00 zł Rabat\n\t08 października 2026\t10 października 2026","logos":"Biedronka Filet z kurczaka lub rumsztyk wieprzowy Nasze Smaki oferta https://img.offers-cdn.net/assets/uploads/offers/pl/68668547/biedronka-filet-z-kurczaka-lub-rumsztyk-wieprzowy-nasze-smaki-oferta-thumbSmallWebP.webp"}]
+kafelki: [{"href":"/sklepy/biedronka/oferty/swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-promocja-69838667/","text":"Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka\n3 dni\n24,90 zł\n14,99 zł","logos":"Biedronka https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/biedronka-66991b912a52d.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Biedronka Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69838667/biedronka-swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-oferta-thumbSmallWebP.webp"},{"href":"/sklepy/biedronka/oferty/swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-promocja-69839044/","text":"Świeży filet z piersi kurczaka Kraina Mięs Mega Paka\n3 dni\n14,99 zł","logos":"Biedronka https://img.offers-cdn.net/assets/uploads/stores/pl/logos/200x72_webp/biedronka-66991b912a52d.webp add-to-shopping-list-icon https://img.offers-cdn.net/build/folderz2025-prod/20261030121252-230827/assets/frontend/build/assets/icons/list-add.svg Biedronka Świeży filet z piersi kurczaka Kraina Mięs Mega Paka oferta https://img.offers-cdn.net/assets/uploads/offers/pl/69839044/biedronka-swiezy-filet-z-piersi-kurczaka-kraina-mies-mega-paka-oferta-thumbSmallWebP.webp"}]
 wiersze: [["Oferta","Imię","Sklep","Cena regularna","Cena promocyjna","Promocja","Data rozpoczęcia","Data końca"],["","Maślany filet z kurczaka z boczkiem, 600 g","Biedronka","","15,99 zł","","22 października 2026","28 października 2026"],["","Filet wędzony z kurczaka Kraina Wędlin 100 g","Biedronka","3,99 zł","2,99 zł","1,00 zł Rabat","19 października 2026","24 października 2026"]]
 agregator: 67 stron, 61 błędów
 
-===== DOPASOWANE (37):
-  kurczak_filet: 9.91 zł ← „Filet z kurczaka Kraina Mięs 3 kg	Biedronka	24,90 zł	14,99 zł” ()
-  indyk_filet: 20 zł ← „Filet z indyka Kraina Wędlin, 100 g	Biedronka	5,99 zł	3,99 zł” ()
-  lopatka: 7.5 zł ← „Łopatka wieprzowa bez kości pakowana próżniowo Kraina Mięs	Biedronka	15,49 zł	7,99 zł” ()
+===== DOPASOWANE (9):
+  kurczak_filet: 14.99 zł ← „Świeży filet z piersi kurczaka Kraina Mięs, Mega Paka” ()
   schab: 9.99 zł ← „Schab wieprzowy bez kości pakowany próżniowo Kraina Mięs” ()
-  karkowka: 8.99 zł ← „Karkówka wieprzowa bez kości pakowana próżniowo Kraina Mięs 0,90 zł/kg	Biedronka	18,49 zł	” ()
-  mascarpone: 3.5 zł ← „Serek Mascarpone Delikate 250 g	Biedronka	6,99 zł	3,49 zł” ()
-  czosnek: 0.99 zł ← „Czosnek 2+2 gratis	Biedronka		0,99 zł” ()
-  marchew: 1.69 zł ← „Marchew 1 kg	Biedronka	3,99 zł	1,69 zł” ()
-  papryka: 6.5 zł ← „Papryka czerwona 1kg	Biedronka	9,99 zł	3,49 zł” ()
-  cukinia: 3 zł ← „Cukinia na wagę	Biedronka	5,99 zł	2,99 zł” ()
-  pieczarki: 3 zł ← „Pieczarki 500 g	Biedronka	7,99 zł	4,99 zł” ()
-  ziemniaki: 1.29 zł ← „Ziemniaki jadalne polskie	Biedronka	1,99 zł	1,29 zł” ()
-  dynia: 2 zł ← „Bułka z dynią 70 g	Biedronka	1,39 zł	1,25 zł” ()
-  kapusta_kiszona: 3 zł ← „Kapusta kiszona	Biedronka	14,99 zł	11,99 zł” ()
-  passata: 1.86 zł ← „Passata Gusto Bello 690 g	Biedronka	7,55 zł	4,99 zł” ()
-  koncentrat: 3.33 zł ← „Koncentrat pomidorowy 30% 2+1 GRATIS	Biedronka		3,33 zł” ()
-  ciecierzyca: 1.5 zł ← „Ciecierzyca Plony Natury 500g	Biedronka	5,86 zł	3,99 zł” ()
-  kukurydza: 1.5 zł ← „Kukurydza Nasza Spiżarnia	Biedronka	3,99 zł	2,49 zł” ()
-  podudzia: 5.99 zł ← „Podudzia z kurczaka	Delikatesy Centrum		8,99 zł		22 października 2026	28 października 2026” ()
-  tofu: 2.99 zł ← „Tofu Go Vege 180 g	Biedronka	3,99 zł	2,99 zł” ()
-  brokul: 2 zł ← „Brokuł, opak 500 g	Biedronka	5,99 zł	3,99 zł” ()
-  kalafior: 3.49 zł ← „Mroźna Kraina Kalafior 450 g	Biedronka	4,19 zł	3,49 zł” ()
-  buraki: 1.17 zł ← „Buraki czerwone 3kg	Biedronka	7,99 zł	4,49 zł” ()
-  kasza_gryczana: 3.2 zł ← „Kasza gryczana prażona Plony Natury 4x100 g	Biedronka	2,79 zł	1,99 zł” ()
-  brukselka: 3 zł ← „Brukselka	Biedronka	9,99 zł	6,99 zł” ()
-  mozzarella: 1.49 zł ← „Delikate Mozzarella 125 g 1+1 gratis	Biedronka	2,99 zł	1,49 zł” ()
-  twarog: 2 zł ← „Twaróg sernikowy 1 kg	Biedronka	9,79 zł	7,99 zł” ()
-  platki_kukurydziane: 2.5 zł ← „Płatki kukurydziane Corn Flakes , 500 g	Biedronka		10,59 zł		30 czerwca 2025	05 lipca 2025” ()
-  tortilla: 2.66 zł ← „Tortilla pszenna 2+1 GRATIS	Biedronka		2,66 zł” ()
-  bazylia: 2 zł ← „Bazylia XL	Biedronka	7,99 zł	5,99 zł” ()
-  cytryna: 0.67 zł ← „Lemoniada gazowana o smaku cytryny i limonki Riviva, 1 l	Biedronka	2,66 zł	1,99 zł” ()
-  chrzan: 2.16 zł ← „Chrzan na wage 1kg	Biedronka	24,99 zł	12,99 zł” ()
-  szynka_wieprzowa: 7.99 zł ← „Szynka wieprzowa bez kości pakowana próżniowo Kraina Mięs	Biedronka	14,99 zł	7,99 zł” ()
-  jablka: 2 zł ← „Jabłka polskie	Biedronka	3,99 zł	1,99 zł” ()
+  karkowka: 9.99 zł ← „Karkówka Duda” ()
+  marchew: 1.99 zł ← „Marchew na wagę” ()
+  pieczarki: 4.99 zł ← „Pieczarki polskie” ()
+  passata: 4.99 zł ← „Passata w kartoniku Gusto Bello” ()
+  brokul: 3.89 zł ← „Brokuł, opak” ()
+  jablka: 3.49 zł ← „Jabłka polskie Jonagold” ()
   pomidory_suszone: 8.49 zł ← „Suszone pomidory z papryczką chilli Gusto Bello” ()
-  limonka: 0.71 zł ← „Limonka	Biedronka	1,70 zł	0,99 zł” ()
-  makaron_lasagne: 3.13 zł ← „Lasagne Donatello, 400 g: z kurczakiem, 4 sery	Biedronka	10,49 zł	7,99 zł” ()
 źródło www/www: 1636 znaków
 źródło www/www: 16268 znaków
 źródło www/www: 1488 znaków
