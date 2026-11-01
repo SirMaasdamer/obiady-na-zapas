@@ -661,13 +661,21 @@ function start() {
   const h = location.hash.slice(1); setTab(TABS.includes(h) ? h : 'przepisy');
   loadCache(); renderAll(); loadAll(); subscribe();
 }
-/* iOS (aplikacja z ekranu głównego): po schowaniu klawiatury albo powrocie do aplikacji Safari potrafi zostawić
-   przesunięty widok – dolne menu wisi wtedy wyżej, a pod nim zostaje pusty pas. Wymuszamy ponowne ułożenie widoku. */
-function fixViewport() { requestAnimationFrame(() => { window.scrollTo(window.scrollX, window.scrollY); document.documentElement.style.setProperty('--vh', window.innerHeight + 'px'); }); }
-document.addEventListener('focusout', e => { if (e.target.matches?.('input,textarea,select')) setTimeout(fixViewport, 60); });
-document.addEventListener('visibilitychange', () => { if (!document.hidden) setTimeout(fixViewport, 60); });
-window.addEventListener('pageshow', fixViewport);
-window.visualViewport?.addEventListener('resize', () => { if (Math.abs(window.visualViewport.height - window.innerHeight) < 2) fixViewport(); });
+/* iOS (aplikacja z ekranu głównego): po pierwszym otwarciu klawiatury WebKit potrafi na stałe „zmniejszyć” ekran –
+   dolne menu wisi wtedy wyżej, a pod nim zostaje pusty pas. Pomaga tylko wymuszenie ponownego pomiaru:
+   chwilowe ukrycie i pokazanie głównego kontenera (opis: dev.to/cederhook, iOS 17–18). */
+let maxVH = window.innerHeight;
+window.addEventListener('resize', () => { maxVH = Math.max(maxVH, window.innerHeight); });
+function healViewport() {
+  const a = document.activeElement; if (a && a.matches?.('input,textarea,select')) return;   // klawiatura nadal otwarta
+  if (maxVH - window.innerHeight <= 4) return;
+  const el = $('#app').hidden ? $('#welcome') : $('#app'), y = window.scrollY;
+  el.style.display = 'none'; void el.offsetHeight; el.style.display = '';
+  window.scrollTo(0, y);
+}
+document.addEventListener('focusout', e => { if (e.target.matches?.('input,textarea,select')) { setTimeout(healViewport, 150); setTimeout(healViewport, 600); } });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) setTimeout(healViewport, 150); });
+window.addEventListener('pageshow', () => setTimeout(healViewport, 150));
 (async function boot() {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
   if (!CFG.url) { document.body.innerHTML = '<div class="wrap" style="padding:40px 16px"><h2>Aplikacja jeszcze nie jest skonfigurowana</h2></div>'; return; }
