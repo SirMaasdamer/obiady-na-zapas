@@ -449,7 +449,7 @@ function historyHtml(pid) {
 /* ---------- sheet & routing ---------- */
 function drawSheet() {
   const st = ui.sheet, el = $('#sheet'), inn = $('#sheet-in'); if (!st) { el.hidden = true; return; }
-  const html = st.type === 'recipe' ? recipeSheet() : st.type === 'price' ? priceSheet() : st.type === 'rimport' ? importSheet() : st.type === 'receipt' ? receiptSheet() : st.type === 'budget' ? budgetSheet() : whoSheet();
+  const html = st.type === 'recipe' ? recipeSheet() : st.type === 'price' ? priceSheet() : st.type === 'look' ? lookSheet() : st.type === 'rimport' ? importSheet() : st.type === 'receipt' ? receiptSheet() : st.type === 'budget' ? budgetSheet() : whoSheet();
   if (!ui.sheet) return; inn.innerHTML = html; el.hidden = false; document.body.style.overflow = 'hidden';
   if (st.type === 'recipe') drawRecipeDyn();
 }
@@ -463,6 +463,12 @@ function whoSheet() {
    <div class="field"><label for="w-house">Nazwa domu</label><input class="input" id="w-house" value="${esc(house.name)}"></div>
    <button class="btn pri" type="submit">Zapisz</button></form>
   <div class="sec"><h4>Ten telefon</h4>${st.confirmLeave ? `<div class="banner">Ten telefon przestanie widzieć dane domu. Wrócisz do niego tylko z linkiem zaproszenia od domownika.</div><div class="row"><button class="btn danger" type="button" data-act="leave">Tak, opuść dom</button><button class="btn" type="button" data-act="cancel-leave">Anuluj</button></div>` : `<button class="btn ghost danger" type="button" data-act="ask-leave">Opuść dom na tym telefonie</button>`}</div>`;
+}
+function lookSheet() {
+  const t = lsGet('theme', 'light'), a = lsGet('accent', 'niebieski'), P = window.THEME?.presets || {};
+  return `<div class="sheet-head"><div><h2>Wygląd</h2><div class="sub" style="margin-top:4px">Zmiana działa od razu, tylko na tym telefonie</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
+  <div class="sec"><h4>Motyw</h4><div class="chips">${[['light', 'Jasny'], ['dark', 'Ciemny'], ['auto', 'Jak w telefonie']].map(([k, n]) => `<button class="chip" data-act="set-theme" data-k="${k}" aria-pressed="${t === k}">${n}</button>`).join('')}</div></div>
+  <div class="sec"><h4>Kolory</h4><div class="swatches">${Object.entries(P).map(([k, p]) => `<button class="sw" data-act="set-accent" data-k="${k}" aria-pressed="${a === k}"><i><b style="background:${p.l[0]}"></b><b style="background:${p.l[1]}"></b></i>${esc(p.n)}</button>`).join('')}</div></div>`;
 }
 function closeSheet() { ui.sheet = null; $('#sheet').hidden = true; document.body.style.overflow = ''; }
 const TABS = ['przepisy', 'lista', 'zamrazarka', 'wydatki', 'ceny'];
@@ -482,6 +488,9 @@ document.addEventListener('click', async e => {
     case 'cat': ui.cat = d.k; lsSet('cat', d.k); renderCats(); renderRecipes(); break;
     case 'filter': ui.filter = d.k; renderCats(); renderRecipes(); break;
     case 'deal': { const n = S.products[d.pid]?.name || ''; ui.q = n.toLowerCase(); $('#q').value = n; ui.filter = 'all'; renderCats(); renderRecipes(); window.scrollTo(0, 0); break; }
+    case 'look': ui.sheet = { type: 'look' }; drawSheet(); break;
+    case 'set-theme': lsSet('theme', d.k); window.THEME?.apply(); drawSheet(); break;
+    case 'set-accent': lsSet('accent', d.k); window.THEME?.apply(); drawSheet(); break;
     case 'only-freezer': ui.onlyFreezer = !ui.onlyFreezer; lsSet('onlyFreezer', ui.onlyFreezer); renderCats(); renderRecipes(); break;
     case 'like': e.stopPropagation(); toggleReact(d.id, 'liked'); break;
     case 'want': toggleReact(d.id, 'wanted'); break;

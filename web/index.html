@@ -14,14 +14,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#1E1B4B" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14122E" media="(prefers-color-scheme: dark)">
+<script src="theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 /* Layout: aplikacja jednokolumnowa; karty jak etykiety na pudełkach do mrożenia (pasek taśmy), górny pasek, dolne zakładki */
 :root{
   --bg:#F4F5FB; --surface:#FFFFFF; --sunk:#ECEEF8; --ink:#17163A; --muted:#5A5C7A; --line:#E1E3F1;
-  --accent:#2F5BEA; --accent-ink:#FFFFFF; --soft:#E8EEFF; --soft-ink:#1E3FB0;
-  --violet:#6D3FE0; --vbtn:#6D3FE0; --vsoft:#EFE8FF; --vink:#5B2FD0;
+  --accent:#2F5BEA; --accent-ink:#FFFFFF;
+  --violet:#6D3FE0; --vbtn:#6D3FE0;
   --hero:#1E1B4B; --hero-2:#2E2A6B; --hero-3:#3D3880; --hero-ink:#FFFFFF; --hero-muted:#C7C4F5;
   --tape:var(--vsoft); --tape-ink:var(--vink);
   --promo:#6D3FE0; --good:#1F7A4D; --warn:#B25E09;
@@ -29,15 +30,20 @@
   --f-display:"Plus Jakarta Sans",-apple-system,system-ui,sans-serif;
   --f-body:"Plus Jakarta Sans",-apple-system,"Segoe UI",system-ui,sans-serif;
   --f-mono:"Plus Jakarta Sans",-apple-system,system-ui,sans-serif;
+  --soft:color-mix(in srgb,var(--accent) 11%,var(--surface)); --soft-ink:color-mix(in srgb,var(--accent) 78%,var(--ink));
+  --vsoft:color-mix(in srgb,var(--violet) 12%,var(--surface)); --vink:color-mix(in srgb,var(--violet) 82%,var(--ink));
   --r:20px; --shadow:0 1px 2px rgba(23,22,58,.06),0 2px 10px rgba(23,22,58,.04); color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root{
+/* ciemny motyw włącza theme.js (ustawienie w aplikacji albo motyw telefonu) */
+:root[data-theme="dark"]{
   --bg:#0E0D1F; --surface:#18172F; --sunk:#222040; --ink:#ECEBFF; --muted:#A3A2C7; --line:#2C2A4D;
-  --accent:#7D9BFF; --accent-ink:#0B1033; --soft:#1F2A55; --soft-ink:#B3C4FF;
-  --violet:#A58BFF; --vbtn:#6D3FE0; --vsoft:#2C2160; --vink:#CDBDFF;
+  --accent:#7D9BFF; --accent-ink:#0B1033;
+  --violet:#A58BFF; --vbtn:#6D3FE0; --vink:#CDBDFF;
   --hero:#14122E; --hero-2:#25224F; --hero-3:#332F66; --hero-ink:#FFFFFF; --hero-muted:#B8B5E8;
   --promo:#B9A3FF; --good:#6CCB91; --warn:#E3A645;
-  --s-b:#F08BC5; --s-l:#7D9BFF; --s-k:#B9A3FF; --shadow:none; color-scheme:dark}}
+  --s-b:#F08BC5; --s-l:#7D9BFF; --s-k:#B9A3FF; --shadow:none; color-scheme:dark;
+  --soft:color-mix(in srgb,var(--accent) 18%,var(--surface)); --soft-ink:color-mix(in srgb,var(--accent) 70%,#fff);
+  --vsoft:color-mix(in srgb,var(--violet) 20%,var(--surface)); --vink:color-mix(in srgb,var(--violet) 70%,#fff)}
 *{box-sizing:border-box}
 html,body{background:var(--bg);color:var(--ink);margin:0}
 body{font-family:var(--f-body);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
@@ -343,6 +349,18 @@ main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 .wk.now i{background:#B9A3FF}
 .wk small{font-size:11px;font-weight:700;color:var(--hero-muted);min-height:14px}
 .wk span{font-size:11px;font-weight:600;color:var(--hero-muted)}
+
+.top .wrap{align-items:center}
+.topr{display:flex;align-items:center;gap:6px}
+.iconbtn{width:40px;height:40px;border-radius:12px;border:0;background:var(--hero-2);color:#fff;display:grid;place-items:center;padding:0}
+.iconbtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.who{min-height:40px}
+.swatches{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sw{display:flex;align-items:center;gap:10px;border:0;background:var(--surface);box-shadow:var(--shadow);border-radius:16px;padding:12px;text-align:left;font-weight:600;font-size:13.5px;min-height:56px}
+.sw[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--accent)}
+.sw i{display:flex;flex:none}
+.sw i b{width:20px;height:20px;border-radius:50%;display:block;border:2px solid var(--surface)}
+.sw i b+b{margin-left:-7px}
 </style>
 </head>
 <body>
@@ -370,7 +388,7 @@ main{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
 </div>
 
 <div id="app" hidden>
-<header class="top"><div class="wrap"><div class="brand">Obiady na <span>Zapas</span></div><button class="who" id="who" data-act="whoami"></button></div></header>
+<header class="top"><div class="wrap"><div class="brand">Obiady na <span>Zapas</span></div><div class="topr"><button class="iconbtn" data-act="look" aria-label="Wygląd i kolory"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-.8 1.7-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.8-1.7 1.7-1.7H16a5 5 0 0 0 5-5C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.3"/><circle cx="10.5" cy="7" r="1.3"/><circle cx="15" cy="7.5" r="1.3"/></svg></button><button class="who" id="who" data-act="whoami"></button></div></div></header>
 
 <main><div class="wrap">
   <div id="install" class="banner" hidden>Dodaj aplikację do ekranu: w Safari stuknij <b>Udostępnij</b>, potem <b>Do ekranu początkowego</b>. <button class="btn sm ghost" data-act="hide-install">Ukryj</button></div>
