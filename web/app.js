@@ -725,7 +725,7 @@ document.addEventListener('click', async e => {
     case 'mem-ask': ui.sheet.confirmRm = d.id; drawSheet(); break;
     case 'mem-cancel': ui.sheet.confirmRm = null; drawSheet(); break;
     case 'mem-rm': busy(t, () => removeMember(d.id)); break;
-    case 'pick': addOwn(d.pid); $('#manual').value = ''; renderSugg(); break;
+    case 'pick': addOwn(d.pid); $('#manual').value = ''; renderSugg(); $('#manual').focus(); break;
     case 'own-inc': addOwn(d.pid); break;
     case 'own-dec': { const own = S.list_items.filter(x => x.product_id === d.pid && !x.recipe_id && !x.manual); const last = own[own.length - 1]; if (last) write({ t: 'list_items', kind: 'delete', match: { id: last.id } }); break; }
     case 'del-item': write({ t: 'list_items', kind: 'delete', match: { id: d.id } }); break;
@@ -778,7 +778,7 @@ document.addEventListener('submit', async e => {
     closeSheet(); renderAll(); toast('Zapisano');
   }
   else if (id === 'f-ask') sendAsk();
-  else if (id === 'f-manual') { const v = $('#manual').value.trim().slice(0, 200); if (!v) return; $('#manual').value = ''; renderSugg();
+  else if (id === 'f-manual') { const v = $('#manual').value.trim().slice(0, 200); if (!v) return; $('#manual').value = ''; renderSugg(); $('#manual').focus();
     const exact = Object.values(S.products).find(p => !p.pantry && fold(p.name) === fold(v)); if (exact) { addOwn(exact.id); return; } write({ t: 'list_items', kind: 'insert', rows: [{ id: newId(), manual: true, name: v, member: ui.member || null }] }); }
   else if (id === 'f-freeze') { const v = $('#fz-name').value.trim().slice(0, 200), n = Math.min(200, Math.max(1, Math.round(+$('#fz-n').value) || 1)); if (!v) return; $('#fz-name').value = ''; write({ t: 'freezer', kind: 'insert', rows: [{ id: newId(), name: v, portions: n, member: ui.member || null, frozen_on: today() }] }, 'Dodano do zamrażarki'); }
   else if (id === 'f-create') createHouse();
@@ -786,6 +786,9 @@ document.addEventListener('submit', async e => {
   else if (id === 'f-join') joinHouse();
 });
 document.addEventListener('change', e => { if (e.target.id === 'rfile' && e.target.files.length) { const fs = [...e.target.files]; e.target.value = ''; importReceipt(fs); } });
+// stuknięcie w podpowiedź albo „Dodaj” na liście zakupów nie chowa klawiatury: przycisk nie przejmuje fokusu
+document.addEventListener('pointerdown', e => { if (e.target.closest('#sugg .sg, #f-manual button')) e.preventDefault(); });
+document.addEventListener('mousedown', e => { if (e.target.closest('#sugg .sg, #f-manual button')) e.preventDefault(); });
 document.addEventListener('input', e => {
   if (e.target.id === 'q') { ui.q = e.target.value; clearTimeout(qTimer); qTimer = setTimeout(renderRecipes, 220); }
   else if (e.target.id === 'manual') renderSugg();
