@@ -335,50 +335,8 @@ async function blixProbe() {
   }
 }
 if (env('BLIX_PROBE', false) !== '0') { log('\n▶ Blix (próba)'); await blixProbe().catch(e => log('  blix: ' + e.message)); }
-// ---------- próba: tanszykoszyk.pl (porównywarka z listą ofert sklepu) – na razie tylko diagnostyka w logu ----------
-async function tkProbe() {
-  const page = await ctx.newPage(), base = 'https://tanszykoszyk.pl';
-  try {
-    // zasady serwisu: robots.txt i fragmenty regulaminu o automatycznym pobieraniu
-    const rb = await page.request.get(base + '/robots.txt').then(r => r.ok() ? r.text() : `HTTP ${r.status()}`).catch(e => e.message);
-    log(`  [tk] robots.txt: ${String(rb).replace(/\s+/g, ' ').slice(0, 600)}`);
-    for (const path of ['/regulamin', '/polityka-prywatnosci']) {
-      try {
-        await open(page, base + path);
-        const t = (await page.innerText('body').catch(() => '')).replace(/\s+/g, ' ');
-        const hits = [...t.matchAll(/[^.]{0,200}(automat|scrap|robot|crawl|pobier|kopiow|powiel|eksplor|baz[aęy] danych|komercyj)[^.]{0,200}\./gi)].map(m => m[0].trim());
-        log(`  [tk] ${path}: ${t.length} zn., fragmenty (${hits.length}):`); for (const h of hits.slice(0, 12)) log(`  [tk]   „${h.slice(0, 400)}”`);
-      } catch (e) { log(`  [tk] ${path}: ${e.message}`); }
-    }
-    const json = [];
-    page.on('response', async r => { try { const ct = r.headers()['content-type'] || ''; if (!ct.includes('json')) return; const t = await r.text(); json.push(`${r.url().slice(0, 200)} :: ${t.length} B :: ${t.slice(0, 500).replace(/\s+/g, ' ')}`); } catch { } });
-    for (const slug of ['biedronka', 'lidl', 'kaufland']) {
-      await open(page, `${base}/sklep/${slug}`); await sleep(1500);
-      let clicks = 0;
-      for (; clicks < 60; clicks++) {
-        const more = page.getByRole('button', { name: /pokaż kolejne|załaduj więcej|więcej produktów/i }).first();
-        if (!(await more.isVisible().catch(() => false))) break;
-        await more.click().catch(() => { }); await sleep(900);
-      }
-      const head = (await page.innerText('body').catch(() => '')).match(/Pokazano \d+ z \d+[^\n]*/)?.[0] || '';
-      const cards = await page.evaluate(() => {
-        const out = [], seen = new Set();
-        const leaves = [...document.querySelectorAll('main *, body *')].filter(e => !e.children.length && /\d,\d{2}\s*zł/.test(e.textContent || ''));
-        for (const leaf of leaves) {
-          let el = leaf;
-          while (el.parentElement && !(el.querySelector('img') && (el.innerText || '').split('\n').filter(x => x.trim()).length >= 3)) el = el.parentElement;
-          if (!el || el === document.body || seen.has(el) || (el.innerText || '').length > 500) continue; seen.add(el);
-          out.push((el.innerText || '').split('\n').map(x => x.trim()).filter(Boolean).join(' | '));
-        }
-        return out;
-      }).catch(() => []);
-      log(`  [tk] ${slug}: kliknięć „pokaż kolejne”: ${clicks}, ${head}, kafelków: ${cards.length}`);
-      for (const c of cards.slice(0, 6)) log(`  [tk]   ${c.slice(0, 300)}`);
-    }
-    log(`  [tk] odpowiedzi JSON: ${json.length}`); for (const j of json.slice(0, 6)) log(`  [tk]   ${j}`);
-  } finally { await page.close(); }
-}
-if (env('TK_PROBE', false) !== '0') { log('\n▶ tanszykoszyk.pl (próba)'); await tkProbe().catch(e => log('  tk: ' + e.message)); }
+// tanszykoszyk.pl: sprawdzone 2.11.2026 – regulamin serwisu zabrania automatycznego pobierania danych bez zgody operatora,
+// a robots.txt blokuje /api/. Nie pobieramy stamtąd danych, dopóki operator się nie zgodzi.
 
 await browser.close();
 
