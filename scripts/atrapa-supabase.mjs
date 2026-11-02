@@ -43,6 +43,8 @@ export const M = {
   houses: new Map(), // klucz → { id, name }
   rows: { list_items: [], freezer: [], reactions: [], hh_recipes: [], hh_prices: [], receipts: [], receipt_items: [], hh_settings: [], recipe_requests: [] },
   hhv: new Map(),
+  members: new Map(), // klucz telefonu → { id, hh, name, device, created_at, last_seen }
+  invites: new Map(), // kod → { hh, exp }
   versions: { katalog: 'k1', oferty: 'o1' },
   shared: {
     products, recipes, prices,
@@ -59,6 +61,15 @@ const DEF = {
   reactions: () => ({ liked: false, wanted: false, created_at: iso() }),
   receipts: () => ({ created_at: iso() }), receipt_items: () => ({ created_at: iso() }), hh_prices: () => ({}), hh_recipes: () => ({ activated_at: null }), hh_settings: () => ({ budget: null }),
 };
+const houseById = id => [...M.houses.values()].find(h => h.id === id) || null;
+export const houseOf = key => M.houses.get(key) || (M.members.has(key) ? houseById(M.members.get(key).hh) : null);
+export function newInvite(key) { const hh = houseOf(key); const code = randomBytes(32).toString('hex'); M.invites.set(code, { hh: hh.id, exp: Date.now() + 14 * 864e5 }); return code; }
+function codeKind(code) {
+  if (M.members.has(code)) return { hh: houseById(M.members.get(code).hh), kind: 'domownik', member_id: M.members.get(code).id };
+  const i = M.invites.get(code); if (i && i.exp > Date.now()) return { hh: houseById(i.hh), kind: 'zaproszenie' };
+  if (M.houses.has(code)) return { hh: M.houses.get(code), kind: 'klucz' };
+  return null;
+}
 export function newHouse(name) { const key = randomBytes(32).toString('hex'), id = randomUUID(); M.houses.set(key, { id, name }); return { key, id, name }; }
 const bump = (hh, t) => M.hhv.set(hh + '|' + t, new Date(Date.now() + Math.random()).toISOString());
 
@@ -85,7 +96,7 @@ export async function handle(route) {
   const req = route.request(), u = new URL(req.url()), method = req.method();
   if (method === 'OPTIONS') return route.fulfill({ status: 204, headers: CORS });
   if (M.down) return route.abort('connectionfailed');
-  const h = await req.allHeaders(), key = h['x-dom'] || null, hh = key ? M.houses.get(key) : null;
+  const h = await req.allHeaders(), key = h['x-dom'] || null, hh = key ? houseOf(key) : null, me = key ? M.members.get(key) : null;
   const send = (status, body) => route.fulfill({ status, headers: { ...CORS, 'Content-Type': 'application/json' }, body: body === undefined ? '' : JSON.stringify(body) });
   const body = (() => { try { return req.postDataJSON(); } catch { return null; } })();
   M.log.push({ method, path: u.pathname, search: decodeURIComponent(u.search), key: key && key.slice(0, 6), prefer: h.prefer || '', body });
@@ -100,6 +111,24 @@ export async function handle(route) {
       if (!hh) return send(403, { code: '42501', message: 'Nie rozpoznano domu.' });
       const nk = randomBytes(32).toString('hex'); M.houses.delete(key); M.houses.set(nk, hh); return send(200, { secret: nk });
     }
+    if (fn === 'invite_info') { const c = codeKind(body?.p_code); return send(200, c?.hh ? { name: c.hh.name, kind: c.kind, member_id: c.member_id || null } : null); }
+    if (fn === 'join_household') {
+      const c = codeKind(body?.p_code); if (!c?.hh || c.kind === 'domownik') return send(400, { code: 'P0001', message: 'Ten link zaproszenia jest nieaktualny.' });
+      const token = randomBytes(32).toString('hex'), id = randomUUID();
+      M.members.set(token, { id, hh: c.hh.id, name: String(body?.p_name || 'Domownik').trim().slice(0, 40), device: body?.p_device || null, created_at: iso(), last_seen: iso() });
+      bump(c.hh.id, 'hh_members'); return send(200, { token, member_id: id, household_id: c.hh.id, name: c.hh.name });
+    }
+    if (fn === 'create_invite') { if (!me) return send(403, { code: '42501', message: 'Nie rozpoznano telefonu domownika.' }); return send(200, { code: newInvite(key) }); }
+    if (fn === 'member_touch') { if (me) { me.name = String(body?.p_name || me.name).slice(0, 40); me.device = body?.p_device || null; me.last_seen = iso(); bump(me.hh, 'hh_members'); } return route.fulfill({ status: 204, headers: CORS }); }
+    if (fn === 'remove_member') {
+      if (!me) return send(403, { code: '42501', message: 'Nie rozpoznano telefonu domownika.' });
+      if (body?.p_id === me.id) return send(400, { code: 'P0001', message: 'Siebie odłączasz opcją „Odłącz ten telefon”.' });
+      const t = [...M.members].find(([, m]) => m.id === body?.p_id && m.hh === me.hh); if (!t) return send(400, { code: 'P0001', message: 'Nie ma takiego domownika.' });
+      M.members.delete(t[0]); for (const [c, i] of M.invites) if (i.hh === me.hh) M.invites.delete(c);
+      for (const [k, v] of [...M.houses]) if (v.id === me.hh) { M.houses.delete(k); M.houses.set(randomBytes(32).toString('hex'), v); }
+      bump(me.hh, 'hh_members'); return route.fulfill({ status: 204, headers: CORS });
+    }
+    if (fn === 'leave_household') { if (me) { M.members.delete(key); bump(me.hh, 'hh_members'); } return route.fulfill({ status: 204, headers: CORS }); }
     if (fn === 'app_state') {
       const tabele = {}; if (hh) for (const [k, v] of M.hhv) { const [id, t] = k.split('|'); if (id === hh.id) tabele[t] = v; }
       return send(200, { dom: hh ? { id: hh.id, name: hh.name } : null, zbiory: M.versions, tabele });
@@ -114,6 +143,12 @@ export async function handle(route) {
     let rows = ordered(M.shared[t].filter(r => hit(r, fs)), u);
     const off = +(u.searchParams.get('offset') || 0), lim = Math.min(+(u.searchParams.get('limit') || 1000), 1000);
     return send(200, rows.slice(off, off + lim));
+  }
+  if (t === 'hh_members') {
+    if (method !== 'GET') return send(401, { code: '42501', message: 'permission denied for table hh_members' });
+    if (/\*/.test(u.searchParams.get('select') || '*')) return send(401, { code: '42501', message: 'permission denied for table hh_members' });
+    const rows = [...M.members.values()].filter(m => hh && m.hh === hh.id).map(({ hh: _, ...m }) => m);
+    return send(200, ordered(rows, u));
   }
   const table = M.rows[t]; if (!table) return send(404, { code: '42P01', message: `relation ${t} does not exist` });
   if (method === 'GET') {
@@ -145,7 +180,7 @@ export async function handle(route) {
   if (method === 'DELETE') { M.rows[t] = table.filter(r => !(r.household_id === hh.id && hit(r, fs))); bump(hh.id, t); return route.fulfill({ status: 204, headers: CORS }); }
   return send(405, { message: 'metoda' });
 }
-export const rowsOf = (t, key) => { const hh = M.houses.get(key); return hh ? M.rows[t].filter(r => r.household_id === hh.id) : []; };
+export const rowsOf = (t, key) => { const hh = houseOf(key); return hh ? M.rows[t].filter(r => r.household_id === hh.id) : []; };
 
 /* ---------- Realtime (Phoenix, vsn 2.0.0: JSON w tablicach, broadcast binarnie) ---------- */
 const conns = new Set();

@@ -23,7 +23,7 @@ const ui = {
   member: String(lsGet('member', '')).slice(0, 40), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
 let db = null, house = null, chan = null, houseTag = '';
-const HH_TABLES = ['recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
+const HH_TABLES = ['hh_members', 'recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
 // tabele wspólne i zbiory, od których zależą (wersje w dataset_versions; „dzien”: oferty filtrujemy po dacie)
 const SHARED = { products: ['katalog'], recipes: ['katalog'], prices: ['katalog', 'oferty'], offers: ['oferty', 'dzien'], scrape_runs: ['oferty'] };
 // klucze wierszy w tabelach domu (bez household_id); hh_settings ma jeden wiersz na dom
@@ -136,6 +136,7 @@ const TABLES = {
   receipt_items: q => q.select('*').order('id'),
   hh_settings: q => q.select('*'),
   recipe_requests: q => q.select('*').order('created_at', { ascending: false }).limit(50),
+  hh_members: q => q.select('id,name,device,created_at,last_seen').order('created_at'),
 };
 const ONE_PAGE = new Set(['scrape_runs', 'recipe_requests', 'hh_settings']);
 // Supabase oddaje najwyżej 1000 wierszy na zapytanie, więc większe tabele pobieramy stronami.
@@ -170,6 +171,7 @@ async function syncOnce() {
   $('#lost').hidden = !!data?.dom;
   if (!data?.dom) { $('#lost').innerHTML = lostHtml(); return; }
   if (data.dom.name && data.dom.name !== house.name) { house.name = data.dom.name; lsSet('house', house); remember(house); }
+  if (data.dom.id && !house.id) { house.id = data.dom.id; lsSet('house', house); remember(house); await chanTag(); chan?.unsubscribe(); subscribe(); }
   const want = {};
   for (const [t, deps] of Object.entries(SHARED)) want[t] = deps.map(d => d === 'dzien' ? today() : d + '=' + (data.zbiory?.[d] ?? '?')).join('|');
   for (const t of HH_TABLES) want[t] = data.tabele?.[t] ?? 'brak';
@@ -182,10 +184,12 @@ function netBanner() {
   el.hidden = !off;
   el.textContent = 'Brak połączenia. Pokazuję ostatnio wczytane dane.' + (n ? ` Zmiany (${n}) zapiszę, gdy wróci internet.` : '');
 }
-const lostHtml = () => `<b>Ten telefon nie ma już dostępu do domu „${esc(house.name)}”.</b> Klucz domu zmieniono na innym telefonie albo dom usunięto. Otwórz nowy link zaproszenia od domownika.<div class="row" style="margin-top:8px"><button class="btn sm" data-act="ask-leave-lost">Opuść ten dom</button></div>`;
+const lostHtml = () => `<b>Ten telefon nie ma już dostępu do domu „${esc(house.name)}”.</b> Domownik usunął ten telefon z domu albo dom został usunięty. Otwórz nowy link zaproszenia od domownika.<div class="row" style="margin-top:8px"><button class="btn sm" data-act="ask-leave-lost">Opuść ten dom</button></div>`;
 // Zmiany domowników: po zapisie wysyłamy sygnał na kanał domu, a pozostałe telefony sprawdzają wersje danych.
+async function chanTag() { if (house.id && !house.chan) { house.chan = await tagOf('dom:' + house.id); lsSet('house', house); } }
 function subscribe() {
-  chan = db.channel('dom-' + houseTag, { config: { broadcast: { self: false } } });
+  // kanał wspólny dla domu (każdy telefon ma inny klucz, więc nazwa pochodzi od identyfikatora domu)
+  chan = db.channel('dom-' + (house.chan || houseTag), { config: { broadcast: { self: false } } });
   chan.on('broadcast', { event: 'zmiana' }, syncSoon).subscribe();
 }
 document.addEventListener('visibilitychange', () => { if (!document.hidden) sync(); });
@@ -623,16 +627,14 @@ function drawSheet() {
 function whoSheet() {
   const st = ui.sheet;
   return `<div class="sheet-head"><div><h2>${esc(house.name)}</h2><div class="sub" style="margin-top:4px">Ustawienia domu i zaproszenia</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
-  <div class="sec"><h4>Zaproś domownika</h4><div class="box sub">Wyślij link osobie, z którą dzielisz kuchnię. Zobaczy Waszą listę zakupów, zamrażarkę i ulubione. Znajomemu z innego domu wyślij zwykły adres aplikacji, żeby założył własny dom.</div>
+  ${membersHtml(st)}
+  <div class="sec"><h4>Zaproś domownika</h4><div class="box sub">Wyślij link osobie, z którą dzielisz kuchnię. Zobaczy Waszą listę zakupów, zamrażarkę i ulubione. Każdy link jest nowy i ważny 14 dni. Znajomemu z innego domu wyślij zwykły adres aplikacji, żeby założył własny dom.</div>
    <div class="row"><button class="btn pri" type="button" data-act="invite" style="flex:1">Wyślij zaproszenie</button><button class="btn" type="button" data-act="share-app">Adres dla znajomego</button></div></div>
   <form id="f-who" class="sec" style="gap:12px"><h4>Ty i Twój dom</h4>
    <div class="field"><label for="w-name">Twoje imię (widoczne dla domowników)</label><input class="input" id="w-name" value="${esc(ui.member)}" autocomplete="given-name" maxlength="40"></div>
    <div class="field"><label for="w-house">Nazwa domu</label><input class="input" id="w-house" value="${esc(house.name)}" maxlength="60"></div>
    <button class="btn pri" type="submit">Zapisz</button></form>
   ${knownHtml(house.key, 'who')}
-  <div class="sec"><h4>Klucz domu</h4><div class="box sub">Link zaproszenia działa jak klucz: kto go ma, widzi dane domu. Jeśli trafił do niewłaściwej osoby, zmień klucz. Stare linki przestaną działać, a domownicy muszą dostać nowy link.</div>
-   ${st.rotated ? `<div class="banner">Klucz zmieniony. Wyślij domownikom nowy link zaproszenia.</div>` : ''}
-   ${st.confirmRotate ? `<div class="row"><button class="btn danger" type="button" data-act="rotate">Tak, zmień klucz</button><button class="btn" type="button" data-act="cancel-rotate">Anuluj</button></div>` : `<button class="btn ghost" type="button" data-act="ask-rotate" style="align-self:flex-start">Zmień klucz domu</button>`}</div>
   <div class="sec"><h4>Dane domu</h4><div class="box sub">Kopia listy zakupów, zamrażarki, paragonów, cen i ustawień domu w pliku JSON.</div>
    <button class="btn ghost" type="button" data-act="export" style="align-self:flex-start">Pobierz dane domu</button></div>
   <div class="sec"><h4>Ten telefon</h4>${st.confirmLeave ? `<div class="banner">Ten telefon przestanie widzieć dane domu. Wrócisz do niego tylko z linkiem zaproszenia od domownika.${pendingOps.some(o => o.key === house.key) ? ' Uwaga: część zmian nie została jeszcze wysłana i przepadnie.' : ''}</div><div class="row"><button class="btn danger" type="button" data-act="leave">Tak, opuść dom</button><button class="btn" type="button" data-act="cancel-leave">Anuluj</button></div>` : `<button class="btn ghost danger" type="button" data-act="ask-leave">Opuść dom na tym telefonie</button>`}</div>
@@ -640,7 +642,7 @@ function whoSheet() {
 }
 /* domy zapamiętane na tym telefonie (zaproszenie do innego domu nie kasuje poprzedniego) */
 const knownHouses = () => (lsGet('houses', []) || []).filter(h => keyFrom(h?.key));
-function remember(h) { lsSet('houses', [{ key: h.key, name: h.name }, ...knownHouses().filter(x => x.key !== h.key)].slice(0, 8)); }
+function remember(h) { lsSet('houses', [{ key: h.key, name: h.name, id: h.id, member: h.member, member_id: h.member_id }, ...knownHouses().filter(x => x.key !== h.key)].slice(0, 8)); }
 function forget(key) { lsSet('houses', knownHouses().filter(x => x.key !== key)); }
 function knownHtml(exceptKey, where) {
   const hs = knownHouses().filter(h => h.key !== exceptKey); if (!hs.length) return '';
@@ -720,6 +722,9 @@ document.addEventListener('click', async e => {
     case 'trip': ui.trip = ui.trip >= 20 ? 0 : ui.trip + 4; lsSet('trip', ui.trip); ui.plan = null; renderList(); break;
     case 'tick': tickGroup(d.pid); break;
     case 'tick-m': { const m = S.list_items.find(x => x.id === d.id); if (m) write({ t: 'list_items', kind: 'update', values: { done: !m.done }, match: { id: d.id } }); break; }
+    case 'mem-ask': ui.sheet.confirmRm = d.id; drawSheet(); break;
+    case 'mem-cancel': ui.sheet.confirmRm = null; drawSheet(); break;
+    case 'mem-rm': busy(t, () => removeMember(d.id)); break;
     case 'pick': addOwn(d.pid); $('#manual').value = ''; renderSugg(); break;
     case 'own-inc': addOwn(d.pid); break;
     case 'own-dec': { const own = S.list_items.filter(x => x.product_id === d.pid && !x.recipe_id && !x.manual); const last = own[own.length - 1]; if (last) write({ t: 'list_items', kind: 'delete', match: { id: last.id } }); break; }
@@ -738,8 +743,8 @@ document.addEventListener('click', async e => {
     case 'ri-del': readForm(); ui.sheet.draft.items.splice(+d.i, 1); drawSheet(); break;
     case 'ri-add': readForm(); ui.sheet.draft.items.push({ name: '', qty: 1, weighed: false, unit_price: null, total: 0, discount: 0, category: 'Inne' }); drawSheet(); break;
     case 'save-receipt': saveReceipt(); break;
-    case 'whoami': ui.sheet = { type: 'who' }; drawSheet(); break;
-    case 'invite': shareLink(inviteUrl(), `Dołącz do domu „${house.name}” w Obiadach na Zapas`); break;
+    case 'whoami': ui.sheet = { type: 'who' }; drawSheet(); refreshMembers(); break;
+    case 'invite': busy(t, async () => { const u = await inviteUrl(); if (u) await shareLink(u, `Dołącz do domu „${house.name}” w Obiadach na Zapas`); }); break;
     case 'share-app': shareLink(appUrl(), 'Obiady na Zapas: przepisy do mrożenia, wspólna lista zakupów i ceny z gazetek'); break;
     case 'ask-leave': ui.sheet.confirmLeave = true; drawSheet(); break;
     case 'ask-leave-lost': ui.sheet = { type: 'who', confirmLeave: true }; drawSheet(); break;
@@ -768,7 +773,7 @@ document.addEventListener('submit', async e => {
   if (id === 'f-price') savePrice();
   else if (id === 'f-who') {
     const n = $('#w-name').value.trim().slice(0, 40), hn = $('#w-house').value.trim().slice(0, 60);
-    if (n) { ui.member = n; lsSet('member', n); $('#who').textContent = n; }
+    if (n) { const changed = n !== ui.member; ui.member = n; lsSet('member', n); $('#who').textContent = n; if (changed) heartbeat(true); }
     if (hn && hn !== house.name && await w(() => db.rpc('rename_household', { p_name: hn }))) { house.name = hn; lsSet('house', house); remember(house); ping(['dom']); }
     closeSheet(); renderAll(); toast('Zapisano');
   }
@@ -793,7 +798,12 @@ window.addEventListener('hashchange', () => { const h = location.hash.slice(1); 
 const keyFrom = v => (String(v || '').match(/[0-9a-f]{64}/) || [null])[0];
 const appUrl = () => location.origin + location.pathname;
 // Zaproszenie ma klucz po „#”: ta część adresu nie jest wysyłana do serwerów (GitHub Pages, podglądy linków).
-const inviteUrl = () => `${appUrl()}#dom=${house.key}`;
+async function inviteUrl() { // jednorazowo generowany kod zaproszenia (ważny 14 dni), a nie klucz tego telefonu
+  if (!house.member) { await becomeMember(); if (!house.member) { toast('Połącz się z internetem, żeby utworzyć zaproszenie.'); return null; } location.reload(); return null; }
+  const { data, error } = await db.rpc('create_invite');
+  if (error || !data?.code) { toast(errorText(error)); return null; }
+  return `${appUrl()}#dom=${data.code}`;
+}
 const inviteKey = () => { const m = location.hash.match(/[#&]dom=([0-9a-f]{64})/); return m ? m[1] : keyFrom(new URLSearchParams(location.search).get('dom')); };
 const client = key => createClient(CFG.url, CFG.anon, { auth: { persistSession: false }, global: key ? { headers: { 'x-dom': key } } : {} });
 function ping(t = []) { chan?.send({ type: 'broadcast', event: 'zmiana', payload: { t } })?.catch?.(() => { }); }
@@ -807,10 +817,10 @@ async function shareLink(url, text) {
   try { if (navigator.share) { await navigator.share({ title: 'Obiady na Zapas', text, url }); return; } } catch (e) { if (e?.name === 'AbortError') return; }
   try { await navigator.clipboard.writeText(url); toast('Skopiowano link'); } catch { toast('Nie udało się skopiować. Link: ' + url); }
 }
-async function houseFor(key) {
-  const { data, error } = await client(key).rpc('household_info');
+async function houseFor(key) { // co kryje się pod kodem z linku: zaproszenie, dawny klucz domu albo klucz tego telefonu
+  const { data, error } = await client(null).rpc('invite_info', { p_code: key });
   if (error) throw error;
-  return data ? { key, name: data.name } : null;
+  return data ? { key, name: data.name, own: data.kind === 'domownik', member_id: data.member_id || null } : null;
 }
 function welcomeError(m) { const e = $('#w-err'); e.textContent = m; e.hidden = !m; }
 async function busy(btn, fn) { const t = btn.textContent; btn.disabled = true; btn.innerHTML = '<span class="spin"></span>'; try { await fn(); } finally { btn.disabled = false; btn.textContent = t; } }
@@ -819,7 +829,7 @@ async function createHouse() {
   await busy($('#c-btn'), async () => {
     const { data, error } = await client(null).rpc('create_household', { p_name: $('#w-house').value.trim() || `Dom: ${name}` });
     if (error || !data?.secret) return welcomeError(navigator.onLine ? 'Nie udało się założyć domu. Spróbuj ponownie.' : 'Brak internetu.');
-    enter({ key: data.secret, name: data.name }, name);
+    await enter({ key: data.secret, name: data.name }, name);
   });
 }
 async function joinHouse() {
@@ -830,11 +840,16 @@ async function joinHouse() {
     const h = await houseFor(key).catch(() => undefined);
     if (h === undefined) return welcomeError('Brak połączenia. Spróbuj ponownie.');
     if (!h) return welcomeError('Nie znaleziono domu z tego zaproszenia. Poproś domownika o nowy link.');
-    enter(h, name);
+    await enter(h, name);
   });
 }
-function enter(h, member) {
-  remember(h); house = h; lsSet('house', h); ui.member = member.slice(0, 40); lsSet('member', ui.member);
+async function enter(h, member) {
+  ui.member = member.slice(0, 40); lsSet('member', ui.member);
+  if (!h.own) {
+    try { h = await joinWith(h.key, ui.member); } catch (e) { return welcomeError(navigator.onLine ? (e?.message?.includes('nieaktualny') ? 'Ten link zaproszenia jest nieaktualny. Poproś domownika o nowy.' : errorText(e)) : 'Brak internetu.'); }
+    lsSet('seen_' + h.member_id, Date.now());
+  }
+  remember(h); house = h; lsSet('house', h);
   start();
 }
 // Zmiana domu na tym telefonie: poprzedni zostaje na liście znanych domów; pełne przeładowanie = czysty stan.
@@ -842,11 +857,12 @@ function switchTo(h) {
   const name = (ui.member || $('#w-member')?.value || '').trim().slice(0, 40);
   if (!name) return welcomeError('Wpisz swoje imię.');
   const cur = lsGet('house', null); if (cur?.key) remember(cur);
-  remember(h); lsSet('house', { key: h.key, name: h.name }); ui.member = name; lsSet('member', name);
+  remember(h); lsSet('house', { key: h.key, name: h.name, id: h.id, member: h.member, member_id: h.member_id }); ui.member = name; lsSet('member', name);
   location.replace(`${appUrl()}?dom=${h.key}#przepisy`);
 }
 function stayHere() { pendingInvite = null; $('#w-switch').hidden = true; house = lsGet('house', null); if (house?.key) start(); else showWelcome(null); }
 async function leaveHouse() {
+  if (house?.member && db && navigator.onLine) await Promise.race([db.rpc('leave_household'), new Promise(r => setTimeout(r, 3000))]).catch(() => { }); // znika z listy domowników
   if (house?.key) forget(house.key);
   lsDel('house'); lsDel('seenReq'); lsDel('rotated');
   if (!knownHouses().length) try { Object.keys(localStorage).filter(k => k.startsWith('onz_') && !['onz_theme', 'onz_accent'].includes(k)).forEach(k => localStorage.removeItem(k)); } catch { }
@@ -864,11 +880,11 @@ async function rotateKey() {
   forget(house.key); const h = { key: data.secret, name: house.name }; remember(h); lsSet('house', h); lsSet('rotated', true);
   location.replace(`${appUrl()}?dom=${h.key}#przepisy`);
 }
-const EXPORT_ORDER = { recipe_requests: ['created_at', 'id'], hh_recipes: ['recipe_id'], reactions: ['recipe_id', 'member'], list_items: ['created_at', 'id'], freezer: ['id'], hh_prices: ['product_id', 'store'], receipts: ['bought_on', 'id'], receipt_items: ['id'], hh_settings: ['household_id'] };
+const EXPORT_ORDER = { hh_members: ['created_at', 'id'], recipe_requests: ['created_at', 'id'], hh_recipes: ['recipe_id'], reactions: ['recipe_id', 'member'], list_items: ['created_at', 'id'], freezer: ['id'], hh_prices: ['product_id', 'store'], receipts: ['bought_on', 'id'], receipt_items: ['id'], hh_settings: ['household_id'] };
 async function exportData() {
   try {
     const out = { aplikacja: 'Obiady na Zapas', wyeksportowano: new Date().toISOString(), dom: house.name, tabele: {} };
-    for (const t of HH_TABLES) out.tabele[t] = await fetchAll(t, q => EXPORT_ORDER[t].reduce((x, c) => x.order(c), q.select('*')), true);
+    for (const t of HH_TABLES) out.tabele[t] = await fetchAll(t, q => EXPORT_ORDER[t].reduce((x, c) => x.order(c), q.select(t === 'hh_members' ? 'id,name,device,created_at,last_seen' : '*')), true);
     const url = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' }));
     const a = Object.assign(document.createElement('a'), { href: url, download: `obiady-na-zapas-${today()}.json` });
     document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
@@ -916,7 +932,47 @@ function showSwitch(invite, saved) {
     <div class="sub">Po przełączeniu dom „${esc(saved.name)}” zostanie zapamiętany i wrócisz do niego w ustawieniach.</div>
     <div class="row"><button class="btn pri" type="button" data-act="switch-house">Przełącz na „${esc(invite.name)}”</button><button class="btn" type="button" data-act="stay-house">Zostań w „${esc(saved.name)}”</button></div>`;
 }
+/* domownicy: ten telefon zapisuje się na liście domu (imię, rodzaj telefonu, ostatnie otwarcie aplikacji) */
+const deviceLabel = () => (isIOS ? 'iPhone' : isAndroid ? 'Android' : 'Komputer') + (isStandalone() ? '' : ' · przeglądarka');
+// Każdy telefon ma własny klucz (zwraca go join_household). Telefony sprzed tej zmiany mają wspólny klucz domu
+// i przy starcie same zamieniają go na własny.
+async function joinWith(code, name) {
+  const { data, error } = await client(null).rpc('join_household', { p_code: code, p_name: (name || ui.member || 'Domownik').slice(0, 40), p_device: deviceLabel() });
+  if (error || !data?.token) throw error || new Error('brak klucza');
+  return { key: data.token, name: data.name, id: data.household_id, member_id: data.member_id, member: true };
+}
+async function becomeMember() {
+  if (house.member || !navigator.onLine) return;
+  try {
+    const info = await houseFor(house.key); if (!info) return;
+    if (info.own) { house = { ...house, member: true, member_id: info.member_id }; lsSet('house', house); return; } // już własny klucz (np. dom z listy znanych)
+    const old = house.key, h = await joinWith(old); forget(old); house = h; lsSet('house', h); remember(h); lsSet('seen_' + h.member_id, Date.now());
+  }
+  catch { } // bez sieci albo nieaktualny klucz: spróbujemy przy następnym uruchomieniu, a utratę dostępu pokaże app_state
+}
+function heartbeat(force) {
+  if (!house?.member || !ui.member) return; const k = 'seen_' + house.member_id;
+  if (!force && Date.now() - lsGet(k, 0) < 6 * 3600e3) return;
+  lsSet(k, Date.now());
+  db.rpc('member_touch', { p_name: ui.member.slice(0, 40), p_device: deviceLabel() }).then(() => sync(), () => { });
+}
+const ago = s => { const d = daysSince(new Date(s).toLocaleDateString('sv-SE', { timeZone: 'Europe/Warsaw' })); return d === 0 ? 'dziś' : d === 1 ? 'wczoraj' : d < 30 ? `${d} dni temu` : 'ponad miesiąc temu'; };
+function membersHtml(st) {
+  const me = house.member_id, ms = [...(S.hh_members || [])].sort((a, b) => (b.id === me) - (a.id === me) || String(b.last_seen).localeCompare(String(a.last_seen)));
+  return `<div class="sec"><h4>Domownicy</h4>${ms.length ? `<div class="grp">${ms.map(m => `<div class="mem"><span class="face" style="background:${colorOf(m.name)}">${esc(m.name[0]?.toUpperCase() || '?')}</span><div class="nm"><b>${esc(m.name)}${m.id === me ? ' <span class="pill want">Ty</span>' : ''}</b><small>${esc(m.device || 'telefon')} · ostatnio ${ago(m.last_seen)} · od ${dPL(new Date(m.created_at).toLocaleDateString('sv-SE', { timeZone: 'Europe/Warsaw' }))}</small></div>${m.id === me || !house.member ? '' : st.confirmRm === m.id ? `<span class="row" style="flex-wrap:nowrap"><button class="btn sm danger" data-act="mem-rm" data-id="${esc(m.id)}">Usuń</button><button class="btn sm" data-act="mem-cancel">Nie</button></span>` : `<button class="btn sm ghost" data-act="mem-ask" data-id="${esc(m.id)}" aria-label="Usuń domownika">Usuń</button>`}</div>`).join('')}</div>` : '<div class="sub">Lista pojawi się, gdy domownicy otworzą aplikację.</div>'}
+   ${st.confirmRm ? `<div class="banner">Usunięty domownik od razu straci dostęp do domu, a wysłane wcześniej zaproszenia przestaną działać. Pozostali domownicy nic nie muszą robić.</div>` : ''}</div>`;
+}
+// lista domowników nie ma wersji w app_state: odświeżamy ją przy otwarciu ustawień i po zmianach
+async function refreshMembers() { await load('hh_members', 'r' + Date.now()); if (ui.sheet?.type === 'who') drawSheet(); }
+async function removeMember(id) {
+  const m = (S.hh_members || []).find(x => x.id === id);
+  const { error } = await db.rpc('remove_member', { p_id: id });
+  if (error) return toast(errorText(error));
+  ui.sheet.confirmRm = null; ping(['dom']); await refreshMembers();
+  toast(`${m?.name || 'Domownik'} nie ma już dostępu do domu`);
+}
 async function start() {
+  await becomeMember();
   db = clientFor(house.key); houseTag = await tagOf(house.key); remember(house);
   $('#welcome').hidden = true; $('#app').hidden = false; $('#who').textContent = ui.member || 'Ustawienia';
   const ib = $('#install'); ib.hidden = isStandalone() || lsGet('noinstall', false) || !(isIOS || isAndroid); if (!ib.hidden) ib.innerHTML = installHtml(false);
@@ -931,7 +987,7 @@ async function start() {
   for (const c of cached.length ? cached : old) if (TABLES[c.t] && (SHARED[c.t] || !cached.length || c.house === houseTag)) { RAW[c.t] = c.data; VER[c.t] = c.ver; }
   Object.keys(TABLES).forEach(recompute);
   renderAll(); netBanner();
-  subscribe(); sync();
+  await chanTag(); subscribe(); sync(); heartbeat();
   if (lsGet('rotated', false)) { lsDel('rotated'); ui.sheet = { type: 'who', rotated: true }; drawSheet(); }
   if (toastLater) toast(toastLater);
 }
@@ -958,6 +1014,8 @@ window.addEventListener('pageshow', () => setTimeout(healViewport, 150));
   if (fromUrl && fromUrl !== saved?.key) {
     // link zaproszenia albo pierwsze otwarcie z ikony na ekranie początkowym
     const h = await houseFor(fromUrl).catch(() => undefined); // undefined: brak połączenia, null: nieaktualny link
+    // własny klucz tego telefonu (np. ikona na ekranie iPhone'a ma osobną pamięć): wchodzimy od razu
+    if (h?.own) { house = { key: h.key, name: h.name, member: true, member_id: h.member_id }; lsSet('house', house); return start(); }
     if (h && saved?.key) return showSwitch(h, saved);
     if (h) return showWelcome(h);
     if (!saved?.key) { showWelcome(null); return welcomeError(h === null ? 'Ten link zaproszenia jest nieaktualny. Poproś domownika o nowy.' : 'Brak połączenia. Otwórz link zaproszenia ponownie, gdy wróci internet.'); }
