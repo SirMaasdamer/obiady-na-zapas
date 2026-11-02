@@ -900,7 +900,7 @@ async function deleteHouse() {
   ping(['dom']);
   await leaveHouse();
 }
-/* instrukcja dodania do ekranu głównego: iPhone (Safari) i Android (Chrome) */
+/* instrukcja dodania do ekranu głównego: iPhone (Safari albo Chrome) i Android (Chrome) */
 const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isAndroid = /Android/.test(navigator.userAgent);
 let installEvt = null;
@@ -910,7 +910,9 @@ const isStandalone = () => matchMedia('(display-mode: standalone)').matches || n
 function installHtml(welcome) {
   const lead = welcome ? '<b>Dodaj aplikację do ekranu głównego</b> – otworzysz ją jak zwykłą aplikację, bez paska przeglądarki. Najlepiej najpierw załóż dom (albo dołącz z zaproszenia), a potem:' : '<b>Dodaj aplikację do ekranu głównego:</b>';
   const steps = isIOS
-    ? '<ol class="isteps"><li>Otwórz tę stronę w <b>Safari</b>.</li><li>Stuknij <b>Udostępnij</b> (kwadrat ze strzałką w górę).</li><li>Wybierz <b>Do ekranu początkowego</b>, potem <b>Dodaj</b>.</li></ol>'
+    ? (/CriOS/.test(navigator.userAgent)
+      ? '<ol class="isteps"><li>Stuknij <b>Udostępnij</b> (kwadrat ze strzałką w górę) w pasku adresu u góry.</li><li>Wybierz <b>Dodaj do ekranu początkowego</b>, potem <b>Dodaj</b>.</li></ol>'
+      : '<ol class="isteps"><li>Stuknij <b>Udostępnij</b> (kwadrat ze strzałką w górę) – w Safari na dole ekranu, w Chrome w pasku adresu u góry.</li><li>Wybierz <b>Do ekranu początkowego</b>, potem <b>Dodaj</b>.</li></ol>')
     : '<ol class="isteps"><li>Otwórz tę stronę w <b>Chrome</b>.</li><li>Stuknij <b>⋮</b> w prawym górnym rogu.</li><li>Wybierz <b>Zainstaluj aplikację</b> albo <b>Dodaj do ekranu głównego</b>, potem <b>Zainstaluj</b>.</li></ol>';
   return `${lead}${steps}<div class="row"><button class="btn pri sm" type="button" data-act="install-now" ${installEvt ? '' : 'hidden'}>Zainstaluj teraz</button>${welcome ? '' : '<button class="btn sm ghost" type="button" data-act="hide-install">Ukryj</button>'}</div>`;
 }
