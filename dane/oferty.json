@@ -1,6 +1,33 @@
 {
- "updated": "2026-11-02T00:32:51.011Z",
+ "updated": "2026-11-02T01:09:54.670Z",
  "runs": [
+  {
+   "store": "b",
+   "ran_at": "2026-11-02T00:46:06.430Z",
+   "status": "ok",
+   "message": "gazetki.pl: 47 · strony sklepu: 0 · OCR: 0",
+   "valid_from": "2026-11-02",
+   "valid_to": "2026-11-07",
+   "matched": 47
+  },
+  {
+   "store": "l",
+   "ran_at": "2026-11-02T00:57:14.931Z",
+   "status": "ok",
+   "message": "gazetki.pl: 17 · strony sklepu: 1 · OCR: 0",
+   "valid_from": "2026-11-02",
+   "valid_to": "2026-11-04",
+   "matched": 18
+  },
+  {
+   "store": "k",
+   "ran_at": "2026-11-02T01:09:11.656Z",
+   "status": "ok",
+   "message": "gazetki.pl: 44 · strony sklepu: 0 · OCR: 1",
+   "valid_from": "2026-10-29",
+   "valid_to": "2026-11-04",
+   "matched": 45
+  },
   {
    "store": "b",
    "ran_at": "2026-11-02T00:10:47.773Z",
@@ -312,11 +339,11 @@
    "name": "Chleb pszenno-żytni",
    "store": "k",
    "store_name": "Kaufland",
-   "promo": 2.49,
+   "promo": 2.99,
    "regular": null,
    "from": "2026-10-29",
    "to": "2026-11-04",
-   "note": "Chleb tostowy pszenny K-Classic"
+   "note": "Chleb graham"
   },
   {
    "product_id": "chleb_tostowy",
@@ -632,10 +659,10 @@
    "store": "l",
    "store_name": "Lidl",
    "promo": 9.19,
-   "regular": 11.53,
+   "regular": null,
    "from": "2026-11-02",
-   "to": "2026-11-07",
-   "note": "Regionalne Polskie Szlaki Kiełbasa Myśliwska"
+   "to": "2026-11-04",
+   "note": "Kiełbasa myśliwska Regionalne Polskie Szlaki"
   },
   {
    "product_id": "kielbasa",
@@ -812,39 +839,6 @@
    "from": "2026-10-29",
    "to": "2026-11-07",
    "note": "Masło Lurpak"
-  },
-  {
-   "product_id": "mielone_wp",
-   "name": "Mięso mielone wieprzowe",
-   "store": "b",
-   "store_name": "Biedronka",
-   "promo": 12.99,
-   "regular": 16.99,
-   "from": "2026-11-02",
-   "to": "2026-11-04",
-   "note": "Mięso mielone wołowe Kraina Mięs"
-  },
-  {
-   "product_id": "mielone_wp",
-   "name": "Mięso mielone wieprzowe",
-   "store": "l",
-   "store_name": "Lidl",
-   "promo": 9.99,
-   "regular": null,
-   "from": "2026-11-02",
-   "to": "2026-11-07",
-   "note": "Mięso mielone z łopatki i boczku Rzeźnik"
-  },
-  {
-   "product_id": "mielone_wp",
-   "name": "Mięso mielone wieprzowe",
-   "store": "k",
-   "store_name": "Kaufland",
-   "promo": 10.9,
-   "regular": 15.49,
-   "from": "2026-10-29",
-   "to": "2026-11-04",
-   "note": "Mięso mielone Smak"
   },
   {
    "product_id": "mleko",
@@ -1215,7 +1209,7 @@
    "store": "k",
    "store_name": "Kaufland",
    "promo": 4.43,
-   "regular": 36.6,
+   "regular": null,
    "from": "2026-10-29",
    "to": "2026-11-04",
    "note": "GOUDA · odczyt OCR, sprawdź w sklepie"
@@ -1471,21 +1465,6 @@
    "price": 14.99,
    "price_for_pack": 14.99,
    "regular": 24.9,
-   "unit_info": null,
-   "valid_from": "2026-11-02",
-   "valid_to": "2026-11-04",
-   "note": null,
-   "source": "gazetki.pl",
-   "page": "gazetki.pl",
-   "leaflet": "https://www.gazetki.pl/sklepy/biedronka/gazetka"
-  },
-  {
-   "store": "b",
-   "product_id": "mielone_wp",
-   "name": "Mięso mielone wołowe Kraina Mięs",
-   "price": 12.99,
-   "price_for_pack": 12.99,
-   "regular": 16.99,
    "unit_info": null,
    "valid_from": "2026-11-02",
    "valid_to": "2026-11-04",
@@ -2186,29 +2165,14 @@
   },
   {
    "store": "l",
-   "product_id": "mielone_wp",
-   "name": "Mięso mielone z łopatki i boczku Rzeźnik",
-   "price": 9.99,
-   "price_for_pack": 9.99,
+   "product_id": "kielbasa",
+   "name": "Kiełbasa myśliwska Regionalne Polskie Szlaki",
+   "price": 9.19,
+   "price_for_pack": 9.19,
    "regular": null,
    "unit_info": null,
    "valid_from": "2026-11-02",
-   "valid_to": "2026-11-07",
-   "note": null,
-   "source": "gazetki.pl",
-   "page": "gazetki.pl",
-   "leaflet": "https://www.gazetki.pl/sklepy/lidl/gazetka"
-  },
-  {
-   "store": "l",
-   "product_id": "kielbasa",
-   "name": "Regionalne Polskie Szlaki Kiełbasa Myśliwska",
-   "price": 9.19,
-   "price_for_pack": 9.19,
-   "regular": 11.53,
-   "unit_info": null,
-   "valid_from": "2026-11-02",
-   "valid_to": "2026-11-07",
+   "valid_to": "2026-11-04",
    "note": null,
    "source": "gazetki.pl",
    "page": "gazetki.pl",
@@ -2468,21 +2432,6 @@
    "source": "www",
    "page": "www",
    "leaflet": "https://www.lidl.pl/informacje-dla-klienta/nasze-gazetki"
-  },
-  {
-   "store": "k",
-   "product_id": "mielone_wp",
-   "name": "Mięso mielone Smak",
-   "price": 10.9,
-   "price_for_pack": 10.9,
-   "regular": 15.49,
-   "unit_info": null,
-   "valid_from": "2026-10-29",
-   "valid_to": "2026-11-04",
-   "note": null,
-   "source": "gazetki.pl",
-   "page": "gazetki.pl",
-   "leaflet": "https://www.gazetki.pl/sklepy/kaufland/gazetka"
   },
   {
    "store": "k",
@@ -2862,9 +2811,9 @@
   {
    "store": "k",
    "product_id": "chleb",
-   "name": "Chleb tostowy pszenny K-Classic",
-   "price": 2.49,
-   "price_for_pack": 2.49,
+   "name": "Chleb graham",
+   "price": 2.99,
+   "price_for_pack": 2.99,
    "regular": null,
    "unit_info": null,
    "valid_from": "2026-10-29",
@@ -3150,14 +3099,14 @@
    "name": "GOUDA",
    "price": 29.56,
    "price_for_pack": 4.43,
-   "regular": 36.6,
+   "regular": null,
    "unit_info": "1 kg",
    "valid_from": "2026-10-29",
    "valid_to": "2026-11-04",
    "note": "odczyt OCR, sprawdź w sklepie",
    "source": "ocr",
-   "page": "25",
-   "leaflet": "https://leaflets.kaufland.com/pl-PL/PL_pl_Inlet2_0_PL44/ar/0"
+   "page": "43",
+   "leaflet": "https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060"
   }
  ]
 }
