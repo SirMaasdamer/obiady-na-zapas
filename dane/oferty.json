@@ -1,6 +1,33 @@
 {
- "updated": "2026-11-02T01:09:54.670Z",
+ "updated": "2026-11-02T06:03:25.607Z",
  "runs": [
+  {
+   "store": "b",
+   "ran_at": "2026-11-02T05:40:02.850Z",
+   "status": "ok",
+   "message": "gazetki.pl: 47 · strony sklepu: 0 · OCR: 0",
+   "valid_from": "2026-11-02",
+   "valid_to": "2026-11-07",
+   "matched": 47
+  },
+  {
+   "store": "l",
+   "ran_at": "2026-11-02T05:52:14.423Z",
+   "status": "ok",
+   "message": "gazetki.pl: 17 · strony sklepu: 1 · OCR: 0",
+   "valid_from": "2026-11-02",
+   "valid_to": "2026-11-04",
+   "matched": 18
+  },
+  {
+   "store": "k",
+   "ran_at": "2026-11-02T06:02:40.162Z",
+   "status": "ok",
+   "message": "gazetki.pl: 44 · strony sklepu: 0 · OCR: 1",
+   "valid_from": "2026-10-29",
+   "valid_to": "2026-11-04",
+   "matched": 45
+  },
   {
    "store": "b",
    "ran_at": "2026-11-02T00:46:06.430Z",
@@ -681,10 +708,10 @@
    "store": "k",
    "store_name": "Kaufland",
    "promo": 1.79,
-   "regular": 2.45,
+   "regular": null,
    "from": "2026-10-29",
    "to": "2026-11-04",
-   "note": "Koncentrat pomidorowy K-Classic"
+   "note": "Koncentrat pomidorowy min. 28% ekstraktu K-Classic"
   },
   {
    "product_id": "kukurydza",
@@ -1209,7 +1236,7 @@
    "store": "k",
    "store_name": "Kaufland",
    "promo": 4.43,
-   "regular": null,
+   "regular": 36.6,
    "from": "2026-10-29",
    "to": "2026-11-04",
    "note": "GOUDA · odczyt OCR, sprawdź w sklepie"
@@ -2631,10 +2658,10 @@
   {
    "store": "k",
    "product_id": "koncentrat",
-   "name": "Koncentrat pomidorowy K-Classic",
+   "name": "Koncentrat pomidorowy min. 28% ekstraktu K-Classic",
    "price": 1.79,
    "price_for_pack": 1.79,
-   "regular": 2.45,
+   "regular": null,
    "unit_info": null,
    "valid_from": "2026-10-29",
    "valid_to": "2026-11-04",
@@ -3099,14 +3126,14 @@
    "name": "GOUDA",
    "price": 29.56,
    "price_for_pack": 4.43,
-   "regular": null,
+   "regular": 36.6,
    "unit_info": "1 kg",
    "valid_from": "2026-10-29",
    "valid_to": "2026-11-04",
    "note": "odczyt OCR, sprawdź w sklepie",
    "source": "ocr",
-   "page": "43",
-   "leaflet": "https://leaflets.kaufland.com/pl-PL/PL_pl_KDZ_1060_PL44-LFT/ar/1060"
+   "page": "25",
+   "leaflet": "https://leaflets.kaufland.com/pl-PL/PL_pl_Inlet2_0_PL44/ar/0"
   }
  ]
 }
