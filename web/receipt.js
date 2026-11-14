@@ -120,7 +120,7 @@ export function joinShots(texts) {
 }
 
 /* ---------- dopasowanie do katalogu i kategorie ---------- */
-const CAT_OF_PRODUCT = { 'mięso': 'Mięso i ryby', 'nabiał': 'Nabiał', 'warzywa': 'Warzywa i owoce', 'puszki i sosy': 'Spiżarnia', 'suche': 'Spiżarnia', 'spiżarnia': 'Spiżarnia' };
+const CAT_OF_PRODUCT = { 'mięso': 'Mięso i ryby', 'wędliny': 'Mięso i ryby', 'nabiał': 'Nabiał', 'warzywa': 'Warzywa i owoce', 'owoce': 'Warzywa i owoce', 'pieczywo': 'Pieczywo', 'napoje': 'Napoje', 'słodycze': 'Słodycze i przekąski', 'chemia': 'Chemia i higiena', 'puszki i sosy': 'Spiżarnia', 'suche': 'Spiżarnia', 'spiżarnia': 'Spiżarnia' };
 const CATS = [
   ['Alkohol', /\bpiwo|\bwino\b|wodka|whisk|cydr|likier|\bgin\b|\brum\b|prosecco/],
   ['Inne', /kaucj/],

@@ -18,7 +18,7 @@ const S = L.S; // wspólny stan (produkty, ceny, przepisy…)
 const visible = r => !S.hh[r.id]?.removed; // wszystkie przepisy z bazy, poza usuniętymi przez dom
 const activeRecipes = () => Object.values(S.recipes).filter(visible);
 const ui = {
-  tab: 'przepisy', cat: lsGet('cat', 'all'), filter: 'all', onlyFreezer: lsGet('onlyFreezer', false), q: '', pq: '', pmode: 'offers',
+  tab: 'przepisy', listView: lsGet('listView', 'sklep'), cat: lsGet('cat', 'all'), filter: 'all', onlyFreezer: lsGet('onlyFreezer', false), q: '', pq: '', pmode: 'offers',
   portions: lsGet('portions', 8), trip: lsGet('trip', 8), plan: null, sheet: null,
   member: String(lsGet('member', '')).slice(0, 40), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
@@ -366,6 +366,40 @@ function renderBadge() {
   const { rows, manual } = L.aggList(), left = rows.filter(g => !g.done).length + manual.filter(m => !m.done).length;
   const b = $('#lbadge'); b.hidden = !left; b.textContent = left;
 }
+/* lista wg kategorii (kolejność jak w sklepie): pozycje z ceną pokazują sklep z wybranego planu, dopisane ręcznie – kategorię z paragonów albo z nazwy */
+const LIST_CATS = ['Warzywa i owoce', 'Pieczywo', 'Mięso i ryby', 'Nabiał', 'Spiżarnia', 'Napoje', 'Słodycze i przekąski', 'Alkohol', 'Chemia i higiena', 'Inne'];
+const catOfItem = (name, p) => p ? RC.categoryOf(name, p) : (receiptDict().get(fold(name))?.category || RC.categoryOf(name));
+function listByCategory(rows, manual, chosen) {
+  const groups = {};
+  for (const g of rows) (groups[catOfItem(g.p.name, g.p)] ??= []).push({ g });
+  for (const m of manual) (groups[catOfItem(m.name || S.products[m.product_id]?.name || '', null)] ??= []).push({ m });
+  let h = '';
+  for (const c of LIST_CATS) {
+    const xs = groups[c]; if (!xs) continue;
+    xs.sort((a, b) => ((a.g || a.m).done - (b.g || b.m).done) || String(a.g?.p.name || a.m.name).localeCompare(String(b.g?.p.name || b.m.name), 'pl'));
+    h += `<div class="grp"><div class="grp-h"><h3>${esc(c)}</h3><span class="sub">${xs.filter(x => !(x.g || x.m).done).length} do kupienia</span></div>${xs.map(({ g, m }) => {
+      if (m) { const r = receiptDict().get(fold(m.name)); return `<div class="item ${m.done ? 'done' : ''}"><button class="ck ${m.done ? 'on' : ''}" data-act="tick-m" data-id="${esc(m.id)}" aria-label="Kupione">${m.done ? CHECK : ''}</button><div class="nm"><b>${esc(m.name || S.products[m.product_id]?.name || '?')}</b><small>${r ? `ostatnio ${zl(r.price)} · <span class="store ${esc(r.store)}">${esc(r.storeName)}</span>` : 'bez ceny'}${m.member ? ' · ' + esc(m.member) : ''}</small></div><div class="pr"><button class="btn sm ghost" data-act="del-item" data-id="${esc(m.id)}" aria-label="Usuń">✕</button></div></div>`; }
+      const a = chosen.assign[g.pid], pr = a ? L.priceOf(g.pid, a.s) : null;
+      return `<div class="item ${g.done ? 'done' : ''}"><button class="ck ${g.done ? 'on' : ''}" data-act="tick" data-pid="${esc(g.pid)}" aria-label="Kupione">${g.done ? CHECK : ''}</button><div class="nm"><b>${esc(g.p.name)}</b><small>${buyText(g.p, g.q)}${a ? ` · <span class="store ${a.s}">${SN[a.s]}</span>` : ' · bez ceny'}${pr?.promo ? ` · <span style="color:var(--promo);font-weight:700">promocja</span>` : ''}</small>${g.docs.some(x => !x.recipe_id) ? `<span class="own"><button class="round sm" data-act="own-dec" data-pid="${esc(g.pid)}" aria-label="Mniej">−</button><button class="round sm" data-act="own-inc" data-pid="${esc(g.pid)}" aria-label="Więcej">+</button></span>` : ''}</div><div class="pr">${a ? zs(a.c) : ''}</div></div>`;
+    }).join('')}</div>`;
+  }
+  return h;
+}
+/* słownik z paragonów domu: ostatnia cena, sklep i kategoria każdej kupowanej pozycji (bez produktów z katalogu) */
+let rdCache = null, rdKey = '';
+function receiptDict() {
+  const key = S.receipt_items.length + '|' + S.receipts.length; if (rdCache && rdKey === key) return rdCache;
+  const recs = new Map(S.receipts.map(r => [r.id, r])), out = new Map();
+  for (const i of S.receipt_items) {
+    const r = recs.get(i.receipt_id); if (!r || !i.name || i.product_id) continue;
+    const k = fold(i.name.trim()); if (k.length < 2) continue;
+    const price = +i.qty > 0 ? +i.total / +i.qty : +i.total, prev = out.get(k);
+    if (!prev || String(r.bought_on) >= prev.date) out.set(k, { name: i.name.trim(), category: i.category || RC.categoryOf(i.name), price, store: r.store, storeName: r.store_name, date: String(r.bought_on), n: (prev?.n || 0) + 1 });
+    else prev.n++;
+  }
+  rdKey = key; return rdCache = out;
+}
+const viewChips = () => `<div class="chips" role="group" aria-label="Układ listy"><button class="chip" data-act="list-view" data-k="sklep" aria-pressed="${ui.listView !== 'kat'}">Wg sklepów</button><button class="chip" data-act="list-view" data-k="kat" aria-pressed="${ui.listView === 'kat'}">Wg kategorii</button></div>`;
 function renderList() {
   const box = $('#llist'), { rows, pantry, manual } = L.aggList();
   renderBadge();
@@ -382,7 +416,8 @@ function renderList() {
       <div class="sub">${chosen.todo} pozycji do kupienia${chosen.missing ? ` · ${chosen.missing} bez ceny` : ''}${worst && !chosen.missing && worst - chosen.total > 0.5 ? ` · oszczędzasz ${zl(worst - chosen.total)} wobec najdroższego sklepu` : ''}</div></div>
       <div class="opts">${shown.map(p => `<button class="opt" data-act="plan" data-k="${p.key}" aria-pressed="${p === chosen}"><span>${p.st.map(s => `<span class="store ${s}">${SN[s]}</span>`).join(' + ')}${p === rec ? ' <span class="pill want">polecam</span>' : ''}<span class="d">${p.missing ? ` · brak ${p.missing} cen` : ''}</span></span><b class="num" style="font-family:var(--f-mono)">${zs(p.total)}</b></button>`).join('')}</div>
       <div class="sub">Dodatkowy sklep polecam, gdy oszczędza co najmniej <button class="btn sm" data-act="trip" style="padding:2px 9px">${ui.trip} zł</button></div></div>`;
-    const groups = {}; for (const g of rows) { const a = chosen.assign[g.pid]; (groups[a ? a.s : 'none'] ??= []).push(g); }
+    if (ui.listView === 'kat') { h += viewChips() + listByCategory(rows, manual, chosen); manual.length = 0; } else h += viewChips();
+    const groups = {}; if (ui.listView !== 'kat') for (const g of rows) { const a = chosen.assign[g.pid]; (groups[a ? a.s : 'none'] ??= []).push(g); }
     for (const s of [...chosen.st, 'none']) {
       const gs = groups[s]; if (!gs) continue; gs.sort((a, b) => a.done - b.done || a.p.name.localeCompare(b.p.name, 'pl'));
       const sub = gs.filter(g => !g.done).reduce((t, g) => t + (chosen.assign[g.pid]?.c || 0), 0);
@@ -392,6 +427,7 @@ function renderList() {
       }).join('')}</div>`;
     }
   }
+  if (!rows.length && manual.length) { h += viewChips(); if (ui.listView === 'kat') { h += listByCategory([], manual, { assign: {} }); manual.length = 0; } }
   if (manual.length) h += `<div class="grp"><div class="grp-h"><h3>Inne</h3></div>${manual.sort((a, b) => a.done - b.done).map(m => `<div class="item ${m.done ? 'done' : ''}"><button class="ck ${m.done ? 'on' : ''}" data-act="tick-m" data-id="${esc(m.id)}" aria-label="Kupione">${m.done ? CHECK : ''}</button><div class="nm"><b>${esc(m.name || S.products[m.product_id]?.name || '?')}</b>${m.member ? `<small>dopisał(a): ${esc(m.member)}</small>` : ''}</div><div class="pr"><button class="btn sm ghost" data-act="del-item" data-id="${esc(m.id)}" aria-label="Usuń">✕</button></div></div>`).join('')}</div>`;
   if (pantry.length) h += `<div class="grp"><div class="grp-h"><h3>Sprawdź w domu</h3><span class="sub">przyprawy i zapasy</span></div>${pantry.map(g => `<div class="item ${g.done ? 'done' : ''}"><button class="ck ${g.done ? 'on' : ''}" data-act="tick" data-pid="${esc(g.pid)}" aria-label="Mam">${g.done ? CHECK : ''}</button><div class="nm"><b>${esc(g.p.name)}</b><small>${esc([...g.srcs].join(', '))}</small></div><div class="pr"></div></div>`).join('')}</div>`;
   box.innerHTML = h;
@@ -685,11 +721,13 @@ function renderSugg() {
   const box = $('#sugg'); if (!box) return; const q = fold($('#manual')?.value.trim());
   if (q.length < 2) { box.innerHTML = ''; return; }
   const hits = Object.values(S.products).filter(p => !p.pantry && (fold(p.name).includes(q) || (p.kw || []).some(k => k.includes(q))))
-    .map(p => ({ p, s: fold(p.name).startsWith(q) ? 0 : fold(p.name).split(/\s+/).some(w => w.startsWith(q)) ? 1 : 2 }))
+    .map(p => ({ p, s: fold(p.name).split(/\s+/).includes(q) ? -1 : fold(p.name).startsWith(q) ? 0 : fold(p.name).split(/\s+/).some(w => w.startsWith(q)) ? 1 : 2 }))
     .sort((a, b) => a.s - b.s || a.p.name.localeCompare(b.p.name, 'pl')).slice(0, 6);
   box.innerHTML = hits.map(({ p }) => { const best = SK.map(s => ({ s, pr: L.priceOf(p.id, s) })).filter(x => x.pr).sort((a, b) => a.pr.p - b.pr.p)[0];
     return `<button type="button" class="sg" data-act="pick" data-pid="${esc(p.id)}"><span><b>${esc(p.name)}</b><small>${p.loose ? 'na wagę' : fmtPack(p)}</small></span>${best ? `<span class="sg-p">od ${zl(best.pr.p)}${p.loose ? '/' + (p.unit === 'kg' ? 'kg' : p.unit) : ''}<small class="store ${best.s}">${SN[best.s]}${best.pr.promo ? ' · promocja' : ''}</small></span>` : ''}</button>`; }).join('')
-    + (hits.length ? `<div class="sub" style="padding:4px 2px">Nie ma na liście? Stuknij „Dodaj”, dopiszę jako zwykłą pozycję.</div>` : '');
+    + [...receiptDict().values()].filter(r => fold(r.name).includes(q) && !hits.some(h => fold(h.p.name) === fold(r.name))).sort((a, b) => b.n - a.n).slice(0, Math.max(0, 8 - hits.length))
+      .map(r => `<button type="button" class="sg" data-act="pick-r" data-n="${esc(r.name)}"><span><b>${esc(r.name)}</b><small>z Waszych paragonów · ${esc(r.category)}</small></span><span class="sg-p">${zl(r.price)}<small class="store ${esc(r.store)}">${esc(r.storeName)} · ${dPL(r.date)}</small></span></button>`).join('')
+    + (q.length >= 2 ? `<div class="sub" style="padding:4px 2px">Nie ma na liście? Stuknij „Dodaj”, dopiszę jako zwykłą pozycję.</div>` : '');
 }
 function addOwn(pid) { const p = S.products[pid]; if (!p) return; write({ t: 'list_items', kind: 'insert', rows: [{ id: newId(), product_id: pid, qty: p.pack || 1, pantry: false, name: p.name.slice(0, 200), member: ui.member || null }] }, `Dodano: ${p.name}`); }
 function renderAll() { costCache = new Map();
@@ -737,6 +775,8 @@ document.addEventListener('click', async e => {
     case 'mem-ask': ui.sheet.confirmRm = d.id; drawSheet(); break;
     case 'mem-cancel': ui.sheet.confirmRm = null; drawSheet(); break;
     case 'mem-rm': busy(t, () => removeMember(d.id)); break;
+    case 'pick-r': write({ t: 'list_items', kind: 'insert', rows: [{ id: newId(), manual: true, name: String(d.n).slice(0, 200), member: ui.member || null }] }, `Dodano: ${d.n}`); $('#manual').value = ''; renderSugg(); $('#manual').focus(); break;
+    case 'list-view': ui.listView = d.k; lsSet('listView', d.k); renderList(); break;
     case 'pick': addOwn(d.pid); $('#manual').value = ''; renderSugg(); $('#manual').focus(); break;
     case 'own-inc': addOwn(d.pid); break;
     case 'own-dec': { const own = S.list_items.filter(x => x.product_id === d.pid && !x.recipe_id && !x.manual); const last = own[own.length - 1]; if (last) write({ t: 'list_items', kind: 'delete', match: { id: last.id } }); break; }
