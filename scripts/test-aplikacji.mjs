@@ -119,6 +119,12 @@ try {
   await A.page.locator('#app').waitFor();
   ok(new URL(A.page.url()).searchParams.get('dom') === keyA, 'A: powrót do własnego domu jednym stuknięciem');
 
+  /* 7b. Ikona na ekranie z dawnym kluczem w adresie (?dom=): bez komunikatu, zostaje własny dom */
+  await A.page.goto(APP + '?dom=' + 'ab'.repeat(32) + '#przepisy');
+  await A.page.locator('#app').waitFor();
+  await sleep(800);
+  ok(new URL(A.page.url()).searchParams.get('dom') === keyA && !(await A.page.locator('#toast').isVisible()), 'A: dawny klucz w adresie ikony – bez komunikatu, własny dom');
+
   /* 8. Prośby o przepisy: statusy i limit z bazy */
   await A.page.click('button.tab[data-tab="przepisy"]');
   await A.page.click('#v-przepisy [data-act="ask"]');

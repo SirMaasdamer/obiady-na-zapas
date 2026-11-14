@@ -820,6 +820,8 @@ async function inviteUrl() { // jednorazowo generowany kod zaproszenia (ważny 1
   return `${appUrl()}#dom=${data.code}`;
 }
 const inviteKey = () => { const m = location.hash.match(/[#&]dom=([0-9a-f]{64})/); return m ? m[1] : keyFrom(new URLSearchParams(location.search).get('dom')); };
+// zaproszenie przychodzi po „#dom=”; „?dom=” to adres zapisany w ikonie na ekranie początkowym (może pamiętać dawny klucz)
+const fromIcon = () => !/[#&]dom=[0-9a-f]{64}/.test(location.hash);
 const client = key => createClient(CFG.url, CFG.anon, { auth: { persistSession: false }, global: key ? { headers: { 'x-dom': key } } : {} });
 function ping(t = []) { chan?.send({ type: 'broadcast', event: 'zmiana', payload: { t } })?.catch?.(() => { }); }
 function lsDel(k) { try { localStorage.removeItem('onz_' + k); } catch { } }
@@ -963,7 +965,7 @@ async function becomeMember() {
   try {
     const info = await houseFor(house.key); if (!info) return;
     if (info.own) { house = { ...house, member: true, member_id: info.member_id }; lsSet('house', house); return; } // już własny klucz (np. dom z listy znanych)
-    const old = house.key, h = await joinWith(old); forget(old); house = h; lsSet('house', h); remember(h); lsSet('seen_' + h.member_id, Date.now());
+    const old = house.key, h = await joinWith(old); forget(old); lsSet('oldKeys', [old, ...lsGet('oldKeys', [])].slice(0, 10)); house = h; lsSet('house', h); remember(h); lsSet('seen_' + h.member_id, Date.now());
   }
   catch { } // bez sieci albo nieaktualny klucz: spróbujemy przy następnym uruchomieniu, a utratę dostępu pokaże app_state
 }
@@ -1028,7 +1030,9 @@ window.addEventListener('pageshow', () => setTimeout(healViewport, 150));
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
   if (!CFG.url) { document.body.innerHTML = '<div class="wrap" style="padding:40px 16px"><h2>Aplikacja jeszcze nie jest skonfigurowana</h2></div>'; return; }
   const saved = lsGet('house', null), fromUrl = inviteKey();
-  if (fromUrl && fromUrl !== saved?.key) {
+  // ikona z dawnym kluczem domu (sprzed własnych kluczy telefonów) albo dawny klucz tego telefonu: po cichu zostajemy w zapisanym domu
+  const stale = fromUrl && saved?.key && (fromIcon() || lsGet('oldKeys', []).includes(fromUrl));
+  if (fromUrl && fromUrl !== saved?.key && !stale) {
     // link zaproszenia albo pierwsze otwarcie z ikony na ekranie początkowym
     const h = await houseFor(fromUrl).catch(() => undefined); // undefined: brak połączenia, null: nieaktualny link
     // własny klucz tego telefonu (np. ikona na ekranie iPhone'a ma osobną pamięć): wchodzimy od razu
