@@ -1,0 +1,130 @@
+{
+  "opis": "Przepisy na życzenie: zupa krem z ziemniaków, kurczak z grzybami w sosie śmietanowym",
+  "products": [],
+  "recipes": [
+    {
+      "id": "krem-ziemniaczany-z-szynka",
+      "category": "zupy",
+      "name": "Zupa krem z ziemniaków z chrupiącą szynką",
+      "minutes": 40,
+      "freeze_months": 2,
+      "sides": "podsmażona szynka i natka pietruszki na wierzch, pieczywo",
+      "thaw": "Rozmrażaj w lodówce, potem podgrzewaj powoli, często mieszając. Jeśli krem zgęstnieje, dolej odrobinę wody. Szynkę podsmaż na świeżo.",
+      "inspired_by": "GREGORHSPEED (Smaker.pl)",
+      "source_url": "https://smaker.pl/przepisy-zupy/przepis-zupa-krem-z-mlodych-ziemniakow,112993,gregorhspeed.html",
+      "ingredients": [
+        { "pid": "ziemniaki", "amt": 400, "unit": "g" },
+        { "pid": "cebula", "amt": 100, "unit": "g" },
+        { "pid": "maslo", "amt": 10, "unit": "g" },
+        { "pid": "szynka_plastry", "amt": 150, "unit": "g" },
+        { "pid": "kminek", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "sol", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "pieprz", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "pietruszka_nac", "amt": 0.25, "unit": "pęczek" }
+      ],
+      "steps": [
+        "Cebulę posiekaj i zeszklij na maśle w garnku.",
+        "Ziemniaki obierz, pokrój w kostkę, wrzuć do cebuli i smaż razem 2–3 minuty.",
+        "Zalej gorącą wodą tak, by przykryła ziemniaki (ok. 700 ml), posól i gotuj do miękkości, ok. 20 minut.",
+        "Lekko przestudź i zmiksuj na gładki krem. Dopraw pieprzem i mielonym kminkiem, podgrzej.",
+        "Tę część możesz zamrozić. Przed podaniem pokrój szynkę w paski i podsmaż ją na suchej patelni na chrupko.",
+        "Podawaj krem z szynką i posiekaną natką."
+      ]
+    },
+    {
+      "id": "krem-z-pieczonych-ziemniakow-boczek",
+      "category": "zupy",
+      "name": "Krem z pieczonych ziemniaków i czosnku z boczkiem",
+      "minutes": 80,
+      "freeze_months": 2,
+      "sides": "chrupiący boczek, tarty ser i olej grzybowy na wierzch",
+      "thaw": "Rozmrażaj w lodówce i podgrzewaj na małym ogniu, mieszając, bez gotowania. W razie potrzeby rozrzedź mlekiem. Boczek podsmaż na świeżo.",
+      "inspired_by": "Marcin Molik (Interia Geekweek)",
+      "source_url": "https://geekweek.interia.pl/zywnosc/news-zupa-z-pieczonych-ziemniakow,nId,3272464",
+      "ingredients": [
+        { "pid": "ziemniaki", "amt": 500, "unit": "g" },
+        { "pid": "czosnek", "amt": 6, "unit": "ząbek" },
+        { "pid": "cebula", "amt": 150, "unit": "g" },
+        { "pid": "mleko", "amt": 700, "unit": "ml" },
+        { "pid": "boczek", "amt": 80, "unit": "g" },
+        { "pid": "grzyby_suszone", "amt": 1, "unit": "łyżka" },
+        { "pid": "olej", "amt": 3, "unit": "łyżka" },
+        { "pid": "galka", "amt": 0.25, "unit": "łyżeczka" },
+        { "pid": "sol", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "ser_tarty", "amt": 30, "unit": "g" }
+      ],
+      "steps": [
+        "Umyte ziemniaki w skórce i nieobrane ząbki czosnku piecz w 180°C, aż ziemniaki zmiękną (ok. 50 minut). Czosnek wyjmij nieco wcześniej.",
+        "Przestudzone ziemniaki przekrój i wydrąż miąższ łyżką. Czosnek wyciśnij ze skórek.",
+        "Cebulę pokrój w kostkę i podsmaż na łyżce oleju razem z miąższem ziemniaków i czosnkiem, ok. 10 minut.",
+        "Wlej mleko, dodaj sól i gałkę muszkatołową, gotuj na małym ogniu kilka minut, nie dopuszczając do wykipienia. Zmiksuj na gładko – ten krem nadaje się do zamrożenia.",
+        "Olej grzybowy: zmiksuj suszone grzyby z 2 łyżkami oleju i krótko podgrzej.",
+        "Przed podaniem podsmaż boczek pokrojony w kostkę. Krem posyp boczkiem i serem, skrop olejem grzybowym."
+      ]
+    },
+    {
+      "id": "podudzia-duszone-na-pieczarkach-smietana",
+      "category": "drob",
+      "name": "Podudzia duszone na pieczarkach w sosie śmietanowym",
+      "minutes": 65,
+      "freeze_months": 3,
+      "sides": "ziemniaki, kasza, ryż, surówka",
+      "thaw": "Rozmrażaj w lodówce i podgrzewaj pod przykryciem na małym ogniu. Jeśli sos się rozwarstwi, dodaj łyżkę śmietany i wymieszaj.",
+      "inspired_by": "GREGORHSPEED (Smaker.pl)",
+      "source_url": "https://smaker.pl/przepisy-dania-glowne/przepis-kurczak-duszony-na-pieczarkach,113094,gregorhspeed.html",
+      "ingredients": [
+        { "pid": "podudzia", "amt": 500, "unit": "g" },
+        { "pid": "pieczarki", "amt": 200, "unit": "g" },
+        { "pid": "cebula", "amt": 80, "unit": "g" },
+        { "pid": "maslo", "amt": 30, "unit": "g" },
+        { "pid": "smietana18", "amt": 125, "unit": "ml" },
+        { "pid": "maka", "amt": 1, "unit": "łyżka" },
+        { "pid": "kostka_rosolowa", "amt": 0.5, "unit": "szt" },
+        { "pid": "papryka_slodka", "amt": 1, "unit": "łyżeczka" },
+        { "pid": "sol", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "pietruszka_nac", "amt": 0.25, "unit": "pęczek" }
+      ],
+      "steps": [
+        "Rozpuść kostkę rosołową w ok. 300 ml gorącej wody.",
+        "W szerokim garnku roztop masło i zeszklij posiekaną cebulę.",
+        "Dodaj pieczarki pokrojone w plasterki, ułóż na nich podudzia, oprósz solą i papryką i zalej bulionem.",
+        "Duś pod przykryciem na małym ogniu 45–50 minut, w razie potrzeby podlewając bulionem.",
+        "Wyjmij mięso. Śmietanę wymieszaj z mąką, zahartuj gorącym sosem i wlej do pieczarek. Zagotuj, mieszając, aż sos zgęstnieje.",
+        "Włóż podudzia z powrotem do sosu. Podawaj posypane natką."
+      ]
+    },
+    {
+      "id": "kurczak-z-grzybami-lesnymi-smietana",
+      "category": "drob",
+      "name": "Kurczak z pieczarkami i suszonymi grzybami w sosie śmietanowym",
+      "minutes": 40,
+      "freeze_months": 3,
+      "sides": "makaron, kopytka, ziemniaki puree, kasza gryczana",
+      "thaw": "Rozmrażaj w lodówce i podgrzewaj na patelni pod przykryciem, mieszając. Zagęszczony sos dobrze znosi mrożenie.",
+      "ingredients": [
+        { "pid": "kurczak_filet", "amt": 300, "unit": "g" },
+        { "pid": "pieczarki", "amt": 200, "unit": "g" },
+        { "pid": "grzyby_suszone", "amt": 2, "unit": "łyżka" },
+        { "pid": "cebula", "amt": 80, "unit": "g" },
+        { "pid": "czosnek", "amt": 1, "unit": "ząbek" },
+        { "pid": "smietanka30", "amt": 150, "unit": "ml" },
+        { "pid": "maka", "amt": 1, "unit": "łyżka" },
+        { "pid": "olej", "amt": 2, "unit": "łyżka" },
+        { "pid": "majeranek", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "sol", "amt": 0.5, "unit": "łyżeczka" },
+        { "pid": "pieprz", "amt": 0.25, "unit": "łyżeczka" }
+      ],
+      "steps": [
+        "Suszone grzyby zalej ok. 200 ml wrzątku i odstaw na 15 minut. Potem posiekaj je, a wodę zachowaj.",
+        "Filet pokrój w kostkę, oprósz solą, pieprzem i mąką, obsmaż na oleju na złoto i zdejmij z patelni.",
+        "Na tej samej patelni podsmaż posiekaną cebulę, czosnek i pokrojone pieczarki, aż odparuje woda.",
+        "Dodaj suszone grzyby i przecedzoną wodę z moczenia, gotuj 5 minut.",
+        "Wlej śmietankę, dodaj majeranek i kurczaka, duś kilka minut, aż sos zgęstnieje, a mięso dojdzie. Dopraw do smaku."
+      ]
+    }
+  ],
+  "prosby": [
+    { "id": "ed8bbf66-3223-450a-8c77-46d941552e4c", "status": "gotowe", "recipe_ids": ["krem-ziemniaczany-z-szynka", "krem-z-pieczonych-ziemniakow-boczek"] },
+    { "id": "6a666fce-d949-4df6-9c29-779734d040a0", "status": "gotowe", "recipe_ids": ["podudzia-duszone-na-pieczarkach-smietana", "kurczak-z-grzybami-lesnymi-smietana"] }
+  ]
+}
