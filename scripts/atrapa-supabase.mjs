@@ -161,7 +161,8 @@ export async function handle(route) {
     const input = Array.isArray(body) ? body : [body], prefer = h.prefer || '';
     const cols = u.searchParams.get('on_conflict')?.split(',') || PK[t];
     if (t === 'recipe_requests') {
-      if (input.some(r => Object.keys(r).some(k => !['query', 'member'].includes(k)))) return send(401, { code: '42501', message: 'permission denied for table recipe_requests' });
+      if (input.some(r => r.url != null && !(String(r.url).length <= 500 && /^https:\/\/[^\s<>"{}]+$/.test(r.url)))) return send(400, { code: '23514', message: 'new row for relation "recipe_requests" violates check constraint "recipe_requests_url_ok"' });
+      if (input.some(r => Object.keys(r).some(k => !['query', 'member', 'url'].includes(k)))) return send(401, { code: '42501', message: 'permission denied for table recipe_requests' });
       const q = String(input[0].query || '');
       if (q.trim().length < 2 || q.trim().length > 80 || /[<>{}\r\n\t]/.test(q)) return send(400, { code: '23514', message: 'new row for relation "recipe_requests" violates check constraint "recipe_requests_query_short"' });
       if (table.filter(r => r.household_id === hh.id && ['czeka', 'w_trakcie'].includes(r.status)).length >= 3) return send(400, { code: 'P0001', message: 'Możecie mieć najwyżej 3 oczekujące prośby.' });

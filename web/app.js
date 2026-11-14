@@ -253,17 +253,29 @@ function readyHtml() {
 function askSheet() {
   const st = ui.sheet, reqs = S.recipe_requests || [];
   return `<div class="sheet-head"><div><h2>Brakuje przepisu?</h2><div class="sub" style="margin-top:4px">Wpisz danie, na które macie ochotę. Claude kilka razy dziennie przegląda prośby, szuka sprawdzonych przepisów i dopisuje 2–3 wersje do bazy. Zwykle trwa to do kilku godzin.</div></div><button class="x" data-act="close" aria-label="Zamknij">✕</button></div>
-  <form id="f-ask" class="row" style="flex-wrap:nowrap"><input class="input" id="ask-q" maxlength="80" placeholder="np. burrito, kurczak tikka masala" value="${esc(st.q || '')}" autocomplete="off"><button class="btn pri" type="submit">Poproś</button></form>
+  <form id="f-ask" class="sec" style="gap:8px" novalidate><input class="input" id="ask-q" maxlength="80" placeholder="np. burrito, kurczak tikka masala" value="${esc(st.q || '')}" autocomplete="off" aria-label="Danie">
+   <input class="input" id="ask-url" type="url" inputmode="url" maxlength="500" placeholder="albo wklej link do przepisu ze strony" autocomplete="off" aria-label="Link do przepisu">
+   <div class="sub">Z linkiem Claude przepisze dokładnie ten przepis (na 2 porcje, do mrożenia, jeśli się da) i doda link do oryginału. Nazwa dania jest wtedy nieobowiązkowa.</div>
+   <button class="btn pri" type="submit">Poproś</button></form>
   <div class="sub">Dom może mieć naraz najwyżej 3 oczekujące prośby.</div>
   <div class="sec"><h4>Wasze prośby</h4>${reqs.length ? `<div class="grp">${reqs.map(r => { const [cls, lbl] = REQ_ST[r.status] || REQ_ST.czeka, got = (r.recipe_ids || []).filter(id => S.recipes[id]);
-    return `<div class="req"><div class="nm"><b>${esc(r.query)}</b><small>${esc(r.member || '')}${r.member ? ' · ' : ''}${new Date(r.created_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}${r.note ? ' · ' + esc(r.note) : ''}</small>${got.length ? `<div class="req-r">${got.map(id => `<button class="chip" data-act="open" data-id="${esc(id)}">${esc(S.recipes[id].name)}</button>`).join('')}</div>` : ''}</div><div class="req-s"><span class="pill ${cls}">${lbl}</span>${r.status === 'czeka' ? `<button class="btn sm ghost" data-act="req-del" data-id="${esc(r.id)}" aria-label="Usuń prośbę">Usuń</button>` : ''}</div></div>`; }).join('')}</div>` : '<div class="sub">Na razie nic. Prośby całego domu pojawią się tutaj.</div>'}</div>`;
+    return `<div class="req"><div class="nm"><b>${esc(r.query)}</b><small>${esc(r.member || '')}${r.member ? ' · ' : ''}${new Date(r.created_at).toLocaleDateString('pl-PL', { day: '2-digit', month: '2-digit' })}${r.note ? ' · ' + esc(r.note) : ''}${r.url && /^https:\/\//.test(r.url) ? ` · <a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">link</a>` : ''}</small>${got.length ? `<div class="req-r">${got.map(id => `<button class="chip" data-act="open" data-id="${esc(id)}">${esc(S.recipes[id].name)}</button>`).join('')}</div>` : ''}</div><div class="req-s"><span class="pill ${cls}">${lbl}</span>${r.status === 'czeka' ? `<button class="btn sm ghost" data-act="req-del" data-id="${esc(r.id)}" aria-label="Usuń prośbę">Usuń</button>` : ''}</div></div>`; }).join('')}</div>` : '<div class="sub">Na razie nic. Prośby całego domu pojawią się tutaj.</div>'}</div>`;
 }
 async function sendAsk() {
   // baza przyjmuje 2–80 znaków, bez < > { } i znaków nowej linii
-  const q = $('#ask-q').value.replace(/[<>{}\r\n\t]/g, ' ').trim().replace(/\s+/g, ' ').slice(0, 80); if (q.length < 2) return;
+  // link do przepisu (tylko https; baza sprawdza to samo); bez nazwy dania prośba dostaje nazwę od strony
+  const rawUrl = ($('#ask-url')?.value || '').trim(); let url = null;
+  if (rawUrl) {
+    try { const u = new URL(/^https?:\/\//i.test(rawUrl) ? rawUrl : 'https://' + rawUrl); if (u.protocol === 'http:') u.protocol = 'https:'; if (/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(u.hostname)) url = u.href; } catch { }
+    if (!url || url.length > 500 || !/^https:\/\/[^\s<>"{}]+$/.test(url)) { toast('To nie wygląda na link do strony. Skopiuj cały adres przepisu.'); return; }
+  }
+  let q = $('#ask-q').value.replace(/[<>{}\r\n\t]/g, ' ').trim().replace(/\s+/g, ' ').slice(0, 80);
+  if (q.length < 2 && url) q = ('Przepis z ' + new URL(url).hostname.replace(/^www\./, '')).slice(0, 80);
+  if (q.length < 2) return;
   if ((S.recipe_requests || []).some(r => ['czeka', 'w_trakcie'].includes(r.status) && r.query.toLowerCase() === q.toLowerCase())) { toast('Ta prośba już czeka'); return; }
   if (!navigator.onLine) { toast('Prośbę wyślesz, gdy wróci internet.'); return; }
-  if (await w(() => db.from('recipe_requests').insert({ query: q, member: ui.member || null }), `Wysłano prośbę: ${q}`)) { ui.sheet.q = ''; ping(['recipe_requests']); await sync(); drawSheet(); }
+  if (url && (S.recipe_requests || []).some(r => ['czeka', 'w_trakcie'].includes(r.status) && r.url === url)) { toast('Ten link już czeka'); return; }
+  if (await w(() => db.from('recipe_requests').insert({ query: q, member: ui.member || null, ...(url ? { url } : {}) }), `Wysłano prośbę: ${q}`)) { ui.sheet.q = ''; ping(['recipe_requests']); await sync(); drawSheet(); }
 }
 let rObserver = null, rKey = '', rShown = 24;
 function renderRecipes() {
