@@ -146,7 +146,7 @@ export function matchProduct(name, products) {
   let best = null, bestLen = 0;
   for (const p of products) for (const kw of p.kw || []) {
     const k = kw.trim(); if (k.length < 3) continue;
-    const i = t.indexOf(' ' + k);
+    const i = t.indexOf(' ' + k + ' '); // całe słowa: „ryz” nie pasuje do „jogurt ryzowy”
     if (i >= 0 && k.length > bestLen) { best = p; bestLen = k.length; }
   }
   return best;
@@ -238,3 +238,57 @@ async function upscale(file) {
   const g = c.getContext('2d'); g.filter = 'grayscale(1) contrast(1.4)'; g.drawImage(img, 0, 0, c.width, c.height);
   return new Promise(ok => c.toBlob(ok, 'image/png'));
 }
+
+/* ---------- rozwijanie skrótów z paragonów („JogRyżBelrPistac200g” → „Jogurt ryżowy Belr pistacjowy 200 g”) ---------- */
+// Słowa, do których dopasowujemy początki skrótów (pierwsze pasujące, więc częstsze i krótsze wyżej).
+const WORDS = (`jogurt jogurtowy mleko mleczny mleczna ser serek sery twaróg twarogowy masło śmietana śmietanka kefir maślanka skyr jaja jajka
+chleb bułka bułki bagietka rogal rogalik kajzerka grahamka tortilla pieczywo tostowy
+szynka kiełbasa kabanosy parówki boczek salami polędwica pasztet kurczak filet pierś udko udka podudzie skrzydełka schab karkówka łopatka
+mielone mięso wołowina wołowe wieprzowina wieprzowe indyk łosoś dorsz tuńczyk makrela śledź ryba paluszki
+pomidory pomidorki ogórki ogórek ziemniaki cebula czosnek marchew papryka sałata kapusta brokuł kalafior pieczarki cukinia dynia szpinak
+koperek pietruszka seler por rzodkiewka buraki banany jabłka gruszki cytryny pomarańcze mandarynki winogrona truskawki borówki maliny awokado kiwi ananas
+makaron spaghetti penne ryż kasza mąka cukier olej oliwa sól pieprz przyprawa ketchup majonez musztarda koncentrat passata
+fasola groszek kukurydza ciecierzyca soczewica płatki owsiane kukurydziane musli dżem miód krem
+czekolada czekoladowy baton batonik ciastka ciasto chipsy żelki wafle wafelki herbatniki lody cukierki orzeszki paluszki krakersy
+woda gazowana niegazowana mineralna sok napój nektar lemoniada kawa mielona ziarnista rozpuszczalna herbata piwo wino
+papier toaletowy ręcznik ręczniki płyn naczyń proszek kapsułki tabletki zmywarki mydło szampon żel pasta zębów worki śmieci gąbki chusteczki pieluchy
+pistacjowy truskawkowy waniliowy malinowy owocowy brzoskwiniowy wiśniowy jagodowy bananowy kakaowy karmelowy kokosowy migdałowy orzechowy
+naturalny grecki pitny ryżowy sojowy owsiany light laktozy wędzony wędzona gotowany pieczony plastry krojony tarty mrożony mrożone świeży świeże
+pszenny pszenna żytni żytnie razowy pełnoziarnisty kanapkowy wiejski zielony zielone czerwony czerwona żółty biały białe czarny słodki ostry pikantny
+tradycyjny domowy polski polskie śląska krakowska podwawelska włoski mozzarella gouda edamski feta parmezan mascarpone ricotta camembert tofu hummus pesto sos zupa pierogi pizza
+frytki nuggetsy kotlety gulasz karma kota psa koktajlowe opakowanie duży mały mini maxi`).split(/\s+/).filter(Boolean);
+const WORD_KEYS = WORDS.map(w => [norm(w), w]);
+// Skróty, których nie da się zgadnąć z samego początku słowa.
+const ABBR = { mle: 'mleko', ml: 'mleko', jog: 'jogurt', jogu: 'jogurt', tw: 'twaróg', twar: 'twaróg', sm: 'śmietana', smiet: 'śmietana', mas: 'masło',
+  chl: 'chleb', bul: 'bułka', szyn: 'szynka', kielb: 'kiełbasa', kurcz: 'kurczak', pom: 'pomidory', ogor: 'ogórki', ziem: 'ziemniaki', ceb: 'cebula',
+  czos: 'czosnek', march: 'marchew', ban: 'banany', jabl: 'jabłka', mak: 'makaron', cuk: 'cukier', czek: 'czekolada', nap: 'napój', wod: 'woda',
+  ngaz: 'niegazowana', niegaz: 'niegazowana', gaz: 'gazowana', nat: 'naturalny', natur: 'naturalny', trusk: 'truskawkowy', wan: 'waniliowy',
+  pszen: 'pszenny', zyt: 'żytni', wedz: 'wędzony', plast: 'plastry', plastr: 'plastry', mroz: 'mrożony', pap: 'papier', toal: 'toaletowy',
+  rec: 'ręcznik', recz: 'ręcznik', pl: 'płyn', plyn: 'płyn', nacz: 'naczyń', kaps: 'kapsułki', tabl: 'tabletki', zmyw: 'zmywarki', pist: 'pistacjowy', pistac: 'pistacjowy' };
+const KEEP = /^(uht|xxl|xl|bio|eko|extra|mini|maxi|duo|light|zero|k-classic|vege)$/i;
+
+// Zwraca czytelną nazwę albo nazwę bez zmian, gdy wygląda na zwykły tekst.
+export function expandName(raw) {
+  const s = String(raw || '').trim(); if (!s) return s;
+  const words = s.split(/\s+/);
+  const looksAbbrev = /[a-ząćęłńóśźż][A-ZĄĆĘŁŃÓŚŹŻ]/.test(s) || /[A-Za-ząćęłńóśźż]{2}\.\S/.test(s) || words.some(w => /^[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]{2,5}\.?$/.test(w) && !WORD_KEYS.some(([k]) => k === norm(w))) || s === s.toUpperCase();
+  if (!looksAbbrev) return s;
+  const tokens = s.replace(/([a-ząćęłńóśźż])([A-ZĄĆĘŁŃÓŚŹŻ])/g, '$1 $2').replace(/([A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż])(\d)/g, '$1 $2').replace(/(?<!\d)\.|\.(?!\d)|[/_]+/g, ' ').split(/\s+/).filter(Boolean);
+  const out = [];
+  for (let i = 0; i < tokens.length; i++) {
+    const t = tokens[i], k = norm(t);
+    const qty = (t + (tokens[i + 1] || '')).match(/^(\d+(?:[.,]\d+)?)(g|kg|ml|l|szt)$/i) || t.match(/^(\d+(?:[.,]\d+)?)(g|kg|ml|l|szt)$/i);
+    if (qty) { out.push(`${qty[1]} ${qty[2].toLowerCase()}`); if (!/^\d+(?:[.,]\d+)?(g|kg|ml|l|szt)$/i.test(t)) i++; continue; }
+    if (/\d/.test(t) || KEEP.test(t)) { out.push(t.length > 3 && t === t.toUpperCase() && !KEEP.test(t) ? t : t); continue; }
+    if (ABBR[k]) { out.push(ABBR[k]); continue; }
+    // po pierwszym słowie wolimy przymiotnik („Jog Ryż” → „jogurt ryżowy”, nie „jogurt ryż”)
+    const cands = k.length >= 3 ? WORD_KEYS.filter(([w]) => w.startsWith(k)) : [];
+    const hit = (out.length && cands.find(([w]) => /(owy|owa|owe|ny|na|ne|ni|te|ty)$/.test(w) && w !== k)) || cands[0];
+    if (hit) { out.push(hit[1]); continue; }
+    out.push(t === t.toUpperCase() && t.length > 3 ? t[0] + t.slice(1).toLowerCase() : t); // marka albo nieznane słowo: zostaje
+  }
+  const r = out.join(' ').replace(/\s+/g, ' ').trim().replace(/\b(płyn) (naczyń)/i, '$1 do $2').replace(/\b(tabletki|kapsułki) (zmywarki)/i, '$1 do $2').replace(/\b(pasta) (zębów)/i, '$1 do $2').replace(/\b(worki) (śmieci)/i, '$1 na $2');
+  return r ? r[0].toUpperCase() + r.slice(1) : s;
+}
+// Klucz skrótu do zapamiętanych nazw domu (bez wielkości liter, polskich znaków i interpunkcji).
+export const aliasKey = s => norm(s).replace(/[^a-z0-9%]+/g, ' ').trim().slice(0, 120);

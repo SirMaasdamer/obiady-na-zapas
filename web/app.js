@@ -23,11 +23,11 @@ const ui = {
   member: String(lsGet('member', '')).slice(0, 40), justAdded: new Set(), month: new Date().toISOString().slice(0, 7),
 };
 let db = null, house = null, chan = null, houseTag = '';
-const HH_TABLES = ['hh_members', 'recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
+const HH_TABLES = ['hh_aliases', 'hh_members', 'recipe_requests', 'hh_recipes', 'reactions', 'list_items', 'freezer', 'hh_prices', 'receipts', 'receipt_items', 'hh_settings'];
 // tabele wspólne i zbiory, od których zależą (wersje w dataset_versions; „dzien”: oferty filtrujemy po dacie)
 const SHARED = { products: ['katalog'], recipes: ['katalog'], prices: ['katalog', 'oferty'], offers: ['oferty', 'dzien'], scrape_runs: ['oferty'] };
 // klucze wierszy w tabelach domu (bez household_id); hh_settings ma jeden wiersz na dom
-const PK = { list_items: ['id'], freezer: ['id'], receipts: ['id'], receipt_items: ['id'], recipe_requests: ['id'], reactions: ['recipe_id', 'member'], hh_prices: ['product_id', 'store'], hh_recipes: ['recipe_id'], hh_settings: [] };
+const PK = { hh_aliases: ['household_id', 'raw'], list_items: ['id'], freezer: ['id'], receipts: ['id'], receipt_items: ['id'], recipe_requests: ['id'], reactions: ['recipe_id', 'member'], hh_prices: ['product_id', 'store'], hh_recipes: ['recipe_id'], hh_settings: [] };
 const RAW = {}, VER = {};  // wiersze z serwera (albo z kopii w telefonie) i wersja danych, z którą się zgadzają
 let pendingOps = [];       // zapisy czekające na wysłanie (kolejka w IndexedDB); widok = RAW + te zapisy
 let netDown = false;
@@ -137,6 +137,7 @@ const TABLES = {
   hh_settings: q => q.select('*'),
   recipe_requests: q => q.select('*').order('created_at', { ascending: false }).limit(50),
   hh_members: q => q.select('id,name,device,created_at,last_seen').order('created_at'),
+  hh_aliases: q => q.select('raw,name,category,updated_at').order('raw'),
 };
 const ONE_PAGE = new Set(['scrape_runs', 'recipe_requests', 'hh_settings']);
 // Supabase oddaje najwyżej 1000 wierszy na zapytanie, więc większe tabele pobieramy stronami.
@@ -589,7 +590,16 @@ async function importReceipt(files) {
     const text = files.length > 1 ? RC.joinShots(texts) : texts.join('\n');
     const r = RC.parseReceipt(text, L.today());
     const catalog = Object.values(S.products).filter(p => !p.pantry);
-    r.items.forEach(it => { const p = RC.matchProduct(it.name, catalog); it.product_id = p?.id || null; it.category = RC.categoryOf(it.name, p); });
+    await load('hh_aliases', 'r' + Date.now()).catch(() => { }); // świeże nazwy wyuczone przez domowników
+    const aliases = new Map((S.hh_aliases || []).map(a => [a.raw, a]));
+    r.items.forEach(it => {
+      // 1) nazwa zapamiętana z wcześniejszej poprawki, 2) rozwinięty skrót, 3) nazwa z paragonu
+      it.raw = it.name; const al = aliases.get(RC.aliasKey(it.name));
+      it.name = al?.name || RC.expandName(it.name);
+      const p = RC.matchProduct(it.name, catalog) || RC.matchProduct(it.raw, catalog); it.product_id = p?.id || null;
+      it.category = al?.category || RC.categoryOf(it.name, p) || RC.categoryOf(it.raw, p);
+      it.auto = { name: it.name, category: it.category }; it.learned = !!al;
+    });
     ui.sheet = { type: 'rimport', draft: r, text, source: files.some(f => /pdf/i.test(f.type)) ? 'pdf' : 'zdjęcie' };
   } catch (e) {
     console.error(e);
@@ -619,7 +629,7 @@ function importSheet() {
   ${!d.items.length ? `<div class="warnbox">Nie rozpoznałem pozycji. Możesz dopisać je ręcznie albo spróbować wyraźniejszego zrzutu.</div>` : diff > 0.05 ? `<div class="warnbox">Suma pozycji (${zs(sum)} zł) różni się od kwoty do zapłaty o ${zs(diff)} zł. Sprawdź ceny poniżej.</div>` : `<div class="sub" style="color:var(--good)">✓ Suma pozycji zgadza się z paragonem</div>`}
   <div class="box" style="padding-block:4px">${d.items.map((it, i) => {
     const p = S.products[it.product_id];
-    return `<div class="ri"><input class="input" id="ri-n${i}" value="${esc(it.name)}" aria-label="Nazwa"><input class="input num" id="ri-v${i}" inputmode="decimal" value="${String(it.total).replace('.', ',')}" aria-label="Kwota"><button class="x" data-act="ri-del" data-i="${i}" aria-label="Usuń pozycję">✕</button>
+    return `<div class="ri"><input class="input" id="ri-n${i}" value="${esc(it.name)}" aria-label="Nazwa">${it.raw && it.raw !== it.name ? `<small class="raw">${it.learned ? 'zapamiętane' : 'rozwinięte'} z „${esc(it.raw)}”</small>` : ''}<input class="input num" id="ri-v${i}" inputmode="decimal" value="${String(it.total).replace('.', ',')}" aria-label="Kwota"><button class="x" data-act="ri-del" data-i="${i}" aria-label="Usuń pozycję">✕</button>
       <div class="meta">${it.qty !== 1 ? `<span>${num(it.qty, 3)} ${it.weighed ? 'kg' : 'szt.'} × ${zs(it.unit_price)}</span>` : ''}${it.discount ? `<span style="color:var(--promo)">rabat ${zs(it.discount)}</span>` : ''}${p ? `<span class="pill want">${esc(p.name)}</span>` : ''}<select class="input" id="ri-c${i}" aria-label="Kategoria">${CAT_NAMES.map(c => `<option ${c === it.category ? 'selected' : ''}>${c}</option>`).join('')}</select></div></div>`;
   }).join('')}</div>
   <button class="btn sm ghost" data-act="ri-add" style="align-self:flex-start">+ Dodaj pozycję</button>
@@ -646,6 +656,17 @@ async function saveReceipt() {
   // trzy zapisy w kolejności (paragon, pozycje, ceny); bez internetu czekają w telefonie
   const ops = [{ t: 'receipts', kind: 'insert', rows: [{ id, store: String(d.store).slice(0, 10), store_name: String(RC.STORE_NAMES[d.store] || d.store_name || 'Inny sklep').slice(0, 60), bought_on: d.bought_on, total: +d.total, source: src, member: ui.member || null }] }];
   if (items.length) ops.push({ t: 'receipt_items', kind: 'insert', rows: items });
+  // nauka nazw: każda poprawiona nazwa albo kategoria pozycji zapamiętuje się dla skrótu z paragonu (u wszystkich domowników)
+  if (house.id) {
+    const learn = [], now = new Date().toISOString();
+    for (const it of d.items) {
+      if (!it.raw || !it.name.trim() || !it.auto) continue;
+      const name = it.name.trim().replace(/[<>{}]/g, ' ').slice(0, 120), raw = RC.aliasKey(it.raw);
+      if (raw.length < 2 || (name === it.auto.name && it.category === it.auto.category)) continue;
+      learn.push({ household_id: house.id, raw, name, category: it.category || null, updated_at: now });
+    }
+    if (learn.length) ops.push({ t: 'hh_aliases', kind: 'upsert', rows: [...new Map(learn.map(x => [x.raw, x])).values()] });
+  }
   if (prices.length) ops.push({ t: 'hh_prices', kind: 'upsert', rows: prices });
   ui.month = d.bought_on.slice(0, 7); closeSheet();
   write(ops, `Zapisano paragon${prices.length ? ` · zaktualizowano ${prices.length} cen` : ''}`);
@@ -937,7 +958,7 @@ async function rotateKey() {
   forget(house.key); const h = { key: data.secret, name: house.name }; remember(h); lsSet('house', h); lsSet('rotated', true);
   location.replace(`${appUrl()}?dom=${h.key}#przepisy`);
 }
-const EXPORT_ORDER = { hh_members: ['created_at', 'id'], recipe_requests: ['created_at', 'id'], hh_recipes: ['recipe_id'], reactions: ['recipe_id', 'member'], list_items: ['created_at', 'id'], freezer: ['id'], hh_prices: ['product_id', 'store'], receipts: ['bought_on', 'id'], receipt_items: ['id'], hh_settings: ['household_id'] };
+const EXPORT_ORDER = { hh_aliases: ['raw'], hh_members: ['created_at', 'id'], recipe_requests: ['created_at', 'id'], hh_recipes: ['recipe_id'], reactions: ['recipe_id', 'member'], list_items: ['created_at', 'id'], freezer: ['id'], hh_prices: ['product_id', 'store'], receipts: ['bought_on', 'id'], receipt_items: ['id'], hh_settings: ['household_id'] };
 async function exportData() {
   try {
     const out = { aplikacja: 'Obiady na Zapas', wyeksportowano: new Date().toISOString(), dom: house.name, tabele: {} };

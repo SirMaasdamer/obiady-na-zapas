@@ -108,4 +108,13 @@ eq(R.joinShots(['a\nb\nc', 'b\nc\nd']), 'a\nb\nc\nd', 'paragon: łączenie zrzut
     { kw: 'cytryny', cards: [{ href: '/sklepy/biedronka/oferty/c/', text: 'Lemoniada o smaku cytryny 1 l\n0,99 zł' }], rows: [] }], P3, 'biedronka', 'Biedronka', '2026-11-01').map(x => x.product_id + ':' + x.price_for_pack).join(','), 'dynia:2.99', 'agregator: produkt jako dodatek pomijany');
   eq(E.plDate('02 listopada 2026'), '2026-11-02', 'agregator: polska data');
 }
+// --- skróty z paragonów ---
+{
+  const R = await import('../web/receipt.js');
+  eq(R.expandName('JogRyżBelrPistac200g'), 'Jogurt ryżowy Belr pistacjowy 200 g', 'paragon: skrót jogurtu rozwinięty');
+  eq(R.expandName('PlynNacz.Ludwik'), 'Płyn do naczyń Ludwik', 'paragon: płyn do naczyń');
+  eq(R.expandName('Chl.Zyt.Razowy'), 'Chleb żytni razowy', 'paragon: skróty z kropkami');
+  eq(R.expandName('Banany luz'), 'Banany luz', 'paragon: zwykła nazwa bez zmian');
+  eq(R.aliasKey('JogRyżBelr Pistac,200g'), 'jogryzbelr pistac 200g', 'paragon: klucz skrótu');
+}
 if (fails) { console.log(fails, 'błędów'); process.exit(1); } else console.log('Wszystkie testy przeszły.');
